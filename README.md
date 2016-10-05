@@ -10,11 +10,9 @@ Function
 Making Process
 ---------------
 
-Landing Page (Design)
 
-
-Content Page (Design)
+Design
 http://adobe.ly/2dsI4f4
 
-Content Page (Code)
+Code
 https://github.com/PDIS/web/ (here)
