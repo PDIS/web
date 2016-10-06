@@ -1,18 +1,27 @@
-PDIS website
+PDIS [Land]
 ============================================================================================================================
 
 Function
 ----------------
-- describe what we do
-- an english website
-- ...
+- a landing page
+- show people what PDIS do
+- open a channel for thoughts contribution
+- team building
+- mainly in english
+- anyone can subscribe to PDIS
+- anyone can leave their thoughs
 
-Making Process
----------------
+
+Design Mockup
+--------------
+http://adobe.ly/2dLZvWw
 
 
-Design
-http://adobe.ly/2dsI4f4
+Comment
+--------------
+- please help :)
+- functional (see above) -> useful (see below) -> desireable (be creative!)
+- quick in, quick out (easy to read, understand)
+- more attractive & fun 
 
-Code
-https://github.com/PDIS/web/ (here)
+
