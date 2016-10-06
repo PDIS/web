@@ -14,7 +14,8 @@ Function
 
 Design Mockup
 --------------
-http://adobe.ly/2dLZvWw
+http://adobe.ly/2dLZvWw (xd)
+https://github.com/PDIS/web/tree/master/video (video)
 
 
 Comment
