@@ -7,17 +7,32 @@
     <link href="css/pdis.css" rel="stylesheet">
     <script type='text/javascript' src="js/jquery.min.js"></script>
     <script type='text/javascript' src="js/bootstrap.min.js"></script>
+    <script>
+
+        function resizeLogo(){
+            var size = $("#navbar").offset().top-$(window).scrollTop();
+            if(size>80){
+                $("#logo").width(size);
+                $("#logo").height(size);
+            }
+            else{
+                $("#logo").width(80);
+                $("#logo").height(80);
+            }
+            
+        }
+
+    </script>
 </head>
 
-<body>
+<body onscroll="resizeLogo()">
 
-    <div class="container-fluid" style="height:200px;">
-        <img class="img-circle" src="./img/logo.png" alt="Generic placeholder image" width="200" height="200">
+    <div style="height:200px;">
+        <img id="logo" style="position:fixed;z-index:11;background-color: white;" src="./img/logo.png" alt="Generic placeholder image" width="200" height="200">
     </div>
 
-    <nav class="navbar navbar-clear" data-spy="affix" data-offset-top="197" style="background-color: #f5f5f5;">
-        <img src="./img/logo.png" width="80" height="80">
-
+    <nav id="navbar" class="navbar navbar-clear" data-spy="affix" data-offset-top="197" style="background-color: #f5f5f5;">
+        
         <ul class="nav navbar-nav pull-right">
             <li class="nav-item">
                 <div><a class="active" href="WhatWeDo.htm">WHAT WE DO</a></div>
