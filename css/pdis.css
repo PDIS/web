@@ -1,5 +1,10 @@
         nav li a {
+            color: white;
+        }
+
+        .nav-item .active{
             color: black;
+            border-left: solid black;
         }
         
         .nav-item div {
@@ -9,7 +14,7 @@
         
         .nav-item div a {
             padding: 0px 0px 10px 10px;
-            border-left: solid black;
+            border-left: solid white;
             border-left-width: 4px;
             font-size: 10px;
         }
