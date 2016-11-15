@@ -10,21 +10,53 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-fixed-top navbar-clear" style="background-color: #f5f5f5;">
-        <img src="./img/logo.png" width="80" height="80" style="background-color: #ffffff;">
+    
+    <nav id="navbar" class="navbar navbar-fixed-top navbar-clear" style="background-color: #f5f5f5;">
+        <div style="float:left">
+            <img id="logo" style="position:fixed;z-index:11;background-color: white;" src="./img/logo.png" alt="Generic placeholder image"
+                width="80" height="80">
+        </div>
 
-        <ul class="nav navbar-nav pull-right">
-            <li class="nav-item">
-                <div><a href="WhatWeDo.htm">WHAT WE DO</a></div>
-            </li>
-            <li class="nav-item">
-                <div><a href="HowWeWork.htm">HOW WE WORK</a></div>
-            </li>
-            <li class="nav-item">
-                <div><a class="active" href="GetInvolved.htm">GET INVOLVED</a></div>
-            </li>
-            <li><a href="#"><i class="glyphicon glyphicon-align-justify"></i></a></li>
-        </ul>
+        <!--navbar for small screen-->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed nav-btn-pdis" data-toggle="collapse" data-target="#navbar-xs" style="
+            background-color: transparent;">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div id="navbar-xs" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right visible-xs">
+                <li><a href="">WHAT WE DO</a></li>
+                <li><a href="">HOW WE WORK</a></li>
+                <li><a href="">GET INVOLVED</a></li>
+            </ul>
+        </div>
+
+        <!--navbar for large screen-->
+        <button type="button" class="nav-btn-pdis navbar-toggle pull-right hidden-xs" data-toggle="collapse" data-target="#navbar-lg"
+            style="display:block;
+            background-color: transparent;">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+        </button>
+
+        <div>
+            <ul id="navbar-lg" class="collapse nav navbar-nav navbar-right hidden-xs">
+                <li class="nav-item">
+                    <div><a href="WhatWeDo.htm">WHAT WE DO</a></div>
+                </li>
+                <li class="nav-item">
+                    <div><a href="HowWeWork.htm">HOW WE WORK</a></div>
+                </li>
+                <li class="nav-item">
+                    <div><a class="active" href="GetInvolved.htm">GET INVOLVED</a></div>
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Begin Body -->
