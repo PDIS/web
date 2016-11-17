@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootply snippet - Bootstrap 3 Template - Attach nav after scroll </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/pdis.css" rel="stylesheet">
+    <script type='text/javascript' src="js/jquery.min.js"></script>
+    <script type='text/javascript' src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <nav id="navbar" class="navbar navbar-fixed-top navbar-clear" style="background-color: #f5f5f5;">
+        <div style="float:left">
+            <img id="logo" style="position:fixed;z-index:11;background-color: white;" src="./img/logo.png" alt="Generic placeholder image"
+                width="80" height="80">
+        </div>
+
+        <!--navbar for small screen-->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed nav-btn-pdis" data-toggle="collapse" data-target="#navbar-xs" style="
+            background-color: transparent;">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div id="navbar-xs" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right visible-xs">
+                <li><a href="">WHAT WE DO</a></li>
+                <li><a href="">HOW WE WORK</a></li>
+                <li><a href="">GET INVOLVED</a></li>
+            </ul>
+        </div>
+
+        <!--navbar for large screen-->
+        <button type="button" class="nav-btn-pdis navbar-toggle pull-right hidden-xs" data-toggle="collapse" data-target="#navbar-lg"
+            style="display:block;
+            background-color: transparent;">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+        </button>
+
+        <div>
+            <ul id="navbar-lg" class="collapse nav navbar-nav navbar-right hidden-xs">
+                <li class="nav-item">
+                    <div><a class="active" href="WhatWeDo.htm">WHAT WE DO</a></div>
+                </li>
+                <li class="nav-item">
+                    <div><a href="HowWeWork.htm">HOW WE WORK</a></div>
+                </li>
+                <li class="nav-item">
+                    <div><a href="GetInvolved.htm">GET INVOLVED</a></div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Begin Body -->
+
+    <div class="container" style="padding-top:120px">
+
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-4">
+                <h3>Open API</h3>
+            </div>
+            <div class="col-md-5">
+                <h3>How might we help Taiwan unlock its creative potential through digital innovation?</h3>
+                <h2 style="margin-top: 0px;">---</h2>
+                <h4>"We believe public digital platforms should automatically provide reliable data collected in transparent
+                    means and make it accesible to people."
+                </h4>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-4">
+                <h3>What is Open API</h3>
+            </div>
+            <div class="col-md-5">
+                <div class="video-container">
+                <h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/aNekVhM7BgA?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"
+                        allowfullscreen></iframe>
+                </h3>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <h1>緣由</h1>
+                <p>政府之資訊服務，國際趨勢均走向開放標準及共通平台（如英國、義大利、保加利亞、澳大利亞等），以創造政府資訊更大效益。</p>
+                <p>資訊服務若具備開放式應用程式介面（下稱 Open API），包括「機器可讀、格式開放、介面索引、機器可寫」4項要件，可帶來以下效益：</p>
+                <ul>
+                    <li>利用公用的標準格式，可以節省後續處理（例如轉為開放資料）或跨部門介接時的時間和金錢</li>
+                    <li>在需要調整功能時，可以請新的技術服務提供商，基於現有的 Open API 進行改寫（例如加上訂閱功能）</li>
+                    <li>可以在需要時快速輕鬆地更改服務（例如建置行動版網頁）</li>
+                    <li>可以提供民眾使用政府資訊服務更一致的體驗（例如過去要到好幾個網站進行的查詢，可整合在同一個介面），有助建立對政府之信任。</li></ul>
+                <h1>建議</h1>
+                <h2>指導政策</h2>
+                <p>納入「數位國家創新經濟發展方案」推動措施，作為後續推動之政策依據。</p>
+                <h2>發展參考指引或規範</h2>
+                <p>數位服務設計規範：國發會規劃於106年研訂我國之數位服務設計規範，應將此原則納入，供各機關作業依循，以俾優先核列資源予 Open API 服務。</p>
+                <p>另國發會於104年7月頒訂「共通性資料存取應用程式介面規範」( <a href=\ "http://data.gov.tw/node/18253\">http://data.gov.tw/node/18253</a>                    )，目的為提供開放資料平台使用者一致性 Open API，以RESTful 風格為主要基礎，訂定應用程式介面的呼叫方式、語法規則及所提供的介面類型等項目，以達機器對機器（M2M）自動資料介接目標。建議先將此規範文字轉換為機器可讀之介面索引，以作為示範，並便利各部會、地方政府開發串接服務。</p>
+                <h2>驗證機制</h2>
+                <p>參考機器檢測無障礙 A+ 標準，運用現有之國際通用驗證機制（例如 Linux Foundation 的 OpenAPI 標準），作為自動化驗收之依據。</p>
+                <h2>推廣機制</h2>
+                <p>政府機關端：國發會每年分別辦理中央分組及地方分組各2場資訊主管聯席會議，年底辦理中央地方聯合資訊主管聯席會，可藉由資訊主管聯席會議宣導推廣至各中央部會及地方政府。</p>
+                <p>資服業者端：可透過各公協會召開之協會年度活動，向會員宣導，建立資服業者認知，以協助政府機關開發資訊服務。</p>
+                <h2>管考機制</h2>
+                <p>計畫審議：納入各部會研提資訊計畫審議重點，落實源頭管理。<br>計畫查證：透過每年資訊計畫查證作業，擇重點系統進行查證辦理成效，以持續精進推動作為。</p>
+                <h2>採購配套</h2>
+                <p>為賦予適當法律效力，以利逐步推動遵循，考量施行細則為「執行法律有關之細節性、技術性之事項」，建議於政府採購法相關施行辦法中，訂定指導性之規範，明定本法第56條第1項之評審標準，於資訊服務，經考量係跨機關服務或經評估可產生具加值價值資料系統等，得將「具備符合數位服務設計規範之應用程式介面」列入，並得予以加減分。</p>
+            </div>
+            <div class="col-md-2">
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
