@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootply snippet - Bootstrap 3 Template - Attach nav after scroll </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/pdis.css" rel="stylesheet">
+    <script type='text/javascript' src="assets/js/jquery.min.js"></script>
+    <script type='text/javascript' src="assets/js/bootstrap.min.js"></script>
+    <script>
+
+        function resizeLogo(){
+            var size = $("#navbar").offset().top-$(window).scrollTop();
+            if(size>$("#navbar").height()){
+                $("#logo").width(size);
+                $("#logo").height(size);
+            }
+            else{
+                $("#logo").width($("#navbar").height());
+                $("#logo").height($("#navbar").height());
+            }
+        }
+
+    </script>
+</head>
+
+<body onscroll="resizeLogo()">
+
+  <app-root>Loading...</app-root>
+
+</body>
+
+</html>
