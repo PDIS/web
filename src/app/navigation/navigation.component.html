@@ -1,0 +1,193 @@
+
+    <div *ngIf="topicNav=='1'" style="height:200px;">
+        <img *ngIf="topicNav=='1'" id="logo" style="position:fixed;z-index:11;background-color: white;" src="assets/img/logo.png" alt="Generic placeholder image"
+            width="200" height="200">
+    </div>
+8
+    <nav *ngIf="topicNav=='1'" id="navbar" class="navbar navbar-default navbar-clear" data-spy="affix" data-offset-top="197" style="background-color: #f5f5f5;">
+        <!--navbar for small screen-->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed nav-btn-pdis" data-toggle="collapse" data-target="#navbar-xs" style="
+            background-color: transparent;">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div id="navbar-xs" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right visible-xs">
+                <li>
+                    <a (click)="changeTopic1($event)">WHAT WE DO</a>
+                </li>
+                <li>
+                    <a (click)="changeTopic2($event)">HOW WE WORK</a>
+                </li>
+                <li>
+                    <a (click)="changeTopic3($event)">GET INVOLVED</a>
+                </li>
+            </ul>
+        </div>
+
+        <!--navbar for large screen-->
+        <button type="button" class=" nav-btn-pdis navbar-toggle pull-right hidden-xs" data-toggle="collapse" data-target="#navbar-lg"
+            style="display:block;
+            background-color: transparent;">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+        </button>
+
+        <div>
+            <ul id="navbar-lg" class="collapse nav navbar-nav navbar-right hidden-xs">
+                <li class="nav-item">
+                    <div>
+                      <a class="active" (click)="changeTopic1($event)">
+                        WHAT WE DO
+                      </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div>
+                      <a (click)="changeTopic2($event)">
+                        HOW WE WORK
+                      </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div>
+                      <a (click)="changeTopic3($event)">
+                        GET INVOLVED
+                      </a>
+                    </div>
+                </li>
+                <li><a href="#"><i class="glyphicon glyphicon-align-justify"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav *ngIf="topicNav=='2'" id="navbar" class="navbar navbar-fixed-top navbar-clear" style="background-color: #f5f5f5;">
+        <div style="float:left">
+            <img *ngIf="topicNav=='2'" id="logo" style="position:fixed;z-index:11;background-color: white;" src="assets/img/pdis-logo-01small.png" alt="Generic placeholder image"
+                width="80" height="80">
+        </div>
+
+        <!--navbar for small screen-->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed nav-btn-pdis" data-toggle="collapse" data-target="#navbar-xs" style="
+            background-color: transparent;">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div id="navbar-xs" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right visible-xs">
+                <li>
+                    <a (click)="changeTopic1($event)">WHAT WE DO</a>
+                </li>
+                <li>
+                    <a (click)="changeTopic2($event)">HOW WE WORK</a>
+                </li>
+                <li>
+                    <a (click)="changeTopic3($event)">GET INVOLVED</a>
+                </li>
+            </ul>
+        </div>
+
+        <!--navbar for large screen-->
+        <button type="button" class="nav-btn-pdis navbar-toggle pull-right hidden-xs" data-toggle="collapse" data-target="#navbar-lg"
+            style="display:block;
+            background-color: transparent;">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+        </button>
+
+        <div>
+            <ul id="navbar-lg" class="collapse nav navbar-nav navbar-right hidden-xs">
+                <li class="nav-item">
+                    <div>
+                        <a (click)="changeTopic1($event)">WHAT WE DO</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div>
+                        <a class="active" (click)="changeTopic2($event)">HOW WE WORK</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div>
+                        <a (click)="changeTopic3($event)">GET INVOLVED</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav *ngIf="topicNav=='3'" id="navbar" class="navbar navbar-fixed-top navbar-clear" style="background-color: #f5f5f5;">
+        <div style="float:left">
+            <img *ngIf="topicNav=='3'" id="logo" style="position:fixed;z-index:11;background-color: white;" src="assets/img/logo.png" alt="Generic placeholder image"
+                width="80" height="80">
+        </div>
+
+        <!--navbar for small screen-->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed nav-btn-pdis" data-toggle="collapse" data-target="#navbar-xs" style="
+            background-color: transparent;">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div id="navbar-xs" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right visible-xs">
+                <li>
+                    <a (click)="changeTopic1($event)">WHAT WE DO</a>
+                </li>
+                <li>
+                    <a (click)="changeTopic2($event)">HOW WE WORK</a>
+                </li>
+                <li>
+                    <a (click)="changeTopic3($event)">GET INVOLVED</a>
+                </li>
+            </ul>
+        </div>
+
+        <!--navbar for large screen-->
+        <button type="button" class="nav-btn-pdis navbar-toggle pull-right hidden-xs" data-toggle="collapse" data-target="#navbar-lg"
+            style="display:block;
+            background-color: transparent;">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+        </button>
+
+        <div>
+            <ul id="navbar-lg" class="collapse nav navbar-nav navbar-right hidden-xs">
+                <li class="nav-item">
+                    <div>
+                      <a (click)="changeTopic1($event)">
+                        WHAT WE DO
+                      </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div>
+                      <a (click)="changeTopic2($event)">
+                        HOW WE WORK
+                      </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div>
+                      <a class="active" (click)="changeTopic3($event)">
+                        GET INVOLVED
+                      </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
