@@ -97,14 +97,19 @@
             padding: 20px
         }
         
-        .image {
+        .thumbnail-pdis{
+            text-align: center;
+            color: #bababa;
+        }
+
+        .thumbnail-pdis p{
             position: relative;
             overflow: hidden;
             padding-bottom: 100%;
             border: 0px
         }
         
-        .image img {
+        .thumbnail-pdis p img {
             position: absolute;
             max-width: 100%;
             max-height: 100%;

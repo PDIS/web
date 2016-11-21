@@ -5,8 +5,9 @@
 
 
         <section>
-            <h4>We are commited to open our work process.</h4>
-            <h4>See below the tools we use and check how we work day by day:</h4>
+            <h3><strong>We are commited to open our work process.</strong></h3>
+            <h3 style="margin-top: 0px;">
+            <strong>See below the tools we use and check how we work day by day:</strong></h3>
         </section>
 
 
@@ -14,7 +15,7 @@
         <div *ngIf="list" class="clearfix">
             <h2 class="thumbnail-text">Tools</h2>
           <div *ngFor="let post of list['post_stream'].posts">
-            <div class="col-sm-4 col-md-3 col-lg-2" [innerHTML]="post.cooked"></div>
+            <div class="col-sm-4 col-md-3 col-lg-2 thumbnail-pdis" [innerHTML]="post.cooked"></div>
           </div>
         </div>
 
