@@ -1,3 +1,15 @@
+        p{
+            font-family: 'Cormorant Garamond', serif;
+        } 
+
+        h1 strong,h2 strong,h3 strong,h4 strong,h5 strong{
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        h1 ,h2 ,h3 ,h4 ,h5 {
+            font-family: 'Open Sans', sans-serif;
+        }
+        
         .nav-item .active{
             padding: 0px 0px 10px 10px;
             border-left: solid black;
