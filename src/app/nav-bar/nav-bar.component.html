@@ -1,36 +1,14 @@
-<nav id="navbar" class="navbar navbar-fixed-top navbar-clear" style="background-color: #f5f5f5;">
-  <div style="float:left">
-    <img id="logo" style="position:fixed;z-index:11;background-color: white;" src="assets/img/pdis-logo-01small.png" alt="Generic placeholder image"
-      width="80" height="80">
-  </div>
-
-  <!--navbar for small screen-->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed nav-btn-pdis" data-toggle="collapse" data-target="#navbar-xs" style="
-            background-color: transparent;">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-  </div>
-
-  <div id="navbar-xs" class="navbar-collapse collapse">
-    <ul class="nav navbar-nav navbar-right visible-xs">
-      <li>
-        <a [routerLink]="['/what-we-do']">WHAT WE DO</a>
-      </li>
-      <li>
-        <a [routerLink]="['/how-we-work']">HOW WE WORK</a>
-      </li>
-      <li>
-        <a [routerLink]="['/get-involved']">GET INVOLVED</a>
-      </li>
-    </ul>
-  </div>
+<nav id="navbar" 
+  [ngClass]="{'navbar-default': imgheight>0,'navbar-fixed-top affix': imgheight<0}"
+  [attr.data-offset-top]="imgheight>0 ? imgheight : null"
+  [attr.data-spy]="imgheight>0 ? 'affix' : null" 
+  class="navbar navbar-clear" 
+  style="background-color: #f5f5f5;"
+>
 
   <!--navbar for large screen-->
-  <button type="button" class="nav-btn-pdis navbar-toggle pull-right hidden-xs" data-toggle="collapse" data-target="#navbar-lg"
-    style="display:block;
+  <button (mouseenter)='isCollapse=true' (mouseleave)='isCollapse=false' type="button" class=" nav-btn-pdis navbar-toggle pull-right"
+    data-toggle="collapse" data-target="#navbar-lg" style="display:block;
             background-color: transparent;">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -38,22 +16,29 @@
         </button>
 
   <div>
-    <ul id="navbar-lg" class="collapse nav navbar-nav navbar-right hidden-xs">
+    <ul [class.in]="isCollapse" (mouseenter)='isCollapse=true' (mouseleave)='isCollapse=false' id="navbar-lg" class="collapse nav navbar-nav navbar-right">
       <li class="nav-item">
         <div>
-          <a [routerLink]="['/what-we-do']">WHAT WE DO</a>
+          <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do']">
+                        WHAT WE DO
+                      </a>
         </div>
       </li>
       <li class="nav-item">
         <div>
-          <a [routerLink]="['/how-we-work']">HOW WE WORK</a>
+          <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']">
+                        HOW WE WORK
+                      </a>
         </div>
       </li>
       <li class="nav-item">
         <div>
-          <a [routerLink]="['/get-involved']">GET INVOLVED</a>
+          <a [routerLinkActive]="['active']" [routerLink]="['/get-involved']">
+                        GET INVOLVED
+                      </a>
         </div>
       </li>
     </ul>
   </div>
 </nav>
+<div class="container-fluid"></div>

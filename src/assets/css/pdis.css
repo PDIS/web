@@ -21,6 +21,7 @@
         .nav-item div {
             padding-top: 25px;
             padding-right: 15px;
+            padding-bottom: 35px;
         }
         
         .nav-item div a {
@@ -199,7 +200,7 @@
             border: 0px;
             border-radius: 0px;
             margin: 0px;
-            padding: 28px 20px;
+            padding: 29.5px 20px;
         }
 
         .navbar-toggle.nav-btn-pdis .icon-bar{
