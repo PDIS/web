@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: WhatWeDoComponent },
+  { path: '', redirectTo:'what-we-do', pathMatch:'full' },
   { path: 'what-we-do/:id', component: DetailComponent },
   { path: 'what-we-do', component: WhatWeDoComponent },
   { path: 'how-we-work', component: HowWeWorkComponent },

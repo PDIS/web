@@ -1,4 +1,3 @@
-import { LogoService } from './shared/logo.service';
 import { DataService } from './data-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
