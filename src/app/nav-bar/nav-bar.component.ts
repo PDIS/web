@@ -11,6 +11,7 @@ export class NavBarComponent {
 
   private imgheight;
   private navClass;
+  private isCollapse;
 
   constructor(
     private router: Router
@@ -18,6 +19,8 @@ export class NavBarComponent {
     router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.changeLogo(event.url);
+        this.isCollapse = false;
+        console.log(this.isCollapse);
       }
     });
   }
