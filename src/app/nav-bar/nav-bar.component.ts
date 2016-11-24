@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent {
 
   private imgheight;
+  private navClass;
 
   constructor(
     private router: Router
@@ -22,7 +23,6 @@ export class NavBarComponent {
   }
 
   changeLogo(url: String) {
-    console.log(url);
     switch (url) {
       case "/":
         this.imgheight = 200;
@@ -32,6 +32,14 @@ export class NavBarComponent {
         break;
       default:
         this.imgheight = -1;
+    }
+    if(this.imgheight>0)
+    {
+      this.navClass = "navbar navbar-default navbar-clear affix-top";
+    }
+    else
+    {
+      this.navClass = "navbar navbar-fixed-top navbar-clear";
     }
   }
 }

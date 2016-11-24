@@ -1,9 +1,9 @@
 <!--imgheight > 0 for animate logo-->
+
 <nav id="navbar" 
-  [ngClass]="{'navbar-default': imgheight>0,'navbar-fixed-top affix': imgheight<0}" 
   [attr.data-offset-top]="imgheight>0 ? imgheight : null"
   [attr.data-spy]="imgheight>0 ? 'affix' : null" 
-  class="navbar navbar-clear"
+  class="{{navClass}}"
 >
 
   <!--navbar for large screen-->
@@ -40,4 +40,4 @@
     </ul>
   </div>
 </nav>
-<div class="container-fluid"></div>
+<div class="container-fluid" [style.height]="imgheight>0 ? 0 : '90px'"></div>
