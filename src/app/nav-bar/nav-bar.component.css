@@ -10,14 +10,12 @@
 }
 
 .affix + .container-fluid {
-    padding-top: 90px;
+    padding-top: 100px;
 }
 
 .navbar-nav.navbar-right {
     margin-right: 0;
 }
-
-
 
 .nav-btn-pdis {
     border: 0px;
