@@ -1,15 +1,14 @@
+<!--imgheight > 0 for animate logo-->
 <nav id="navbar" 
-  [ngClass]="{'navbar-default': imgheight>0,'navbar-fixed-top affix': imgheight<0}"
+  [ngClass]="{'navbar-default': imgheight>0,'navbar-fixed-top affix': imgheight<0}" 
   [attr.data-offset-top]="imgheight>0 ? imgheight : null"
   [attr.data-spy]="imgheight>0 ? 'affix' : null" 
-  class="navbar navbar-clear" 
-  style="background-color: #f5f5f5;"
+  class="navbar navbar-clear"
 >
 
   <!--navbar for large screen-->
-  <button (mouseenter)='isCollapse=true' (mouseleave)='isCollapse=false' type="button" class=" nav-btn-pdis navbar-toggle pull-right"
-    data-toggle="collapse" data-target="#navbar-lg" style="display:block;
-            background-color: transparent;">
+  <button (mouseenter)='isCollapse=true' (mouseleave)='isCollapse=false' type="button" class="nav-btn-pdis navbar-toggle pull-right"
+    data-toggle="collapse" data-target="#navbar-lg">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
