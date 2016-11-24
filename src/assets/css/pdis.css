@@ -51,41 +51,9 @@ input {
     border-width: 1px;
 }
 
-.btn-pdis {
-    padding: 15px 20px;
-    border-radius: 0px;
-    border-color: black;
-    border: 2px solid;
-    color: #333;
-    background-color: #fff;
-}
 
-.btn-pdis:hover {
-    padding: 15px 20px;
-    border-radius: 0px;
-    border-color: black;
-    border: 2px solid;
-    color: #fff;
-    background-color: #000;
-}
 
-.btn-pdis-thin {
-    padding: 5px 20px;
-    border-radius: 0px;
-    border-color: black;
-    border: 2px solid;
-    color: #333;
-    background-color: #fff;
-}
 
-.btn-pdis-thin:hover {
-    padding: 5px 20px;
-    border-radius: 0px;
-    border-color: black;
-    border: 2px solid;
-    color: #fff;
-    background-color: #000;
-}
 
 .link-pdis {
     text-decoration: underline;
@@ -104,10 +72,7 @@ input {
     height: 100%;
 }
 
-.panel-pdis {
-    background-color: white;
-    padding: 25px;
-}
+
 
 .nav-tabs {
     border-bottom: 2px solid #DDD;
