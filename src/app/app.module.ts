@@ -11,6 +11,7 @@ import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
 import { DetailComponent } from './what-we-do/detail/detail.component';
 import { HowWeWorkComponent } from './how-we-work/how-we-work.component';
 import { GetInvolvedComponent } from './get-involved/get-involved.component';
+import { LogoComponent } from './logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { GetInvolvedComponent } from './get-involved/get-involved.component';
     WhatWeDoComponent,
     DetailComponent,
     HowWeWorkComponent,
-    GetInvolvedComponent
+    GetInvolvedComponent,
+    LogoComponent
   ],
   imports: [
     BrowserModule,

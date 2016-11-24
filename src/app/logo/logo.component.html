@@ -1,0 +1,11 @@
+<div *ngIf="logoType==='white'" style="float:left">
+  <img id="logo" style="position:fixed;z-index:2000;background-color: white;" src="assets/img/logo.png" width="80" height="80">
+</div>
+
+<div *ngIf="logoType==='black'" style="float:left">
+  <img id="logo" style="position:fixed;z-index:2000;" src="assets/img/pdis-logo-01small.png" width="80" height="80">
+</div>
+
+<div *ngIf="logoType==='animate'" style="height:200px;" onscroll="console.log('yo')">
+  <img id="logo" style="position:fixed;z-index:2000" src="assets/img/logo.png" width="200" height="200">
+</div>
