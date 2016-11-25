@@ -1,4 +1,3 @@
-import { DataService } from './../data-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,15 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HowWeWorkComponent implements OnInit {
 
-  list;
+  constructor() {
 
-  constructor(private datasvcHww: DataService) {
-    datasvcHww.getList()
-      .subscribe((value) => {
-        // this.data = value.json();
-        this.list = JSON.parse(value.text()),
-          console.log(this.list);
-      });
   }
   ngOnInit() {
   }
