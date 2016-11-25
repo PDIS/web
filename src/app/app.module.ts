@@ -12,6 +12,8 @@ import { DetailComponent } from './what-we-do/detail/detail.component';
 import { HowWeWorkComponent } from './how-we-work/how-we-work.component';
 import { GetInvolvedComponent } from './get-involved/get-involved.component';
 import { LogoComponent } from './logo/logo.component';
+import { ToolsComponent } from './how-we-work/tools/tools.component';
+import { TrackComponent } from './how-we-work/track/track.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { LogoComponent } from './logo/logo.component';
     DetailComponent,
     HowWeWorkComponent,
     GetInvolvedComponent,
-    LogoComponent
+    LogoComponent,
+    ToolsComponent,
+    TrackComponent
   ],
   imports: [
     BrowserModule,
