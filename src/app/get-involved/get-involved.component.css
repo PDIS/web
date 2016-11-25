@@ -1,0 +1,22 @@
+.btn-pdis-thin {
+    padding: 5px 20px;
+    border-radius: 0px;
+    border-color: black;
+    border: 2px solid;
+    color: #333;
+    background-color: #fff;
+}
+
+.btn-pdis-thin:hover {
+    padding: 5px 20px;
+    border-radius: 0px;
+    border-color: black;
+    border: 2px solid;
+    color: #fff;
+    background-color: #000;
+}
+
+input {
+    margin: 10px 0 20px;
+    width: 90%
+}

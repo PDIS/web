@@ -10,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent {
 
   private imgheight;
+  private navClass;
+  private isCollapse;
 
   constructor(
     private router: Router
@@ -17,12 +19,13 @@ export class NavBarComponent {
     router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.changeLogo(event.url);
+        this.isCollapse = false;
+        console.log(this.isCollapse);
       }
     });
   }
 
   changeLogo(url: String) {
-    console.log(url);
     switch (url) {
       case "/":
         this.imgheight = 200;
@@ -32,6 +35,14 @@ export class NavBarComponent {
         break;
       default:
         this.imgheight = -1;
+    }
+    if(this.imgheight>0)
+    {
+      this.navClass = "navbar navbar-default navbar-clear affix-top";
+    }
+    else
+    {
+      this.navClass = "navbar navbar-fixed-top navbar-clear";
     }
   }
 }
