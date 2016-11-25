@@ -1,8 +1,5 @@
 
 <div class="container" style="padding-top:80px">
-  <p>
-    id is {{id}}
-  </p>
 </div>
 
 <!-- open-api 
@@ -24,8 +21,14 @@ console.log(id);
         <div class="col-md-6" [innerHTML]="post.content[0]"></div>
       </div>
     </div>
+    <div *ngIf="post.content.length==3">
+      <div class="row">
+        <div class="col-md-6" [innerHTML]="post.content[0]"></div>
+      </div>
+    </div>
 </div>
-
+<!--
+   <div class="col-sm-4 col-md-3 col-lg-2 thumbnail-pdis" [innerHTML]="post.cooked"></div>
 <div *ngIf="id == 'open-api'">
 
 <div class="container" style="padding-top:80px"></div>
@@ -50,9 +53,9 @@ console.log(id);
       </div>
     </div>
   </div>
-</div>
+</div>-->
 
-<!-- what is openapi-->
+<!-- what is openapi
 <div class="row">
   <div class="col-md-2 col-sm-2"></div>
   <div class="col-md-3">
@@ -81,5 +84,5 @@ console.log(id);
   </div>
 </div>
 </div>
-
+-->
 

@@ -22,11 +22,14 @@ tid;
     console.log(this.item2);
     
     var tmp = this.item2.post_stream.posts;
-
+    var count1=0;
     for(var i in tmp){
       var tmp2 = {};
       tmp2['content'] = tmp[i]['cooked'].split("<hr>");
+      count1+=1;
+      //console.log(count1);
       this.posts.push(tmp2);
+    
     }
 
     // this.posts = [
