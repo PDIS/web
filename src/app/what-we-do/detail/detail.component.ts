@@ -24,13 +24,13 @@ export class DetailComponent implements OnInit {
 
   id: string;
   params;
-
+  
   constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService) {
     //this.tid = '52';
     this.dataservice = datadetail;
     this.params = this.route.params;
     this.route.params.subscribe(params => {
-      this.id = params['id'];
+    this.id = params['id'];
     });
   }
   // this.posts = [
@@ -66,16 +66,39 @@ export class DetailComponent implements OnInit {
       .subscribe((value) => {
         this.item2 = JSON.parse(value.text());
         console.log(this.item2);
-
+        var strStr=0;
         var tmp = this.item2.post_stream.posts;
         var count1 = 0;
         for (var i in tmp) {
           var tmp2 = {};
           tmp2['content'] = tmp[i]['cooked'].split("<hr>");
+          //var strStr = tmp2['content'][1];
+         // console.log( tmp2['content'][1]);
+         // var strStr1 = tmp2['content'][1];
+          var ss = tmp2['content'][0].indexOf('ggggg');
+          //var ss1 = strStr1.indexOf('Taiwan');
+          if(ss !=-1 /*|| ss1 !=-1*/)
+          {
+              
+              strStr++;
+              console.log('Suggestion--->'+strStr);
+          }
+          
           this.posts.push(tmp2);
         }
       });
   }
+/*
+var src = "is but a Dream within a dream";
+var re = /dream/;
+var pos = src.search(re);
+document.write(pos);
+document.write("<br/>");
+
+re = /dream/i;
+pos = src.search(re);
+document.write(pos);
+*/
 
   ngOnDestroy() {
 
