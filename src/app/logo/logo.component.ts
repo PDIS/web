@@ -39,11 +39,4 @@ export class LogoComponent {
         break;
     }
   }
-
-  @HostListener('window:scroll', ['$event'])
-  doSomething(event) {
-    console.log("Scroll Event", document.body.scrollTop);
-    console.log(event);
-  }
-
 }
