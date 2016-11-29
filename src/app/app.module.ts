@@ -1,34 +1,43 @@
+import { DataService } from './data-service.service';
+import { DiscourseService } from './discourse.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { FooterComponent } from './footer/footer.component';
-
-import { DataService } from './data.service';
-import { WhatwedoComponent } from './whatwedo/whatwedo.component';
-import { HowweworkComponent } from './howwework/howwework.component';
-import { GetinvolvedComponent } from './getinvolved/getinvolved.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
+import { DetailComponent } from './what-we-do/detail/detail.component';
+import { HowWeWorkComponent } from './how-we-work/how-we-work.component';
+import { GetInvolvedComponent } from './get-involved/get-involved.component';
+import { LogoComponent } from './logo/logo.component';
+import { ToolsComponent } from './how-we-work/tools/tools.component';
+import { TrackComponent } from './how-we-work/track/track.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    NavigationComponent,
-    FooterComponent,
-    WhatwedoComponent,
-    HowweworkComponent,
-    GetinvolvedComponent
+    NavBarComponent,
+    WhatWeDoComponent,
+    DetailComponent,
+    HowWeWorkComponent,
+    GetInvolvedComponent,
+    LogoComponent,
+    ToolsComponent,
+    TrackComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    DiscourseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

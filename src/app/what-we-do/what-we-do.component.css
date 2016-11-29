@@ -1,0 +1,96 @@
+.slogan-container {
+    text-align: center;
+    height: 250px;
+}
+
+.slogan {
+    font-size: 27px;
+    padding-top: 100px
+}
+
+.slogan-btn-container {
+    height: 100px;
+}
+
+.btn-pdis {
+    padding: 15px 20px;
+    border-radius: 0px;
+    border-color: black;
+    border: 2px solid;
+    color: #333;
+    background-color: #fff;
+}
+
+.btn-pdis:hover {
+    padding: 15px 20px;
+    border-radius: 0px;
+    border-color: black;
+    border: 2px solid;
+    color: #fff;
+    background-color: #000;
+}
+
+.btn-pdis-thin {
+    padding: 5px 20px;
+    border-radius: 0px;
+    border-color: black;
+    border: 2px solid;
+    color: #333;
+    background-color: #fff;
+}
+
+.btn-pdis-thin:hover {
+    padding: 5px 20px;
+    border-radius: 0px;
+    border-color: black;
+    border: 2px solid;
+    color: #fff;
+    background-color: #000;
+}
+
+.panel-pdis {
+    background-color: white;
+    padding: 25px;
+}
+
+.open-api-background {
+    height: 720px;
+    background-image: url('assets/img/open-api.jpeg');
+    background-size: cover;
+}
+
+.civic-participation-background {
+    height: 720px;
+    background-image: url('assets/img/civic-participation.jpeg');
+    background-size: cover;
+}
+
+.learn-more-container {
+    height: 700px;
+    background-image: url('assets/img/pdis-team.JPG');
+    background-size: cover;
+}
+
+.learn-more {
+    height: 700px;
+    line-height: 700px;
+    font-size: 20px;
+    color: white;
+    margin-right: 30px;
+    text-decoration: underline;
+}
+
+.think-about-container {
+    margin: -80px auto;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    float: none;
+}
+
+input {
+    margin: 10px 0 20px;
+    width: 90%;
+    font-size: 20px;
+    padding-left: 10px;
+}

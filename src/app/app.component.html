@@ -1,21 +1,5 @@
+<app-logo></app-logo>
+<app-nav-bar></app-nav-bar>
+<router-outlet></router-outlet>
 
-    <app-header>
-    </app-header>
 
-    <app-navigation (change)="topic=$event">
-    </app-navigation>
-
-  <div *ngIf="topic=='1'">
-    <app-whatwedo>
-    </app-whatwedo>
-  </div>
-
-  <div *ngIf="topic=='2'">
-    <app-howwework>
-    </app-howwework>
-  </div>
-
-  <div *ngIf="topic=='3'">
-    <app-getinvolved>
-    </app-getinvolved>
-  </div>

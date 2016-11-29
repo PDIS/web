@@ -1,0 +1,80 @@
+<!-- Begin Body -->
+
+<!-- MORE ABOUT PDIS ========================================== -->
+
+<div class="container">
+  <div class="slogan-container">
+    <h4 class="slogan">
+      We incubate and facilitate public digital innovation and service.
+    </h4>
+  </div>
+  <div class="slogan-btn-container">
+    <a class="btn btn-pdis pull-right">More about PDIS</a>
+  </div>
+</div>
+
+<!-- MORE ABOUT PDIS END ====================================== -->
+
+<!--test-->
+<!-- MORE ABOUT OPEN API ====================================== -->
+
+<div class="open-api-background">
+  <div class="col-md-3 col-sm-2"></div>
+  <div class="col-md-6 col-sm-8 panel-pdis">
+    <div *ngIf="item1">
+      <div *ngFor="let post of item1.post_stream.posts; let first = first">
+        <div *ngIf="first" [innerHTML]="post.cooked"></div>
+      </div>
+    </div>
+    <a class="btn btn-pdis" [routerLink]="['/what-we-do/open-api']" role="button">
+    More about Open API
+    </a>
+  </div>
+  <div class="col-md-3 col-sm-2"></div>
+</div>
+
+
+<!-- MORE ABOUT OPEN API END ====================================== -->
+
+<div style="height: 50px;"></div>
+
+<!-- MORE ABOUT CIVIC PARTICIPATION ====================================== -->
+
+<div class="civic-participation-background">
+  <div class="col-md-6 col-sm-8 panel-pdis">
+    <div *ngIf="item2">
+      <div *ngFor="let post of item2.post_stream.posts; let first = first">
+        <div *ngIf="first" [innerHTML]="post.cooked"></div>
+      </div>
+    </div>
+    <a class="btn btn-pdis" [routerLink]="['/what-we-do/civic-participation']" role="button">
+    More about Civic​​ Participation
+    </a>
+  </div>
+  <div class="col-md-6 col-sm-4"></div>
+</div>
+
+
+<!-- MORE ABOUT CIVIC PARTICIPATION END ====================================== -->
+
+<!-- THINK ABOUT =========================================== -->
+<div>
+  <div class="col-md-4 col-sm-3"></div>
+  <div class="panel-pdis col-md-4 col-sm-6 think-about-container">
+    <h3>Tell us what you think about</h3>
+    <img src="assets/img/pdis-logo-08.png" alt="Generic placeholder image" width="254" height="90">
+    <br>
+    <input [(ngModel)]="think" />
+    <br>
+    <a class="btn btn-pdis-thin" role="button" (click)="postDataToServer(think)">Submit</a>
+  </div>
+  <div class="col-md-4 col-sm-3"></div>
+</div>
+
+<!-- THINK ABOUT END ====================================== -->
+
+<div class="learn-more-container">
+  <h4 class="pull-right learn-more">
+    Learn more on how we work...
+  </h4>
+</div>
