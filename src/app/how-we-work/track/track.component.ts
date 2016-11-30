@@ -34,7 +34,7 @@ export class TrackComponent implements OnInit {
         });
         return ids;
       })
-      .do(data => console.log(data));
+      // .do(data => console.log(data));
   }
 
   private getPost(id: string) {
@@ -44,7 +44,7 @@ export class TrackComponent implements OnInit {
         var rawString = data['post_stream']['posts'][0]['raw'];
         return rawString;
       })
-      .do(data => console.log(data));
+      // .do(data => console.log(data));
   }
 
   ngOnInit() {
