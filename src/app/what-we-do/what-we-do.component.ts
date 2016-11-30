@@ -1,4 +1,5 @@
 import { DataService } from './../data-service.service';
+import { DiscourseService } from './../discourse.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,8 +12,11 @@ export class WhatWeDoComponent implements OnInit {
   item1;
   item2;
   tid;
+  cid;
+  res;
+  think;
 
-  constructor(private datasvcWwd: DataService) {
+  constructor(private datasvcWwd: DataService, private discoursesvcWwd: DiscourseService) {
 
     console.log('item1');
     this.tid = '52';
@@ -37,6 +41,16 @@ export class WhatWeDoComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  postDataToServer(raw: string) {
+    this.tid = '67';
+    this.cid = '12';
+    this.discoursesvcWwd.postDiscoursePostRestful(raw, this.cid, this.tid)
+      .subscribe(
+      data => this.res = data,
+      () => console.log('POST Complete')
+      );
   }
 
 }

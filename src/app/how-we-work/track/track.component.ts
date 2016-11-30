@@ -45,7 +45,6 @@ export class TrackComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.getIds().subscribe(ids => {
       ids.forEach(id => {
         this.getPost(id).subscribe(post=>{

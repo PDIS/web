@@ -1,5 +1,6 @@
 import { ConvertService } from './shared/convert.service';
 import { DataService } from './data-service.service';
+import { DiscourseService } from './discourse.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -34,7 +35,11 @@ import { TrackComponent } from './how-we-work/track/track.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [DataService,ConvertService],
+  providers: [
+    DataService,
+    DiscourseService,
+    ConvertService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

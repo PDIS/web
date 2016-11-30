@@ -64,9 +64,9 @@
     <h3>Tell us what you think about</h3>
     <img src="assets/img/pdis-logo-08.png" alt="Generic placeholder image" width="254" height="90">
     <br>
-    <input />
+    <input [(ngModel)]="think" />
     <br>
-    <a class="btn btn-pdis-thin" href="#" role="button">Submit</a>
+    <a class="btn btn-pdis-thin" role="button" (click)="postDataToServer(think)">Submit</a>
   </div>
   <div class="col-md-4 col-sm-3"></div>
 </div>

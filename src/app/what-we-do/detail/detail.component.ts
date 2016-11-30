@@ -1,3 +1,4 @@
+import { DomSanitizer } from '@angular/platform-browser/src/security/dom_sanitization_service';
 import { DataService } from './../../data-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -19,21 +20,96 @@ export class DetailComponent implements OnInit {
   posts = [];
   posts2 = [];
   dataservice;
-
   tid;
-
+  youtube1=[];
   id: string;
   params;
-  
-  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService) {
-    //this.tid = '52';
+  dangerousVideoUrl;
+  videoUrl;
+  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
     this.dataservice = datadetail;
     this.params = this.route.params;
     this.route.params.subscribe(params => {
     this.id = params['id'];
+    }); 
+  }
+ 
+  ngOnInit() {
+    this.datadetail.getData(this.mappingTable[this.id])
+    .subscribe((value) => {
+      this.item2 = JSON.parse(value.text());
+      var strStr = 0;
+      var tmp = this.item2.post_stream.posts;
+      var dom = new DOMParser(); 
+      //console.log(tmp);
+      for (var i in tmp) {
+        var tmp2 = {};
+        tmp2['content'] = tmp[i]['cooked'].split("<hr>");
+        
+        for(var j in tmp2.content){
+          var  doc = dom.parseFromString(tmp2.content[j],"text/html");
+        
+          this.youtube1 = doc.getElementsByClassName("lazyYT");
+            
+          if(this.youtube1.length != 0 ){
+            //console.log(this.youtube1[0].dataset.youtubeId);
+            //console.log(this.youtube1[j].dataset);
+          tmp2.content.push(this.youtube1[0].dataset.youtubeId);
+          console.log(tmp2);
+        }
+        
+        /*
+        if(this.youtube1.length != 0 ){
+          console.log("youtube1.length---->"this.youtube1.length);
+          this.youtube1 = doc.getElementsByClassName("lazyYT")[0].dataset.youtubeId;
+          this.updateVideoUrl(this.youtube1);
+          this.youtubecount+=1;
+          console.log(this.youtubecount);
+        }*/
+        this.posts.push(tmp2);
+      }
     });
   }
-  // this.posts = [
+  updateVideoUrl(id: string) {
+    this.dangerousVideoUrl = 'https://www.youtube.com/embed/' + id;
+    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousVideoUrl);
+  }
+  ngOnDestroy() { }
+}
+ /*
+var  doc = dom.parseFromString(tmp[i]['cooked'],"text/html")
+        this.youtube1 = doc.getElementsByClassName("lazyYT");
+        if(this.youtube1.length != 0 ){
+          console.log("youtube1.length---->"this.youtube1.length);
+          this.youtube1 = doc.getElementsByClassName("lazyYT")[0].dataset.youtubeId;
+          this.updateVideoUrl(this.youtube1);
+          this.youtubecount+=1;
+          console.log(this.youtubecount);
+
+  var src = "is but a Dream within a dream";
+  var re = /dream/;
+  var pos = src.search(re);
+  document.write(pos);
+  document.write("<br/>");
+  
+  re = /dream/i;
+  pos = src.search(re);
+  document.write(pos);
+  */
+
+ //var strStr = tmp2['content'][1];
+         // console.log( tmp2['content'][1]);
+         // var strStr1 = tmp2['content'][1];
+          //var ss = tmp2['content'][0].indexOf('ggggg');
+          //var ss1 = strStr1.indexOf('Taiwan');
+          /*if(ss !=-1 /*|| ss1 !=-1)
+          {
+              
+              strStr++;
+              console.log('Suggestion--->'+strStr);
+          }*/
+
+           // this.posts = [
   //   {"content":["what is open api","how we might ....."]},
   //   {"content":["what is open api","how we might ....."]},
   //   {"content":["what is open api"]},
@@ -59,49 +135,3 @@ export class DetailComponent implements OnInit {
       // return this.httpData.get('/assets/' + id +'.json')
       ;
     }*/
-
-
-  ngOnInit() {
-    this.datadetail.getData(this.mappingTable[this.id])
-      .subscribe((value) => {
-        this.item2 = JSON.parse(value.text());
-        console.log(this.item2);
-        var strStr=0;
-        var tmp = this.item2.post_stream.posts;
-        var count1 = 0;
-        for (var i in tmp) {
-          var tmp2 = {};
-          tmp2['content'] = tmp[i]['cooked'].split("<hr>");
-          //var strStr = tmp2['content'][1];
-         // console.log( tmp2['content'][1]);
-         // var strStr1 = tmp2['content'][1];
-          var ss = tmp2['content'][0].indexOf('ggggg');
-          //var ss1 = strStr1.indexOf('Taiwan');
-          if(ss !=-1 /*|| ss1 !=-1*/)
-          {
-              
-              strStr++;
-              console.log('Suggestion--->'+strStr);
-          }
-          
-          this.posts.push(tmp2);
-        }
-      });
-  }
-/*
-var src = "is but a Dream within a dream";
-var re = /dream/;
-var pos = src.search(re);
-document.write(pos);
-document.write("<br/>");
-
-re = /dream/i;
-pos = src.search(re);
-document.write(pos);
-*/
-
-  ngOnDestroy() {
-
-  }
-
-}
