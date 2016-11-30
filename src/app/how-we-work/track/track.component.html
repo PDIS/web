@@ -19,28 +19,20 @@
             <article class="timeline-entry" *ngFor="let post of posts">
               <div class="timeline-entry-inner">
                 <div class="timeline-icon bg-circle">
-                  <i class="entypo-feather"></i>
+                  <!--<i class="entypo-feather"></i>-->
                 </div>
                 <div class="timeline-label">
-                  <h2>{{post.title}}</h2><p>{{post.date | date:"MM/dd/yy"}}</p>
+                  <h2>{{post.title}}</h2><p>{{post.date | date:"yyyy/MM/dd"}}</p>
                   <blockquote>
                     <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}" class="btn btn-transcript"
                       role="button">{{media | JSONpipes:'keys'}}</a>
-
-                    <!--<a *ngIf="!post.content.youtube" target="_blank" href="{{post.content.youtube}}" class="btn btn-youtube" role="button">Youtube</a>
-                    <a *ngIf="!post.content.transcript" target="_blank" href="{{post.content.transcript}}" class="btn btn-transcript"
-                      role="button">Transcript</a>
-                    <a *ngIf="!post.content.soundcloud" target="_blank" href="{{post.content.soundcloud}}" class="btn btn-soundcloud"
-                      role="button">Soundcloud</a>-->
                   </blockquote>
                   <div class="movetoright">
-                    <div class="participants">
-                      <span class="glyphicon glyphicon-user"></span> {{post.participants}}
-                    </div>
+                    <span class="glyphicon glyphicon-user"></span> {{post.participants}}
                   </div>
                   <div class="movetoright">
                     <span class="glyphicon glyphicon-tag"></span>
-                    <span class="label label-info" *ngFor="let tag of post.tags ">{{tag}}</span>
+                    <span class="label label-tags" *ngFor="let tag of post.tags ">{{tag}}</span>
                   </div>
                 </div>
               </div>
