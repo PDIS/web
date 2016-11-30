@@ -16,6 +16,7 @@ import { GetInvolvedComponent } from './get-involved/get-involved.component';
 import { LogoComponent } from './logo/logo.component';
 import { ToolsComponent } from './how-we-work/tools/tools.component';
 import { TrackComponent } from './how-we-work/track/track.component';
+import { JSONPipesPipe } from './shared/jsonPipes/jsonpipes.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TrackComponent } from './how-we-work/track/track.component';
     GetInvolvedComponent,
     LogoComponent,
     ToolsComponent,
-    TrackComponent
+    TrackComponent,
+    JSONPipesPipe
   ],
   imports: [
     BrowserModule,
