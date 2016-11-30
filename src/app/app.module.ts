@@ -1,3 +1,4 @@
+import { ConvertService } from './shared/convert.service';
 import { DataService } from './data-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -33,7 +34,7 @@ import { TrackComponent } from './how-we-work/track/track.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [DataService],
+  providers: [DataService,ConvertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
