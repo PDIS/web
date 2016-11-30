@@ -72,3 +72,10 @@ input {
     height: 100%;
 }
 
+em img{
+    float:right
+}
+
+strong img{
+    float: left
+}
