@@ -21,7 +21,7 @@ export class DetailComponent implements OnInit {
   posts2 = [];
   dataservice;
   tid;
-  youtube1=[];
+  youtube1: HTMLCollectionOf<Element>;
   id: string;
   params;
   dangerousVideoUrl;
@@ -46,18 +46,24 @@ export class DetailComponent implements OnInit {
         var tmp2 = {};
         tmp2['content'] = tmp[i]['cooked'].split("<hr>");
         
-        for(var j in tmp2.content){
-          var  doc = dom.parseFromString(tmp2.content[j],"text/html");
+        for(var j=0; j<2; j++){
+          var  doc = dom.parseFromString(tmp2['content'][j],"text/html");
         
           this.youtube1 = doc.getElementsByClassName("lazyYT");
             
           if(this.youtube1.length != 0 ){
             //console.log(this.youtube1[0].dataset.youtubeId);
             //console.log(this.youtube1[j].dataset);
-          tmp2.content.push(this.youtube1[0].dataset.youtubeId);
-          console.log(tmp2);
+          //tmp2['content'].push(this.youtube1[0]['dataset'].youtubeId);
+         // tmp2['content'][j]=this.youtube1[0]['dataset'].youtubeId;
+        // this.updateVideoUrl(tmp2['content'][j]);
+            this.updateVideoUrl(this.youtube1[0]['dataset'].youtubeId);
+            tmp2['content'][j]="you-tube";
+
+          }
+          
         }
-        
+        console.log(tmp2['content']);
         /*
         if(this.youtube1.length != 0 ){
           console.log("youtube1.length---->"this.youtube1.length);
@@ -74,6 +80,7 @@ export class DetailComponent implements OnInit {
     this.dangerousVideoUrl = 'https://www.youtube.com/embed/' + id;
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousVideoUrl);
   }
+ 
   ngOnDestroy() { }
 }
  /*

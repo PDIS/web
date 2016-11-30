@@ -12,25 +12,33 @@ export class JSONPipesPipe implements PipeTransform {
         return Object.keys(json).join();
 
       case "not null object of array":
-        var jsonArray:Array<Object> = json;
-        return jsonArray.filter(json=>{
-          for(var key in json) {
-              if(json[key]!=null)
-                return true;
+        var jsonArray: Array<Object> = json;
+        console.log(jsonArray);
+        return jsonArray.filter(json => {
+          
+          for (var key in json) {
+            if (json[key] != null)
+              return true;
           }
           return false;
         });
-      
+
+      case "audio only":
+        var jsonArray: Array<Object> = json;
+        console.log(jsonArray);
+        return jsonArray.filter(json1 => {
+          return true;
+        });
+
       case "values":
-        var values:Array<Object> = [];
-        for(var key in json) {
-          if(json[key]!=null)
-          {
+        var values: Array<Object> = [];
+        for (var key in json) {
+          if (json[key] != null) {
             values.push(json[key]);
           }
         }
         return values.join();
-    
+
       default:
         break;
     }

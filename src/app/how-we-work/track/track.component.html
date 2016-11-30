@@ -22,10 +22,11 @@
                   <!--<i class="entypo-feather"></i>-->
                 </div>
                 <div class="timeline-label">
-                  <h2>{{post.title}}</h2><p>{{post.date | date:"yyyy/MM/dd"}}</p>
+                  <h2>{{post.title}}</h2>
+                  <p>{{post.date | date:"yyyy/MM/dd"}}</p>
                   <blockquote>
-                    <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}" class="btn btn-transcript"
-                      role="button">{{media | JSONpipes:'keys'}}</a>
+                    <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
+                      class="btn btn-{{media | JSONpipes:'keys' | lowercase}}" role="button">{{media | JSONpipes:'keys'}}</a>
                   </blockquote>
                   <div class="movetoright">
                     <span class="glyphicon glyphicon-user"></span> {{post.participants}}
@@ -38,19 +39,6 @@
               </div>
 
             </article>
-
-            <!--<article class="timeline-entry begin">
-
-          <div class="timeline-entry-inner">
-
-            <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
-              <i class="entypo-flight"></i> +
-            </div>
-
-          </div>
-
-        </article>-->
-
           </div>
 
 
@@ -90,11 +78,35 @@
         <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
           dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
           specimen book.</div>
-        <div role="tabpanel" class="tab-pane" id="messages">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-          dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-          specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-          essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-          passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        <div role="tabpanel" class="tab-pane" id="messages">
+           <div class="timeline-centered">
+             {{posts}}
+            <article class="timeline-entry" *ngFor="let post of posts | JSONpipes:'audio only'">
+              <div class="timeline-entry-inner">
+                <div class="timeline-icon bg-circle">
+                  <!--<i class="entypo-feather"></i>-->
+                </div>
+                <div class="timeline-label">
+                  <h2>{{post.title}}</h2>
+                  <p>{{post.date | date:"yyyy/MM/dd"}}</p>
+                  <blockquote>
+                    <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
+                      class="btn btn-{{media | JSONpipes:'keys' | lowercase}}" role="button">{{media | JSONpipes:'keys'}}</a>
+                  </blockquote>
+                  <div class="movetoright">
+                    <span class="glyphicon glyphicon-user"></span> {{post.participants}}
+                  </div>
+                  <div class="movetoright">
+                    <span class="glyphicon glyphicon-tag"></span>
+                    <span class="label label-tags" *ngFor="let tag of post.tags ">{{tag}}</span>
+                  </div>
+                </div>
+              </div>
+
+            </article>
+          </div>
+
+
         </div>
         <div role="tabpanel" class="tab-pane" id="settings">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
           dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type

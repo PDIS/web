@@ -40,16 +40,25 @@
 .btn-youtube {
     background: red;
     color: white;
+    margin-right: 5px;
 }
 
 .btn-transcript {
     background: darkorange;
     color: white;
+    margin-right: 5px;
 }
 
 .btn-soundcloud {
     background: #f50;
     color: white;
+    margin-right: 5px;
+}
+
+.btn-slido {
+    background: #70bd4e;
+    color: white;
+    margin-right: 5px;
 }
 
 .panel-heading {
@@ -326,5 +335,5 @@ img {
 }
 .label-tags{
     margin-left: 5px;
-    background-color: #31b0d5;
+    background-color: gray;
 }
