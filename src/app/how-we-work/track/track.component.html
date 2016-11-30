@@ -15,52 +15,36 @@
       <div class="tab-content">
 
         <div role="tabpanel" class="tab-pane active" id="home">
-          <!--<div class="container">
-            <div class="row">-->
-              <div class="timeline-centered">
-
-                <article class="timeline-entry" *ngFor="let post of posts">
-
-                  <div class="timeline-entry-inner">
-
-                    <div class="timeline-icon bg-circle">
-                      <i class="entypo-feather"></i>
-                    </div>
-
-                    <div class="timeline-label">
-                      <h2>{{post.title}} {{post.date}}</h2>
-                      <blockquote>
-                        <!--<div >-->
-                        <a *ngIf=" post.content.youtube != '' " target="_blank" href="{{post.content.youtube}}" class="btn btn-youtube" role="button">Youtube</a>
-                        <!--</div>-->
-
-                        <!--<div >-->
-                        <a *ngIf=" post.content.transcript != '' " target="_blank" href="{{post.content.transcript}}" class="btn btn-transcript"
-                          role="button">Transcript</a>
-                        <!--</div>-->
-                        <!--<div >-->
-                        <a *ngIf=" post.content.soundcloud != '' " target="_blank" href="{{post.content.soundcloud}}" class="btn btn-soundcloud"
-                          role="button">Soundcloud</a>
-                        <!--</div>-->
-                      </blockquote>
-                      <div class="movetoright">
-                        <div class="participants">
-                          <span class="glyphicon glyphicon-user"></span> {{post.participants}}
-                        </div>
-                      </div>
-                      <br>
-                      <div class="movetoright">
-                        <span class="glyphicon glyphicon-tag"></span>
-                        <span class="label label-info" *ngFor="let tag of post.tags ">
-                              {{tag}}
-                            </span>
-                      </div>
+          <div class="timeline-centered">
+            <article class="timeline-entry" *ngFor="let post of posts">
+              <div class="timeline-entry-inner">
+                <div class="timeline-icon bg-circle">
+                  <i class="entypo-feather"></i>
+                </div>
+                <div class="timeline-label">
+                  <h2>{{post.title}}</h2><p>{{post.date | date:"MM/dd/yy"}}</p>
+                  <blockquote>
+                    <a *ngIf=" post.content.youtube != '' " target="_blank" href="{{post.content.youtube}}" class="btn btn-youtube" role="button">Youtube</a>
+                    <a *ngIf=" post.content.transcript != '' " target="_blank" href="{{post.content.transcript}}" class="btn btn-transcript"
+                      role="button">Transcript</a>
+                    <a *ngIf=" post.content.soundcloud != '' " target="_blank" href="{{post.content.soundcloud}}" class="btn btn-soundcloud"
+                      role="button">Soundcloud</a>
+                  </blockquote>
+                  <div class="movetoright">
+                    <div class="participants">
+                      <span class="glyphicon glyphicon-user"></span> {{post.participants}}
                     </div>
                   </div>
+                  <div class="movetoright">
+                    <span class="glyphicon glyphicon-tag"></span>
+                    <span class="label label-info" *ngFor="let tag of post.tags ">{{tag}}</span>
+                  </div>
+                </div>
+              </div>
 
-                </article>
+            </article>
 
-                <!--<article class="timeline-entry begin">
+            <!--<article class="timeline-entry begin">
 
           <div class="timeline-entry-inner">
 
@@ -72,10 +56,10 @@
 
         </article>-->
 
-              </div>
+          </div>
 
 
-            <!--</div>
+          <!--</div>
           </div>-->
           <!--<div class="well" *ngFor="let post of posts">
           <div class="panel panel-default">
