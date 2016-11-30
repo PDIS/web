@@ -19,21 +19,17 @@
             <article class="timeline-entry" *ngFor="let post of posts">
               <div class="timeline-entry-inner">
                 <div class="timeline-icon bg-circle">
-                  <i class="entypo-feather"></i>
+                  <!--<i class="entypo-feather"></i>-->
                 </div>
                 <div class="timeline-label">
                   <h2>{{post.title}}</h2><p>{{post.date | date:"yyyy/MM/dd"}}</p>
                   <blockquote>
                     <a *ngIf=" post.content[0].youtube !== null " target="_blank" href="{{post.content[0].youtube}}" class="btn btn-youtube" role="button">Youtube</a>
-                    <a *ngIf=" post.content[1].transcript !== null" target="_blank" href="{{post.content[1].transcript}}" class="btn btn-transcript"
-                      role="button">Transcript</a>
-                    <a *ngIf=" post.content[2].soundcloud !== null" target="_blank" href="{{post.content[2].soundcloud}}" class="btn btn-soundcloud"
-                      role="button">Soundcloud</a>
+                    <a *ngIf=" post.content[1].transcript !== null" target="_blank" href="{{post.content[1].transcript}}" class="btn btn-transcript" role="button">Transcript</a>
+                    <a *ngIf=" post.content[2].soundcloud !== null" target="_blank" href="{{post.content[2].soundcloud}}" class="btn btn-soundcloud" role="button">Soundcloud</a>
                   </blockquote>
                   <div class="movetoright">
-                    <div class="participants">
-                      <span class="glyphicon glyphicon-user"></span> {{post.participants}}
-                    </div>
+                    <span class="glyphicon glyphicon-user"></span> {{post.participants}}
                   </div>
                   <div class="movetoright">
                     <span class="glyphicon glyphicon-tag"></span>
