@@ -260,35 +260,9 @@ img {
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-circle {
-    background-color: black;
+    background-color: rgb(166, 166, 166);
     color: #fff;
 }
-
-
-/*.timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-secondary {
-                    background-color: #ee4749;
-                    color: #fff;
-                }
-
-                .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-success {
-                    background-color: #00a651;
-                    color: #fff;
-                }
-
-                .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-info {
-                    background-color: #21a9e1;
-                    color: #fff;
-                }
-
-                .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-warning {
-                    background-color: #fad839;
-                    color: #fff;
-                }
-
-                .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-danger {
-                    background-color: #cc2424;
-                    color: #fff;
-                }*/
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label {
     position: relative;
@@ -330,12 +304,14 @@ img {
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 {
+    font-weight:bold;
     font-size: 16px;
     margin-bottom: 10px;
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 a {
     color: #303641;
+
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 span {
@@ -347,4 +323,8 @@ img {
 }
 .movetoright{
     text-align: right;
+}
+.label-tags{
+    margin-left: 5px;
+    background-color: #31b0d5;
 }

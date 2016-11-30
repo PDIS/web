@@ -52,6 +52,7 @@ export class TrackComponent implements OnInit {
       ids.forEach(id => {
         this.getPost(id).subscribe(post=>{
           post = this.convertService.convertYAMLtoJSON(post)
+          console.log(post);
           this.posts.push(post);
         })
       })
