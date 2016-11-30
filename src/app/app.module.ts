@@ -1,3 +1,4 @@
+import { ConvertService } from './shared/convert.service';
 import { DataService } from './data-service.service';
 import { DiscourseService } from './discourse.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,7 +37,8 @@ import { TrackComponent } from './how-we-work/track/track.component';
   ],
   providers: [
     DataService,
-    DiscourseService
+    DiscourseService,
+    ConvertService
   ],
   bootstrap: [AppComponent]
 })
