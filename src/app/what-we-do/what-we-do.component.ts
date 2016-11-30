@@ -2,6 +2,8 @@ import { DataService } from './../data-service.service';
 import { DiscourseService } from './../discourse.service';
 import { Component, OnInit } from '@angular/core';
 
+declare var particlesJS: any;
+
 @Component({
   selector: 'app-what-we-do',
   templateUrl: './what-we-do.component.html',
@@ -21,26 +23,29 @@ export class WhatWeDoComponent implements OnInit {
     console.log('item1');
     this.tid = '52';
     datasvcWwd.getData(this.tid)
-    .subscribe((value) => {
-      // this.data = value.json();
-      this.item1 = JSON.parse(value.text()),
-      console.log(this.item1)
-      ,
-      console.log(this.tid);
-    });
+      .subscribe((value) => {
+        // this.data = value.json();
+        this.item1 = JSON.parse(value.text()),
+          console.log(this.item1)
+          ,
+          console.log(this.tid);
+      });
     this.tid = '53';
     datasvcWwd.getData(this.tid)
-    .subscribe((value) => {
-      // this.data = value.json();
-      this.item2 = JSON.parse(value.text()),
-      console.log(this.item2)
-      ,
-      console.log(this.tid);
-    });
+      .subscribe((value) => {
+        // this.data = value.json();
+        this.item2 = JSON.parse(value.text()),
+          console.log(this.item2)
+          ,
+          console.log(this.tid);
+      });
 
   }
 
   ngOnInit() {
+    particlesJS.load("particles", "../../assets/particles.json", function () {
+      console.log('callback - particles.js config loaded');
+    });
   }
 
   postDataToServer(raw: string) {
