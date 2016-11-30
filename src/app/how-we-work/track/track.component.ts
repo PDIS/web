@@ -20,6 +20,9 @@ export class TrackComponent implements OnInit {
     private http: Http)
   { }
 
+  isEmptyObject(obj) {
+  return (Object.keys(obj).length === 0);
+}
   private getIds() {
     return this.http.get("https://talk.pdis.nat.gov.tw/c/pdis-site/how-we-work-track.json")
       .map(function (data) {

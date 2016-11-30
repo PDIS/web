@@ -22,7 +22,7 @@
                   <i class="entypo-feather"></i>
                 </div>
                 <div class="timeline-label">
-                  <h2>{{post.title}}</h2><p>{{post.date}}</p>
+                  <h2>{{post.title}}</h2><p>{{post.date | date:"MM/dd/yy"}}</p>
                   <blockquote>
                     <a *ngIf=" post.content.youtube != '' " target="_blank" href="{{post.content.youtube}}" class="btn btn-youtube" role="button">Youtube</a>
                     <a *ngIf=" post.content.transcript != '' " target="_blank" href="{{post.content.transcript}}" class="btn btn-transcript"

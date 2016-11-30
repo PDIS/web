@@ -35,3 +35,4 @@ Thumbs.db
 
 #yarn
 yarn.lock
+yarn-error.log
