@@ -2,7 +2,7 @@
 <div class="container" style="padding-top:80px"></div>
 
 <!-- open-api -->
-<div *ngIf="id=='open-api'">
+<div class="container" *ngIf="id=='open-api'">
   <div *ngFor="let post of posts">
 
     <!-- open-api-> 1 columns-->
@@ -20,14 +20,14 @@
 
         <!-- open-api-> youtube --> 
         <div *ngIf="post.content[0]=='you-tube'">      
-          <iframe class="col-md-3 e2e-iframe-trusted-src" width="400" height="280" [src]="videoUrl"></iframe>
+          <iframe style = "border:0px" class="col-md-3 e2e-iframe-trusted-src" width="400" height="280" [src]="videoUrl"></iframe>
         </div>
          <div *ngIf="post.content[0]!='you-tube'">      
           <div class="col-md-3" [innerHTML]="post.content[0]"></div>
         </div>
         <div *ngIf="post.content[1]=='you-tube'"> 
           <div class="col-md-4">     
-            <iframe class="e2e-iframe-trusted-src" width="400" height="280" [src]="videoUrl"></iframe>
+            <iframe style = "border:0px" class="e2e-iframe-trusted-src" width="400" height="280" [src]="videoUrl"></iframe>
           </div>
         </div>       
         <div *ngIf="post.content[1]!='you-tube'">      
@@ -39,7 +39,7 @@
   </div>
 </div>
 <!-- civic-participation-->
-<div *ngIf="id=='civic-participation'">
+<div class="container" *ngIf="id=='civic-participation'">
   <div *ngFor="let post of posts">
 
     <!-- civic-participation-> 1 columns-->
@@ -57,20 +57,19 @@
 
         <!-- civic-participation-> youtube-->  
         <div *ngIf="post.content[0]=='you-tube'">      
-          <iframe class="col-md-3 e2e-iframe-trusted-src" width="400" height="280" [src]="videoUrl"></iframe>
+          <iframe style = "border:0px" class="col-md-3 e2e-iframe-trusted-src" width="400" height="280" [src]="videoUrl"></iframe>
         </div>
         <div *ngIf="post.content[0]!='you-tube'">      
           <div class="col-md-3" [innerHTML]="post.content[0]"></div>
         </div>
         <div *ngIf="post.content[1]=='you-tube'"> 
           <div class="col-md-4">     
-            <iframe class="e2e-iframe-trusted-src" width="400" height="280" [src]="videoUrl"></iframe>
+            <iframe style = "border:0px" class="e2e-iframe-trusted-src" width="400" height="280" [src]="videoUrl"></iframe>
           </div>
         </div>        
         <div *ngIf="post.content[1]!='you-tube'">      
           <div class="col-md-4" [innerHTML]="post.content[1]"></div>
-        </div>
-          
+        </div>          
       </div>
     </div>
   </div>
