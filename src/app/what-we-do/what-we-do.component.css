@@ -1,11 +1,11 @@
 .slogan-container {
     text-align: center;
-    height: 250px;
+    height: calc(100vh - 400px);
 }
 
 .slogan {
     font-size: 27px;
-    padding-top: 100px
+    padding-top: calc(50vh - 200px)
 }
 
 .slogan-btn-container {
@@ -13,6 +13,8 @@
 }
 
 .btn-pdis {
+    position: relative;
+    margin-right: 30px;
     padding: 15px 20px;
     border-radius: 0px;
     border-color: black;
@@ -24,8 +26,7 @@
 .btn-pdis:hover {
     padding: 15px 20px;
     border-radius: 0px;
-    border-color: black;
-    border: 2px solid;
+    border: 2px solid black;
     color: #fff;
     background-color: #000;
 }
@@ -51,6 +52,8 @@
 .panel-pdis {
     background-color: white;
     padding: 25px;
+    position: relative;
+    z-index: 2;
 }
 
 .open-api-background {

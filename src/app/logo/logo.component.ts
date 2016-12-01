@@ -10,7 +10,7 @@ declare var particlesJS: any;
   templateUrl: './logo.component.html',
   styleUrls: ['./logo.component.css']
 })
-export class LogoComponent implements OnInit{
+export class LogoComponent implements OnInit {
 
   private logoType: String;
 
@@ -40,11 +40,15 @@ export class LogoComponent implements OnInit{
         this.logoType = "white";
         break;
     }
+
+    if (this.logoType == "animate") {
+      particlesJS.load("particles", "../../assets/particles.json", function () {
+        console.log('callback - particles.js config loaded');
+      });
+    }
   }
 
-  OnInit(){
-    particlesJS.load("particles", "../../assets/particles.json", function () {
-      console.log('callback - particles.js config loaded');
-    });
+  ngOnInit() {
+
   }
 }
