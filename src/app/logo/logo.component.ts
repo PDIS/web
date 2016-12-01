@@ -3,12 +3,14 @@ import { NavigationStart, Event } from '@angular/router/src/router';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
+declare var particlesJS: any;
+
 @Component({
   selector: 'app-logo',
   templateUrl: './logo.component.html',
   styleUrls: ['./logo.component.css']
 })
-export class LogoComponent {
+export class LogoComponent implements OnInit{
 
   private logoType: String;
 
@@ -38,5 +40,11 @@ export class LogoComponent {
         this.logoType = "white";
         break;
     }
+  }
+
+  OnInit(){
+    particlesJS.load("particles", "../../assets/particles.json", function () {
+      console.log('callback - particles.js config loaded');
+    });
   }
 }
