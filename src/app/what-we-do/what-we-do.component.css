@@ -1,11 +1,11 @@
 .slogan-container {
     text-align: center;
-    height: calc(100vh - 400px);
+    height: calc(50vh - 140px);
 }
 
 .slogan {
     font-size: 27px;
-    padding-top: calc(50vh - 200px)
+    padding-top: calc(25vh - 70px)
 }
 
 .slogan-btn-container {
@@ -87,7 +87,7 @@
     margin: -80px auto;
     text-align: center;
     position: relative;
-    z-index: 0;
+    z-index: 2;
     float: none;
 }
 

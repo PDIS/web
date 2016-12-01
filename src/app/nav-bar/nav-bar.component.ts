@@ -28,10 +28,10 @@ export class NavBarComponent {
   changeLogo(url: String) {
     switch (url) {
       case "/":
-        this.imgheight = 200;
+        this.imgheight = (window.innerHeight/2)-40;
         break;
       case "/what-we-do":
-        this.imgheight = 200;
+        this.imgheight = (window.innerHeight/2)-40;
         break;
       default:
         this.imgheight = -1;

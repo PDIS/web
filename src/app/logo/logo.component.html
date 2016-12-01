@@ -1,19 +1,14 @@
 <div *ngIf="logoType==='white'" style="float:left">
-  <img id="logo" style="position:fixed;z-index:2000;background-color: white;" src="assets/img/logo.png" width="80" height="80">
+  <img id="logo" class="logo-white" src="assets/img/logo.png">
 </div>
 
 <div *ngIf="logoType==='black'" style="float:left">
-  <img id="logo" style="position:fixed;z-index:2000;" src="assets/img/pdis-logo-01small.png" width="80" height="80">
+  <img id="logo" class="logo-black" src="assets/img/pdis-logo-01small.png">
 </div>
 
-<div *ngIf="logoType==='animate'" style="height:200px;">
+<div *ngIf="logoType==='animate'" class="logo-animate-container">
 
-  <div id="particles" style="
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100vh;">
+  <div id="particles" class="particles">
   </div>
-  <img id="logo" style="position:fixed;z-index:2000" src="assets/img/logo.png" width="200" height="200">
+  <img id="logo" class="logo-animate" src="assets/img/logo.png">
 </div>
