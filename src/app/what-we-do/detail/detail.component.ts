@@ -62,4 +62,3 @@ export class DetailComponent implements OnInit {
  
   ngOnDestroy() { }
 }
- 

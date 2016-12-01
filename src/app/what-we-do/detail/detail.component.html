@@ -8,32 +8,31 @@
     <!-- open-api-> 1 columns-->
     <div *ngIf="post.content.length==1">
       <div class="row">
-        <div class="col-md-3 col-sm-3"></div>
-        <div class="col-md-6" [innerHTML]="post.content[0]"></div>
+        <div class="col-md-1 "></div>
+        <div class="col-md-10 col-xs-12" [innerHTML]="post.content[0]"></div>
       </div>
     </div>
 
     <!-- open-api-> 2 columns-->
     <div *ngIf="post.content.length==2">
       <div class="row">
-        <div class="col-md-2 col-sm-2"></div>
+        <div class="col-md-1"></div>
 
         <!-- open-api-> youtube --> 
         <div *ngIf="post.content[0]=='you-tube'">      
-          <iframe style = "border:0px" class="col-md-3 e2e-iframe-trusted-src" width="400" height="280" [src]="videoUrl"></iframe>
+          <iframe style="border:0px;" width="450" height="280" [src]="videoUrl"></iframe>
         </div>
          <div *ngIf="post.content[0]!='you-tube'">      
-          <div class="col-md-3" [innerHTML]="post.content[0]"></div>
+          <div class="col-md-5 " [innerHTML]="post.content[0]"></div>
         </div>
         <div *ngIf="post.content[1]=='you-tube'"> 
-          <div class="col-md-4">     
-            <iframe style = "border:0px" class="e2e-iframe-trusted-src" width="400" height="280" [src]="videoUrl"></iframe>
+          <div class="col-md-4 video-container">     
+            <iframe style="border:0px;" width="450" height="280" [src]="videoUrl"></iframe>
           </div>
         </div>       
-        <div *ngIf="post.content[1]!='you-tube'">      
-          <div class="col-md-4" [innerHTML]="post.content[1]"></div>
+        <div *ngIf="post.content[1]!='you-tube'">
+          <div class="col-md-5 " [innerHTML]="post.content[1]"></div>
         </div> 
-
       </div>
     </div>
   </div>
@@ -45,33 +44,34 @@
     <!-- civic-participation-> 1 columns-->
     <div *ngIf="post.content.length==1">
       <div class="row">
-        <div class="col-md-3 col-sm-3"></div>
-        <div class="col-md-7" [innerHTML]="post.content[0]"></div>
+        <div class="col-md-1 "></div>
+        <div class="col-md-10 col-xs-12" [innerHTML]="post.content[0]"></div>
       </div>
     </div>
 
     <!-- civic-participation-> 2 columns-->
     <div *ngIf="post.content.length==2">
       <div class="row">
-        <div class="col-md-2 col-sm-2"></div>
-
+        <div class="col-md-1"></div>    
+        
         <!-- civic-participation-> youtube-->  
         <div *ngIf="post.content[0]=='you-tube'">      
-          <iframe style = "border:0px" class="col-md-3 e2e-iframe-trusted-src" width="400" height="280" [src]="videoUrl"></iframe>
+          <iframe style="border:0px;" width="450" height="280" [src]="videoUrl"></iframe>
         </div>
         <div *ngIf="post.content[0]!='you-tube'">      
-          <div class="col-md-3" [innerHTML]="post.content[0]"></div>
+          <div class="col-md-5" [innerHTML]="post.content[0]"></div>
         </div>
         <div *ngIf="post.content[1]=='you-tube'"> 
-          <div class="col-md-4">     
-            <iframe style = "border:0px" class="e2e-iframe-trusted-src" width="400" height="280" [src]="videoUrl"></iframe>
+          <div class="col-md-4 video-container">     
+            <iframe style="border:0px;" width="450" height="280" [src]="videoUrl"></iframe>
           </div>
         </div>        
         <div *ngIf="post.content[1]!='you-tube'">      
-          <div class="col-md-4" [innerHTML]="post.content[1]"></div>
+          <div class="col-md-5" [innerHTML]="post.content[1]"></div>
         </div>          
       </div>
     </div>
   </div>
 </div>
 
+<!--<youtube-component yuotube-id="dhjfksdjdss"></youtube-component>-->
