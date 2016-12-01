@@ -9,6 +9,7 @@ h1 strong, h2 strong, h3 strong, h4 strong, h5 strong {
 h1, h2, h3, h4, h5 {
     font-family: 'Open Sans', sans-serif;
     line-height: 25px;
+    text-align: justify;
 }
 
 .tab-nav > li > a::after {
@@ -52,33 +53,32 @@ input {
     border-width: 1px;
 }
 
-
-
-
-
 .link-pdis {
     text-decoration: underline;
     color: black;
 }
 
-.video-container {
-    padding-top: 60%;
+@media screen and (max-width: 991px) {
+    .video-container {
+        padding-top: 65%;
+    }
+    .video-container iframe, .video-container object, .video-container embed {
+        position: absolute;
+        top: 10px;
+        left: 5%;
+        width: 90%;
+        height: 100%;
+        border:0px;
+       
+    }
 }
 
-.video-container iframe, .video-container object, .video-container embed {
-    position: absolute;
-    top: 20px;
-    left: 0;
-    width: 100%;
-    height: 100%;
+em img {
+    float: right;
+    margin-left: 10px;
 }
 
-em img{
-    float:right;
-    margin-left : 10px;
-}
-
-strong img{
+strong img {
     float: left;
-    margin-right : 10px;
+    margin-right: 10px;
 }
