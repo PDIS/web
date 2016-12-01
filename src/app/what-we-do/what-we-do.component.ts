@@ -2,7 +2,7 @@ import { DataService } from './../data-service.service';
 import { DiscourseService } from './../discourse.service';
 import { Component, OnInit } from '@angular/core';
 
-declare var particlesJS: any;
+
 
 @Component({
   selector: 'app-what-we-do',
@@ -43,9 +43,7 @@ export class WhatWeDoComponent implements OnInit {
   }
 
   ngOnInit() {
-    particlesJS.load("particles", "../../assets/particles.json", function () {
-      console.log('callback - particles.js config loaded');
-    });
+
   }
 
   postDataToServer(raw: string) {
