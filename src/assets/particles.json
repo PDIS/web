@@ -63,7 +63,7 @@
         "mode": "repulse"
       },
       "onclick": {
-        "enable": false,
+        "enable": true,
         "mode": "push"
       },
       "resize": true
@@ -94,5 +94,5 @@
       }
     }
   },
-  "retina_detect": false
+  "retina_detect": true
 }
