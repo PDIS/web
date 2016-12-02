@@ -1,4 +1,4 @@
-import { DataService } from './../data-service.service';
+import { DataService } from '../shared/dataService/data-service.service';
 import { DiscourseService } from './../discourse.service';
 import { Component, OnInit } from '@angular/core';
 
