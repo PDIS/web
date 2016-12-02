@@ -18,7 +18,7 @@
           <div class="timeline-centered">
             <article class="timeline-entry" *ngFor="let post of posts">
               <div class="timeline-entry-inner">
-                <div class="timeline-icon bg-circle"></div>
+                <div class="timeline-icon bg-{{post.tags | JSONpipes:'values' | lowercase}}"></div>
                 <div class="timeline-label">
                   <div class="row">
                     <div class="col-md-12">
