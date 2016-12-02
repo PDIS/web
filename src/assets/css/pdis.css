@@ -12,6 +12,12 @@ h1, h2, h3, h4, h5 {
     text-align: justify;
 }
 
+app-what-we-do h1, app-what-we-do h2, app-what-we-do h3, app-what-we-do h4, app-what-we-do h5 {
+    font-family: 'Open Sans', sans-serif;
+    line-height: normal;
+    text-align: inherit;
+}
+
 .tab-nav > li > a::after {
     background: #21527d none repeat scroll 0% 0%;
     color: #fff;
@@ -78,9 +84,11 @@ input {
         top: 10px;
         left: 5%;
         width: 90%;
+
         height: 90%;
         border:0px;
        
+
     }
    
 }

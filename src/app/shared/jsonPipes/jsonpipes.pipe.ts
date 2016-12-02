@@ -39,6 +39,15 @@ export class JSONPipesPipe implements PipeTransform {
         }
         return values.join();
 
+      case "gettag":
+        // var gettag: Array<Object> =[];
+        for (var i in json){
+          if (['meeting','talks','speech'].indexOf(json[i])>-1){
+            return json[i];
+          }
+        }
+        
+
       default:
         break;
     }

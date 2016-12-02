@@ -3,21 +3,21 @@
         padding-bottom: 79px;
     }
     .nav-item div {
-        padding: 10px 30px;
+        padding: 15px 30px 15px;
     }
     .nav-item div a.active{
         padding: 0px 0px 10px 10px;
         border-left: solid black;
         color: black;
         border-left-width: 4px;
-        font-size: 10px;
+        font-size: 20px;
     }
     .nav-item div a {
         padding: 0px 0px 10px 10px;
-        border-left: solid white;
-        color: white;
+        border-left: solid #bababa;
+        color: #bababa;
         border-left-width: 4px;
-        font-size: 10px;
+        font-size: 20px;
     }
 }
 
@@ -29,8 +29,8 @@
     }
     .nav-item div a {
         padding: 0px 0px 10px 10px;
-        border-left: solid white;
-        color: white;
+        border-left: solid #bababa;
+        color: #bababa;
         border-left-width: 4px;
         font-size: 10px;
     }
@@ -94,3 +94,6 @@
     background-color: white;
 }
 
+.navbar-toggle:focus{
+    background-color: transparent;
+}
