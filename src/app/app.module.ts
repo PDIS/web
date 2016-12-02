@@ -1,6 +1,6 @@
 import { ConvertService } from './shared/convertService/convert.service';
 import { DataService } from './shared/dataService/data-service.service';
-import { DiscourseService } from './discourse.service';
+import { DiscourseService } from './shared/discourseService/discourse.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
