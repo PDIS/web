@@ -18,35 +18,34 @@
           <div class="timeline-centered">
             <article class="timeline-entry" *ngFor="let post of posts">
               <div class="timeline-entry-inner">
-                <div class="timeline-icon bg-{{post.tags | JSONpipes:'values' | lowercase}}"></div>
-                <div class="timeline-label">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <h2>{{post.date | date:"yyyy/MM/dd"}} {{post.title}}</h2>
-                      <!--<p></p>-->
+                  <div class="timeline-icon bg-{{ post.tags | JSONpipes:'gettag'| lowercase}} bg-circle"></div>
+              <div class="timeline-label">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2>{{post.date | date:"yyyy/MM/dd"}} {{post.title}}</h2>
+                  </div>
+                  <div class="col-md-12">
+                    <div style="padding-left:0" class="col-md-6">
+                      <p class="glyphicon glyphicon-user"></p><span>{{post.participants}}</span>
+                      <blockquote class="blockquote-source">
+                        <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
+                          class="btn btn-new btn-{{media | JSONpipes:'keys' | lowercase}} btn-new" role="button">{{media | JSONpipes:'keys'}}</a>
+                      </blockquote>
                     </div>
-                    <div class="col-md-12">
-                      <div style="padding-left:0" class="col-md-6">
-                        <p class="glyphicon glyphicon-user"></p><span>{{post.participants}}</span>
-                          <blockquote class="blockquote-source">
-                            <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
-                              class="btn btn-new btn-{{media | JSONpipes:'keys' | lowercase}} btn-new" role="button">{{media | JSONpipes:'keys'}}</a>
-                          </blockquote>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="movetoright">
-                          <span class="glyphicon glyphicon-tag"></span>
-                          <span class="label label-tags" *ngFor="let tag of post.tags ">{{tag}}</span>
-                        </div>
+                    <div class="col-md-6">
+                      <div class="movetoright">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="label label-tags" *ngFor="let tag of post.tags ">{{tag}}</span>
                       </div>
                     </div>
-
                   </div>
+
                 </div>
               </div>
-            </article>
           </div>
+          </article>
         </div>
+      </div>
 
 
 
@@ -54,46 +53,45 @@
 
 
 
-        <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-          dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-          specimen book.
-        </div>
-        <div role="tabpanel" class="tab-pane" id="messages">
-          <div class="timeline-centered">
-            <article class="timeline-entry" *ngFor="let post of posts">
-              <div class="timeline-entry-inner">
-                <div class="timeline-icon bg-circle">
-                  <!--<i class="entypo-feather"></i>-->
+      <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+        book.
+      </div>
+      <div role="tabpanel" class="tab-pane" id="messages">
+        <div class="timeline-centered">
+          <article class="timeline-entry" *ngFor="let post of posts">
+            <div class="timeline-entry-inner">
+              <div class="timeline-icon bg-circle">
+                <!--<i class="entypo-feather"></i>-->
+              </div>
+              <div class="timeline-label">
+                <h2>{{post.title}}</h2>
+                <p>{{post.date | date:"yyyy/MM/dd"}}</p>
+                <blockquote>
+                  <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
+                    class="btn btn-{{media | JSONpipes:'keys' | lowercase}}" role="button">{{media | JSONpipes:'keys'}}</a>
+                </blockquote>
+                <div class="movetoright">
+                  <span class="glyphicon glyphicon-user"></span> {{post.participants}}
                 </div>
-                <div class="timeline-label">
-                  <h2>{{post.title}}</h2>
-                  <p>{{post.date | date:"yyyy/MM/dd"}}</p>
-                  <blockquote>
-                    <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
-                      class="btn btn-{{media | JSONpipes:'keys' | lowercase}}" role="button">{{media | JSONpipes:'keys'}}</a>
-                  </blockquote>
-                  <div class="movetoright">
-                    <span class="glyphicon glyphicon-user"></span> {{post.participants}}
-                  </div>
-                  <div class="movetoright">
-                    <span class="glyphicon glyphicon-tag"></span>
-                    <span class="label label-tags" *ngFor="let tag of post.tags ">{{tag}}</span>
-                  </div>
+                <div class="movetoright">
+                  <span class="glyphicon glyphicon-tag"></span>
+                  <span class="label label-tags" *ngFor="let tag of post.tags ">{{tag}}</span>
                 </div>
               </div>
+            </div>
 
-            </article>
-          </div>
-
-
+          </article>
         </div>
-        <div role="tabpanel" class="tab-pane" id="settings">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-          dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-          specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-          essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-          passage..
-        </div>
+
+
+      </div>
+      <div role="tabpanel" class="tab-pane" id="settings">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+        book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..
       </div>
     </div>
   </div>
+</div>
 </div>
