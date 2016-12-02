@@ -8,6 +8,7 @@ export class ConvertService {
   constructor() { }
 
   convertYAMLtoJSON(yaml: string){
+    yaml = yaml.replace(/ *: */g,": ");
     return YAML.parse(yaml);
   }
 

@@ -1,11 +1,12 @@
 <!--imgheight > 0 for animate logo-->
 
-<nav id="navbar" [attr.data-offset-top]="imgheight>0 ? imgheight : null" [attr.data-spy]="imgheight>0 ? 'affix' : null" class="{{navClass}}">
+<nav id="navbar" [attr.data-offset-top]="imgheight>0 ? imgheight : null" [attr.data-spy]="imgheight>0 ? 'affix' : null" class="{{navClass}}"
+   (mouseleave)='isCollapse=false'>
 
   <!--navbar for large screen-->
   <div class="xs-navbar-black">
     <button type="button" class="nav-btn-pdis navbar-toggle pull-right" (mouseenter)='isCollapse=true'
-        data-toggle="collapse" data-target="#navbar-lg">
+     (click)='isCollapse=!isCollapse'>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
