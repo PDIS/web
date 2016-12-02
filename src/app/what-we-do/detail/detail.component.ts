@@ -1,5 +1,5 @@
 import { DomSanitizer } from '@angular/platform-browser/src/security/dom_sanitization_service';
-import { DataService } from './../../data-service.service';
+import { DataService } from './../../shared/dataService/data-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 

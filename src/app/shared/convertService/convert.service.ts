@@ -1,4 +1,4 @@
-///<reference path="../../../typings/yamljs/yamljs.d.ts" />
+///<reference path="../../../../typings/yamljs/yamljs.d.ts" />
 import * as YAML from 'yamljs';
 import { Injectable } from '@angular/core';
 
