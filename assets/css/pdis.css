@@ -8,6 +8,14 @@ h1 strong, h2 strong, h3 strong, h4 strong, h5 strong {
 
 h1, h2, h3, h4, h5 {
     font-family: 'Open Sans', sans-serif;
+    line-height: 25px;
+    text-align: justify;
+}
+
+app-what-we-do h1, app-what-we-do h2, app-what-we-do h3, app-what-we-do h4, app-what-we-do h5 {
+    font-family: 'Open Sans', sans-serif;
+    line-height: normal;
+    text-align: inherit;
 }
 
 .tab-nav > li > a::after {
@@ -51,24 +59,51 @@ input {
     border-width: 1px;
 }
 
-
-
-
-
 .link-pdis {
     text-decoration: underline;
     color: black;
 }
 
-.video-container {
-    padding-top: 60%;
-}
-
-.video-container iframe, .video-container object, .video-container embed {
-    position: absolute;
-    top: 20px;
-    left: 0;
+@media screen and (max-width: 991px) {
+  
+  .img-container img {
+    /*position: absolute;*/
+    top: 10px;
+    
     width: 100%;
     height: 100%;
+    border:0px;
+    }
+
+    .video-container {
+        padding-top: 65%;
+    }
+     
+    .video-container iframe, .video-container object, .video-container embed {
+        position: absolute;
+        top: 10px;
+        left: 5%;
+        width: 90%;
+
+        height: 90%;
+        border:0px;
+       
+
+    }
+   
+}
+/*.img-container {
+    padding-top: 100%;
+
+}*/
+
+
+em img {
+    float: right;
+    margin-left: 10px;
 }
 
+strong img {
+    float: left;
+    margin-right: 10px;
+}
