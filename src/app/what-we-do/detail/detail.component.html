@@ -42,7 +42,7 @@
   <div *ngFor="let post of posts">
 
     <!-- civic-participation-> 1 columns-->
-    <div *ngIf="post.content.length==1">
+    <div *ngIf="post.content.length==1" class="img-container">
       <div class="row">
         <div class="col-md-1 "></div>
         <div class="col-md-10 col-xs-12" [innerHTML]="post.content[0]"></div>
