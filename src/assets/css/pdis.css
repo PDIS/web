@@ -109,13 +109,11 @@ em img {
 
 strong img {
     float: left;
-<<<<<<< HEAD
+
     margin-right: 20px;
      margin-top: 10px;
     
-}
-=======
-    margin-right: 10px;
+
 }
  ul.pagination {
     display: inline-block;
@@ -141,4 +139,4 @@ ul.pagination li a.active {
 }
 
 ul.pagination li a:hover:not(.active) {background-color: #ddd;}
->>>>>>> 994911bc17d354a4c328d3771acd9fa56da11bb9
+
