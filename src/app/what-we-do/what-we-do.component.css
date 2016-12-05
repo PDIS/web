@@ -56,6 +56,7 @@
     z-index: 2;
     opacity: 0.9;
     -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
 }
 
 .open-api-background {
@@ -63,6 +64,7 @@
     background-image: url('assets/img/open-api.jpeg');
     background-size: cover;
     -webkit-filter: grayscale(80%);
+    filter: grayscale(80%);
 }
 
 .civic-participation-background {
@@ -70,6 +72,7 @@
     background-image: url('assets/img/civic-participation.jpeg');
     background-size: cover;
     -webkit-filter: grayscale(80%);
+    filter: grayscale(80%);
 }
 
 .learn-more-container {
@@ -77,6 +80,7 @@
     background-image: url('assets/img/pdis-team.JPG');
     background-size: cover;
     -webkit-filter: grayscale(80%);
+    filter: grayscale(80%);
 }
 
 .learn-more {
