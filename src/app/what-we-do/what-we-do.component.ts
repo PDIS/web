@@ -15,8 +15,9 @@ export class WhatWeDoComponent implements OnInit {
   item2;
   tid;
   cid;
-  res;
   think;
+  res;
+  err;
 
   constructor(private datasvcWwd: DataService, private discoursesvcWwd: DiscourseService) {
 
@@ -49,9 +50,16 @@ export class WhatWeDoComponent implements OnInit {
   postDataToServer(raw: string) {
     this.tid = '67';
     this.cid = '12';
+    this.res = '';
+    this.err = '';
     this.discoursesvcWwd.postDiscoursePostRestful(raw, this.cid, this.tid)
       .subscribe(
       data => this.res = data,
+      err => {
+        this.err = err,
+          console.log(err)
+          // ,alert(err)
+      },
       () => console.log('POST Complete')
       );
   }
