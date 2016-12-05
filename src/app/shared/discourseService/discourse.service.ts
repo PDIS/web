@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class DiscourseService {
@@ -40,20 +41,34 @@ export class DiscourseService {
   // {"action":"create_post","errors":["我們非常抱歉，新用戶被臨時限制在同一個主題上，只能回覆 3 次","內容 與你最近發表的內容太相似"]}
   // {"action":"create_post","errors":["內容 長度不足 (下限是 10 字)","內容 無效，請再仔細描述","我們非常抱歉，新用戶被臨時限制在同一個主題上，只能回覆 3 次"]}
   private extractData(res: Response) {
-    let body = res.json();
+    console.log(res.status);
+    // let body = res.json();
+    let body = JSON.parse(res.text());
     console.log(body);
-    return body.data || {};
+    return body || {};
   }
 
   private handleError(error: Response | any) {
     let errMsg: string;
+    let crlf: string;
+
+    errMsg = '';
+    // crlf = '\n';
+    crlf = '<br>';
     if (error instanceof Response) {
       const body = error.json() || '';
       const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+      // errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+      for (let x of JSON.parse(err).errors) {
+        errMsg += x + crlf;
+      }
+      if (errMsg.length > 0) {
+        errMsg = errMsg.substr(0, errMsg.length - crlf.length);
+      }
     } else {
       errMsg = error.message ? error.message : error.toString();
     }
+    console.error(error.status + '-' + error.statusText);
     console.error(errMsg);
     return Observable.throw(errMsg);
   }

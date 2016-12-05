@@ -1,14 +1,14 @@
 <!-- Begin Body -->
 
 <!-- MORE ABOUT PDIS ========================================== -->
-  <div class="slogan-container">
-    <h4 class="slogan">
-      We incubate and facilitate public digital innovation and service.
-    </h4>
-  </div>
-  <div class="slogan-btn-container">
-    <a class="btn btn-pdis">More about PDIS</a>
-  </div>
+<div class="slogan-container">
+  <h4 class="slogan">
+    We incubate and facilitate public digital innovation and service.
+  </h4>
+</div>
+<div class="slogan-btn-container">
+  <a class="btn btn-pdis">More about PDIS</a>
+</div>
 
 <!-- MORE ABOUT PDIS END ====================================== -->
 
@@ -62,6 +62,10 @@
     <img src="assets/img/pdis-logo-08.png" alt="Generic placeholder image" width="254" height="90">
     <br>
     <input [(ngModel)]="think" />
+    <div *ngIf="err" class="alert alert-danger" [innerHTML]="err" [hidden]="err.length==0">
+    </div>
+    <div *ngIf="res" class="alert alert-success" [innerHTML]="res.cooked + ' successfully sent'" [hidden]="res.length==0">
+    </div>
     <br>
     <a class="btn btn-pdis-thin" role="button" (click)="postDataToServer(think)">Submit</a>
   </div>
