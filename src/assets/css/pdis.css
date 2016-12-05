@@ -104,10 +104,12 @@ input {
 
 em img {
     float: right;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 strong img {
     float: left;
-    margin-right: 10px;
+    margin-right: 20px;
+     margin-top: 10px;
+    
 }

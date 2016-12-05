@@ -24,6 +24,7 @@ export class DetailComponent implements OnInit {
   params;
   dangerousVideoUrl;
   videoUrl;
+  youtubecount;
   constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
     this.dataservice = datadetail;
     this.params = this.route.params;
@@ -36,29 +37,31 @@ export class DetailComponent implements OnInit {
     this.datadetail.getData(this.mappingTable[this.id])
     .subscribe((value) => {
       this.item2 = JSON.parse(value.text());
-      var tmp = this.item2.post_stream.posts;
-      var dom = new DOMParser(); 
-      //console.log(tmp);
+      var tmp = this.item2.post_stream.posts; 
       for (var i in tmp) {
         var tmp2 = {};
-        tmp2['content'] = tmp[i]['cooked'].split("<hr>");        
-        for(var j=0; j<2; j++){
-          var  doc = dom.parseFromString(tmp2['content'][j],"text/html");        
-          this.youtube1 = doc.getElementsByClassName("lazyYT");            
-          if(this.youtube1.length != 0 ){
-            this.updateVideoUrl(this.youtube1[0]['dataset'].youtubeId);
-            tmp2['content'][j]="you-tube";
-          }          
-        }
-        console.log(tmp2['content']);
-        this.posts.push(tmp2);
+        tmp2['content'] = tmp[i]['cooked'].split("<hr>");
+        this.youtubecount=tmp2;
+        console.log(tmp2['content']);    
+        this.youtube();      
+        this.posts.push(this.youtubecount); 
       }
     });
+  }
+  youtube(){
+    var dom = new DOMParser();
+    for(var j=0; j<2; j++){
+      var  doc = dom.parseFromString(this.youtubecount['content'][j],"text/html");    
+      this.youtube1 = doc.getElementsByClassName("lazyYT");                 
+      if(this.youtube1.length != 0 ){
+        this.updateVideoUrl(this.youtube1[0]['dataset'].youtubeId);
+        this.youtubecount['content'][j]="you-tube";        
+      }               
+    }
   }
   updateVideoUrl(id: string) {
     this.dangerousVideoUrl = 'https://www.youtube.com/embed/' + id;
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousVideoUrl);
-  }
- 
+  } 
   ngOnDestroy() { }
 }
