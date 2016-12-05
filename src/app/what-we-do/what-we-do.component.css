@@ -1,15 +1,16 @@
 .slogan-container {
     text-align: center;
-    height: calc(50vh - 140px);
+    height: calc(50vh - 180px);
 }
 
 .slogan {
     font-size: 27px;
-    padding-top: calc(25vh - 70px)
+    padding-top: calc(25vh - 100px)
 }
 
 .slogan-btn-container {
     height: 100px;
+    text-align: center;
 }
 
 .btn-pdis {
@@ -20,7 +21,6 @@
     border-color: black;
     border: 2px solid;
     color: #333;
-    background-color: #fff;
 }
 
 .btn-pdis:hover {
@@ -50,28 +50,33 @@
 }
 
 .panel-pdis {
-    background-color: white;
+    background-color: rgb(238,238,228);
     padding: 25px;
     position: relative;
     z-index: 2;
+    opacity: 0.9;
+    -webkit-filter: grayscale(0%);
 }
 
 .open-api-background {
     height: 720px;
     background-image: url('assets/img/open-api.jpeg');
     background-size: cover;
+    -webkit-filter: grayscale(80%);
 }
 
 .civic-participation-background {
     height: 720px;
     background-image: url('assets/img/civic-participation.jpeg');
     background-size: cover;
+    -webkit-filter: grayscale(80%);
 }
 
 .learn-more-container {
     height: 700px;
     background-image: url('assets/img/pdis-team.JPG');
     background-size: cover;
+    -webkit-filter: grayscale(80%);
 }
 
 .learn-more {
@@ -84,7 +89,7 @@
 }
 
 .think-about-container {
-    margin: -80px auto;
+    margin: -150px auto;
     text-align: center;
     position: relative;
     z-index: 2;

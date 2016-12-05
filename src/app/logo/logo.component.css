@@ -18,6 +18,7 @@
     z-index: 2000;
     width: calc(50vh - 40px);
     height: calc(50vh - 40px);
+    opacity: 0.7
 }
 
 .logo-animate-container {
