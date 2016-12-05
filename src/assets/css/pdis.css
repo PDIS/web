@@ -109,7 +109,36 @@ em img {
 
 strong img {
     float: left;
+<<<<<<< HEAD
     margin-right: 20px;
      margin-top: 10px;
     
 }
+=======
+    margin-right: 10px;
+}
+ ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+
+ul.pagination li a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+>>>>>>> 994911bc17d354a4c328d3771acd9fa56da11bb9
