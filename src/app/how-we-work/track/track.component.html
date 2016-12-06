@@ -11,8 +11,7 @@
         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Transcript</a></li>
       </ul>
 
-      <!-- Tab panes --> 
-      <!--bg-{{ post.tags | JSONpipes:'gettag'| lowercase}} -->
+      <!-- Tab panes -->
       <div class="tab-content">
 
         <div role="tabpanel" class="tab-pane active" id="home">
@@ -22,27 +21,22 @@
                 <div class="timeline-icon bg-circle"></div>
                 <div class="timeline-label">
                   <div class="row">
+                    <!--tag & title & date & participants-->
                     <div class="col-md-12">
-                      <h2>{{post.date | date:"yyyy/MM/dd"}} {{post.title}}</h2>
-                    </div>
-                    <div class="col-md-12">
-                      <div style="padding-left:0" class="col-md-6">
-                        <p class="glyphicon glyphicon-user"></p><span>{{post.participants}}</span>
-                        <!--<blockquote class="blockquote-source">-->
-                        <p class="button-source">
-                          <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
-                            class="btn btn-new btn-{{media | JSONpipes:'keys' | lowercase}} btn-new" role="button">{{media | JSONpipes:'keys'}}</a>
-                        </p>
-                        <!--</blockquote>-->
-                      </div>
-                      <div class="col-md-6">
-                        <div class="movetoright">
-                          <span class="glyphicon glyphicon-tag"></span>
-                          <span class="label label-tags" *ngFor="let tag of post.tags ">{{tag}}</span>
+                      <span class="label label-tag" *ngFor="let tag of post.tags ">{{tag}}</span>
+                      <h2>{{post.title}}</h2>
+                        <div class="date">
+                          <p>{{post.date | date:"yyyy/MM/dd"}}</p>
                         </div>
-                      </div>
+                      
                     </div>
-
+                    <!--content btn btn-{{media | JSONpipes:'keys' | lowercase}} btn-new-->
+                    <div class="col-md-12">
+                      <p>
+                        <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
+                          class="btn btn-new hvr-{{media | JSONpipes:'keys' | lowercase}}" role="button">{{media | JSONpipes:'keys'}}</a>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

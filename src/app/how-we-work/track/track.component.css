@@ -39,16 +39,24 @@
     
     .btn-new {
         /*border-color: #adadad;*/
-        color: white;
-        background: darkgray;
+        color: black;
+        background-color: white;
+        border-color:darkgray; 
         font-family: "Noto Sans", sans-serif;
         margin-right: 5px;
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
+        font-style: normal;
+    }
+    .btn-new:hover{
+        background: darkgray;
+        color: white;
+        /*text-decoration: underline;*/
+        font-style: normal;
     }
     
-    .btn-youtube {
+    .btn-youtube:hover {
         background: red;
         color: white;
         font-family: "Noto Sans", sans-serif;
@@ -56,9 +64,11 @@
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
+        /*text-decoration: underline;*/
+        font-style: normal;
     }
     
-    .btn-transcript {
+    .btn-transcript:hover {
         background: darkorange;
         color: white;
         font-family: "Noto Sans", sans-serif;
@@ -66,9 +76,11 @@
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
+        /*text-decoration: underline;*/
+        font-style: normal;
     }
     
-    .btn-soundcloud {
+    .btn-soundcloud:hover {
         background: #f50;
         color: white;
         font-family: "Noto Sans", sans-serif;
@@ -76,9 +88,11 @@
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
+        text-decoration: underline;
+        font-style: normal;
     }
     
-    .btn-slido {
+    .btn-slido:hover {
         background: #70bd4e;
         color: white;
         font-family: "Noto Sans", sans-serif;
@@ -86,8 +100,64 @@
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
+        /*text-decoration: underline;*/
+        font-style: normal;
     }
-    
+.hvr {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+.hvr-youtube {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+.hvr-slido {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr:hover,
+.hvr-youtube:hover,
+.hvr-slido:hover,
+.hvr:focus,
+.hvr-youtube:focus,
+.hvr-youtube:active{
+    background: red;
+    color: white;
+    transform: scale(1.1);
+}
+.hvr-slido:focus,
+.hvr-slido:active {
+    background: #70bd4e;
+    color: white;
+    transform: scale(1.1);
+}
+
+
+.hvr:active {
+    background: #70bd4e;
+    color: white;
+    transform: scale(1.1);
+}
+
     .panel-heading {
         background: rgb(204, 255, 255);
     }
@@ -303,7 +373,7 @@
     }
 
     .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-circle {
-        background-color: rgb(166, 166, 166);
+        background-color:lightgrey;
         color: #fff;
     }
 
@@ -334,6 +404,7 @@
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 0px;
+        box-shadow: 1px 2px 1px 0px rgba(0,0,0,0.5);
     }
     
     .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label:after {
@@ -357,25 +428,40 @@
         margin: 0;
         line-height: 1.428571429;
     }
-    
+/*    
     .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p {
-        font-size: 16px;
+        font-size: 14px;
+        font-style: italic;
+        font-family: "Noto Sans", sans-serif;
+        color: rgba(222, 123, 92, 0.86);
+    }*/
+    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label .date{
+        font-size: 10px;
+        font-style: normal;
+        font-family: "Noto Sans", sans-serif;
+        color: black;
+        margin-bottom: 20px;
+    }
+
+    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label .date p{
+        font-family: "Noto Sans", sans-serif;
     }
     
     .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p + p {
         margin-top: 15px;
+        font-style: normal;
     }
-    
-    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p + span {
+    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label span + p {
         font-family: "Noto Sans", sans-serif;
         margin-left: 5px;
     }
     
     .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 {
         font-weight: bold;
-        font-size: 16px;
-        margin-bottom: 20px;
+        font-size: 22px;
+        margin-bottom: 1px;
         margin-top: 0px;
+        /*text-align: center;*/
     }
     
     .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 a {
@@ -401,6 +487,7 @@
         background-color: gray;
         padding: .4em;
         text-align: center;
+        border-radius: 0px;
     }
     
     .button-source {
@@ -418,4 +505,17 @@
         vertical-align: bottom;
         text-align: center;
     }
+    .glyphicon-tag{
+        margin-top: 5px;
+    }
 
+    .label-tag{
+        display: inline-block;
+        margin: 5px 5px 10px 0;
+        padding: 3px 5px;
+        background:rgba(222, 123, 92, 0.86);
+        font-size: 12px;
+        color: #FFF;
+        font-weight: 400;
+        border-radius: 0px;
+    }
