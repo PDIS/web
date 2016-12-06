@@ -256,6 +256,7 @@ function isJsObject(o) {
     return o !== null && (typeof o === 'function' || typeof o === 'object');
 }
 function print(obj) {
+    // tslint:disable-next-line:no-console
     console.log(obj);
 }
 function warn(obj) {
@@ -416,6 +417,7 @@ function isJsObject(o) {
     return o !== null && (typeof o === 'function' || typeof o === 'object');
 }
 function print(obj) {
+    // tslint:disable-next-line:no-console
     console.log(obj);
 }
 function warn(obj) {
@@ -2994,6 +2996,7 @@ function isJsObject(o) {
     return o !== null && (typeof o === 'function' || typeof o === 'object');
 }
 function print(obj) {
+    // tslint:disable-next-line:no-console
     console.log(obj);
 }
 function warn(obj) {
@@ -4287,6 +4290,7 @@ function isJsObject(o) {
     return o !== null && (typeof o === 'function' || typeof o === 'object');
 }
 function print(obj) {
+    // tslint:disable-next-line:no-console
     console.log(obj);
 }
 function warn(obj) {
@@ -6786,7 +6790,7 @@ var Router = (function () {
             // this operation do not result in any side effects
             var urlAndSnapshot$;
             if (!precreatedState) {
-                var redirectsApplied$ = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__apply_redirects__["a" /* applyRedirects */])(_this.injector, _this.configLoader, url, _this.config);
+                var redirectsApplied$ = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__apply_redirects__["a" /* applyRedirects */])(_this.injector, _this.configLoader, _this.urlSerializer, url, _this.config);
                 urlAndSnapshot$ = __WEBPACK_IMPORTED_MODULE_9_rxjs_operator_mergeMap__["mergeMap"].call(redirectsApplied$, function (appliedUrl) {
                     return __WEBPACK_IMPORTED_MODULE_8_rxjs_operator_map__["map"].call(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_15__recognize__["a" /* recognize */])(_this.rootComponentType, _this.config, appliedUrl, _this.serializeUrl(appliedUrl)), function (snapshot) {
                         _this.routerEvents.next(new RoutesRecognized(id, _this.serializeUrl(url), _this.serializeUrl(appliedUrl), snapshot));
@@ -9055,6 +9059,7 @@ function isJsObject(o) {
     return o !== null && (typeof o === 'function' || typeof o === 'object');
 }
 function print(obj) {
+    // tslint:disable-next-line:no-console
     console.log(obj);
 }
 function warn(obj) {
@@ -22512,7 +22517,7 @@ var CompileMetadataResolver = (function () {
             return normalizedDirMeta;
         };
         if (nonNormalizedMetadata.isComponent) {
-            var templateMeta = this._directiveNormalizer.normalizeTemplate({
+            var templateMeta_1 = this._directiveNormalizer.normalizeTemplate({
                 componentType: directiveType,
                 moduleUrl: nonNormalizedMetadata.type.moduleUrl,
                 encapsulation: nonNormalizedMetadata.template.encapsulation,
@@ -22523,15 +22528,15 @@ var CompileMetadataResolver = (function () {
                 animations: nonNormalizedMetadata.template.animations,
                 interpolation: nonNormalizedMetadata.template.interpolation
             });
-            if (templateMeta.syncResult) {
-                createDirectiveMetadata(templateMeta.syncResult);
+            if (templateMeta_1.syncResult) {
+                createDirectiveMetadata(templateMeta_1.syncResult);
                 return null;
             }
             else {
                 if (isSync) {
                     throw new __WEBPACK_IMPORTED_MODULE_11__private_import_core__["K" /* ComponentStillLoadingError */](directiveType);
                 }
-                return templateMeta.asyncResult.then(createDirectiveMetadata);
+                return function () { return templateMeta_1.asyncResult.then(createDirectiveMetadata); };
             }
         }
         else {
@@ -22753,7 +22758,10 @@ var CompileMetadataResolver = (function () {
                     transitiveModule.directives.push(declaredIdentifier);
                     declaredDirectives.push(declaredIdentifier);
                     _this._addTypeToModule(declaredType, moduleType);
-                    transitiveModule.directiveLoaders.push(function () { return _this._loadDirectiveMetadata(declaredType, isSync); });
+                    var loader = _this._loadDirectiveMetadata(declaredType, isSync);
+                    if (loader) {
+                        transitiveModule.directiveLoaders.push(loader);
+                    }
                 }
                 else if (_this._pipeResolver.isPipe(declaredType)) {
                     transitiveModule.pipesSet.add(declaredType);
@@ -31330,7 +31338,8 @@ var NumberFormatter = (function () {
 }());
 var DATE_FORMATS_SPLIT = /((?:[^yMLdHhmsazZEwGjJ']+)|(?:'(?:[^']|'')*')|(?:E+|y+|M+|L+|d+|H+|h+|J+|j+|m+|s+|a|z|Z|G+|w+))(.*)/;
 var PATTERN_ALIASES = {
-    yMMMdjms: datePartGetterFactory(combine([
+    // Keys are quoted so they do not get renamed during closure compilation.
+    'yMMMdjms': datePartGetterFactory(combine([
         digitCondition('year', 1),
         nameCondition('month', 3),
         digitCondition('day', 1),
@@ -31338,61 +31347,62 @@ var PATTERN_ALIASES = {
         digitCondition('minute', 1),
         digitCondition('second', 1),
     ])),
-    yMdjm: datePartGetterFactory(combine([
+    'yMdjm': datePartGetterFactory(combine([
         digitCondition('year', 1), digitCondition('month', 1), digitCondition('day', 1),
         digitCondition('hour', 1), digitCondition('minute', 1)
     ])),
-    yMMMMEEEEd: datePartGetterFactory(combine([
+    'yMMMMEEEEd': datePartGetterFactory(combine([
         digitCondition('year', 1), nameCondition('month', 4), nameCondition('weekday', 4),
         digitCondition('day', 1)
     ])),
-    yMMMMd: datePartGetterFactory(combine([digitCondition('year', 1), nameCondition('month', 4), digitCondition('day', 1)])),
-    yMMMd: datePartGetterFactory(combine([digitCondition('year', 1), nameCondition('month', 3), digitCondition('day', 1)])),
-    yMd: datePartGetterFactory(combine([digitCondition('year', 1), digitCondition('month', 1), digitCondition('day', 1)])),
-    jms: datePartGetterFactory(combine([digitCondition('hour', 1), digitCondition('second', 1), digitCondition('minute', 1)])),
-    jm: datePartGetterFactory(combine([digitCondition('hour', 1), digitCondition('minute', 1)]))
+    'yMMMMd': datePartGetterFactory(combine([digitCondition('year', 1), nameCondition('month', 4), digitCondition('day', 1)])),
+    'yMMMd': datePartGetterFactory(combine([digitCondition('year', 1), nameCondition('month', 3), digitCondition('day', 1)])),
+    'yMd': datePartGetterFactory(combine([digitCondition('year', 1), digitCondition('month', 1), digitCondition('day', 1)])),
+    'jms': datePartGetterFactory(combine([digitCondition('hour', 1), digitCondition('second', 1), digitCondition('minute', 1)])),
+    'jm': datePartGetterFactory(combine([digitCondition('hour', 1), digitCondition('minute', 1)]))
 };
 var DATE_FORMATS = {
-    yyyy: datePartGetterFactory(digitCondition('year', 4)),
-    yy: datePartGetterFactory(digitCondition('year', 2)),
-    y: datePartGetterFactory(digitCondition('year', 1)),
-    MMMM: datePartGetterFactory(nameCondition('month', 4)),
-    MMM: datePartGetterFactory(nameCondition('month', 3)),
-    MM: datePartGetterFactory(digitCondition('month', 2)),
-    M: datePartGetterFactory(digitCondition('month', 1)),
-    LLLL: datePartGetterFactory(nameCondition('month', 4)),
-    L: datePartGetterFactory(nameCondition('month', 1)),
-    dd: datePartGetterFactory(digitCondition('day', 2)),
-    d: datePartGetterFactory(digitCondition('day', 1)),
-    HH: digitModifier(hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 2), false)))),
-    H: hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 1), false))),
-    hh: digitModifier(hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 2), true)))),
-    h: hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 1), true))),
-    jj: datePartGetterFactory(digitCondition('hour', 2)),
-    j: datePartGetterFactory(digitCondition('hour', 1)),
-    mm: digitModifier(datePartGetterFactory(digitCondition('minute', 2))),
-    m: datePartGetterFactory(digitCondition('minute', 1)),
-    ss: digitModifier(datePartGetterFactory(digitCondition('second', 2))),
-    s: datePartGetterFactory(digitCondition('second', 1)),
+    // Keys are quoted so they do not get renamed.
+    'yyyy': datePartGetterFactory(digitCondition('year', 4)),
+    'yy': datePartGetterFactory(digitCondition('year', 2)),
+    'y': datePartGetterFactory(digitCondition('year', 1)),
+    'MMMM': datePartGetterFactory(nameCondition('month', 4)),
+    'MMM': datePartGetterFactory(nameCondition('month', 3)),
+    'MM': datePartGetterFactory(digitCondition('month', 2)),
+    'M': datePartGetterFactory(digitCondition('month', 1)),
+    'LLLL': datePartGetterFactory(nameCondition('month', 4)),
+    'L': datePartGetterFactory(nameCondition('month', 1)),
+    'dd': datePartGetterFactory(digitCondition('day', 2)),
+    'd': datePartGetterFactory(digitCondition('day', 1)),
+    'HH': digitModifier(hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 2), false)))),
+    'H': hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 1), false))),
+    'hh': digitModifier(hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 2), true)))),
+    'h': hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 1), true))),
+    'jj': datePartGetterFactory(digitCondition('hour', 2)),
+    'j': datePartGetterFactory(digitCondition('hour', 1)),
+    'mm': digitModifier(datePartGetterFactory(digitCondition('minute', 2))),
+    'm': datePartGetterFactory(digitCondition('minute', 1)),
+    'ss': digitModifier(datePartGetterFactory(digitCondition('second', 2))),
+    's': datePartGetterFactory(digitCondition('second', 1)),
     // while ISO 8601 requires fractions to be prefixed with `.` or `,`
     // we can be just safely rely on using `sss` since we currently don't support single or two digit
     // fractions
-    sss: datePartGetterFactory(digitCondition('second', 3)),
-    EEEE: datePartGetterFactory(nameCondition('weekday', 4)),
-    EEE: datePartGetterFactory(nameCondition('weekday', 3)),
-    EE: datePartGetterFactory(nameCondition('weekday', 2)),
-    E: datePartGetterFactory(nameCondition('weekday', 1)),
-    a: hourClockExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 1), true))),
-    Z: timeZoneGetter('short'),
-    z: timeZoneGetter('long'),
-    ww: datePartGetterFactory({}),
+    'sss': datePartGetterFactory(digitCondition('second', 3)),
+    'EEEE': datePartGetterFactory(nameCondition('weekday', 4)),
+    'EEE': datePartGetterFactory(nameCondition('weekday', 3)),
+    'EE': datePartGetterFactory(nameCondition('weekday', 2)),
+    'E': datePartGetterFactory(nameCondition('weekday', 1)),
+    'a': hourClockExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 1), true))),
+    'Z': timeZoneGetter('short'),
+    'z': timeZoneGetter('long'),
+    'ww': datePartGetterFactory({}),
     // first Thursday of the year. not support ?
-    w: datePartGetterFactory({}),
+    'w': datePartGetterFactory({}),
     // of the year not support ?
-    G: datePartGetterFactory(nameCondition('era', 1)),
-    GG: datePartGetterFactory(nameCondition('era', 2)),
-    GGG: datePartGetterFactory(nameCondition('era', 3)),
-    GGGG: datePartGetterFactory(nameCondition('era', 4))
+    'G': datePartGetterFactory(nameCondition('era', 1)),
+    'GG': datePartGetterFactory(nameCondition('era', 2)),
+    'GGG': datePartGetterFactory(nameCondition('era', 3)),
+    'GGGG': datePartGetterFactory(nameCondition('era', 4))
 };
 function digitModifier(inner) {
     return function (date, locale) {
@@ -40757,7 +40767,7 @@ var XHRConnection = (function () {
                     // responseText is the old-school way of retrieving response (supported by IE8 & 9)
                     // response/responseType properties were introduced in ResourceLoader Level2 spec
                     // (supported by IE10)
-                    body = _xhr.response == null ? _xhr.responseText : _xhr.response;
+                    body = (typeof _xhr.response === 'undefined') ? _xhr.responseText : _xhr.response;
                     // Implicitly strip a potential XSSI prefix.
                     if (typeof body === 'string') {
                         body = body.replace(XSSI_PREFIX, '');
@@ -41740,6 +41750,7 @@ var BrowserDomAdapter = (function (_super) {
     };
     BrowserDomAdapter.prototype.log = function (error) {
         if (window.console) {
+            // tslint:disable-next-line:no-console
             window.console.log && window.console.log(error);
         }
     };
@@ -43422,7 +43433,6 @@ var ConvertService = (function () {
     function ConvertService() {
     }
     ConvertService.prototype.convertYAMLtoJSON = function (yaml) {
-        yaml = yaml.replace(/ *: */g, ": ");
         return __WEBPACK_IMPORTED_MODULE_0_yamljs__["parse"](yaml);
     };
     ConvertService = __decorate([
@@ -47434,7 +47444,7 @@ var _observableStrategy = new ObservableStrategy();
  * {@example common/pipes/ts/async_pipe.ts region='AsyncPipePromise'}
  *
  * It's also possible to use `async` with Observables. The example below binds the `time` Observable
- * to the view. The Observable continuesly updates the view with the current time.
+ * to the view. The Observable continuously updates the view with the current time.
  *
  * {@example common/pipes/ts/async_pipe.ts region='AsyncPipeObservable'}
  *
@@ -56054,6 +56064,7 @@ function isJsObject(o) {
     return o !== null && (typeof o === 'function' || typeof o === 'object');
 }
 function print(obj) {
+    // tslint:disable-next-line:no-console
     console.log(obj);
 }
 function warn(obj) {
@@ -56382,6 +56393,7 @@ var AngularProfiler = (function () {
     function AngularProfiler(ref) {
         this.appRef = ref.injector.get(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_15" /* ApplicationRef */]);
     }
+    // tslint:disable:no-console
     /**
      * Exercises change detection in a loop and then prints the average amount of
      * time in milliseconds how long a single round of change detection takes for
@@ -57431,27 +57443,31 @@ var NoMatch = (function () {
     return NoMatch;
 }());
 var AbsoluteRedirect = (function () {
-    function AbsoluteRedirect(segments) {
-        this.segments = segments;
+    function AbsoluteRedirect(urlTree) {
+        this.urlTree = urlTree;
     }
     return AbsoluteRedirect;
 }());
 function noMatch(segmentGroup) {
     return new __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__["Observable"](function (obs) { return obs.error(new NoMatch(segmentGroup)); });
 }
-function absoluteRedirect(segments) {
-    return new __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__["Observable"](function (obs) { return obs.error(new AbsoluteRedirect(segments)); });
+function absoluteRedirect(newTree) {
+    return new __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__["Observable"](function (obs) { return obs.error(new AbsoluteRedirect(newTree)); });
+}
+function namedOutletsRedirect(redirectTo) {
+    return new __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__["Observable"](function (obs) { return obs.error(new Error("Only absolute redirects can have named outlets. redirectTo: '" + redirectTo + "'")); });
 }
 function canLoadFails(route) {
     return new __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__["Observable"](function (obs) { return obs.error(new __WEBPACK_IMPORTED_MODULE_10__shared__["b" /* NavigationCancelingError */]("Cannot load children because the guard of the route \"path: '" + route.path + "'\" returned false")); });
 }
-function applyRedirects(injector, configLoader, urlTree, config) {
-    return new ApplyRedirects(injector, configLoader, urlTree, config).apply();
+function applyRedirects(injector, configLoader, urlSerializer, urlTree, config) {
+    return new ApplyRedirects(injector, configLoader, urlSerializer, urlTree, config).apply();
 }
 var ApplyRedirects = (function () {
-    function ApplyRedirects(injector, configLoader, urlTree, config) {
+    function ApplyRedirects(injector, configLoader, urlSerializer, urlTree, config) {
         this.injector = injector;
         this.configLoader = configLoader;
+        this.urlSerializer = urlSerializer;
         this.urlTree = urlTree;
         this.config = config;
         this.allowRedirects = true;
@@ -57459,14 +57475,13 @@ var ApplyRedirects = (function () {
     ApplyRedirects.prototype.apply = function () {
         var _this = this;
         var expanded$ = this.expandSegmentGroup(this.injector, this.config, this.urlTree.root, __WEBPACK_IMPORTED_MODULE_10__shared__["a" /* PRIMARY_OUTLET */]);
-        var urlTrees$ = __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_map__["map"].call(expanded$, function (rootSegmentGroup) { return _this.createUrlTree(rootSegmentGroup); });
+        var urlTrees$ = __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_map__["map"].call(expanded$, function (rootSegmentGroup) { return _this.createUrlTree(rootSegmentGroup, _this.urlTree.queryParams, _this.urlTree.fragment); });
         return __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_catch__["_catch"].call(urlTrees$, function (e) {
             if (e instanceof AbsoluteRedirect) {
                 // after an absolute redirect we do not apply any more redirects!
                 _this.allowRedirects = false;
-                var group = new __WEBPACK_IMPORTED_MODULE_11__url_tree__["a" /* UrlSegmentGroup */]([], (_a = {}, _a[__WEBPACK_IMPORTED_MODULE_10__shared__["a" /* PRIMARY_OUTLET */]] = new __WEBPACK_IMPORTED_MODULE_11__url_tree__["a" /* UrlSegmentGroup */](e.segments, {}), _a));
                 // we need to run matching, so we can fetch all lazy-loaded modules
-                return _this.match(group);
+                return _this.match(e.urlTree);
             }
             else if (e instanceof NoMatch) {
                 throw _this.noMatchError(e);
@@ -57474,13 +57489,14 @@ var ApplyRedirects = (function () {
             else {
                 throw e;
             }
-            var _a;
         });
     };
-    ApplyRedirects.prototype.match = function (segmentGroup) {
+    ApplyRedirects.prototype.match = function (tree) {
         var _this = this;
-        var expanded$ = this.expandSegmentGroup(this.injector, this.config, segmentGroup, __WEBPACK_IMPORTED_MODULE_10__shared__["a" /* PRIMARY_OUTLET */]);
-        var mapped$ = __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_map__["map"].call(expanded$, function (rootSegmentGroup) { return _this.createUrlTree(rootSegmentGroup); });
+        var expanded$ = this.expandSegmentGroup(this.injector, this.config, tree.root, __WEBPACK_IMPORTED_MODULE_10__shared__["a" /* PRIMARY_OUTLET */]);
+        var mapped$ = __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_map__["map"].call(expanded$, function (rootSegmentGroup) {
+            return _this.createUrlTree(rootSegmentGroup, tree.queryParams, tree.fragment);
+        });
         return __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_catch__["_catch"].call(mapped$, function (e) {
             if (e instanceof NoMatch) {
                 throw _this.noMatchError(e);
@@ -57493,11 +57509,11 @@ var ApplyRedirects = (function () {
     ApplyRedirects.prototype.noMatchError = function (e) {
         return new Error("Cannot match any routes. URL Segment: '" + e.segmentGroup + "'");
     };
-    ApplyRedirects.prototype.createUrlTree = function (rootCandidate) {
+    ApplyRedirects.prototype.createUrlTree = function (rootCandidate, queryParams, fragment) {
         var root = rootCandidate.segments.length > 0 ?
             new __WEBPACK_IMPORTED_MODULE_11__url_tree__["a" /* UrlSegmentGroup */]([], (_a = {}, _a[__WEBPACK_IMPORTED_MODULE_10__shared__["a" /* PRIMARY_OUTLET */]] = rootCandidate, _a)) :
             rootCandidate;
-        return new __WEBPACK_IMPORTED_MODULE_11__url_tree__["b" /* UrlTree */](root, this.urlTree.queryParams, this.urlTree.fragment);
+        return new __WEBPACK_IMPORTED_MODULE_11__url_tree__["b" /* UrlTree */](root, queryParams, fragment);
         var _a;
     };
     ApplyRedirects.prototype.expandSegmentGroup = function (injector, routes, segmentGroup, outlet) {
@@ -57564,25 +57580,31 @@ var ApplyRedirects = (function () {
         }
     };
     ApplyRedirects.prototype.expandWildCardWithParamsAgainstRouteUsingRedirect = function (injector, routes, route, outlet) {
-        var newSegments = applyRedirectCommands([], route.redirectTo, {});
+        var _this = this;
+        var newTree = this.applyRedirectCommands([], route.redirectTo, {});
         if (route.redirectTo.startsWith('/')) {
-            return absoluteRedirect(newSegments);
+            return absoluteRedirect(newTree);
         }
         else {
-            var group = new __WEBPACK_IMPORTED_MODULE_11__url_tree__["a" /* UrlSegmentGroup */](newSegments, {});
-            return this.expandSegment(injector, group, routes, newSegments, outlet, false);
+            return __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_mergeMap__["mergeMap"].call(this.lineralizeSegments(route, newTree), function (newSegments) {
+                var group = new __WEBPACK_IMPORTED_MODULE_11__url_tree__["a" /* UrlSegmentGroup */](newSegments, {});
+                return _this.expandSegment(injector, group, routes, newSegments, outlet, false);
+            });
         }
     };
     ApplyRedirects.prototype.expandRegularSegmentAgainstRouteUsingRedirect = function (injector, segmentGroup, routes, route, segments, outlet) {
+        var _this = this;
         var _a = match(segmentGroup, route, segments), matched = _a.matched, consumedSegments = _a.consumedSegments, lastChild = _a.lastChild, positionalParamSegments = _a.positionalParamSegments;
         if (!matched)
             return noMatch(segmentGroup);
-        var newSegments = applyRedirectCommands(consumedSegments, route.redirectTo, positionalParamSegments);
+        var newTree = this.applyRedirectCommands(consumedSegments, route.redirectTo, positionalParamSegments);
         if (route.redirectTo.startsWith('/')) {
-            return absoluteRedirect(newSegments);
+            return absoluteRedirect(newTree);
         }
         else {
-            return this.expandSegment(injector, segmentGroup, routes, newSegments.concat(segments.slice(lastChild)), outlet, false);
+            return __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_mergeMap__["mergeMap"].call(this.lineralizeSegments(route, newTree), function (newSegments) {
+                return _this.expandSegment(injector, segmentGroup, routes, newSegments.concat(segments.slice(lastChild)), outlet, false);
+            });
         }
     };
     ApplyRedirects.prototype.matchSegmentAgainstRoute = function (injector, rawSegmentGroup, route, segments) {
@@ -57649,6 +57671,74 @@ var ApplyRedirects = (function () {
             return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_9__router_config_loader__["a" /* LoadedRouterConfig */]([], injector, null, null));
         }
     };
+    ApplyRedirects.prototype.lineralizeSegments = function (route, urlTree) {
+        var res = [];
+        var c = urlTree.root;
+        while (true) {
+            res = res.concat(c.segments);
+            if (c.numberOfChildren === 0) {
+                return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__["of"])(res);
+            }
+            else if (c.numberOfChildren > 1 || !c.children[__WEBPACK_IMPORTED_MODULE_10__shared__["a" /* PRIMARY_OUTLET */]]) {
+                return namedOutletsRedirect(route.redirectTo);
+            }
+            else {
+                c = c.children[__WEBPACK_IMPORTED_MODULE_10__shared__["a" /* PRIMARY_OUTLET */]];
+            }
+        }
+    };
+    ApplyRedirects.prototype.applyRedirectCommands = function (segments, redirectTo, posParams) {
+        var t = this.urlSerializer.parse(redirectTo);
+        return this.applyRedirectCreatreUrlTree(redirectTo, this.urlSerializer.parse(redirectTo), segments, posParams);
+    };
+    ApplyRedirects.prototype.applyRedirectCreatreUrlTree = function (redirectTo, urlTree, segments, posParams) {
+        var newRoot = this.createSegmentGroup(redirectTo, urlTree.root, segments, posParams);
+        return new __WEBPACK_IMPORTED_MODULE_11__url_tree__["b" /* UrlTree */](newRoot, this.createQueryParams(urlTree.queryParams, this.urlTree.queryParams), urlTree.fragment);
+    };
+    ApplyRedirects.prototype.createQueryParams = function (redirectToParams, actualParams) {
+        var res = {};
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12__utils_collection__["d" /* forEach */])(redirectToParams, function (v, k) {
+            if (v.startsWith(':')) {
+                res[k] = actualParams[v.substring(1)];
+            }
+            else {
+                res[k] = v;
+            }
+        });
+        return res;
+    };
+    ApplyRedirects.prototype.createSegmentGroup = function (redirectTo, group, segments, posParams) {
+        var _this = this;
+        var updatedSegments = this.createSegments(redirectTo, group.segments, segments, posParams);
+        var children = {};
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12__utils_collection__["d" /* forEach */])(group.children, function (child, name) {
+            children[name] = _this.createSegmentGroup(redirectTo, child, segments, posParams);
+        });
+        return new __WEBPACK_IMPORTED_MODULE_11__url_tree__["a" /* UrlSegmentGroup */](updatedSegments, children);
+    };
+    ApplyRedirects.prototype.createSegments = function (redirectTo, redirectToSegments, actualSegments, posParams) {
+        var _this = this;
+        return redirectToSegments.map(function (s) { return s.path.startsWith(':') ? _this.findPosParam(redirectTo, s, posParams) :
+            _this.findOrReturn(s, actualSegments); });
+    };
+    ApplyRedirects.prototype.findPosParam = function (redirectTo, redirectToUrlSegment, posParams) {
+        var pos = posParams[redirectToUrlSegment.path.substring(1)];
+        if (!pos)
+            throw new Error("Cannot redirect to '" + redirectTo + "'. Cannot find '" + redirectToUrlSegment.path + "'.");
+        return pos;
+    };
+    ApplyRedirects.prototype.findOrReturn = function (redirectToUrlSegment, actualSegments) {
+        var idx = 0;
+        for (var _i = 0, actualSegments_1 = actualSegments; _i < actualSegments_1.length; _i++) {
+            var s = actualSegments_1[_i];
+            if (s.path === redirectToUrlSegment.path) {
+                actualSegments.splice(idx);
+                return s;
+            }
+            idx++;
+        }
+        return redirectToUrlSegment;
+    };
     return ApplyRedirects;
 }());
 function runGuards(injector, route) {
@@ -57686,38 +57776,6 @@ function match(segmentGroup, route, segments) {
         lastChild: res.consumed.length,
         positionalParamSegments: res.posParams
     };
-}
-function applyRedirectCommands(segments, redirectTo, posParams) {
-    var r = redirectTo.startsWith('/') ? redirectTo.substring(1) : redirectTo;
-    if (r === '') {
-        return [];
-    }
-    else {
-        return createSegments(redirectTo, r.split('/'), segments, posParams);
-    }
-}
-function createSegments(redirectTo, parts, segments, posParams) {
-    return parts.map(function (p) { return p.startsWith(':') ? findPosParam(p, posParams, redirectTo) :
-        findOrCreateSegment(p, segments); });
-}
-function findPosParam(part, posParams, redirectTo) {
-    var paramName = part.substring(1);
-    var pos = posParams[paramName];
-    if (!pos)
-        throw new Error("Cannot redirect to '" + redirectTo + "'. Cannot find '" + part + "'.");
-    return pos;
-}
-function findOrCreateSegment(part, segments) {
-    var idx = 0;
-    for (var _i = 0, segments_1 = segments; _i < segments_1.length; _i++) {
-        var s = segments_1[_i];
-        if (s.path === part) {
-            segments.splice(idx);
-            return s;
-        }
-        idx++;
-    }
-    return new __WEBPACK_IMPORTED_MODULE_11__url_tree__["c" /* UrlSegment */](part, {});
 }
 function split(segmentGroup, consumedSegments, slicedSegments, config) {
     if (slicedSegments.length > 0 &&
@@ -62153,13 +62211,13 @@ module.exports = ""
 /* 652 */
 /***/ function(module, exports) {
 
-module.exports = ".btn-pdis-thin {\r\n    padding: 5px 20px;\r\n    border-radius: 0px;\r\n    border-color: black;\r\n    border: 2px solid;\r\n    color: #333;\r\n    background-color: #fff;\r\n}\r\n\r\n.btn-pdis-thin:hover {\r\n    padding: 5px 20px;\r\n    border-radius: 0px;\r\n    border-color: black;\r\n    border: 2px solid;\r\n    color: #fff;\r\n    background-color: #000;\r\n}\r\n\r\ninput {\r\n    margin: 10px 0 20px;\r\n    width: 90%\r\n}"
+module.exports = ".btn-pdis-thin {\n    padding: 5px 20px;\n    border-radius: 0px;\n    border-color: black;\n    border: 2px solid;\n    color: #333;\n    background-color: #fff;\n}\n\n.btn-pdis-thin:hover {\n    padding: 5px 20px;\n    border-radius: 0px;\n    border-color: black;\n    border: 2px solid;\n    color: #fff;\n    background-color: #000;\n}\n\ninput {\n    margin: 10px 0 20px;\n    width: 90%\n}"
 
 /***/ },
 /* 653 */
 /***/ function(module, exports) {
 
-module.exports = "container{\r\n    padding-top:80px\r\n}\r\n\r\n"
+module.exports = "container{\n    padding-top:80px\n}\n\n"
 
 /***/ },
 /* 654 */
@@ -62171,19 +62229,19 @@ module.exports = ""
 /* 655 */
 /***/ function(module, exports) {
 
-module.exports = "    .nav-tabs {\r\n        border-bottom: 2px solid #DDD;\r\n    }\r\n    \r\n    .nav-tabs > li > a.active, .nav-tabs > li > a.active:focus, .nav-tabs > li > a.active:hover {\r\n        border-width: 0;\r\n    }\r\n    \r\n    .nav-tabs > li > a {\r\n        border: none;\r\n        color: #666;\r\n    }\r\n    \r\n    .nav-tabs > li.active > a, .nav-tabs > li > a:hover {\r\n        border: none;\r\n        color: #000000 !important;\r\n        background: transparent;\r\n    }\r\n    \r\n    .nav-tabs > li > a::after {\r\n        content: \"\";\r\n        background: #000000;\r\n        height: 2px;\r\n        position: absolute;\r\n        width: 100%;\r\n        left: 0px;\r\n        bottom: -1px;\r\n        -webkit-transition: all 250ms ease 0s;\r\n        transition: all 250ms ease 0s;\r\n        -webkit-transform: scale(0);\r\n                transform: scale(0);\r\n    }\r\n    \r\n    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {\r\n        -webkit-transform: scale(1);\r\n                transform: scale(1);\r\n    }\r\n    \r\n    .participants {\r\n        color: rgb(255, 0, 102);\r\n    }\r\n    \r\n    .btn-new {\r\n        /*border-color: #adadad;*/\r\n        color: white;\r\n        background: darkgray;\r\n        margin-right: 5px;\r\n        margin-top: 2px;\r\n        border-radius: 0;\r\n    }\r\n    \r\n    .btn-youtube {\r\n        background: red;\r\n        color: white;\r\n        margin-right: 5px;\r\n        margin-top: 2px;\r\n        border-radius: 0;\r\n    }\r\n    \r\n    .btn-transcript {\r\n        background: darkorange;\r\n        color: white;\r\n        margin-right: 5px;\r\n        margin-top: 2px;\r\n        border-radius: 0;\r\n    }\r\n    \r\n    .btn-soundcloud {\r\n        background: #f50;\r\n        color: white;\r\n        margin-right: 5px;\r\n        margin-top: 2px;\r\n        border-radius: 0;\r\n    }\r\n    \r\n    .btn-slido {\r\n        background: #70bd4e;\r\n        color: white;\r\n        margin-right: 5px;\r\n        margin-top: 2px;\r\n        border-radius: 0;\r\n    }\r\n    \r\n    .panel-heading {\r\n        background: rgb(204, 255, 255);\r\n    }\r\n    \r\n    img {\r\n        vertical-align: middle;\r\n    }\r\n    \r\n    .img-responsive {\r\n        display: block;\r\n        height: auto;\r\n        max-width: 100%;\r\n    }\r\n    \r\n    .img-rounded {\r\n        border-radius: 3px;\r\n    }\r\n    \r\n    .img-thumbnail {\r\n        background-color: #fff;\r\n        border: 1px solid #ededf0;\r\n        border-radius: 3px;\r\n        display: inline-block;\r\n        height: auto;\r\n        line-height: 1.428571429;\r\n        max-width: 100%;\r\n        moz-transition: all .2s ease-in-out;\r\n        o-transition: all .2s ease-in-out;\r\n        padding: 2px;\r\n        -webkit-transition: all .2s ease-in-out;\r\n        transition: all .2s ease-in-out;\r\n        webkit-transition: all .2s ease-in-out;\r\n    }\r\n    \r\n    .img-circle {\r\n        border-radius: 50%;\r\n    }\r\n    \r\n    .timeline-centered {\r\n        position: relative;\r\n        margin-bottom: 30px;\r\n    }\r\n    \r\n    .timeline-centered:before, .timeline-centered:after {\r\n        content: \" \";\r\n        display: table;\r\n    }\r\n    \r\n    .timeline-centered:after {\r\n        clear: both;\r\n    }\r\n    \r\n    .timeline-centered:before, .timeline-centered:after {\r\n        content: \" \";\r\n        display: table;\r\n    }\r\n    \r\n    .timeline-centered:after {\r\n        clear: both;\r\n    }\r\n    \r\n    .timeline-centered:before {\r\n        content: '';\r\n        position: absolute;\r\n        display: block;\r\n        width: 4px;\r\n        background: #f5f5f6;\r\n        /*left: 50%;*/\r\n        top: 20px;\r\n        bottom: 20px;\r\n        margin-left: 30px;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry {\r\n        position: relative;\r\n        /*width: 50%;\r\n        float: right;*/\r\n        margin-top: 5px;\r\n        margin-left: 30px;\r\n        margin-bottom: 10px;\r\n        clear: both;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry:before, .timeline-centered .timeline-entry:after {\r\n        content: \" \";\r\n        display: table;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry:after {\r\n        clear: both;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry:before, .timeline-centered .timeline-entry:after {\r\n        content: \" \";\r\n        display: table;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry:after {\r\n        clear: both;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry.begin {\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry.left-aligned {\r\n        float: left;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner {\r\n        margin-left: 0;\r\n        margin-right: -18px;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-time {\r\n        left: auto;\r\n        right: -100px;\r\n        text-align: left;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-icon {\r\n        float: right;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-label {\r\n        margin-left: 0;\r\n        margin-right: 70px;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-label:after {\r\n        left: auto;\r\n        right: 0;\r\n        margin-left: 0;\r\n        margin-right: -9px;\r\n        -webkit-transform: rotate(180deg);\r\n        transform: rotate(180deg);\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner {\r\n        position: relative;\r\n        margin-left: -20px;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner:before, .timeline-centered .timeline-entry .timeline-entry-inner:after {\r\n        content: \" \";\r\n        display: table;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner:after {\r\n        clear: both;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner:before, .timeline-centered .timeline-entry .timeline-entry-inner:after {\r\n        content: \" \";\r\n        display: table;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner:after {\r\n        clear: both;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time {\r\n        position: absolute;\r\n        left: -100px;\r\n        text-align: right;\r\n        padding: 10px;\r\n        box-sizing: border-box;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time > span {\r\n        display: block;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time > span:first-child {\r\n        font-size: 15px;\r\n        font-weight: bold;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time > span:last-child {\r\n        font-size: 12px;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon {\r\n        background: #fff;\r\n        color: #737881;\r\n        display: block;\r\n        width: 40px;\r\n        height: 40px;\r\n        background-clip: padding-box;\r\n        border-radius: 20px;\r\n        text-align: center;\r\n        box-shadow: 0 0 0 5px #eee;\r\n        line-height: 40px;\r\n        font-size: 15px;\r\n        float: left;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-nocategory {\r\n        background-color: rgb(166, 166, 166);\r\n        /*text-align: right;*/\r\n        margin-top: 20px;\r\n        color: #fff;\r\n    }\r\n\r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-circle {\r\n        background-color: rgb(166, 166, 166);\r\n        color: #fff;\r\n    }\r\n\r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-talks {\r\n        background-color: #ee4749;\r\n        color: #fff;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-meeting {\r\n        background-color: #00a651;\r\n        color: #fff;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-speech {\r\n        background-color: #21a9e1;\r\n        color: #fff;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label {\r\n        position: relative;\r\n        background: #f5f5f6;\r\n        padding: 1em;\r\n        margin-left: 60px;\r\n        margin-bottom: 5px;\r\n        background-clip: padding-box;\r\n        border-radius: 0px;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label:after {\r\n        content: '';\r\n        display: block;\r\n        position: absolute;\r\n        width: 0;\r\n        height: 0;\r\n        border-style: solid;\r\n        border-width: 9px 9px 9px 0;\r\n        border-color: transparent #f5f5f6 transparent transparent;\r\n        left: 0;\r\n        top: 10px;\r\n        margin-left: -9px;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p {\r\n        color: #737881;\r\n        font-family: \"Noto Sans\", sans-serif;\r\n        font-size: 12px;\r\n        margin: 0;\r\n        line-height: 1.428571429;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p {\r\n        font-size: 16px;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p + p {\r\n        margin-top: 15px;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p + span {\r\n        font-family: \"Noto Sans\", sans-serif;\r\n        margin-left: 5px;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 {\r\n        font-weight: bold;\r\n        font-size: 16px;\r\n        margin-bottom: 20px;\r\n        margin-top: 0px;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 a {\r\n        color: #303641;\r\n    }\r\n    \r\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 span {\r\n        -webkit-opacity: .6;\r\n        -moz-opacity: .6;\r\n        opacity: .6;\r\n        -ms-filter: alpha(opacity=60);\r\n        filter: alpha(opacity=60);\r\n    }\r\n    \r\n    .movetoright {\r\n        text-align: right;\r\n        vertical-align: bottom;\r\n    }\r\n    \r\n    .label-tags {\r\n        font-family: \"Noto Sans\", sans-serif;\r\n        margin-left: 5px;\r\n        background-color: gray;\r\n    }\r\n    \r\n    .blockquote-source {\r\n        padding: 10px 20px;\r\n        margin: 10px 0 10px 0;\r\n        border-left: 5px solid #eee;\r\n    }"
+module.exports = "    .nav-tabs {\n        border-bottom: 2px solid #DDD;\n    }\n    \n    .nav-tabs > li > a.active, .nav-tabs > li > a.active:focus, .nav-tabs > li > a.active:hover {\n        border-width: 0;\n    }\n    \n    .nav-tabs > li > a {\n        border: none;\n        color: #666;\n    }\n    \n    .nav-tabs > li.active > a, .nav-tabs > li > a:hover {\n        border: none;\n        color: #000000 !important;\n        background: transparent;\n    }\n    \n    .nav-tabs > li > a::after {\n        content: \"\";\n        background: #000000;\n        height: 2px;\n        position: absolute;\n        width: 100%;\n        left: 0px;\n        bottom: -1px;\n        -webkit-transition: all 250ms ease 0s;\n        transition: all 250ms ease 0s;\n        -webkit-transform: scale(0);\n                transform: scale(0);\n    }\n    \n    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n    }\n    \n    .participants {\n        color: rgb(255, 0, 102);\n    }\n    \n    .btn-new {\n        /*border-color: #adadad;*/\n        color: white;\n        background: darkgray;\n        margin-right: 5px;\n        margin-top: 2px;\n        border-radius: 0;\n    }\n    \n    .btn-youtube {\n        background: red;\n        color: white;\n        margin-right: 5px;\n        margin-top: 2px;\n        border-radius: 0;\n    }\n    \n    .btn-transcript {\n        background: darkorange;\n        color: white;\n        margin-right: 5px;\n        margin-top: 2px;\n        border-radius: 0;\n    }\n    \n    .btn-soundcloud {\n        background: #f50;\n        color: white;\n        margin-right: 5px;\n        margin-top: 2px;\n        border-radius: 0;\n    }\n    \n    .btn-slido {\n        background: #70bd4e;\n        color: white;\n        margin-right: 5px;\n        margin-top: 2px;\n        border-radius: 0;\n    }\n    \n    .panel-heading {\n        background: rgb(204, 255, 255);\n    }\n    \n    img {\n        vertical-align: middle;\n    }\n    \n    .img-responsive {\n        display: block;\n        height: auto;\n        max-width: 100%;\n    }\n    \n    .img-rounded {\n        border-radius: 3px;\n    }\n    \n    .img-thumbnail {\n        background-color: #fff;\n        border: 1px solid #ededf0;\n        border-radius: 3px;\n        display: inline-block;\n        height: auto;\n        line-height: 1.428571429;\n        max-width: 100%;\n        moz-transition: all .2s ease-in-out;\n        o-transition: all .2s ease-in-out;\n        padding: 2px;\n        -webkit-transition: all .2s ease-in-out;\n        transition: all .2s ease-in-out;\n        webkit-transition: all .2s ease-in-out;\n    }\n    \n    .img-circle {\n        border-radius: 50%;\n    }\n    \n    .timeline-centered {\n        position: relative;\n        margin-bottom: 30px;\n    }\n    \n    .timeline-centered:before, .timeline-centered:after {\n        content: \" \";\n        display: table;\n    }\n    \n    .timeline-centered:after {\n        clear: both;\n    }\n    \n    .timeline-centered:before, .timeline-centered:after {\n        content: \" \";\n        display: table;\n    }\n    \n    .timeline-centered:after {\n        clear: both;\n    }\n    \n    .timeline-centered:before {\n        content: '';\n        position: absolute;\n        display: block;\n        width: 4px;\n        background: #f5f5f6;\n        /*left: 50%;*/\n        top: 20px;\n        bottom: 20px;\n        margin-left: 30px;\n    }\n    \n    .timeline-centered .timeline-entry {\n        position: relative;\n        /*width: 50%;\n        float: right;*/\n        margin-top: 5px;\n        margin-left: 30px;\n        margin-bottom: 10px;\n        clear: both;\n    }\n    \n    .timeline-centered .timeline-entry:before, .timeline-centered .timeline-entry:after {\n        content: \" \";\n        display: table;\n    }\n    \n    .timeline-centered .timeline-entry:after {\n        clear: both;\n    }\n    \n    .timeline-centered .timeline-entry:before, .timeline-centered .timeline-entry:after {\n        content: \" \";\n        display: table;\n    }\n    \n    .timeline-centered .timeline-entry:after {\n        clear: both;\n    }\n    \n    .timeline-centered .timeline-entry.begin {\n        margin-bottom: 0;\n    }\n    \n    .timeline-centered .timeline-entry.left-aligned {\n        float: left;\n    }\n    \n    .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner {\n        margin-left: 0;\n        margin-right: -18px;\n    }\n    \n    .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-time {\n        left: auto;\n        right: -100px;\n        text-align: left;\n    }\n    \n    .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-icon {\n        float: right;\n    }\n    \n    .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-label {\n        margin-left: 0;\n        margin-right: 70px;\n    }\n    \n    .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-label:after {\n        left: auto;\n        right: 0;\n        margin-left: 0;\n        margin-right: -9px;\n        -webkit-transform: rotate(180deg);\n        transform: rotate(180deg);\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner {\n        position: relative;\n        margin-left: -20px;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner:before, .timeline-centered .timeline-entry .timeline-entry-inner:after {\n        content: \" \";\n        display: table;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner:after {\n        clear: both;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner:before, .timeline-centered .timeline-entry .timeline-entry-inner:after {\n        content: \" \";\n        display: table;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner:after {\n        clear: both;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time {\n        position: absolute;\n        left: -100px;\n        text-align: right;\n        padding: 10px;\n        box-sizing: border-box;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time > span {\n        display: block;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time > span:first-child {\n        font-size: 15px;\n        font-weight: bold;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time > span:last-child {\n        font-size: 12px;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon {\n        background: #fff;\n        color: #737881;\n        display: block;\n        width: 40px;\n        height: 40px;\n        background-clip: padding-box;\n        border-radius: 20px;\n        text-align: center;\n        box-shadow: 0 0 0 5px #eee;\n        line-height: 40px;\n        font-size: 15px;\n        float: left;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-nocategory {\n        background-color: rgb(166, 166, 166);\n        /*text-align: right;*/\n        margin-top: 20px;\n        color: #fff;\n    }\n\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-circle {\n        background-color: rgb(166, 166, 166);\n        color: #fff;\n    }\n\n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-talks {\n        background-color: #ee4749;\n        color: #fff;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-meeting {\n        background-color: #00a651;\n        color: #fff;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-speech {\n        background-color: #21a9e1;\n        color: #fff;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label {\n        position: relative;\n        background: #f5f5f6;\n        padding: 1em;\n        margin-left: 60px;\n        margin-bottom: 5px;\n        background-clip: padding-box;\n        border-radius: 0px;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label:after {\n        content: '';\n        display: block;\n        position: absolute;\n        width: 0;\n        height: 0;\n        border-style: solid;\n        border-width: 9px 9px 9px 0;\n        border-color: transparent #f5f5f6 transparent transparent;\n        left: 0;\n        top: 10px;\n        margin-left: -9px;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p {\n        color: #737881;\n        font-family: \"Noto Sans\", sans-serif;\n        font-size: 12px;\n        margin: 0;\n        line-height: 1.428571429;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p {\n        font-size: 16px;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p + p {\n        margin-top: 15px;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p + span {\n        font-family: \"Noto Sans\", sans-serif;\n        margin-left: 5px;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 {\n        font-weight: bold;\n        font-size: 16px;\n        margin-bottom: 20px;\n        margin-top: 0px;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 a {\n        color: #303641;\n    }\n    \n    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 span {\n        -webkit-opacity: .6;\n        -moz-opacity: .6;\n        opacity: .6;\n        -ms-filter: alpha(opacity=60);\n        filter: alpha(opacity=60);\n    }\n    \n    .movetoright {\n        text-align: right;\n        vertical-align: bottom;\n    }\n    \n    .label-tags {\n        font-family: \"Noto Sans\", sans-serif;\n        margin-left: 5px;\n        background-color: gray;\n    }\n    \n    .blockquote-source {\n        padding: 10px 20px;\n        margin: 10px 0 10px 0;\n        border-left: 5px solid #eee;\n    }"
 
 /***/ },
 /* 656 */
 /***/ function(module, exports) {
 
-module.exports = ".logo-white {\r\n    position: fixed;\r\n    z-index: 2000;\r\n    background-color: white;\r\n    width: 80px;\r\n    height: 80px;\r\n}\r\n\r\n.logo-black {\r\n    position: fixed;\r\n    z-index: 2000;\r\n    width: 80px;\r\n    height: 80px;\r\n}\r\n\r\n.logo-animate {\r\n    position: fixed;\r\n    z-index: 2000;\r\n    width: calc(50vh - 40px);\r\n    height: calc(50vh - 40px);\r\n}\r\n\r\n.logo-animate-container {\r\n    height: calc(50vh - 40px);\r\n}\r\n\r\n.particles {\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 0px;\r\n    width: 100%;\r\n    height: 100vh;\r\n}"
+module.exports = ".logo-white {\n    position: fixed;\n    z-index: 2000;\n    background-color: white;\n    width: 80px;\n    height: 80px;\n}\n\n.logo-black {\n    position: fixed;\n    z-index: 2000;\n    width: 80px;\n    height: 80px;\n}\n\n.logo-animate {\n    position: fixed;\n    z-index: 2000;\n    width: calc(50vh - 40px);\n    height: calc(50vh - 40px);\n}\n\n.logo-animate-container {\n    height: calc(50vh - 40px);\n}\n\n.particles {\n    position: absolute;\n    top: 0px;\n    left: 0px;\n    width: 100%;\n    height: 100vh;\n}"
 
 /***/ },
 /* 657 */
 /***/ function(module, exports) {
 
-module.exports = "@media screen and (max-width: 767px) {\r\n    .xs-navbar-black {\r\n        padding-bottom: 79px;\r\n    }\r\n    .nav-item div {\r\n        padding: 15px 30px 15px;\r\n    }\r\n    .nav-item div a.active{\r\n        padding: 0px 0px 10px 10px;\r\n        border-left: solid black;\r\n        color: black;\r\n        border-left-width: 4px;\r\n        font-size: 20px;\r\n    }\r\n    .nav-item div a {\r\n        padding: 0px 0px 10px 10px;\r\n        border-left: solid #bababa;\r\n        color: #bababa;\r\n        border-left-width: 4px;\r\n        font-size: 20px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n    .nav-item div {\r\n        padding-top: 25px;\r\n        padding-right: 15px;\r\n        padding-bottom: 35px;\r\n    }\r\n    .nav-item div a {\r\n        padding: 0px 0px 10px 10px;\r\n        border-left: solid #bababa;\r\n        color: #bababa;\r\n        border-left-width: 4px;\r\n        font-size: 10px;\r\n    }\r\n    .nav-item div a:hover {\r\n        padding: 0px 0px 10px 10px;\r\n        border-left: solid black;\r\n        color: black;\r\n        border-left-width: 4px;\r\n        font-size: 10px;\r\n    }\r\n    .nav-item div a.active {\r\n        padding: 0px 0px 10px 10px;\r\n        border-left: solid black;\r\n        color: black;\r\n        border-left-width: 4px;\r\n        font-size: 10px;\r\n    }\r\n}\r\n\r\n.navbar-clear {\r\n    background-color: #f5f5f5;\r\n    border: 0px;\r\n    border-radius: 0px\r\n}\r\n\r\n.affix {\r\n    top: 0;\r\n    width: 100%;\r\n    z-index:1;\r\n}\r\n\r\n.affix + .container-fluid {\r\n    padding-top: 100px;\r\n}\r\n\r\n.navbar-nav.navbar-right {\r\n    margin-right: 0;\r\n}\r\n\r\n.nav-btn-pdis {\r\n    border: 0px;\r\n    border-radius: 0px;\r\n    margin: 0px;\r\n    padding: 29.5px 20px;\r\n    display: block;\r\n    background-color: transparent;\r\n}\r\n\r\n.nav-btn-pdis .icon-bar {\r\n    background-color: #000;\r\n    height: 3px;\r\n    margin-top: 4px;\r\n    width: 25px;\r\n}\r\n\r\n.nav-btn-pdis:hover {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.nav-btn-pdis:hover .icon-bar {\r\n    background-color: white;\r\n}\r\n\r\n.navbar-toggle:focus{\r\n    background-color: transparent;\r\n}"
+module.exports = "@media screen and (max-width: 767px) {\n    .xs-navbar-black {\n        padding-bottom: 79px;\n    }\n    .nav-item div {\n        padding: 15px 30px 15px;\n    }\n    .nav-item div a.active{\n        padding: 0px 0px 10px 10px;\n        border-left: solid black;\n        color: black;\n        border-left-width: 4px;\n        font-size: 20px;\n    }\n    .nav-item div a {\n        padding: 0px 0px 10px 10px;\n        border-left: solid #bababa;\n        color: #bababa;\n        border-left-width: 4px;\n        font-size: 20px;\n    }\n}\n\n@media screen and (min-width: 768px) {\n    .nav-item div {\n        padding-top: 25px;\n        padding-right: 15px;\n        padding-bottom: 35px;\n    }\n    .nav-item div a {\n        padding: 0px 0px 10px 10px;\n        border-left: solid #bababa;\n        color: #bababa;\n        border-left-width: 4px;\n        font-size: 10px;\n    }\n    .nav-item div a:hover {\n        padding: 0px 0px 10px 10px;\n        border-left: solid black;\n        color: black;\n        border-left-width: 4px;\n        font-size: 10px;\n    }\n    .nav-item div a.active {\n        padding: 0px 0px 10px 10px;\n        border-left: solid black;\n        color: black;\n        border-left-width: 4px;\n        font-size: 10px;\n    }\n}\n\n.navbar-clear {\n    background-color: #f5f5f5;\n    border: 0px;\n    border-radius: 0px\n}\n\n.affix {\n    top: 0;\n    width: 100%;\n    z-index:1;\n}\n\n.affix + .container-fluid {\n    padding-top: 100px;\n}\n\n.navbar-nav.navbar-right {\n    margin-right: 0;\n}\n\n.nav-btn-pdis {\n    border: 0px;\n    border-radius: 0px;\n    margin: 0px;\n    padding: 29.5px 20px;\n    display: block;\n    background-color: transparent;\n}\n\n.nav-btn-pdis .icon-bar {\n    background-color: #000;\n    height: 3px;\n    margin-top: 4px;\n    width: 25px;\n}\n\n.nav-btn-pdis:hover {\n    background-color: #f5f5f5;\n}\n\n.nav-btn-pdis:hover .icon-bar {\n    background-color: white;\n}\n\n.navbar-toggle:focus{\n    background-color: transparent;\n}"
 
 /***/ },
 /* 658 */
@@ -62195,61 +62253,61 @@ module.exports = ""
 /* 659 */
 /***/ function(module, exports) {
 
-module.exports = ".slogan-container {\r\n    text-align: center;\r\n    height: calc(50vh - 140px);\r\n}\r\n\r\n.slogan {\r\n    font-size: 27px;\r\n    padding-top: calc(25vh - 70px)\r\n}\r\n\r\n.slogan-btn-container {\r\n    height: 100px;\r\n}\r\n\r\n.btn-pdis {\r\n    position: relative;\r\n    margin-right: 30px;\r\n    padding: 15px 20px;\r\n    border-radius: 0px;\r\n    border-color: black;\r\n    border: 2px solid;\r\n    color: #333;\r\n    background-color: #fff;\r\n}\r\n\r\n.btn-pdis:hover {\r\n    padding: 15px 20px;\r\n    border-radius: 0px;\r\n    border: 2px solid black;\r\n    color: #fff;\r\n    background-color: #000;\r\n}\r\n\r\n.btn-pdis-thin {\r\n    padding: 5px 20px;\r\n    border-radius: 0px;\r\n    border-color: black;\r\n    border: 2px solid;\r\n    color: #333;\r\n    background-color: #fff;\r\n}\r\n\r\n.btn-pdis-thin:hover {\r\n    padding: 5px 20px;\r\n    border-radius: 0px;\r\n    border-color: black;\r\n    border: 2px solid;\r\n    color: #fff;\r\n    background-color: #000;\r\n}\r\n\r\n.panel-pdis {\r\n    background-color: white;\r\n    padding: 25px;\r\n    position: relative;\r\n    z-index: 2;\r\n}\r\n\r\n.open-api-background {\r\n    height: 720px;\r\n    background-image: url('assets/img/open-api.jpeg');\r\n    background-size: cover;\r\n}\r\n\r\n.civic-participation-background {\r\n    height: 720px;\r\n    background-image: url('assets/img/civic-participation.jpeg');\r\n    background-size: cover;\r\n}\r\n\r\n.learn-more-container {\r\n    height: 700px;\r\n    background-image: url('assets/img/pdis-team.JPG');\r\n    background-size: cover;\r\n}\r\n\r\n.learn-more {\r\n    height: 700px;\r\n    line-height: 700px;\r\n    font-size: 20px;\r\n    color: white;\r\n    margin-right: 30px;\r\n    text-decoration: underline;\r\n}\r\n\r\n.think-about-container {\r\n    margin: -80px auto;\r\n    text-align: center;\r\n    position: relative;\r\n    z-index: 2;\r\n    float: none;\r\n}\r\n\r\ninput {\r\n    margin: 10px 0 20px;\r\n    width: 90%;\r\n    font-size: 20px;\r\n    padding-left: 10px;\r\n}"
+module.exports = ".slogan-container {\n    text-align: center;\n    height: calc(50vh - 140px);\n}\n\n.slogan {\n    font-size: 27px;\n    padding-top: calc(25vh - 70px)\n}\n\n.slogan-btn-container {\n    height: 100px;\n}\n\n.btn-pdis {\n    position: relative;\n    margin-right: 30px;\n    padding: 15px 20px;\n    border-radius: 0px;\n    border-color: black;\n    border: 2px solid;\n    color: #333;\n    background-color: #fff;\n}\n\n.btn-pdis:hover {\n    padding: 15px 20px;\n    border-radius: 0px;\n    border: 2px solid black;\n    color: #fff;\n    background-color: #000;\n}\n\n.btn-pdis-thin {\n    padding: 5px 20px;\n    border-radius: 0px;\n    border-color: black;\n    border: 2px solid;\n    color: #333;\n    background-color: #fff;\n}\n\n.btn-pdis-thin:hover {\n    padding: 5px 20px;\n    border-radius: 0px;\n    border-color: black;\n    border: 2px solid;\n    color: #fff;\n    background-color: #000;\n}\n\n.panel-pdis {\n    background-color: white;\n    padding: 25px;\n    position: relative;\n    z-index: 2;\n}\n\n.open-api-background {\n    height: 720px;\n    background-image: url('assets/img/open-api.jpeg');\n    background-size: cover;\n}\n\n.civic-participation-background {\n    height: 720px;\n    background-image: url('assets/img/civic-participation.jpeg');\n    background-size: cover;\n}\n\n.learn-more-container {\n    height: 700px;\n    background-image: url('assets/img/pdis-team.JPG');\n    background-size: cover;\n}\n\n.learn-more {\n    height: 700px;\n    line-height: 700px;\n    font-size: 20px;\n    color: white;\n    margin-right: 30px;\n    text-decoration: underline;\n}\n\n.think-about-container {\n    margin: -80px auto;\n    text-align: center;\n    position: relative;\n    z-index: 2;\n    float: none;\n}\n\ninput {\n    margin: 10px 0 20px;\n    width: 90%;\n    font-size: 20px;\n    padding-left: 10px;\n}"
 
 /***/ },
 /* 660 */
 /***/ function(module, exports) {
 
-module.exports = "<app-logo></app-logo>\r\n<app-nav-bar></app-nav-bar>\r\n<router-outlet></router-outlet>\r\n\r\n\r\n"
+module.exports = "<app-logo></app-logo>\n<app-nav-bar></app-nav-bar>\n<router-outlet></router-outlet>\n\n\n"
 
 /***/ },
 /* 661 */
 /***/ function(module, exports) {
 
-module.exports = "<!-- Begin Body -->\r\n\r\n<div class=\"container\">\r\n  <section>\r\n    <div class=\"col-md-6\">\r\n      <h4>Come to our forum at <a class=\"link-pdis\" target=\"_blank\" href=\"https://talk.pdis.tw\">talk.pdis.tw</a></h4>\r\n      <h4>Or, tell us what you think about PDIS:</h4>\r\n      <input />\r\n      <br><br>\r\n      <button class=\"btn btn-pdis-thin\">Submit</button>\r\n    </div>\r\n  </section>\r\n</div>\r\n"
+module.exports = "<!-- Begin Body -->\n\n<div class=\"container\">\n  <section>\n    <div class=\"col-md-6\">\n      <h4>Come to our forum at <a class=\"link-pdis\" target=\"_blank\" href=\"https://talk.pdis.tw\">talk.pdis.tw</a></h4>\n      <h4>Or, tell us what you think about PDIS:</h4>\n      <input />\n      <br><br>\n      <button class=\"btn btn-pdis-thin\">Submit</button>\n    </div>\n  </section>\n</div>\n"
 
 /***/ },
 /* 662 */
 /***/ function(module, exports) {
 
-module.exports = "<!-- Begin Body -->\r\n<div class=\"container\">\r\n  <section>\r\n    <h3>\r\n      <strong>\r\n      We are commited to open our work process.\r\n      <br>\r\n      See below the tools we use and check how we work day by day:\r\n      </strong>\r\n    </h3>\r\n  </section>\r\n  <app-tools></app-tools>\r\n  <app-track></app-track>\r\n</div>"
+module.exports = "<!-- Begin Body -->\n<div class=\"container\">\n  <section>\n    <h3>\n      <strong>\n      We are commited to open our work process.\n      <br>\n      See below the tools we use and check how we work day by day:\n      </strong>\n    </h3>\n  </section>\n  <app-tools></app-tools>\n  <app-track></app-track>\n</div>"
 
 /***/ },
 /* 663 */
 /***/ function(module, exports) {
 
-module.exports = "<div *ngIf=\"list\" class=\"clearfix\">\r\n  <h2 class=\"thumbnail-text\">Tools</h2>\r\n  <div *ngFor=\"let post of list['post_stream'].posts\">\r\n    <div class=\"col-sm-4 col-md-3 col-lg-2 thumbnail-pdis\" [innerHTML]=\"post.cooked\"></div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"list\" class=\"clearfix\">\n  <h2 class=\"thumbnail-text\">Tools</h2>\n  <div *ngFor=\"let post of list['post_stream'].posts\">\n    <div class=\"col-sm-4 col-md-3 col-lg-2 thumbnail-pdis\" [innerHTML]=\"post.cooked\"></div>\n  </div>\n</div>\n"
 
 /***/ },
 /* 664 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"clearfix\">\r\n  <h2>Track.PDIS</h2>\r\n  <div class=\"col-md-12\">\r\n    <!-- Nav tabs -->\r\n    <div class=\"card\">\r\n      <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n        <li role=\"presentation\" class=\"active\"><a href=\"#home\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">All</a></li>\r\n        <li role=\"presentation\"><a href=\"#profile\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Today</a></li>\r\n        <li role=\"presentation\"><a href=\"#messages\" aria-controls=\"messages\" role=\"tab\" data-toggle=\"tab\">Audio</a></li>\r\n        <li role=\"presentation\"><a href=\"#settings\" aria-controls=\"settings\" role=\"tab\" data-toggle=\"tab\">Video</a></li>\r\n        <li role=\"presentation\"><a href=\"#settings\" aria-controls=\"settings\" role=\"tab\" data-toggle=\"tab\">Transcript</a></li>\r\n      </ul>\r\n\r\n      <!-- Tab panes -->\r\n      <div class=\"tab-content\">\r\n\r\n        <div role=\"tabpanel\" class=\"tab-pane active\" id=\"home\">\r\n          <div class=\"timeline-centered\">\r\n            <article class=\"timeline-entry\" *ngFor=\"let post of posts\">\r\n              <div class=\"timeline-entry-inner\">\r\n                  <div class=\"timeline-icon bg-{{ post.tags | JSONpipes:'gettag'| lowercase}} bg-circle\"></div>\r\n              <div class=\"timeline-label\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-12\">\r\n                    <h2>{{post.date | date:\"yyyy/MM/dd\"}} {{post.title}}</h2>\r\n                  </div>\r\n                  <div class=\"col-md-12\">\r\n                    <div style=\"padding-left:0\" class=\"col-md-6\">\r\n                      <p class=\"glyphicon glyphicon-user\"></p><span>{{post.participants}}</span>\r\n                      <blockquote class=\"blockquote-source\">\r\n                        <a *ngFor=\"let media of post.content | JSONpipes:'not null object of array'\" target=\"_blank\" href=\"{{media | JSONpipes:'values'}}\"\r\n                          class=\"btn btn-new btn-{{media | JSONpipes:'keys' | lowercase}} btn-new\" role=\"button\">{{media | JSONpipes:'keys'}}</a>\r\n                      </blockquote>\r\n                    </div>\r\n                    <div class=\"col-md-6\">\r\n                      <div class=\"movetoright\">\r\n                        <span class=\"glyphicon glyphicon-tag\"></span>\r\n                        <span class=\"label label-tags\" *ngFor=\"let tag of post.tags \">{{tag}}</span>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n\r\n                </div>\r\n              </div>\r\n          </div>\r\n          </article>\r\n        </div>\r\n      </div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n      <div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard\r\n        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen\r\n        book.\r\n      </div>\r\n      <div role=\"tabpanel\" class=\"tab-pane\" id=\"messages\">\r\n        <div class=\"timeline-centered\">\r\n          <article class=\"timeline-entry\" *ngFor=\"let post of posts\">\r\n            <div class=\"timeline-entry-inner\">\r\n              <div class=\"timeline-icon bg-circle\">\r\n                <!--<i class=\"entypo-feather\"></i>-->\r\n              </div>\r\n              <div class=\"timeline-label\">\r\n                <h2>{{post.title}}</h2>\r\n                <p>{{post.date | date:\"yyyy/MM/dd\"}}</p>\r\n                <blockquote>\r\n                  <a *ngFor=\"let media of post.content | JSONpipes:'not null object of array'\" target=\"_blank\" href=\"{{media | JSONpipes:'values'}}\"\r\n                    class=\"btn btn-{{media | JSONpipes:'keys' | lowercase}}\" role=\"button\">{{media | JSONpipes:'keys'}}</a>\r\n                </blockquote>\r\n                <div class=\"movetoright\">\r\n                  <span class=\"glyphicon glyphicon-user\"></span> {{post.participants}}\r\n                </div>\r\n                <div class=\"movetoright\">\r\n                  <span class=\"glyphicon glyphicon-tag\"></span>\r\n                  <span class=\"label label-tags\" *ngFor=\"let tag of post.tags \">{{tag}}</span>\r\n                </div>\r\n              </div>\r\n            </div>\r\n\r\n          </article>\r\n        </div>\r\n\r\n\r\n      </div>\r\n      <div role=\"tabpanel\" class=\"tab-pane\" id=\"settings\">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard\r\n        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen\r\n        book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially\r\n        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n</div>"
+module.exports = "<div class=\"clearfix\">\n  <h2>Track.PDIS</h2>\n  <div class=\"col-md-12\">\n    <!-- Nav tabs -->\n    <div class=\"card\">\n      <ul class=\"nav nav-tabs\" role=\"tablist\">\n        <li role=\"presentation\" class=\"active\"><a href=\"#home\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">All</a></li>\n        <li role=\"presentation\"><a href=\"#profile\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Today</a></li>\n        <li role=\"presentation\"><a href=\"#messages\" aria-controls=\"messages\" role=\"tab\" data-toggle=\"tab\">Audio</a></li>\n        <li role=\"presentation\"><a href=\"#settings\" aria-controls=\"settings\" role=\"tab\" data-toggle=\"tab\">Video</a></li>\n        <li role=\"presentation\"><a href=\"#settings\" aria-controls=\"settings\" role=\"tab\" data-toggle=\"tab\">Transcript</a></li>\n      </ul>\n\n      <!-- Tab panes -->\n      <div class=\"tab-content\">\n\n        <div role=\"tabpanel\" class=\"tab-pane active\" id=\"home\">\n          <div class=\"timeline-centered\">\n            <article class=\"timeline-entry\" *ngFor=\"let post of posts\">\n              <div class=\"timeline-entry-inner\">\n                  <div class=\"timeline-icon bg-{{ post.tags | JSONpipes:'gettag'| lowercase}} bg-circle\"></div>\n              <div class=\"timeline-label\">\n                <div class=\"row\">\n                  <div class=\"col-md-12\">\n                    <h2>{{post.date | date:\"yyyy/MM/dd\"}} {{post.title}}</h2>\n                  </div>\n                  <div class=\"col-md-12\">\n                    <div style=\"padding-left:0\" class=\"col-md-6\">\n                      <p class=\"glyphicon glyphicon-user\"></p><span>{{post.participants}}</span>\n                      <blockquote class=\"blockquote-source\">\n                        <a *ngFor=\"let media of post.content | JSONpipes:'not null object of array'\" target=\"_blank\" href=\"{{media | JSONpipes:'values'}}\"\n                          class=\"btn btn-new btn-{{media | JSONpipes:'keys' | lowercase}} btn-new\" role=\"button\">{{media | JSONpipes:'keys'}}</a>\n                      </blockquote>\n                    </div>\n                    <div class=\"col-md-6\">\n                      <div class=\"movetoright\">\n                        <span class=\"glyphicon glyphicon-tag\"></span>\n                        <span class=\"label label-tags\" *ngFor=\"let tag of post.tags \">{{tag}}</span>\n                      </div>\n                    </div>\n                  </div>\n\n                </div>\n              </div>\n          </div>\n          </article>\n        </div>\n      </div>\n\n\n\n\n\n\n\n      <div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard\n        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen\n        book.\n      </div>\n      <div role=\"tabpanel\" class=\"tab-pane\" id=\"messages\">\n        <div class=\"timeline-centered\">\n          <article class=\"timeline-entry\" *ngFor=\"let post of posts\">\n            <div class=\"timeline-entry-inner\">\n              <div class=\"timeline-icon bg-circle\">\n                <!--<i class=\"entypo-feather\"></i>-->\n              </div>\n              <div class=\"timeline-label\">\n                <h2>{{post.title}}</h2>\n                <p>{{post.date | date:\"yyyy/MM/dd\"}}</p>\n                <blockquote>\n                  <a *ngFor=\"let media of post.content | JSONpipes:'not null object of array'\" target=\"_blank\" href=\"{{media | JSONpipes:'values'}}\"\n                    class=\"btn btn-{{media | JSONpipes:'keys' | lowercase}}\" role=\"button\">{{media | JSONpipes:'keys'}}</a>\n                </blockquote>\n                <div class=\"movetoright\">\n                  <span class=\"glyphicon glyphicon-user\"></span> {{post.participants}}\n                </div>\n                <div class=\"movetoright\">\n                  <span class=\"glyphicon glyphicon-tag\"></span>\n                  <span class=\"label label-tags\" *ngFor=\"let tag of post.tags \">{{tag}}</span>\n                </div>\n              </div>\n            </div>\n\n          </article>\n        </div>\n\n\n      </div>\n      <div role=\"tabpanel\" class=\"tab-pane\" id=\"settings\">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard\n        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen\n        book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially\n        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..\n      </div>\n    </div>\n  </div>\n</div>\n</div>"
 
 /***/ },
 /* 665 */
 /***/ function(module, exports) {
 
-module.exports = "<div *ngIf=\"logoType==='white'\" style=\"float:left\">\r\n  <img id=\"logo\" class=\"logo-white\" src=\"assets/img/logo-02.svg\">\r\n</div>\r\n\r\n<div *ngIf=\"logoType==='black'\" style=\"float:left\">\r\n  <img id=\"logo\" class=\"logo-black\" src=\"assets/img/logo-01.svg\">\r\n</div>\r\n\r\n<div *ngIf=\"logoType==='animate'\" class=\"logo-animate-container\">\r\n\r\n  <div id=\"particles\" class=\"particles\">\r\n  </div>\r\n  <img id=\"logo\" class=\"logo-animate\" src=\"assets/img/logo-02.svg\">\r\n</div>"
+module.exports = "<div *ngIf=\"logoType==='white'\" style=\"float:left\">\n  <img id=\"logo\" class=\"logo-white\" src=\"assets/img/logo-02.svg\">\n</div>\n\n<div *ngIf=\"logoType==='black'\" style=\"float:left\">\n  <img id=\"logo\" class=\"logo-black\" src=\"assets/img/logo-01.svg\">\n</div>\n\n<div *ngIf=\"logoType==='animate'\" class=\"logo-animate-container\">\n\n  <div id=\"particles\" class=\"particles\">\n  </div>\n  <img id=\"logo\" class=\"logo-animate\" src=\"assets/img/logo-02.svg\">\n</div>"
 
 /***/ },
 /* 666 */
 /***/ function(module, exports) {
 
-module.exports = "<!--imgheight > 0 for animate logo-->\r\n\r\n<nav id=\"navbar\" [attr.data-offset-top]=\"imgheight>0 ? imgheight : null\" [attr.data-spy]=\"imgheight>0 ? 'affix' : null\" class=\"{{navClass}}\"\r\n   (mouseleave)='isCollapse=false'>\r\n\r\n  <!--navbar for large screen-->\r\n  <div class=\"xs-navbar-black\">\r\n    <button type=\"button\" class=\"nav-btn-pdis navbar-toggle pull-right\" (mouseenter)='isCollapse=true'\r\n     (click)='isCollapse=!isCollapse'>\r\n      <span class=\"icon-bar\"></span>\r\n      <span class=\"icon-bar\"></span>\r\n      <span class=\"icon-bar\"></span>\r\n    </button>\r\n  </div>\r\n    <div>\r\n      <ul [class.in]=\"isCollapse\" id=\"navbar-lg\" class=\"collapse nav navbar-nav navbar-right\">\r\n        <li class=\"nav-item\">\r\n          <div>\r\n            <a [routerLinkActive]=\"['active']\" [routerLink]=\"['/what-we-do']\">\r\n                        WHAT WE DO\r\n                      </a>\r\n          </div>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <div>\r\n            <a [routerLinkActive]=\"['active']\" [routerLink]=\"['/how-we-work']\">\r\n                        HOW WE WORK\r\n                      </a>\r\n          </div>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <div>\r\n            <a [routerLinkActive]=\"['active']\" [routerLink]=\"['/get-involved']\">\r\n                        GET INVOLVED\r\n                      </a>\r\n          </div>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n\r\n\r\n</nav>\r\n<div class=\"container-fluid\" [style.height]=\"imgheight>0 ? 0 : '90px'\"></div>"
+module.exports = "<!--imgheight > 0 for animate logo-->\n\n<nav id=\"navbar\" [attr.data-offset-top]=\"imgheight>0 ? imgheight : null\" [attr.data-spy]=\"imgheight>0 ? 'affix' : null\" class=\"{{navClass}}\"\n   (mouseleave)='isCollapse=false'>\n\n  <!--navbar for large screen-->\n  <div class=\"xs-navbar-black\">\n    <button type=\"button\" class=\"nav-btn-pdis navbar-toggle pull-right\" (mouseenter)='isCollapse=true'\n     (click)='isCollapse=!isCollapse'>\n      <span class=\"icon-bar\"></span>\n      <span class=\"icon-bar\"></span>\n      <span class=\"icon-bar\"></span>\n    </button>\n  </div>\n    <div>\n      <ul [class.in]=\"isCollapse\" id=\"navbar-lg\" class=\"collapse nav navbar-nav navbar-right\">\n        <li class=\"nav-item\">\n          <div>\n            <a [routerLinkActive]=\"['active']\" [routerLink]=\"['/what-we-do']\">\n                        WHAT WE DO\n                      </a>\n          </div>\n        </li>\n        <li class=\"nav-item\">\n          <div>\n            <a [routerLinkActive]=\"['active']\" [routerLink]=\"['/how-we-work']\">\n                        HOW WE WORK\n                      </a>\n          </div>\n        </li>\n        <li class=\"nav-item\">\n          <div>\n            <a [routerLinkActive]=\"['active']\" [routerLink]=\"['/get-involved']\">\n                        GET INVOLVED\n                      </a>\n          </div>\n        </li>\n      </ul>\n    </div>\n\n\n</nav>\n<div class=\"container-fluid\" [style.height]=\"imgheight>0 ? 0 : '90px'\"></div>"
 
 /***/ },
 /* 667 */
 /***/ function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\" style=\"padding-top:80px\"></div>\r\n\r\n<!-- open-api -->\r\n<div class=\"container\" *ngIf=\"id=='open-api'\">\r\n  <div *ngFor=\"let post of posts\">\r\n\r\n    <!-- open-api-> 1 columns-->\r\n    <div *ngIf=\"post.content.length==1\">\r\n      <div class=\"row\">\r\n        <div class=\"col-md-1 \"></div>\r\n        <div class=\"col-md-10 col-xs-12\" [innerHTML]=\"post.content[0]\"></div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- open-api-> 2 columns-->\r\n    <div *ngIf=\"post.content.length==2\">\r\n      <div class=\"row\">\r\n        <div class=\"col-md-1\"></div>\r\n\r\n        <!-- open-api-> youtube --> \r\n        <div *ngIf=\"post.content[0]=='you-tube'\">      \r\n          <iframe style=\"border:0px;\" width=\"450\" height=\"280\" [src]=\"videoUrl\"></iframe>\r\n        </div>\r\n         <div *ngIf=\"post.content[0]!='you-tube'\">      \r\n          <div class=\"col-md-5 \" [innerHTML]=\"post.content[0]\"></div>\r\n        </div>\r\n        <div *ngIf=\"post.content[1]=='you-tube'\"> \r\n          <div class=\"col-md-4 video-container\">     \r\n            <iframe style=\"border:0px;\" width=\"450\" height=\"280\" [src]=\"videoUrl\"></iframe>\r\n          </div>\r\n        </div>       \r\n        <div *ngIf=\"post.content[1]!='you-tube'\">\r\n          <div class=\"col-md-5 \" [innerHTML]=\"post.content[1]\"></div>\r\n        </div> \r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<!-- civic-participation-->\r\n<div class=\"container\" *ngIf=\"id=='civic-participation'\">\r\n  <div *ngFor=\"let post of posts\">\r\n\r\n    <!-- civic-participation-> 1 columns-->\r\n    <div *ngIf=\"post.content.length==1\" class=\"img-container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-md-1 \"></div>\r\n        <div class=\"col-md-10 col-xs-12\" [innerHTML]=\"post.content[0]\"></div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- civic-participation-> 2 columns-->\r\n    <div *ngIf=\"post.content.length==2\">\r\n      <div class=\"row\">\r\n        <div class=\"col-md-1\"></div>    \r\n        \r\n        <!-- civic-participation-> youtube-->  \r\n        <div *ngIf=\"post.content[0]=='you-tube'\">      \r\n          <iframe style=\"border:0px;\" width=\"450\" height=\"280\" [src]=\"videoUrl\"></iframe>\r\n        </div>\r\n        <div *ngIf=\"post.content[0]!='you-tube'\">      \r\n          <div class=\"col-md-5\" [innerHTML]=\"post.content[0]\"></div>\r\n        </div>\r\n        <div *ngIf=\"post.content[1]=='you-tube'\"> \r\n          <div class=\"col-md-4 video-container\">     \r\n            <iframe style=\"border:0px;\" width=\"450\" height=\"280\" [src]=\"videoUrl\"></iframe>\r\n          </div>\r\n        </div>        \r\n        <div *ngIf=\"post.content[1]!='you-tube'\">      \r\n          <div class=\"col-md-5\" [innerHTML]=\"post.content[1]\"></div>\r\n        </div>          \r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<!--<youtube-component yuotube-id=\"dhjfksdjdss\"></youtube-component>-->\r\n"
+module.exports = "\n<div class=\"container\" style=\"padding-top:80px\"></div>\n\n<!-- open-api -->\n<div class=\"container\" *ngIf=\"id=='open-api'\">\n  <div *ngFor=\"let post of posts\">\n\n    <!-- open-api-> 1 columns-->\n    <div *ngIf=\"post.content.length==1\">\n      <div class=\"row\">\n        <div class=\"col-md-1 \"></div>\n        <div class=\"col-md-10 col-xs-12\" [innerHTML]=\"post.content[0]\"></div>\n      </div>\n    </div>\n\n    <!-- open-api-> 2 columns-->\n    <div *ngIf=\"post.content.length==2\">\n      <div class=\"row\">\n        <div class=\"col-md-1\"></div>\n\n        <!-- open-api-> youtube --> \n        <div *ngIf=\"post.content[0]=='you-tube'\">      \n          <iframe style=\"border:0px;\" width=\"450\" height=\"280\" [src]=\"videoUrl\"></iframe>\n        </div>\n         <div *ngIf=\"post.content[0]!='you-tube'\">      \n          <div class=\"col-md-5 \" [innerHTML]=\"post.content[0]\"></div>\n        </div>\n        <div *ngIf=\"post.content[1]=='you-tube'\"> \n          <div class=\"col-md-4 video-container\">     \n            <iframe style=\"border:0px;\" width=\"450\" height=\"280\" [src]=\"videoUrl\"></iframe>\n          </div>\n        </div>       \n        <div *ngIf=\"post.content[1]!='you-tube'\">\n          <div class=\"col-md-5 \" [innerHTML]=\"post.content[1]\"></div>\n        </div> \n      </div>\n    </div>\n  </div>\n</div>\n<!-- civic-participation-->\n<div class=\"container\" *ngIf=\"id=='civic-participation'\">\n  <div *ngFor=\"let post of posts\">\n\n    <!-- civic-participation-> 1 columns-->\n    <div *ngIf=\"post.content.length==1\" class=\"img-container\">\n      <div class=\"row\">\n        <div class=\"col-md-1 \"></div>\n        <div class=\"col-md-10 col-xs-12\" [innerHTML]=\"post.content[0]\"></div>\n      </div>\n    </div>\n\n    <!-- civic-participation-> 2 columns-->\n    <div *ngIf=\"post.content.length==2\">\n      <div class=\"row\">\n        <div class=\"col-md-1\"></div>    \n        \n        <!-- civic-participation-> youtube-->  \n        <div *ngIf=\"post.content[0]=='you-tube'\">      \n          <iframe style=\"border:0px;\" width=\"450\" height=\"280\" [src]=\"videoUrl\"></iframe>\n        </div>\n        <div *ngIf=\"post.content[0]!='you-tube'\">      \n          <div class=\"col-md-5\" [innerHTML]=\"post.content[0]\"></div>\n        </div>\n        <div *ngIf=\"post.content[1]=='you-tube'\"> \n          <div class=\"col-md-4 video-container\">     \n            <iframe style=\"border:0px;\" width=\"450\" height=\"280\" [src]=\"videoUrl\"></iframe>\n          </div>\n        </div>        \n        <div *ngIf=\"post.content[1]!='you-tube'\">      \n          <div class=\"col-md-5\" [innerHTML]=\"post.content[1]\"></div>\n        </div>          \n      </div>\n    </div>\n  </div>\n</div>\n\n<!--<youtube-component yuotube-id=\"dhjfksdjdss\"></youtube-component>-->\n"
 
 /***/ },
 /* 668 */
 /***/ function(module, exports) {
 
-module.exports = "<!-- Begin Body -->\r\n\r\n<!-- MORE ABOUT PDIS ========================================== -->\r\n  <div class=\"slogan-container\">\r\n    <h4 class=\"slogan\">\r\n      We incubate and facilitate public digital innovation and service.\r\n    </h4>\r\n  </div>\r\n  <div class=\"slogan-btn-container\">\r\n    <a class=\"btn btn-pdis pull-right\">More about PDIS</a>\r\n  </div>\r\n\r\n<!-- MORE ABOUT PDIS END ====================================== -->\r\n\r\n<!--test-->\r\n<!-- MORE ABOUT OPEN API ====================================== -->\r\n\r\n<div class=\"open-api-background\">\r\n  <div class=\"col-md-3 col-sm-2\"></div>\r\n  <div class=\"col-md-6 col-sm-8 panel-pdis\">\r\n    <div *ngIf=\"item1\">\r\n      <div *ngFor=\"let post of item1.post_stream.posts; let first = first\">\r\n        <div *ngIf=\"first\" [innerHTML]=\"post.cooked\"></div>\r\n      </div>\r\n    </div>\r\n    <a class=\"btn btn-pdis\" [routerLink]=\"['/what-we-do/open-api']\" role=\"button\">\r\n    More about Open API\r\n    </a>\r\n  </div>\r\n  <div class=\"col-md-3 col-sm-2\"></div>\r\n</div>\r\n\r\n\r\n<!-- MORE ABOUT OPEN API END ====================================== -->\r\n\r\n<div style=\"height: 50px;\"></div>\r\n\r\n<!-- MORE ABOUT CIVIC PARTICIPATION ====================================== -->\r\n\r\n<div class=\"civic-participation-background\">\r\n  <div class=\"col-md-6 col-sm-8 panel-pdis\">\r\n    <div *ngIf=\"item2\">\r\n      <div *ngFor=\"let post of item2.post_stream.posts; let first = first\">\r\n        <div *ngIf=\"first\" [innerHTML]=\"post.cooked\"></div>\r\n      </div>\r\n    </div>\r\n    <a class=\"btn btn-pdis\" [routerLink]=\"['/what-we-do/civic-participation']\" role=\"button\">\r\n    More about Civic​​ Participation\r\n    </a>\r\n  </div>\r\n  <div class=\"col-md-6 col-sm-4\"></div>\r\n</div>\r\n\r\n\r\n<!-- MORE ABOUT CIVIC PARTICIPATION END ====================================== -->\r\n\r\n<!-- THINK ABOUT =========================================== -->\r\n<div>\r\n  <div class=\"col-md-4 col-sm-3\"></div>\r\n  <div class=\"panel-pdis col-md-4 col-sm-6 think-about-container\">\r\n    <h3>Tell us what you think about</h3>\r\n    <img src=\"assets/img/pdis-logo-08.png\" alt=\"Generic placeholder image\" width=\"254\" height=\"90\">\r\n    <br>\r\n    <input [(ngModel)]=\"think\" />\r\n    <br>\r\n    <a class=\"btn btn-pdis-thin\" role=\"button\" (click)=\"postDataToServer(think)\">Submit</a>\r\n  </div>\r\n  <div class=\"col-md-4 col-sm-3\"></div>\r\n</div>\r\n\r\n<!-- THINK ABOUT END ====================================== -->\r\n\r\n<div class=\"learn-more-container\">\r\n  <h4 class=\"pull-right learn-more\">\r\n    Learn more on how we work...\r\n  </h4>\r\n</div>"
+module.exports = "<!-- Begin Body -->\n\n<!-- MORE ABOUT PDIS ========================================== -->\n  <div class=\"slogan-container\">\n    <h4 class=\"slogan\">\n      We incubate and facilitate public digital innovation and service.\n    </h4>\n  </div>\n  <div class=\"slogan-btn-container\">\n    <a class=\"btn btn-pdis pull-right\">More about PDIS</a>\n  </div>\n\n<!-- MORE ABOUT PDIS END ====================================== -->\n\n<!--test-->\n<!-- MORE ABOUT OPEN API ====================================== -->\n\n<div class=\"open-api-background\">\n  <div class=\"col-md-3 col-sm-2\"></div>\n  <div class=\"col-md-6 col-sm-8 panel-pdis\">\n    <div *ngIf=\"item1\">\n      <div *ngFor=\"let post of item1.post_stream.posts; let first = first\">\n        <div *ngIf=\"first\" [innerHTML]=\"post.cooked\"></div>\n      </div>\n    </div>\n    <a class=\"btn btn-pdis\" [routerLink]=\"['/what-we-do/open-api']\" role=\"button\">\n    More about Open API\n    </a>\n  </div>\n  <div class=\"col-md-3 col-sm-2\"></div>\n</div>\n\n\n<!-- MORE ABOUT OPEN API END ====================================== -->\n\n<div style=\"height: 50px;\"></div>\n\n<!-- MORE ABOUT CIVIC PARTICIPATION ====================================== -->\n\n<div class=\"civic-participation-background\">\n  <div class=\"col-md-6 col-sm-8 panel-pdis\">\n    <div *ngIf=\"item2\">\n      <div *ngFor=\"let post of item2.post_stream.posts; let first = first\">\n        <div *ngIf=\"first\" [innerHTML]=\"post.cooked\"></div>\n      </div>\n    </div>\n    <a class=\"btn btn-pdis\" [routerLink]=\"['/what-we-do/civic-participation']\" role=\"button\">\n    More about Civic​​ Participation\n    </a>\n  </div>\n  <div class=\"col-md-6 col-sm-4\"></div>\n</div>\n\n\n<!-- MORE ABOUT CIVIC PARTICIPATION END ====================================== -->\n\n<!-- THINK ABOUT =========================================== -->\n<div>\n  <div class=\"col-md-4 col-sm-3\"></div>\n  <div class=\"panel-pdis col-md-4 col-sm-6 think-about-container\">\n    <h3>Tell us what you think about</h3>\n    <img src=\"assets/img/pdis-logo-08.png\" alt=\"Generic placeholder image\" width=\"254\" height=\"90\">\n    <br>\n    <input [(ngModel)]=\"think\" />\n    <br>\n    <a class=\"btn btn-pdis-thin\" role=\"button\" (click)=\"postDataToServer(think)\">Submit</a>\n  </div>\n  <div class=\"col-md-4 col-sm-3\"></div>\n</div>\n\n<!-- THINK ABOUT END ====================================== -->\n\n<div class=\"learn-more-container\">\n  <h4 class=\"pull-right learn-more\">\n    Learn more on how we work...\n  </h4>\n</div>"
 
 /***/ },
 /* 669 */
