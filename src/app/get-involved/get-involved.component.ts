@@ -14,7 +14,6 @@ export class GetInvolvedComponent implements OnInit {
   res;
   err;
 
-
   constructor(private discoursesvcWwd: DiscourseService) { }
 
   ngOnInit() {
@@ -31,7 +30,7 @@ export class GetInvolvedComponent implements OnInit {
       err => {
         this.err = err,
           console.log(err)
-          // ,alert(err)
+        // ,alert(err)
       },
       () => console.log('POST Complete')
       );
