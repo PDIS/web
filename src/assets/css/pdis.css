@@ -1,9 +1,14 @@
-body{
-    background-color: rgba(238,238,228,1);
+body {
+    background-color: rgba(238, 238, 228, 1);
 }
 
 p {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Georgia', serif;
+    line-height: 35px;
+    font-size: 22px;
+    text-align: justify;
+    color: #676363;
+
 }
 
 h1 strong, h2 strong, h3 strong, h4 strong, h5 strong {
@@ -69,59 +74,65 @@ input {
 }
 
 @media screen and (max-width: 991px) {
-  
-  .img-container img {
-    /*position: absolute;*/
-    top: 10px;
-    
-    width: 100%;
-    height: 100%;
-    border:0px;
+    .img-container img {
+        /*position: absolute;*/
+        top: 10px;
+        width: 100%;
+        height: 100%;
+        border: 0px;
     }
-
     .video-container {
         padding-top: 65%;
     }
-     
     .video-container iframe, .video-container object, .video-container embed {
         position: absolute;
         top: 10px;
         left: 5%;
         width: 90%;
-
         height: 90%;
-        border:0px;
-       
-
+        border: 0px;
     }
-   
+}
+
+@media screen and (min-width: 991px) {
+    .img-container img {
+        /*position: absolute;*/
+        top: 10px;
+        width: 100%;
+        height: 100%;
+        border: 0px;
+    }
+
+
+.img-container em img {
+    float: right;
+    margin-left: 20px;
+}
+
+.img-container strong img {
+    float: left;
+    margin-right: 20px;
+    margin-top: 10px;
+    width: 350px;
+    height: 250px;
+    
+}
+
 }
 /*.img-container {
     padding-top: 100%;
 
 }*/
 
-
-em img {
-    float: right;
-    margin-left: 20px;
-}
-
-strong img {
-    float: left;
-
-    margin-right: 20px;
-     margin-top: 10px;
-    
-
-}
- ul.pagination {
+ul.pagination {
     display: inline-block;
     padding: 0;
     margin: 0;
 }
 
-ul.pagination li {display: inline;}
+ul.pagination li {
+    display: inline;
+}
 
 ul.pagination li a {
     color: black;
@@ -138,5 +149,9 @@ ul.pagination li a.active {
     border: 1px solid #4CAF50;
 }
 
-ul.pagination li a:hover:not(.active) {background-color: #ddd;}
-
+ul.pagination li a:hover:not(.active) {
+    background-color: #ddd;
+}
+dd{
+    clear: left;
+}
