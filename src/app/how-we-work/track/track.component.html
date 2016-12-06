@@ -20,22 +20,23 @@
               <div class="timeline-entry-inner">
                 <div class="timeline-icon bg-circle"></div>
                 <div class="timeline-label">
+                  <!--<div class=""></div>-->
                   <div class="row">
                     <!--tag & title & date & participants-->
                     <div class="col-md-12">
-                      <span class="label label-tag" *ngFor="let tag of post.tags ">{{tag}}</span>
+                      <!--<span class="label label-tag" *ngFor="let tag of post.tags ">{{tag}}</span>-->
                       <h2>{{post.title}}</h2>
-                        <div class="date">
-                          <p>{{post.date | date:"yyyy/MM/dd"}}</p>
-                        </div>
-                      
+                      <div class="date">
+                        <p>{{post.date | date:"yyyy/MM/dd"}}</p>
+                      </div>
                     </div>
-                    <!--content btn btn-{{media | JSONpipes:'keys' | lowercase}} btn-new-->
+                    <!--content-->
                     <div class="col-md-12">
                       <p>
                         <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
-                          class="btn btn-new hvr-{{media | JSONpipes:'keys' | lowercase}}" role="button">{{media | JSONpipes:'keys'}}</a>
+                          class="btn btn-{{media | JSONpipes:'keys' | lowercase}} btn-new " role="button">{{media | JSONpipes:'keys'}}</a>
                       </p>
+                      <div class="movetoright"><span class="label label-tag" *ngFor="let tag of post.tags ">{{tag}}</span></div>
                     </div>
                   </div>
                 </div>
