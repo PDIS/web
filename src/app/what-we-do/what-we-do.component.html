@@ -14,21 +14,32 @@
 
 <!--test-->
 <!-- MORE ABOUT OPEN API ====================================== -->
-
-<div class="open-api-background">
-  <div class="col-md-3 col-sm-2"></div>
-  <div class="col-md-6 col-sm-8 panel-pdis">
-    <div *ngIf="item1">
-      <div *ngFor="let post of item1.post_stream.posts; let first = first">
-        <div *ngIf="first" [innerHTML]="post.cooked"></div>
+<div class="open-api-container" style="
+    height: 720px;
+">
+  <div class="open-api-background" style="
+    float: left;
+    width: 100%;
+    position: absolute;
+">
+  </div>
+  <div>
+    <div class="col-md-3 col-sm-2"></div>
+    <div class="col-md-6 col-sm-8 panel-pdis">
+      <div *ngIf="item1">
+        <div *ngFor="let post of item1.post_stream.posts; let first = first">
+          <div *ngIf="first" [innerHTML]="post.cooked"></div>
+        </div>
       </div>
-    </div>
-    <a class="btn btn-pdis" [routerLink]="['/what-we-do/open-api']" role="button">
+      <a class="btn btn-pdis" [routerLink]="['/what-we-do/open-api']" role="button">
     More about Open API
     </a>
+    </div>
+    <div class="col-md-3 col-sm-2"></div>
   </div>
-  <div class="col-md-3 col-sm-2"></div>
+
 </div>
+
 
 
 <!-- MORE ABOUT OPEN API END ====================================== -->
@@ -36,20 +47,31 @@
 <div style="height: 8px;"></div>
 
 <!-- MORE ABOUT CIVIC PARTICIPATION ====================================== -->
-
-<div class="civic-participation-background">
-  <div class="col-md-6 col-sm-8 panel-pdis">
-    <div *ngIf="item2">
-      <div *ngFor="let post of item2.post_stream.posts; let first = first">
-        <div *ngIf="first" [innerHTML]="post.cooked"></div>
+<div style="
+    height: 720px;
+">
+  <div class="civic-participation-background" style="
+    float: left;
+    width: 100%;
+    position: absolute;
+    -webkit-filter: blur(5px);
+"></div>
+  <div>
+    <div class="col-md-6 col-sm-8 panel-pdis">
+      <div *ngIf="item2">
+        <div *ngFor="let post of item2.post_stream.posts; let first = first">
+          <div *ngIf="first" [innerHTML]="post.cooked"></div>
+        </div>
       </div>
-    </div>
-    <a class="btn btn-pdis" [routerLink]="['/what-we-do/civic-participation']" role="button">
+      <a class="btn btn-pdis" [routerLink]="['/what-we-do/civic-participation']" role="button">
     More about Civic​​ Participation
     </a>
+    </div>
+    <div class="col-md-6 col-sm-4"></div>
   </div>
-  <div class="col-md-6 col-sm-4"></div>
 </div>
+
+
 
 
 <!-- MORE ABOUT CIVIC PARTICIPATION END ====================================== -->
