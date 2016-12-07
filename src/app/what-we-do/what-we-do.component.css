@@ -15,7 +15,6 @@
 
 .btn-pdis {
     position: relative;
-    margin-right: 30px;
     padding: 15px 20px;
     border-radius: 0px;
     border-color: black;
@@ -24,27 +23,7 @@
 }
 
 .btn-pdis:hover {
-    padding: 15px 20px;
-    border-radius: 0px;
     border: 2px solid black;
-    color: #fff;
-    background-color: #000;
-}
-
-.btn-pdis-thin {
-    padding: 5px 20px;
-    border-radius: 0px;
-    border-color: black;
-    border: 2px solid;
-    color: #333;
-    background-color: #fff;
-}
-
-.btn-pdis-thin:hover {
-    padding: 5px 20px;
-    border-radius: 0px;
-    border-color: black;
-    border: 2px solid;
     color: #fff;
     background-color: #000;
 }
@@ -93,7 +72,7 @@
 }
 
 .think-about-container {
-    margin: -150px auto;
+    margin: -160px auto;
     text-align: center;
     position: relative;
     z-index: 2;

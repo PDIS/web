@@ -87,7 +87,7 @@
 }
 
 .nav-btn-pdis:hover {
-    background-color: #f5f5f5;
+    background-color: transparent;
 }
 
 .nav-btn-pdis:hover .icon-bar {
