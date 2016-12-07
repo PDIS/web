@@ -1,17 +1,14 @@
-.btn-pdis-thin {
-    padding: 5px 20px;
+.btn-pdis {
+    position: relative;
+    padding: 15px 20px;
     border-radius: 0px;
     border-color: black;
     border: 2px solid;
     color: #333;
-    background-color: #fff;
 }
 
-.btn-pdis-thin:hover {
-    padding: 5px 20px;
-    border-radius: 0px;
-    border-color: black;
-    border: 2px solid;
+.btn-pdis:hover {
+    border: 2px solid black;
     color: #fff;
     background-color: #000;
 }
