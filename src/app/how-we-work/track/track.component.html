@@ -20,7 +20,6 @@
               <div class="timeline-entry-inner">
                 <div class="timeline-icon bg-circle"></div>
                 <div class="timeline-label">
-                  <!--<div class=""></div>-->
                   <div class="row">
                     <!--tag & title & date & participants-->
                     <div class="col-md-12">
@@ -35,12 +34,14 @@
                       <p>
                         <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
                           class="btn btn-{{media | JSONpipes:'keys' | lowercase}} btn-new " role="button">{{media | JSONpipes:'keys'}}</a>
+                        <span class="label label-tag" *ngFor="let tag of post.tags ">{{tag}}</span>
                       </p>
-                      <div class="movetoright"><span class="label label-tag" *ngFor="let tag of post.tags ">{{tag}}</span></div>
+                      <!--<div class="movetoright"><span class="label label-tag" *ngFor="let tag of post.tags ">{{tag}}</span></div>-->
                     </div>
                   </div>
                 </div>
               </div>
+
             </article>
           </div>
           <div class="movetocenter">

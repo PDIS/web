@@ -13,7 +13,6 @@ export class JSONPipesPipe implements PipeTransform {
 
       case "not null object of array":
         var jsonArray: Array<Object> = json;
-        console.log(jsonArray);
         return jsonArray.filter(json => {
           
           for (var key in json) {
@@ -46,8 +45,19 @@ export class JSONPipesPipe implements PipeTransform {
             return json[i];
           }
         }
-        
+      case "getdate":
+        var date: Array<Object> = [];
+        console.log(Object.keys(json));
+        // if(){
 
+        // }
+        // for (var i in json){
+        //   console.log(json[i]);
+        //   json.sort(function(a,b) { 
+        //     return new Date(a.json[i].date).getTime() - new Date(b.json[i]).getTime() 
+        //   });
+        // }
+        
       default:
         break;
     }

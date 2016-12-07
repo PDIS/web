@@ -36,7 +36,7 @@
     .participants {
         color: rgb(255, 0, 102);
     }
-    
+    /*content button*/
     .btn-new {
         /*border-color: #adadad;*/
         color: black;
@@ -48,7 +48,7 @@
         border-radius: 0;
         text-align: center;
         font-style: normal;
-        border-width: 2px;
+        border-width: 1px;
     }
     .btn-new:hover{
         background: darkgray;
@@ -169,12 +169,12 @@
         content: '';
         position: absolute;
         display: block;
-        width: 4px;
+        width: 3px;
         background:#bababa;
         /*left: 50%;*/
         top: 20px;
         bottom: 20px;
-        margin-left: 49px;
+        margin-left: 48px;
     }
     
     .timeline-centered .timeline-entry {
@@ -463,13 +463,15 @@
 
     .label-tag{
         display: inline-block;
-        margin: 5px 5px 10px 0;
+        margin: 19px 5px 0px 0px;
         padding: 3px 5px;
         background:rgba(222, 123, 92, 0.86);
         font-size: 12px;
+        font-family: "Noto Sans", sans-serif;
         color: #FFF;
         font-weight: 400;
         border-radius: 0px;
+        float: right;
     }
     .row{
         margin-left: 0px;
