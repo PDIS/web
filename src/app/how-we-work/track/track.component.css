@@ -39,16 +39,25 @@
     
     .btn-new {
         /*border-color: #adadad;*/
-        color: white;
-        background: darkgray;
+        color: black;
+        background-color: #f5f5f6;
+        border-color:darkgray; 
         font-family: "Noto Sans", sans-serif;
         margin-right: 5px;
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
+        font-style: normal;
+        border-width: 2px;
+    }
+    .btn-new:hover{
+        background: darkgray;
+        color: white;
+        /*text-decoration: underline;*/
+        font-style: normal;
     }
     
-    .btn-youtube {
+    .btn-youtube:hover {
         background: red;
         color: white;
         font-family: "Noto Sans", sans-serif;
@@ -56,9 +65,11 @@
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
+        /*text-decoration: underline;*/
+        font-style: normal;
     }
     
-    .btn-transcript {
+    .btn-transcript:hover {
         background: darkorange;
         color: white;
         font-family: "Noto Sans", sans-serif;
@@ -66,9 +77,11 @@
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
+        /*text-decoration: underline;*/
+        font-style: normal;
     }
     
-    .btn-soundcloud {
+    .btn-soundcloud:hover {
         background: #f50;
         color: white;
         font-family: "Noto Sans", sans-serif;
@@ -76,9 +89,11 @@
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
+        text-decoration: underline;
+        font-style: normal;
     }
     
-    .btn-slido {
+    .btn-slido:hover {
         background: #70bd4e;
         color: white;
         font-family: "Noto Sans", sans-serif;
@@ -86,8 +101,10 @@
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
+        /*text-decoration: underline;*/
+        font-style: normal;
     }
-    
+
     .panel-heading {
         background: rgb(204, 255, 255);
     }
@@ -147,17 +164,17 @@
     .timeline-centered:after {
         clear: both;
     }
-    
+    /*調整時間軸*/
     .timeline-centered:before {
         content: '';
         position: absolute;
         display: block;
         width: 4px;
-        background: #f5f5f6;
+        background:#bababa;
         /*left: 50%;*/
         top: 20px;
         bottom: 20px;
-        margin-left: 30px;
+        margin-left: 49px;
     }
     
     .timeline-centered .timeline-entry {
@@ -218,7 +235,7 @@
     
     .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-label:after {
         left: auto;
-        right: 0;
+        right: auto;
         margin-left: 0;
         margin-right: -9px;
         -moz-transform: rotate(180deg);
@@ -230,7 +247,7 @@
     
     .timeline-centered .timeline-entry .timeline-entry-inner {
         position: relative;
-        margin-left: -19px;
+        *margin-left: -15px;
     }
     
     .timeline-centered .timeline-entry .timeline-entry-inner:before, .timeline-centered .timeline-entry .timeline-entry-inner:after {
@@ -289,7 +306,7 @@
         text-align: center;
         -moz-box-shadow: 0 0 0 5px #f5f5f6;
         -webkit-box-shadow: 0 0 0 5px #f5f5f6;
-        box-shadow: 1px 1px 1px #888888;
+        box-shadow: 0px;
         line-height: 40px;
         font-size: 15px;
         float: left;
@@ -301,9 +318,12 @@
         margin-top: 20px;
         color: #fff;
     }
-
+    /*時間軸圓圈*/
     .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-circle {
-        background-color: rgb(166, 166, 166);
+        background-color:lightgrey;
+        border-style:solid;
+        border-color: #bababa;
+        border-width: 3px;
         color: #fff;
     }
 
@@ -326,14 +346,16 @@
         position: relative;
         background: #f5f5f6;
         padding: 1em;
+        margin-right: 70px;
         margin-left: 60px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         -webkit-background-clip: padding-box;
         -moz-background-clip: padding;
         background-clip: padding-box;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 0px;
+        box-shadow: 1px 2px 1px 0px rgba(0,0,0,0.5);
     }
     
     .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label:after {
@@ -357,25 +379,41 @@
         margin: 0;
         line-height: 1.428571429;
     }
-    
+/*    
     .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p {
-        font-size: 16px;
+        font-size: 14px;
+        font-style: italic;
+        font-family: "Noto Sans", sans-serif;
+        color: rgba(222, 123, 92, 0.86);
+    }*/
+    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label .date{
+        font-size: 10px;
+        font-style: normal;
+        font-family: "Noto Sans", sans-serif;
+        color: black;
+        margin-bottom: 20px;
+    }
+
+    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label .date p{
+        font-family: "Noto Sans", sans-serif;
+        font-size: 12px;
     }
     
     .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p + p {
         margin-top: 15px;
+        font-style: normal;
     }
-    
-    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p + span {
+    .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label span + p {
         font-family: "Noto Sans", sans-serif;
         margin-left: 5px;
     }
     
     .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 {
         font-weight: bold;
-        font-size: 16px;
-        margin-bottom: 20px;
+        font-size: 22px;
+        margin-bottom: 1px;
         margin-top: 0px;
+        /*text-align: center;*/
     }
     
     .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 a {
@@ -401,6 +439,7 @@
         background-color: gray;
         padding: .4em;
         text-align: center;
+        border-radius: 0px;
     }
     
     .button-source {
@@ -418,4 +457,21 @@
         vertical-align: bottom;
         text-align: center;
     }
+    .glyphicon-tag{
+        margin-top: 5px;
+    }
 
+    .label-tag{
+        display: inline-block;
+        margin: 5px 5px 10px 0;
+        padding: 3px 5px;
+        background:rgba(222, 123, 92, 0.86);
+        font-size: 12px;
+        color: #FFF;
+        font-weight: 400;
+        border-radius: 0px;
+    }
+    .row{
+        margin-left: 0px;
+        
+    }

@@ -53,6 +53,8 @@ export class WhatWeDoComponent implements OnInit {
     this.res = '';
     this.err = '';
     this.discoursesvcWwd.postDiscoursePostRestful(raw, this.cid, this.tid)
+    // this.discoursesvcWwd.postDiscourseMessageRestful('title', raw, 'targee')
+    // this.discoursesvcWwd.postDiscourseTopicRestful('title00001', raw, this.cid)
       .subscribe(
       data => this.res = data,
       err => {

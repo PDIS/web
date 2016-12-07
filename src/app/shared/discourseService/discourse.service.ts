@@ -37,6 +37,18 @@ export class DiscourseService {
       .catch(this.handleError);
   }
 
+  // https://meta.discourse.org/t/private-message-send-api/27593/2
+  postDiscourseMessageRestful(title: string, raw: string, target_usernames: string) {
+    let body = this.serialize(JSON.parse(JSON.stringify({ "title": title, "raw": raw, "archetype": "private_message", "target_usernames": target_usernames })));
+    // console.log(body);
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this._http.post(this._discourseUrl, body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   // {"action":"create_post","errors":["內容 與你最近發表的內容太相似"]}
   // {"action":"create_post","errors":["我們非常抱歉，新用戶被臨時限制在同一個主題上，只能回覆 3 次","內容 與你最近發表的內容太相似"]}
   // {"action":"create_post","errors":["內容 長度不足 (下限是 10 字)","內容 無效，請再仔細描述","我們非常抱歉，新用戶被臨時限制在同一個主題上，只能回覆 3 次"]}

@@ -5,10 +5,6 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class DataService {
 
-  topic1;
-  topic2;
-  topic3;
-
   constructor(private httpData: Http, private httpList: Http) {
     this.httpData = httpData;
     this.httpList = httpList;
