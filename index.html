@@ -6,7 +6,6 @@
   <title>PDIS — Public Digital Innovation Space</title>
   <base href="/">
 
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -32,10 +31,21 @@
     }
   </script>
 
-</head>
+<link href="styles.d41d8cd98f00b204e9800998ecf8427e.bundle.css" rel="stylesheet"></head>
 
 <body onscroll="resizeLogo()">
   <app-root></app-root>
-<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+
+  <div style="position: fixed; top: calc(100vh - 60px); z-index: 99999; right:10px">
+    <div id="google_translate_element"></div>
+  </div>
+  <script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.BOTTOM_RIGHT}, 'google_translate_element');
+  }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script type="text/javascript" src="inline.d41d8cd98f00b204e980.bundle.js"></script><script type="text/javascript" src="styles.b2328beb0372c051d06d.bundle.js"></script><script type="text/javascript" src="main.0d1d88fdd46425ea5e23.bundle.js"></script></body>
 
 </html>
