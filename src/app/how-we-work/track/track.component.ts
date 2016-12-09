@@ -1,7 +1,7 @@
 import { DataService } from './../../shared/dataService/data-service.service';
 import { Http } from '@angular/http';
 import { ConvertService } from './../../shared/convertService/convert.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 

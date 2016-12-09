@@ -46,8 +46,11 @@ export class JSONPipesPipe implements PipeTransform {
           }
         }
       case "getdate":
-        var date: Array<Object> = [];
-        console.log(Object.keys(json));
+        var jsonArray: Array<Object> = json;
+        for(var i in jsonArray){
+            console.log(jsonArray[i]);
+        }
+        
         // if(){
 
         // }
