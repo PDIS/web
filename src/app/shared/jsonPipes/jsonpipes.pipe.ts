@@ -45,21 +45,6 @@ export class JSONPipesPipe implements PipeTransform {
             return json[i];
           }
         }
-      case "getdate":
-        var jsonArray: Array<Object> = json;
-        for(var i in jsonArray){
-            console.log(jsonArray[i]);
-        }
-        
-        // if(){
-
-        // }
-        // for (var i in json){
-        //   console.log(json[i]);
-        //   json.sort(function(a,b) { 
-        //     return new Date(a.json[i].date).getTime() - new Date(b.json[i]).getTime() 
-        //   });
-        // }
         
       default:
         break;
