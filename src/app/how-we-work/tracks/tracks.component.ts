@@ -53,6 +53,10 @@ export class TracksComponent implements OnInit {
         this.getPost(id).subscribe(post=>{
           post = this.convertService.convertYAMLtoJSON(post)
           this.posts.push(post);
+          // sort date(yyyy/MM/dd)
+          this.posts.sort(function(a,b){
+            return new Date(b.date).getTime() - new Date(a.date).getTime();
+          });
         })
       })
       console.log(this.posts);

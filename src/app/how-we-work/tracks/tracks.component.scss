@@ -1,7 +1,15 @@
+@import "../../../styles.scss";
+
+
     .nav-tabs {
         border-bottom: 2px solid #DDD;
+        text-align: center;
     }
     
+    .nav-tabs li{
+        float: none;
+        display: inline-block;
+    }
     .nav-tabs > li > a.active, .nav-tabs > li > a.active:focus, .nav-tabs > li > a.active:hover {
         border-width: 0;
     }
@@ -475,3 +483,166 @@
         margin-left: 0px;
         
     }
+/*-----------------------------------*/
+
+.slogan-container {
+    text-align: center;
+}
+
+.slogan {
+    font-family: Noto serif;
+    font-size: 2.5rem;
+    padding: 80px 0 80px;
+}
+
+.slogan-btn {
+    padding-bottom: 50px;
+}
+
+
+/*-----------------------------------*/
+
+.card{
+    padding-top: 50px;
+}
+
+.main-container{
+    .tracktitle{
+        font-family: Noto serif;
+        text-align: center;
+        font-size: 2.571rem;
+        margin-top: 20px;
+        margin-bottom:10px;
+    }
+}
+
+.timeline {
+  list-style: none;
+  padding: 20px 15px 20px 15px;
+  position: relative;
+}
+// 調整時間軸
+.timeline:before {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 2px;
+  background-color:lightgray;
+  left: 50%;
+  margin-left: -1.5px;
+  
+}
+.timeline  li {
+  margin-bottom: 20px;
+  position: relative;
+}
+.timeline  li:before,
+.timeline  li:after {
+  content: " ";
+  display: table;
+}
+.timeline  li:after {
+  clear: both;
+}
+.timeline  li:before,
+.timeline  li:after {
+  content: " ";
+  display: table;
+}
+.timeline  li:after {
+  clear: both;
+}
+.timeline  li > .timeline-panel {
+  width: 46%;
+  float: left;
+  border: 1px solid white;
+  border-radius: 2px;
+  padding: 20px;
+  position: relative;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  background-color: white;
+}
+.timeline  li > .timeline-panel:before {
+  position: absolute;
+  top: 26px;
+  right: -15px;
+  display: inline-block;
+  border-top: 15px solid transparent;
+  border-left: 15px solid white;
+  border-right: 0 solid white;
+  border-bottom: 15px solid transparent;
+  content: " ";
+}
+.timeline  li > .timeline-panel:after {
+  position: absolute;
+  top: 27px;
+  right: -14px;
+  display: inline-block;
+  border-top: 14px solid transparent;
+  border-left: 14px solid white;
+  border-right: 0 solid white;
+  border-bottom: 14px solid transparent;
+  content: " ";
+}
+.timeline  li > .timeline-badge {
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.4em;
+  text-align: center;
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  margin-left: -25px;
+  background-color: lightgray;
+  z-index: 100;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-color: white;
+}
+.timeline  li.timeline-inverted > .timeline-panel {
+  float: right;
+}
+.timeline  li.timeline-inverted > .timeline-panel:before {
+  border-left-width: 0;
+  border-right-width: 15px;
+  left: -15px;
+  right: auto;
+}
+.timeline  li.timeline-inverted > .timeline-panel:after {
+  border-left-width: 0;
+  border-right-width: 14px;
+  left: -14px;
+  right: auto;
+}
+.timeline-badge.primary {
+  background-color: #2e6da4 !important;
+}
+.timeline-badge.success {
+  background-color: #3f903f !important;
+}
+.timeline-badge.warning {
+  background-color: #f0ad4e !important;
+}
+.timeline-badge.danger {
+  background-color: #d9534f !important;
+}
+.timeline-badge.info {
+  background-color: #5bc0de !important;
+}
+.timeline-title {
+  margin-top: 0;
+  color: inherit;
+}
+.timeline-body > p,
+.timeline-body > ul {
+  margin-bottom: 0;
+}
+.timeline-body > p + p {
+  margin-top: 5px;
+}
