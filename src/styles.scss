@@ -3,10 +3,18 @@
 $back_color:#4B0056;
 $hightlight:#D66FE5;
 $max_width:1180px;
+$main-font-family:'Georgia';
+$main-font-size: 22px;
 
 body {
     background-color: $back_color;
 }
+
+// p{
+//     font-family: $main-font-family;
+//     font-size: $main-font-size;
+
+// }
 
 .btn-pdis {
     padding: 12px 25px;
@@ -14,6 +22,7 @@ body {
     border: solid 2px $back_color;
     color: $back_color;
     margin: 0px;
+    display: inline-block;
 }
 
 .section-line {
@@ -35,5 +44,36 @@ body {
     box-shadow: 0 0 10px black;
     max-width: $max_width;
     margin: 150px auto 0;
+    
 }
+.detail-container{
+    margin: 2.5vw 0 2.5vw 0;
+    
+    .detail-text{
+        justify-content:center;
+        font-family: $main-font-family;
+        font-size: $main-font-size;
+        line-height: 35px;
+    }
+    em img {
+        float: right;
+        margin-left: 20px;
+    }
+    strong img {
+        float: left;
+        margin-right: 35px;
+        width: 450px;
+        height: 300px;
+    }
+    h2{
+        margin-bottom: 35px;
+    }
+    dd{
+        clear: left;
+        margin-bottom: 20px;    
+    }
+}
+
+
+
 

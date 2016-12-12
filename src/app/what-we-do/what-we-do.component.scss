@@ -19,24 +19,54 @@
 /*-----------------------------------*/
 
 .topic-container {
-    // height:550px;
-    display: flex;
-    align-items: center;
+    // height: 550px;
+    position: relative;
     .text {
-        width: 60vw;
-        margin: 2.5vw 2.5vw 2.5vw 2.5vw;
-        background: white;
-        padding: 2.5vw;
+        position: inherit;
+        width: 50vw;
+        display: inline-block;
+        margin: 2.5vw;
+        z-index: 2;
+        background-color: white;
         opacity: 0.9;
+        padding: 2.5vw;
+    }
+    .image {
+        position: absolute;
+        width: 50vw;
+        display: inline-block;
+        margin: 5vw 2.5vw;
+        z-index: 1;
+        overflow: hidden;
+        height: calc(100% - 10vw);
+        display: inline-flex;
+        align-items: center;
+        img {
+            width: 100%;
+        }
+    }
+    .btn-pdis{
+        margin-top:15px;
+    }
+}
+
+.topic-left {
+    text-align: left;
+    .text {
+        margin-right: 2.5vw;
+    }
+    .image {
+        right: 0;
+    }
+}
+
+.topic-right{
+    text-align: right;
+    .text {
+        margin-right: 2.5vw;
     }
     .image{
-      width: 60vw;
-      max-height: calc(100% - 10vw);
-      overflow: hidden;
-      margin: 2.5vw 2.5vw 2.5vw 2.5vw;
-      img{
-        width: 100%;
-      }
+        left:0;
     }
 }
 
