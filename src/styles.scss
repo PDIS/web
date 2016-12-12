@@ -3,9 +3,16 @@
 $back_color:#4B0056;
 $hightlight:#D66FE5;
 $max_width:1180px;
+$main-font-family:'Georgia';
+$main-font-size: 22px;
 
 body {
     background-color: $back_color;
+}
+
+p{
+    font-family: $main-font-family;
+    font-size: $main-font-size;
 }
 
 .btn-pdis {

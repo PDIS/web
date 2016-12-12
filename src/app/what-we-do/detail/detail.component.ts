@@ -55,7 +55,7 @@ export class DetailComponent implements OnInit {
       this.youtube1 = doc.getElementsByClassName("lazyYT");                 
       if(this.youtube1.length != 0 ){
         this.updateVideoUrl(this.youtube1[0]['dataset'].youtubeId);
-        this.youtubecount['content'][j]="you-tube";        
+        this.youtubecount['content'][5]="you-tube";        
       }               
     }
   }
