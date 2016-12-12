@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+$back_color:#4B0056;
+$hightlight:#D66FE5;
+$max_width:1180px;
+
+body {
+    background-color: $back_color;
+}
+
+.btn-pdis {
+    padding: 12px 25px;
+    background: transparent;
+    border: solid 2px $back_color;
+    color: $back_color;
+    margin: 0px;
+}
+
+.section-line {
+    height: 1px;
+    background: -moz-linear-gradient(left, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.highlight {
+    color: $hightlight;
+}

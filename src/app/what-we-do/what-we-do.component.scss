@@ -1,0 +1,81 @@
+@import "../../styles.scss";
+.main-container {
+    background-color: #EFEFEF;
+    box-shadow: 0 0 10px black;
+    max-width: $max_width;
+    margin: 150px auto 0;
+}
+
+
+/*-----------------------------------*/
+
+.slogan-container {
+    text-align: center;
+}
+
+.slogan {
+    font-size: 2.5rem;
+    padding: 100px 0 30px;
+}
+
+.slogan-btn {
+    padding-bottom: 50px;
+}
+
+
+/*-----------------------------------*/
+
+.topic-container {
+    // height:550px;
+    display: flex;
+    align-items: center;
+    .text {
+        width: 60vw;
+        margin: 2.5vw 2.5vw 2.5vw 2.5vw;
+        background: white;
+        padding: 2.5vw;
+        opacity: 0.9;
+    }
+    .image{
+      width: 60vw;
+      max-height: calc(100% - 10vw);
+      overflow: hidden;
+      margin: 2.5vw 2.5vw 2.5vw 2.5vw;
+      img{
+        width: 100%;
+      }
+    }
+}
+
+/*-----------------------------------*/
+
+.tell-us-container {
+    background-image: url(http://localhost:4200/assets/img/pdis-team.JPG);
+    background-size: cover;
+    margin: 25px;
+    padding: 2.5vw;
+    text-align: center;
+}
+
+.tell-us-content {
+    position: relative;
+    background-color: white;
+    opacity: 0.9;
+    width: 50vw;
+    display: inline-block;
+    padding: 2.5vw;
+    img {
+        width: 50%
+    }
+    input {
+        width: 90%;
+        margin-top: 10px;
+        margin-bottom: 2.5vw;
+        border: solid 1px black;
+        height: 40px;
+        font-size: 20pt;
+    }
+}
+
+
+/*-----------------------------------*/

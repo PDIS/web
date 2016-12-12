@@ -1,103 +1,61 @@
-<!-- Begin Body -->
-
-<!-- MORE ABOUT PDIS ========================================== -->
-<div class="slogan-container">
-  <h4 class="slogan">
-    We incubate and facilitate public digital innovation and service.
-  </h4>
-</div>
-<div class="slogan-btn-container">
-  <a class="btn btn-pdis">More about PDIS</a>
-</div>
-
-<!-- MORE ABOUT PDIS END ====================================== -->
-
-<!--test-->
-<!-- MORE ABOUT OPEN API ====================================== -->
-<div class="open-api-container" style="
-    height: 720px;
-">
-  <div class="open-api-background" style="
-    float: left;
-    width: 100%;
-    position: absolute;
-">
-  </div>
-  <div>
-    <div class="col-md-3 col-sm-2"></div>
-    <div class="col-md-6 col-sm-8 panel-pdis">
-      <div *ngIf="item1">
-        <div *ngFor="let post of item1.post_stream.posts; let first = first">
-          <div *ngIf="first" [innerHTML]="post.cooked"></div>
-        </div>
-      </div>
-      <a class="btn btn-pdis" [routerLink]="['/what-we-do/open-api']" role="button">
-    More about Open API
-    </a>
+<div class="main-container">
+  <div class="slogan-container">
+    <div class="slogan">
+      <span>
+        We incubate and facilitate
+        <br>
+        public digital <span class="highlight">innovation</span> and <span class="highlight">service</span>.
+      </span>
     </div>
-    <div class="col-md-3 col-sm-2"></div>
+    <div class="slogan-btn">
+      <button type="button" class="btn-pdis">MORE ABOUT PDIS</button>
+    </div>
   </div>
 
-</div>
+  <div class="section-line"></div>
 
-
-
-<!-- MORE ABOUT OPEN API END ====================================== -->
-
-<div style="height: 8px;"></div>
-
-<!-- MORE ABOUT CIVIC PARTICIPATION ====================================== -->
-<div style="
-    height: 720px;
-">
-  <div class="civic-participation-background" style="
-    float: left;
-    width: 100%;
-    position: absolute;
-    -webkit-filter: blur(5px);
-"></div>
-  <div>
-    <div class="col-md-6 col-sm-8 panel-pdis">
-      <div *ngIf="item2">
-        <div *ngFor="let post of item2.post_stream.posts; let first = first">
-          <div *ngIf="first" [innerHTML]="post.cooked"></div>
-        </div>
-      </div>
-      <a class="btn btn-pdis" [routerLink]="['/what-we-do/civic-participation']" role="button">
-    More about Civic​​ Participation
-    </a>
+  <div class="topic-container">
+    <!--<div class="topic-content-left">-->
+    <div class="text">
+      <h1>Open API</h1>
+      <h3>How might we help Taiwan unlock its creative potential through digital innovation?</h3>
+      <p>We believe public digital platforms should automatically provide reliable data collected in transparent means and make
+        it accesible to people.</p>
+      <button type="button" class="btn-pdis">MORE ABOUT OPEN API</button>
     </div>
-    <div class="col-md-6 col-sm-4"></div>
+    <!--<div class="topic-image-right">-->
+    <div class="image">
+      <img src="../../assets/img/open-api.jpeg" alt="">
+    </div>
+
   </div>
-</div>
 
+  <!--<div class="section-line"></div>
 
-
-
-<!-- MORE ABOUT CIVIC PARTICIPATION END ====================================== -->
-
-<!-- THINK ABOUT =========================================== -->
-<div>
-  <div class="col-md-4 col-sm-3"></div>
-  <div class="panel-pdis col-md-4 col-sm-6 think-about-container">
-    <h3>Tell us what you think about</h3>
-    <img src="assets/img/pdis-logo-08.png" alt="Generic placeholder image" width="254" height="90">
-    <br>
-    <input [(ngModel)]="think" />
-    <div *ngIf="err" class="alert alert-danger" [innerHTML]="err" [hidden]="err.length==0">
+  <div class="topic-container">
+    <div class="topic-image-left">
+      <img src="../../assets/img/civic-participation.jpeg" alt="">
     </div>
-    <div *ngIf="res" class="alert alert-success" [innerHTML]="res.cooked + ' successfully sent'" [hidden]="res.length==0">
+    <div class="topic-content-right">
+      <h1>Civic​​ Participation</h1>
+      <h3>How might we refashion democracy to share agenda-setting power with the people?</h3>
+      <p>...democracy is defined as : (a) government by the people … key elements: (b) The active participation of the people,
+        as citizens, in politics and civic life.</p>
+      <button type="button" class="btn-pdis">MORE ABOUT Civic​​ Participation</button>
     </div>
-    <br>
-    <a class="btn btn-pdis" role="button" (click)="postDataToServer(think)">Submit</a>
   </div>
-  <div class="col-md-4 col-sm-3"></div>
-</div>
 
-<!-- THINK ABOUT END ====================================== -->
+  <div class="section-line"></div>
 
-<div class="learn-more-container">
-  <h4 class="pull-right learn-more">
-    Learn more on how we work...
-  </h4>
+  <div class="tell-us-container">
+    <div class="tell-us-content">
+      <h1>Tell us what you think about</h1>
+      <img src="../../assets/img/pdis-logo-08.png" alt="">
+      <input type="text" name="" value="">
+      <button type="button" class="btn-pdis">SUBMIT</button>
+    </div>
+  </div>
+
+  <div class="section-line"></div>-->
+
 </div>

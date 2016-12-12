@@ -1,0 +1,51 @@
+@import "../../styles.scss";
+.logo-container {
+    height: 100px;
+    overflow: hidden;
+}
+
+.logo-container img {
+    width: 300px;
+    margin-top: 10px;
+}
+
+.navbar-pdis {
+    background: linear-gradient(top, #FFFFFF, #EFEFEF);
+    background: -moz-linear-gradient(top, #FFFFFF, #EFEFEF);
+    background: -webkit-linear-gradient(top, #FFFFFF, #EFEFEF);
+    border: solid 0px;
+    top: 5px;
+    box-shadow: 0 0 5px black;
+}
+
+.header-line {
+    background-color: $back_color;
+    height: 5px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    z-index: 1030;
+}
+
+.nav-item {
+    border-left: solid 3px;
+    color: $back_color;
+    margin: 20px 0;
+    padding: 0 30px 0 5px;
+    font-size: 1.25rem;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+.nav-item:hover {
+    color: $hightlight;
+    background-color: transparent;
+}
+
+.nav-item.active {
+    color: $hightlight;
+}
+
+.main-container {
+    max-width: $max_width;
+    margin: 0 auto;
+}
