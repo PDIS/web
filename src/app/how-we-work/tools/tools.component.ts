@@ -1,3 +1,4 @@
+import { DataService } from './../../shared/dataService/data-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolsComponent implements OnInit {
 
-  constructor() { }
+  list;
+
+  constructor(private datasvcHww: DataService) {
+        datasvcHww.getList()
+      .subscribe((value) => {
+        // this.data = value.json();
+        this.list = JSON.parse(value.text()),
+          console.log(this.list);
+      });
+
+   }
 
   ngOnInit() {
   }
