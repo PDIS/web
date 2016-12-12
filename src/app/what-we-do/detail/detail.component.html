@@ -2,10 +2,11 @@
   detail works!
 </p>
 
-<div class="container" style="padding-top:80px"></div>
+<!--<div class="container" style="padding-top:80px"></div>-->
 
 <!-- open-api -->
-<div class="container" *ngIf="id=='open-api'">
+<div class="main-container" *ngIf="id=='open-api'">
+  <div style="padding-top:80px"></div>
   <div *ngFor="let post of posts">
 
     <!-- open-api-> 1 columns-->
@@ -28,12 +29,12 @@
          <div *ngIf="post.content[0]!='you-tube'">      
           <div class="col-md-5 " [innerHTML]="post.content[0]"></div>
         </div>
-        <div *ngIf="post.content[1]=='you-tube'"> 
+        <div *ngIf="post.content[5]=='you-tube'"> 
           <div class="col-md-4 video-container">     
             <iframe style="border:0px;" width="450" height="280" [src]="videoUrl"></iframe>
           </div>
         </div>       
-        <div *ngIf="post.content[1]!='you-tube'">
+        <div *ngIf="post.content[5]!='you-tube'">
           <div class="col-md-5 " [innerHTML]="post.content[1]"></div>
         </div> 
       </div>
@@ -41,7 +42,8 @@
   </div>
 </div>
 <!-- civic-participation-->
-<div class="container" *ngIf="id=='civic-participation'">
+<div class="main-container" *ngIf="id=='civic-participation'">
+  <div style="padding-top:80px"></div>
   <div *ngFor="let post of posts">
 
     <!-- civic-participation-> 1 columns-->
@@ -53,8 +55,8 @@
     </div>
 
     <!-- civic-participation-> 2 columns-->
-    <div *ngIf="post.content.length==2">
-      <div class="row">
+    <div *ngIf="post.content.length>=2">
+      <div class="row">        
         <div class="col-md-1"></div>    
         
         <!-- civic-participation-> youtube-->  
@@ -64,15 +66,17 @@
         <div *ngIf="post.content[0]!='you-tube'">      
           <div class="col-md-5" [innerHTML]="post.content[0]"></div>
         </div>
-        <div *ngIf="post.content[1]=='you-tube'"> 
+                
+        <div *ngIf="post.content[1]!='you-tube'">      
+          <div class="col-md-5" [innerHTML]="post.content[1]"></div>
+        </div>  
+        <div *ngIf="post.content[5]=='you-tube'"> 
           <div class="col-md-4 video-container">     
             <iframe style="border:0px;" width="450" height="280" [src]="videoUrl"></iframe>
           </div>
         </div>        
-        <div *ngIf="post.content[1]!='you-tube'">      
-          <div class="col-md-5" [innerHTML]="post.content[1]"></div>
-        </div>          
       </div>
+      <div class="section-line"></div>
     </div>
   </div>
 </div>
