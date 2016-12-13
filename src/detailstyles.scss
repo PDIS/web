@@ -85,6 +85,11 @@ $main-font-size: 22px;
         border: 0px;
         margin-left: 17px;
     }
+    p{
+        
+        margin: 25px 25px 25px 25px;
+
+    }
    blockquote::after{
         content: "}";
         font-family: Georgia, serif;
