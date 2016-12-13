@@ -4,11 +4,20 @@
       <span>
         We are commited to open our work process
         <br>
-        See the timeline below and track how we work day by day:
+        See the <span class="highlight">timeline</span> below and <span class="highlight">track</span> how we work
+      day by day:
       </span>
     </div>
   </div>
 
+  <div class="section-line"></div>
+  <div>
+    <ul class="cloud">
+      <div *ngFor="let post of posts">
+        <li *ngFor="let tag of post.tags"><a href="#">{{tag}} </a></li>
+      </div>
+    </ul>
+  </div>
   <div class="section-line"></div>
   <div class="tracktitle">Track.PDIS</div>
 
@@ -16,7 +25,7 @@
   <div class="card">
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">All</a></li>
-      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">AU's speeches</a></li>
+      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Speeches</a></li>
       <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Individual meetings</a></li>
       <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Official conferences</a></li>
       <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Media interviews</a></li>
@@ -29,33 +38,67 @@
       <div role="tabpanel" class="tab-pane active" id="home">
         <ul class="timeline">
           <div *ngFor="let post of posts; let i = index">
-            <li *ngIf="i %2 === 0">
+            <li *ngIf="i%2 === 0">
 
-              <div class="timeline-badge"><span class="glyphicon glyphicon-check"></span></div>
+              <div class="timeline-badge"><span class="glyphicon glyphicon-edit"></span></div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
+                  <div class="row">
+                    <div style="padding:0;" class="col-xs-12">
+                      <div style="padding:0;" class="col-xs-6">
+                        <h5>{{post.date | date:"yyyy/MM/dd"}}</h5>
+                      </div>
+                      <div style="padding:0;" class="col-xs-6">
+                        <div class="movetoright">
+                          <span class="glyphicon glyphicon-user"></span>
+                          <a class="timeline-tags" href="#">{{post.participants}}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <h4 class="timeline-title">{{post.title}}</h4>
-                  <p><small class="text-muted"><span class="label label-tag" *ngFor="let tag of post.tags">{{tag}}</span></small></p>
                 </div>
                 <div class="timeline-body">
                   <p>
                     <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
                       class="btn btn-{{media | JSONpipes:'keys' | lowercase}} btn-new " role="button">{{media | JSONpipes:'keys'}}</a>
                   </p>
+                  <p>
+                    <span class="glyphicon glyphicon-tag"></span>
+                    <a class="timeline-tags" href="#" *ngFor="let tag of post.tags">{{tag}} </a><br>
+                  </p>
                 </div>
               </div>
             </li>
-            <li *ngIf="i %2 !== 0" class="timeline-inverted">
-              <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+            <li *ngIf="i%2 !== 0" class="timeline-inverted">
+              <div class="timeline-badge"><i class="glyphicon glyphicon-edit"></i></div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
+                  <div class="row">
+                    <div style="padding:0;" class="col-xs-12">
+                      <div style="padding:0;" class="col-xs-6">
+                        <h5>{{post.date | date:"yyyy/MM/dd"}}</h5>
+                      </div>
+                      <div style="padding:0;" class="col-xs-6">
+                        <div class="movetoright">
+                          <span class="glyphicon glyphicon-user"></span>
+                          <a class="timeline-tags" href="#">{{post.participants}}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <h4 class="timeline-title">{{post.title}}</h4>
-                  <p><small class="text-muted"><span class="label label-tag" *ngFor="let tag of post.tags">{{tag}}</span></small></p>
                 </div>
                 <div class="timeline-body">
                   <p>
                     <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
                       class="btn btn-{{media | JSONpipes:'keys' | lowercase}} btn-new " role="button">{{media | JSONpipes:'keys'}}</a>
+                  </p>
+                  <p>
+                    <span class="glyphicon glyphicon-tag"></span>
+                    <a class="timeline-tags" href="#" *ngFor="let tag of post.tags">{{tag}} </a><br>
                   </p>
                 </div>
               </div>
