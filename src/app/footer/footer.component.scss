@@ -7,14 +7,17 @@
 
 .footer-content {
     display: inline-block;
-    width: 32%;
+    width: 33%;
     vertical-align: text-top;
     margin-top: 30px;
     padding-left: 30px;
+    font-family: 'noto serif', sans-serif;
     h1 {
+        font-family: 'noto serif', sans-serif;
         margin-top: 0px;
         color: #EEE;
         font-size: 3rem;
+        font-weight: 700;
     }
     a {
         display: block;
@@ -48,4 +51,15 @@
 .footer-segment {
     border-right: solid 1px white;
     border-left: solid 1px white;
+}
+
+@media screen and (max-width: 767px) {
+    .footer-content {
+        display: block;
+        width: 100%;
+    }
+    .footer-segment {
+        border-right: solid 0px white;
+        border-left: solid 0px white;
+    }
 }

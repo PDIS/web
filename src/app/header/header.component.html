@@ -1,9 +1,9 @@
 <div class="header-line"></div>
-<nav class="navbar navbar-fixed-top navbar-pdis">
-  <div class="container">
+<nav class="navbar navbar-fixed-top navbar-pdis" [style.top]="showNav ? '5px' : '-100px'">
+  <div class="nav-container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
         aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -11,26 +11,30 @@
         <span class="icon-bar"></span>
       </button>
       <div class="logo-container">
-        <img class="logo" src="../../assets/img/PDIS-logo-revised-color.png" alt="">
+        <img [style.opacity]="bigLogo ? 1:0" class="logo" src="../../assets/img/PDIS-logo-revised-color.png" alt="">
+        <img [style.opacity]="bigLogo ? 0:1" class="logo-square" src="../../assets/img/logo-01.svg" alt="">
       </div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse">
+    <div id="navbar" class="collapse navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do']" class="nav-item">
-            WHAT<br>WE<br>DO
+          <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do']" class="nav-item">WHAT
+          WE
+          DO
           </a>
         </li>
         <li>
-          <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']" class="nav-item">
-            HOW<br>WE<br>WORK
+          <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']" class="nav-item">HOW
+          WE
+          WORK
           </a>
         </li>
-        <li class="">
-          <a [routerLinkActive]="['active']" [routerLink]="['/get-involved']" class="nav-item">
-            GET<br>INVOLVED<br>&nbsp;
+        <li>
+          <a [routerLinkActive]="['active']" [routerLink]="['/get-involved']" class="nav-item">GET
+            INVOLVED
+
           </a>
         </li>
       </ul>
