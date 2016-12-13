@@ -9,10 +9,6 @@ body {
     background-color: $back_color;
 }
 
-// p{
-//     font-family: $main-font-family;
-//     font-size: $main-font-size;
-// }
 .btn-pdis {
     padding: 12px 25px;
     background: transparent;
@@ -45,29 +41,3 @@ body {
     margin: 150px auto 0;
 }
 
-.detail-container {
-    margin: 2.5vw 0 2.5vw 0;
-    .detail-text {
-        justify-content: center;
-        font-family: $main-font-family;
-        font-size: $main-font-size;
-        line-height: 35px;
-    }
-    em img {
-        float: right;
-        margin-left: 20px;
-    }
-    strong img {
-        float: left;
-        margin-right: 35px;
-        width: 450px;
-        height: 300px;
-    }
-    h2 {
-        margin-bottom: 35px;
-    }
-    dd {
-        clear: left;
-        margin-bottom: 20px;
-    }
-}
