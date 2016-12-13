@@ -11,16 +11,14 @@ export class ToolsComponent implements OnInit {
   list;
 
   constructor(private datasvcHww: DataService) {
-        datasvcHww.getList()
+  }
+
+  ngOnInit() {
+    this.datasvcHww.getList()
       .subscribe((value) => {
-        // this.data = value.json();
         this.list = JSON.parse(value.text()),
           console.log(this.list);
       });
-
-   }
-
-  ngOnInit() {
   }
 
 }

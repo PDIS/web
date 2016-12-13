@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiscourseService } from '../shared/discourseService/discourse.service';
+import { DataService } from '../shared/dataService/data-service.service';
 
 @Component({
   selector: 'app-get-involved',
@@ -14,7 +15,7 @@ export class GetInvolvedComponent implements OnInit {
   res;
   err;
 
-  constructor(private discoursesvcWwd: DiscourseService) { }
+  constructor(private discoursesvcWwd: DiscourseService, private datasvcGi: DataService) { }
 
   ngOnInit() {
   }
@@ -30,7 +31,6 @@ export class GetInvolvedComponent implements OnInit {
       err => {
         this.err = err,
           console.log(err)
-        // ,alert(err)
       },
       () => console.log('POST Complete')
       );
