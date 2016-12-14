@@ -1,0 +1,150 @@
+
+$main-font-family:'Georgia';
+$main-font-size: 22px;
+.detail-container{
+    margin: 2.5vw 0 2.5vw 0;
+    
+    
+}
+.detail-text{
+        justify-content:center;
+        font-family: $main-font-family;
+        //margin-bottom: 25px;
+        //margin-top: 25px;
+        font-size: $main-font-size;
+        line-height: 35px;
+    }
+    em img {
+        float: right;
+        width: 450px;
+        height: 300px;
+        margin: 8px 0px 17px 35px;
+    }
+    strong img {
+        float: left;
+        width: 450px;
+        height: 300px;
+        margin: 8px 35px 17px 0px;
+    }
+    img {
+        margin: 15px 0px 15px 0px;
+    }
+    h2{
+        margin-bottom: 35px;
+        font-family: $main-font-family;
+        //margin: 0 25px 0 0;
+    }
+    p{
+        font-family: $main-font-family;
+        margin: 25px 0px 25px 0px;
+
+    }
+    dd{
+        clear: left;
+        // margin-bottom: 20px;    
+    }
+    blockquote{
+        margin: -105px 0 -20px;
+        border-left: 0px;
+
+    }
+    blockquote::before{
+    
+        content: "{";
+        font-family: Georgia, serif;
+        font-size: 96px;
+        font-weight: bold;
+        color: #999;
+        position: relative;
+        left: -66px;
+        top: 119px;
+    }
+    blockquote::after{
+        content: "}";
+        font-family: Georgia, serif;
+        font-size: 96px;
+        font-weight: bold;
+        color: #999;
+        position: relative;
+        left: 420px;
+        top: -74px;
+    }
+@media screen and (max-width: 1200px) {
+        blockquote::after{
+        content: "}";
+        font-size: 0px;
+        position: relative;
+        left: 0px;
+        top: 0px;
+    }
+    blockquote::before{
+    
+        content: "{";
+        font-size: 0px;
+        position: relative;
+        left: 0px;
+        top: 0px;
+    }
+     blockquote{
+        margin: -85px 0 -20px;
+        border-left: 0px;
+
+    }
+}
+
+@media screen and (max-width: 991px) {
+    
+    
+    
+   .detail-container img {
+        /*position: absolute;*/
+
+        clear: left;
+        top: 10px;
+        width: 90%;
+        height: 90%;
+        border: 0px;
+        margin-left: 17px;
+    }
+    p,h2{
+        margin: 25px 25px 25px 25px;
+        word-break: break-all;
+    }
+    
+   blockquote::after{
+        content: "}";
+        font-family: Georgia, serif;
+        font-size: 0px;
+        font-weight: bold;
+        color: #999;
+        position: relative;
+        left: 0px;
+        top: 0px;
+    }
+    
+    
+    .video-container {
+        padding-top: 65%;
+    }
+    .video-container iframe, .video-container object, .video-container embed {
+        position: absolute;
+        top: 10px;
+        left: 5%;
+        width: 80%;
+        height: 80%;
+        border: 0px;
+        margin-left: 17px;
+    }
+
+    
+ }
+
+// @media screen and (min-width: 991px) {
+//     .detail-container img {
+//         /*position: absolute;*/
+//         top: 10px;
+//         width: 100%;
+//         height: 100%;
+//         border: 0px;
+//     }
+// }

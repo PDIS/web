@@ -9,6 +9,7 @@
     .nav-tabs li{
         float: none;
         display: inline-block;
+        font-family: Georgia;
     }
     .nav-tabs > li > a.active, .nav-tabs > li > a.active:focus, .nav-tabs > li > a.active:hover {
         border-width: 0;
@@ -21,13 +22,13 @@
     
     .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
         border: none;
-        color: #000000 !important;
+        color: #4B0056 !important;
         background: transparent;
     }
     
     .nav-tabs > li > a::after {
         content: "";
-        background: #000000;
+        background: #4B0056;
         height: 2px;
         position: absolute;
         width: 100%;
@@ -48,69 +49,82 @@
     .btn-new {
         /*border-color: #adadad;*/
         color: black;
-        background-color: #f5f5f6;
-        border-color:darkgray; 
-        font-family: "Noto Sans", sans-serif;
+        background-color: white;
+        border-color:dimgray; 
+        font-family: Georgia;
         margin-right: 5px;
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
         font-style: normal;
         border-width: 2px;
+        padding: 4px 9px 4px 9px;
     }
     .btn-new:hover{
-        background: darkgray;
-        color: white;
-        /*text-decoration: underline;*/
+        border-color: darkgray;
+        color: black;
         font-style: normal;
     }
-    
+    .btn-youtube{
+        color: black;
+        border-color:#BF0000;
+        background-color: white;
+        font-family: Georgia;
+        padding: 4px 9px 4px 9px;
+    }
     .btn-youtube:hover {
-        background: red;
-        color: white;
-        font-family: "Noto Sans", sans-serif;
+        border-color: #FF0000;
+        font-family: Georgia;
         margin-right: 5px;
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
-        /*text-decoration: underline;*/
-        font-style: normal;
+        
     }
-    
+    .btn-transcript{
+        color: black;
+        border-color:orangered;
+        background-color: white;
+        font-family: Georgia;
+        padding: 4px 9px 4px 9px;
+    }
     .btn-transcript:hover {
-        background: darkorange;
-        color: white;
-        font-family: "Noto Sans", sans-serif;
+        border-color: darkorange;
+        font-family: Georgia;
         margin-right: 5px;
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
-        /*text-decoration: underline;*/
-        font-style: normal;
     }
-    
+    .btn-soundcloud{
+        color: black;
+        border-color:#fd3c1b;
+        background-color: white;
+        font-family: Georgia;
+        padding: 4px 9px 4px 9px;
+    }
     .btn-soundcloud:hover {
-        background: #f50;
-        color: white;
-        font-family: "Noto Sans", sans-serif;
+        border-color: #fe7e25;
+        font-family: Georgia;
         margin-right: 5px;
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
-        text-decoration: underline;
-        font-style: normal;
     }
-    
+    .btn-slido{
+        color: black;
+        border-color:#38921a;
+        background-color: white;
+        font-family: Georgia;
+        padding: 4px 9px 4px 9px;
+    }
     .btn-slido:hover {
-        background: #70bd4e;
-        color: white;
-        font-family: "Noto Sans", sans-serif;
+        border-color: #70bd4e;
+        font-family: Georgia;
         margin-right: 5px;
         margin-top: 2px;
         border-radius: 0;
         text-align: center;
-        /*text-decoration: underline;*/
-        font-style: normal;
     }
 
     .panel-heading {
@@ -439,6 +453,7 @@
     .movetoright {
         text-align: right;
         vertical-align: bottom;
+        margin:7px 0px 10px 0px;
     }
     
     .label-tags {
@@ -465,7 +480,7 @@
         vertical-align: bottom;
         text-align: center;
     }
-    .glyphicon-tag{
+    .timeline-body .glyphicon-tag{
         margin-top: 5px;
     }
 
@@ -490,7 +505,7 @@
 }
 
 .slogan {
-    font-family: Noto serif;
+    font-family: Georgia;
     font-size: 2.5rem;
     padding: 80px 0 80px;
 }
@@ -503,16 +518,20 @@
 /*-----------------------------------*/
 
 .card{
-    padding-top: 50px;
+    padding-top: 10px;
+    width: 100%;
+    position: relative;
 }
 
 .main-container{
     .tracktitle{
-        font-family: Noto serif;
+        color: black;
+        font-family: Georgia;
         text-align: center;
         font-size: 2.571rem;
         margin-top: 20px;
         margin-bottom:10px;
+
     }
 }
 
@@ -620,29 +639,86 @@
   left: -14px;
   right: auto;
 }
-.timeline-badge.primary {
-  background-color: #2e6da4 !important;
-}
-.timeline-badge.success {
-  background-color: #3f903f !important;
-}
-.timeline-badge.warning {
-  background-color: #f0ad4e !important;
-}
-.timeline-badge.danger {
-  background-color: #d9534f !important;
-}
-.timeline-badge.info {
-  background-color: #5bc0de !important;
-}
+
 .timeline-title {
   margin-top: 0;
   color: inherit;
+  
 }
 .timeline-body > p,
 .timeline-body > ul {
   margin-bottom: 0;
+  margin-top: 15px;
 }
 .timeline-body > p + p {
   margin-top: 5px;
+}
+.timeline-heading{
+    h5{
+        text-decoration: underline;
+        font-size:1.3rem;
+    }
+    // div{
+    //     text-decoration: none;
+    // }
+    h4{
+        font-family: Georgia;
+        font-size: 1.8rem;
+    }
+}
+.timeline-tags{
+    font-size: 1.4rem;
+    font-family: Georgia;
+    color: #4B0056;
+}
+.timeline-tags:hover{
+    color: #D66FE5;
+}
+
+/*-----------------------------------*/
+
+.cloud {
+    display: inline;
+    list-style-type: none;
+    // width: 400px;
+    text-align: center;
+    font-family: Georgia;
+    
+     a{
+        color: #4B0056;
+     }
+     a:hover{
+        color: #D66FE5;
+     }
+}
+.cloud li {
+    list-style: none;
+    display: inline;
+    a {
+        font-size: 1.4rem; 
+    }
+}
+
+.cloud li:nth-of-type(3n + 1) {
+    font-size: 1.25em;
+}
+.cloud li:nth-of-type(4n+3) {
+    font-size: 1.5em;
+}
+.cloud li:nth-of-type(5n - 3) {
+    font-size: 1em;
+}
+
+// screen adjust
+@media screen and (max-width: 991px) {
+
+    // .card{
+    //     width: 64%;
+    // }
+}
+
+@media screen and (min-width: 991px) {
+
+    
+
 }
