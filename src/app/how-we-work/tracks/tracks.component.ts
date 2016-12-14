@@ -13,6 +13,7 @@ import 'rxjs/add/operator/do';
 export class TracksComponent implements OnInit {
 
   posts = [];
+  tags = [];
 
   constructor(
     private dataService: DataService,
@@ -52,6 +53,8 @@ export class TracksComponent implements OnInit {
       ids.forEach(id => {
         this.getPost(id).subscribe(post=>{
           post = this.convertService.convertYAMLtoJSON(post)
+          console.log(post['tags']);
+          this.tags.push(post['tags']);
           this.posts.push(post);
           // sort date(yyyy/MM/dd)
           this.posts.sort(function(a,b){
@@ -59,6 +62,7 @@ export class TracksComponent implements OnInit {
           });
         })
       })
+      console.log(this.tags);
       console.log(this.posts);
     });
   }
