@@ -32,7 +32,7 @@ $main-font-size: 22px;
     h2{
         margin-bottom: 35px;
         font-family: $main-font-family;
-        margin: 0 25px 0 25px;
+        //margin: 0 25px 0 0;
     }
     p{
         font-family: $main-font-family;
@@ -69,12 +69,33 @@ $main-font-size: 22px;
         left: 420px;
         top: -74px;
     }
+@media screen and (max-width: 1200px) {
+        blockquote::after{
+        content: "}";
+        font-size: 0px;
+        position: relative;
+        left: 0px;
+        top: 0px;
+    }
+    blockquote::before{
+    
+        content: "{";
+        font-size: 0px;
+        position: relative;
+        left: 0px;
+        top: 0px;
+    }
+     blockquote{
+        margin: -85px 0 -20px;
+        border-left: 0px;
 
+    }
+}
 
 @media screen and (max-width: 991px) {
     
     
-      
+    
    .detail-container img {
         /*position: absolute;*/
 
@@ -85,11 +106,11 @@ $main-font-size: 22px;
         border: 0px;
         margin-left: 17px;
     }
-    p{
-        
+    p,h2{
         margin: 25px 25px 25px 25px;
-
+        word-break: break-all;
     }
+    
    blockquote::after{
         content: "}";
         font-family: Georgia, serif;
@@ -116,7 +137,7 @@ $main-font-size: 22px;
     }
 
     
-}
+ }
 
 // @media screen and (min-width: 991px) {
 //     .detail-container img {
