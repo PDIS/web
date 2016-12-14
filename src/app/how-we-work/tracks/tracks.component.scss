@@ -9,7 +9,7 @@
     .nav-tabs li{
         float: none;
         display: inline-block;
-        font-family: Georgia;
+        // font-family: Georgia;
     }
     .nav-tabs > li > a.active, .nav-tabs > li > a.active:focus, .nav-tabs > li > a.active:hover {
         border-width: 0;
@@ -45,13 +45,15 @@
     .participants {
         color: rgb(255, 0, 102);
     }
-    
+    .btn{
+        font-family: $btn_font_family;
+    }
     .btn-new {
         /*border-color: #adadad;*/
         color: black;
         background-color: white;
         border-color:dimgray; 
-        font-family: Georgia;
+        // font-family: Georgia;
         margin-right: 5px;
         margin-top: 2px;
         border-radius: 0;
@@ -69,12 +71,12 @@
         color: black;
         border-color:#BF0000;
         background-color: white;
-        font-family: Georgia;
+        // font-family: Georgia;
         padding: 4px 9px 4px 9px;
     }
     .btn-youtube:hover {
         border-color: #FF0000;
-        font-family: Georgia;
+        // font-family: Georgia;
         margin-right: 5px;
         margin-top: 2px;
         border-radius: 0;
@@ -85,12 +87,12 @@
         color: black;
         border-color:orangered;
         background-color: white;
-        font-family: Georgia;
+        // font-family: Georgia;
         padding: 4px 9px 4px 9px;
     }
     .btn-transcript:hover {
         border-color: darkorange;
-        font-family: Georgia;
+        // font-family: Georgia;
         margin-right: 5px;
         margin-top: 2px;
         border-radius: 0;
@@ -100,12 +102,12 @@
         color: black;
         border-color:#fd3c1b;
         background-color: white;
-        font-family: Georgia;
+        // font-family: Georgia;
         padding: 4px 9px 4px 9px;
     }
     .btn-soundcloud:hover {
         border-color: #fe7e25;
-        font-family: Georgia;
+        // font-family: Georgia;
         margin-right: 5px;
         margin-top: 2px;
         border-radius: 0;
@@ -115,12 +117,12 @@
         color: black;
         border-color:#38921a;
         background-color: white;
-        font-family: Georgia;
+        // font-family: Georgia;
         padding: 4px 9px 4px 9px;
     }
     .btn-slido:hover {
         border-color: #70bd4e;
-        font-family: Georgia;
+        // font-family: Georgia;
         margin-right: 5px;
         margin-top: 2px;
         border-radius: 0;
@@ -499,7 +501,7 @@
         
     }
 /*-----------------------------------*/
-
+/* 
 .slogan-container {
     text-align: center;
 }
@@ -514,7 +516,7 @@
     padding-bottom: 50px;
 }
 
-
+ */
 /*-----------------------------------*/
 
 .card{

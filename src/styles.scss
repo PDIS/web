@@ -5,8 +5,9 @@ $back_color: #4B0056;
 $hightlight: #D66FE5;
 $max_width: 1180px;
 $main-font-family: 'Noto Serif', Georgia, serif; /* font options: Noto Serif, Open Sans Condensed, Slabo 27px */
-$text_color:#111111;
 $main-font-size: 16px;
+$btn_font_family: 'Open Sans Condensed', sans-serif;
+$text_color:#111111;
 
 // ******************** html tag presets
 
@@ -38,7 +39,7 @@ a:hover{
     padding: 12px 25px;
     background: transparent;
     border: solid 2px $back_color;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: $btn_font_family;
     color: $back_color;
     margin: 0px;
     display: inline-block;
