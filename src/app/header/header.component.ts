@@ -1,86 +1,97 @@
+import {Renderer} from '@angular/core/src/render/api';
+import {ViewChild} from '@angular/core/src/metadata/di';
+import { NavigationStart } from '@angular/router/src/router';
+import { Router } from '@angular/router/src/router';
+import 'rxjs/add/operator/pairwise';
 import { HostListener } from '@angular/core/src/metadata/directives';
 import { Component, OnInit } from '@angular/core';
-
+import {ElementRef} from '@angular/core';
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  isTop: boolean = true;
 
-  lastDirection: string;
-  currentDirection: string;
 
-  showNav: boolean = true;
+    isTop: boolean = true;
 
-  currentPosition: number;
+    lastDirection: string;
+    currentDirection: string;
 
-  moveStart: number;
-  moveLength: number;
+    showNav: boolean = true;
 
-  bigLogo: boolean = true;
+    currentPosition: number;
 
-  @HostListener('window:scroll', ['$event'])
-  doSomething(event) {
+    moveStart: number;
+    moveLength: number;
 
-    this.isTop = document.body.scrollTop < 50;
+    bigLogo: boolean = true;
 
-    this.currentDirection = (document.body.scrollTop > this.currentPosition) ? 'down' : 'up';
+    
 
-    if (this.currentDirection != this.lastDirection) {
-      this.moveStart = document.body.scrollTop;
-      this.moveLength = 0;
-      this.lastDirection = this.currentDirection;
-    }
-    else {
-      this.moveLength = Math.abs(this.moveStart - document.body.scrollTop);
-    }
+    
 
-    this.currentPosition = document.body.scrollTop;
+    @HostListener('window:scroll', ['$event'])
+    doSomething(event) {
 
-    // this.showNav = (this.moveLength>50 && this.currentDirection=='up') || this.isTop;
 
-    // // this.bigLogo = this.currentDirection=='down' && !this.isTop || this.isTop;
+        this.isTop = document.body.scrollTop < 50;
 
-    // this.bigLogo = (this.isTop && this.currentDirection=='up') || (this.currentDirection=='down' && this.bigLogo);
+        this.currentDirection = (document.body.scrollTop > this.currentPosition) ? 'down' : 'up';
 
-    if (this.currentDirection == 'down') {
-      if (this.isTop) {
-        this.bigLogo = true;
-        this.showNav = true;
-      }
-      else {
-        if (this.moveLength > 100) {
-          this.bigLogo = false;
+        if (this.currentDirection != this.lastDirection) {
+            this.moveStart = document.body.scrollTop;
+            this.moveLength = 0;
+            this.lastDirection = this.currentDirection;
         }
-        else if(this.moveLength > 50) {
-          this.showNav = false;
+        else {
+            this.moveLength = Math.abs(this.moveStart - document.body.scrollTop);
         }
-      }
-    }
-    else {
-      if (this.isTop)
-      {
-        this.bigLogo = true;
-        this.showNav = true;
-      }
-      else{
-        if (this.moveLength > 50) {
-          this.showNav = true;
-          this.bigLogo = false;
+
+        this.currentPosition = document.body.scrollTop;
+
+        if (this.currentDirection == 'down') {
+            if (this.isTop) {
+                this.bigLogo = true;
+                this.showNav = true;
+            }
+            else {
+                if (this.moveLength > 100) {
+                    this.bigLogo = false;
+                }
+                else if (this.moveLength > 50) {
+                    this.showNav = false;
+                }
+            }
         }
-      }
+        else {
+            if (this.isTop) {
+                this.bigLogo = true;
+                this.showNav = true;
+            }
+            else {
+                if (this.moveLength > 50) {
+                    this.showNav = true;
+                    this.bigLogo = false;
+                }
+            }
+
+        }
 
     }
 
-  }
+    @ViewChild('test') el:ElementRef;
+    constructor(private router: Router, private rd: Renderer) {
 
+        this.router.events.pairwise().subscribe((e) => {
+            console.log(e);
+            if (e[1] instanceof NavigationStart) {
+                this.rd.invokeElementMethod(this.el.nativeElement,'click');
+            }
+        });
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+    }
 
 }

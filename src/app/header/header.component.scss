@@ -1,27 +1,29 @@
 @import "../../styles.scss";
 $nav-hight:100px;
 $nav-hight-mobile:60px;
-
 .logo-container {
     height: $nav-hight;
     overflow: hidden;
 }
 
 .logo {
-    width: $nav-hight * 3;
-    margin-top: $nav-hight / 10;
-    transition: opacity 0.3s linear;
-}
-
-.logo-square {
+    transition: width 0.1s ease-in, margin-top 0.1s ease-in;
     width: $nav-hight;
-    height: $nav-hight;
-    opacity: 0;
-    transition: opacity 0.3s linear;
-    position: absolute;
-    top: 0;
+    margin-top: $nav-hight / 3;
+    &.bigLogo {
+        width: $nav-hight * 3;
+        margin-top: $nav-hight / 10;
+    }
 }
 
+// .logo-square {
+//     width: $nav-hight;
+//     height: $nav-hight;
+//     opacity: 0;
+//     transition: opacity 0.3s linear;
+//     position: absolute;
+//     top: 0;
+// }
 .navbar-pdis {
     background: linear-gradient(top, #FFFFFF, #EFEFEF);
     background: -moz-linear-gradient(top, #FFFFFF, #EFEFEF);
@@ -89,12 +91,15 @@ $nav-hight-mobile:60px;
     .navbar-collapse {
         border: 0px;
     }
-
-    .logo{
-        width: $nav-hight-mobile * 3;
-        margin-top: 5px;
+    .logo {
+        transition: width 0.1s ease-in, margin-top 0.1s ease-in;
+        width: $nav-hight-mobile;
+        margin-top: $nav-hight-mobile / 3;
+        &.bigLogo {
+            width: $nav-hight-mobile * 3;
+            margin-top: $nav-hight-mobile / 10;
+        }
     }
-
     .logo-square {
         width: $nav-hight-mobile;
         height: $nav-hight-mobile;
