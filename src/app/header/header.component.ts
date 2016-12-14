@@ -36,21 +36,22 @@ export class HeaderComponent {
     @HostListener('window:scroll', ['$event'])
     doSomething(event) {
 
+        var scrollY = window.scrollY;
 
-        this.isTop = document.body.scrollTop < 50;
+        this.isTop = scrollY < 50;
 
-        this.currentDirection = (document.body.scrollTop > this.currentPosition) ? 'down' : 'up';
+        this.currentDirection = (scrollY > this.currentPosition) ? 'down' : 'up';
 
         if (this.currentDirection != this.lastDirection) {
-            this.moveStart = document.body.scrollTop;
+            this.moveStart = scrollY;
             this.moveLength = 0;
             this.lastDirection = this.currentDirection;
         }
         else {
-            this.moveLength = Math.abs(this.moveStart - document.body.scrollTop);
+            this.moveLength = Math.abs(this.moveStart - scrollY);
         }
 
-        this.currentPosition = document.body.scrollTop;
+        this.currentPosition = scrollY;
 
         if (this.currentDirection == 'down') {
             if (this.isTop) {
