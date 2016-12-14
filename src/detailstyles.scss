@@ -2,54 +2,53 @@
 $main-font-family:'Georgia';
 $main-font-size: 22px;
 $line-height-size:35px;
+
+
 .detail-container{
-    margin: 0 0 2.5vw 0;
-    
-    
+    margin: 0 0 2.5vw 0;      
 }
-.detail-text{
+
+.detail-text{                              //設定 detailcomponent 文字及圖片樣式 
     justify-content:center;
     font-family: $main-font-family;
     font-size: $main-font-size;
-    line-height: line-height-size;
-    p{
+    line-height: $line-height-size;
+    p{                                      
         margin-top: 20px;
     }
-    em img {
+    em img {                                //右邊文繞圖
         float: right;
         width: 450px;
         height: 300px;
         margin: 8px 0px 17px 35px;
     }
-    strong img {
+    strong img {                            //左邊文繞圖
         float: left;
         width: 450px;
         height: 300px;
         margin: 8px 35px 17px 0px;
     }
-    img {
-        
+    img {                                   
         margin: 15px 0px 15px 0px;
     }
-    dd{
+    dd{                                     //清除文繞圖效果
         clear: left;
     }
-    blockquote{
+    blockquote{                             
         margin: -90px 0 -50px;
         border-left: 0px;
-
     }
-    blockquote::before{
-    
+    blockquote::before{                     //blockquote { 樣式
         content: "{";
         font-family: Georgia, serif;
+        
         font-size: 96px;
         color: #ddd;
         position: relative;
         left: -66px;
         top: 112px;
     }
-    blockquote::after{
+    blockquote::after{                      //blockquote } 樣式
         content: "}";
         font-family: Georgia, serif;
         font-size: 96px;
@@ -63,17 +62,9 @@ $line-height-size:35px;
         margin-bottom: 20px;
     }
     
-@media screen and (max-width: 1200px) {
-    .detail-text blockquote::after{
+@media screen and (max-width: 1200px) {     //螢幕小於1200px 消除 blockquote樣式
+    .detail-text blockquote::after, .detail-text blockquote::before{
         content: "}";
-        font-size: 0px;
-        position: relative;
-        left: 0px;
-        top: 0px;
-    }
-    .detail-text blockquote::before{
-    
-        content: "{";
         font-size: 0px;
         position: relative;
         left: 0px;
@@ -82,7 +73,7 @@ $line-height-size:35px;
 }
 
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 991px) {      //螢幕小於991px 改變成行動版本
    
     .detail-text img, .detail-text strong img, .detail-text em img {
         clear: left;
@@ -92,9 +83,9 @@ $line-height-size:35px;
         border: 0px;
         margin-left: 17px;
     }
-    .detail-text span img{
-        width: 20%;
-        height: 20%;
+    .detail-text span img{                  //螢幕小於991px 改變成行動版本
+        width: 40%;
+        height: 40%;
     }
     .detail-text p,h2{
         margin: 25px 25px 25px 25px;
@@ -115,7 +106,7 @@ $line-height-size:35px;
     }
  }
 
-@media screen and (min-width: 991px) {
+@media screen and (min-width: 991px) {      //螢幕大於991px 圖片為滿版模式
     .detail-container img {
         width: 100%;
         height: 100%;
