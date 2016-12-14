@@ -1,18 +1,19 @@
 
 $main-font-family:'Georgia';
 $main-font-size: 22px;
+$line-height-size:35px;
 .detail-container{
-    margin: 2.5vw 0 2.5vw 0;
+    margin: 0 0 2.5vw 0;
     
     
 }
 .detail-text{
-        justify-content:center;
-        font-family: $main-font-family;
-        //margin-bottom: 25px;
-        //margin-top: 25px;
-        font-size: $main-font-size;
-        line-height: 35px;
+    justify-content:center;
+    font-family: $main-font-family;
+    font-size: $main-font-size;
+    line-height: line-height-size;
+    p{
+        margin-top: 20px;
     }
     em img {
         float: right;
@@ -27,24 +28,14 @@ $main-font-size: 22px;
         margin: 8px 35px 17px 0px;
     }
     img {
+        
         margin: 15px 0px 15px 0px;
-    }
-    h2{
-        margin-bottom: 35px;
-        font-family: $main-font-family;
-        //margin: 0 25px 0 0;
-    }
-    p{
-        font-family: $main-font-family;
-        margin: 25px 0px 25px 0px;
-
     }
     dd{
         clear: left;
-        // margin-bottom: 20px;    
     }
     blockquote{
-        margin: -105px 0 -20px;
+        margin: -90px 0 -50px;
         border-left: 0px;
 
     }
@@ -53,31 +44,34 @@ $main-font-size: 22px;
         content: "{";
         font-family: Georgia, serif;
         font-size: 96px;
-        font-weight: bold;
-        color: #999;
+        color: #ddd;
         position: relative;
         left: -66px;
-        top: 119px;
+        top: 112px;
     }
     blockquote::after{
         content: "}";
         font-family: Georgia, serif;
         font-size: 96px;
-        font-weight: bold;
-        color: #999;
+        color: #ddd;
         position: relative;
         left: 420px;
-        top: -74px;
+        top: -77px;
     }
+}
+.video-container {
+        margin-bottom: 20px;
+    }
+    
 @media screen and (max-width: 1200px) {
-        blockquote::after{
+    .detail-text blockquote::after{
         content: "}";
         font-size: 0px;
         position: relative;
         left: 0px;
         top: 0px;
     }
-    blockquote::before{
+    .detail-text blockquote::before{
     
         content: "{";
         font-size: 0px;
@@ -85,20 +79,12 @@ $main-font-size: 22px;
         left: 0px;
         top: 0px;
     }
-     blockquote{
-        margin: -85px 0 -20px;
-        border-left: 0px;
-
-    }
 }
 
-@media screen and (max-width: 991px) {
-    
-    
-    
-   .detail-container img {
-        /*position: absolute;*/
 
+@media screen and (max-width: 991px) {
+   
+    .detail-text img, .detail-text strong img, .detail-text em img {
         clear: left;
         top: 10px;
         width: 90%;
@@ -106,27 +92,19 @@ $main-font-size: 22px;
         border: 0px;
         margin-left: 17px;
     }
-    p,h2{
+    .detail-text span img{
+        width: 20%;
+        height: 20%;
+    }
+    .detail-text p,h2{
         margin: 25px 25px 25px 25px;
         word-break: break-all;
     }
-    
-   blockquote::after{
-        content: "}";
-        font-family: Georgia, serif;
-        font-size: 0px;
-        font-weight: bold;
-        color: #999;
-        position: relative;
-        left: 0px;
-        top: 0px;
-    }
-    
-    
+         
     .video-container {
         padding-top: 65%;
     }
-    .video-container iframe, .video-container object, .video-container embed {
+    .video-container iframe{
         position: absolute;
         top: 10px;
         left: 5%;
@@ -135,16 +113,12 @@ $main-font-size: 22px;
         border: 0px;
         margin-left: 17px;
     }
-
-    
  }
 
-// @media screen and (min-width: 991px) {
-//     .detail-container img {
-//         /*position: absolute;*/
-//         top: 10px;
-//         width: 100%;
-//         height: 100%;
-//         border: 0px;
-//     }
-// }
+@media screen and (min-width: 991px) {
+    .detail-container img {
+        width: 100%;
+        height: 100%;
+        border: 0px;
+    }
+}
