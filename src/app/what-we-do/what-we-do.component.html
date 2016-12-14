@@ -14,44 +14,20 @@
 
   <div class="section-line"></div>
 
-  <div class="topic-container topic-left">
-    <!--<div class="topic-content-left">-->
-    <div class="text">
-      <h1>Open API</h1>
-      <h3>How might we help Taiwan unlock its creative potential through digital innovation?</h3>
-      <p>We believe public digital platforms should automatically provide reliable data collected in transparent means and make
-        it accesible to people.</p>
-      <a class="btn-pdis" [routerLink]="['/what-we-do/open-api']" role="button">
-        More about Open API
+  <div *ngFor="let topic of topics; let i = index">
+    <div class="topic-container" [ngClass]="{'topic-right':(i%2===1),'topic-left':(i%2===0)}">
+      <div class="text">
+        <h1>{{topic.title}}</h1>
+        <div [innerHTML]="topic['text']"></div>
+        <a class="btn-pdis" [routerLink]="'/what-we-do/'+topic.id" role="button">
+        More about {{topic.title}}
       </a>
+      </div>
+      <div class="image" [innerHTML]="topic['image']"></div>
     </div>
-    <!--<div class="topic-image-right">-->
-    <div class="image">
-      <img src="../../assets/img/open-api.jpeg" alt="">
-    </div>
-
+    <div class="section-line"></div>
   </div>
 
-  <div class="section-line"></div>
-
-  <div class="topic-container topic-right">
-    <div class="image">
-      <img src="../../assets/img/civic-participation.jpeg" alt="">
-    </div>
-    <div class="text">
-      <h1>Civic​​ Participation</h1>
-      <h3>How might we refashion democracy to share agenda-setting power with the people?</h3>
-      <p>...democracy is defined as : (a) government by the people … key elements: (b) The active participation of the people,
-        as citizens, in politics and civic life.</p>
-      <a class="btn-pdis" [routerLink]="['/what-we-do/civic-participation']" role="button">
-        More about Civic​​ Participation
-      </a>
-    </div>
-  </div>
-
-  <div class="section-line"></div>
-
-  
   <div class="tell-us-container">
     <div class="tell-us-content">
       <h2>Tell us what you think about</h2>
