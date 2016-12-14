@@ -27,11 +27,17 @@ export class WhatWeDoComponent implements OnInit {
       // .do(data => console.log(data));
   }
 
-  private getPostCooked(id: string) {
+  private getPost(id: string) {
     return this.http.get("https://talk.pdis.nat.gov.tw/t/" + id + ".json")
       .map(function (data) {
         data = data.json();
-        return data['post_stream']['posts'][0]['cooked'];
+        var post = {};
+        var post_content = data['post_stream']['posts'][0]['cooked'].split("<hr>");
+        post['id'] = id;
+        post['title'] = post_content[0].replace(/<(?:.|\n)*?>/gm, '');
+        post['text'] = post_content[1];
+        post['image'] = post_content[2];
+        return post;
       })
       // .do(data => console.log(data));
   }
@@ -40,10 +46,10 @@ export class WhatWeDoComponent implements OnInit {
     this.getIds()
     .subscribe(ids => {
       ids.forEach(id => {
-        this.getPostCooked(id)
+        this.getPost(id)
         .do(data => console.log(data))
-        .subscribe(postCooked=>{
-          this.topics.push(postCooked);
+        .subscribe(post=>{
+          this.topics.push(post);
         })
       })
     });
