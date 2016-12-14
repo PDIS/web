@@ -37,30 +37,30 @@ $line-height-size:35px;
         clear: left;
     }
     blockquote{                             
-        margin: -90px 0 -50px;
+        margin: -95px 0 -74px;
         border-left: 0px;
     }
     blockquote::before{                     //blockquote { 樣式
         content: "{";
-        font-family: $main-font-family;
-        font-size: 96px;
+        font-family: "Noto Serif", Georgia, serif;
+        font-size: 135px;
         color: #ddd;
         position: relative;
         left: -66px;
-        top: 112px;
+        top: 146px;
     }
     blockquote::after{                      //blockquote } 樣式
         content: "}";
         font-family: Georgia, serif;
-        font-size: 96px;
+        font-size: 135px;
         color: #ddd;
         position: relative;
-        left: 420px;
-        top: -77px;
+        left: 396px;
+        top: -88px;
     }
 }
 .video-container {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     
 @media screen and (max-width: 1200px) {     //螢幕小於1200px 消除 blockquote樣式

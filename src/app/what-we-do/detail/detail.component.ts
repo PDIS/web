@@ -23,7 +23,7 @@ export class DetailComponent implements OnInit {
   id: string;
   params;
   dangerousVideoUrl;
-  videoUrl;
+  videoUrl=[];
   youtubecount;
   constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
     this.dataservice = datadetail;
@@ -61,7 +61,7 @@ export class DetailComponent implements OnInit {
   }
   updateVideoUrl(id: string) {
     this.dangerousVideoUrl = 'https://www.youtube.com/embed/' + id;
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousVideoUrl);
+    this.videoUrl[0] = this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousVideoUrl);
   } 
   ngOnDestroy() { }
 }
