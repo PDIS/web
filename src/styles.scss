@@ -2,11 +2,17 @@
 
 $back_color:#4B0056;
 $hightlight:#D66FE5;
+$text_color:#111111;
+
 $max_width:1180px;
-$main-font-family:'Georgia';
-$main-font-size: 22px;
+$main-font-family:'noto serif', sans-serif;;
+$main-font-size: 16px;
+
 body {
     background-color: $back_color;
+    font-family: $main-font-family;
+    font-size: $main-font-size;
+    color: $text_color;
 }
 
 .btn-pdis {
@@ -39,5 +45,6 @@ body {
     box-shadow: 0 0 10px black;
     max-width: $max_width;
     margin: 150px auto 0;
+    padding: 0 2.5vw;
 }
 
