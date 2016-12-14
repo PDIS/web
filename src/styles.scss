@@ -1,12 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
-$back_color:#4B0056;
-$hightlight:#D66FE5;
+
+$back_color: #4B0056;
+$hightlight: #D66FE5;
+$max_width: 1180px;
+$main-font-family: 'Noto Serif', Georgia, serif; /* font options: Noto Serif, Open Sans Condensed, Slabo 27px */
 $text_color:#111111;
-$max_width:1180px;
-$main-font-family:'noto serif',sans-serif;
 $main-font-size: 16px;
+
+// ******************** html tag presets
+
 body {
+    font-family: $main-font-family;
     background-color: $back_color;
     font-family: $main-font-family;
     font-size: $main-font-size;
@@ -18,11 +23,22 @@ body {
     margin-bottom: 20px;
 }
 
+a{
+    transition: all 0.3s ease;
+    color: $back_color;
+}
+
+a:hover{
+    color: $hightlight;
+}
+
+// ******************** 
+
 .btn-pdis {
     padding: 12px 25px;
     background: transparent;
     border: solid 2px $back_color;
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'Open Sans Condensed', sans-serif;
     color: $back_color;
     margin: 0px;
     display: inline-block;
@@ -52,6 +68,19 @@ body {
     padding: 0 2.5vw;
 }
 
+// ******************** slogan section
+
+.slogan-container {
+    text-align: center;
+}
+
+.slogan {
+    font-family: "Slabo 27px";
+    font-size: 5rem;
+    padding: 80px 0;
+}
+
+// ******************** 
 @media screen and (max-width: 767px) {
     .main-container {
         background-color: #EFEFEF;

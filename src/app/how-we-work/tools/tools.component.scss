@@ -1,0 +1,72 @@
+@import "../../../styles.scss";
+
+h2{
+	text-align: center;
+	font-weight: 700;
+}
+
+/*-----------------------------------*/
+
+.topic-container {
+    // height: 550px;
+    position: relative;
+    .text {
+        position: inherit;
+        width: 50vw;
+        max-width: $max_width * 0.6;
+        display: inline-block;
+        margin: 2.5vw;
+        z-index: 2;
+        background-color: white;
+        opacity: 0.9;
+        padding: 2.5vw;
+        font-family: Noto Serif;
+        h1 {
+            font-weight: 700;
+        }
+        h3 {
+            font-style: italic;
+        }
+    }
+    .image {
+        position: absolute;
+        width: 50vw;
+        max-width: $max_width * 0.6;
+        display: inline-block;
+        margin: 5vw 2.5vw;
+        z-index: 1;
+        overflow: hidden;
+        height: calc(100% - 10vw);
+        display: inline-flex;
+        align-items: center;
+        img {
+            width: 100%;
+        }
+    }
+    .btn-pdis {
+        margin-top: 15px;
+    }
+}
+
+.topic-left {
+    text-align: left;
+    .text {
+        margin-right: 2.5vw;
+    }
+    .image {
+        right: 0;
+    }
+}
+
+.topic-right {
+    text-align: right;
+    .text {
+        margin-right: 2.5vw;
+    }
+    .image {
+        left: 0;
+    }
+}
+
+
+/*-----------------------------------*/
