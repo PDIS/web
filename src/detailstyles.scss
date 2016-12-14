@@ -1,6 +1,9 @@
-
-$main-font-family:'Georgia';
+$back_color: #4B0056;
+$hightlight: #D66FE5;
+$max_width: 1180px;
+$main-font-family: 'Noto Serif', Georgia, serif; /* font options: Noto Serif, Open Sans Condensed, Slabo 27px */
 $main-font-size: 22px;
+
 .detail-container{
     margin: 2.5vw 0 2.5vw 0;
     
@@ -51,7 +54,7 @@ $main-font-size: 22px;
     blockquote::before{
     
         content: "{";
-        font-family: Georgia, serif;
+        font-family: $main-font-family;
         font-size: 96px;
         font-weight: bold;
         color: #999;
