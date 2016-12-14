@@ -1,5 +1,6 @@
 import { DetailComponent } from './what-we-do/detail/detail.component';
 import { GetInvolvedComponent } from './get-involved/get-involved.component';
+import { ToolsComponent } from './how-we-work/tools/tools.component';
 import { HowWeWorkComponent } from './how-we-work/how-we-work.component';
 import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
 import { NgModule } from '@angular/core';
@@ -9,6 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo:'what-we-do', pathMatch:'full' },
   { path: 'what-we-do/:id', component: DetailComponent },
   { path: 'what-we-do', component: WhatWeDoComponent },
+  { path: 'how-we-work/tools', component: ToolsComponent },
   { path: 'how-we-work', component: HowWeWorkComponent },
   { path: 'get-involved', component: GetInvolvedComponent }
 ];
