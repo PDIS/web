@@ -7,8 +7,8 @@
 }
 
 .slogan {
-    font-size: 5rem;
-    font-family: "Maiden Orange";
+    // font-size: 5rem;
+    // font-family: "Maiden Orange";
     padding: 100px 0 30px;
 }
 
@@ -20,35 +20,33 @@
 /*-----------------------------------*/
 
 .topic-container {
-    // height: 550px;
     position: relative;
     .text {
         position: inherit;
         width: 50vw;
-        max-width: $max_width * 0.6;
+        max-width: $max_width * 0.5;
         display: inline-block;
-        margin: 2.5vw;
+        margin: 0;
         z-index: 2;
         background-color: white;
         opacity: 0.9;
         padding: 2.5vw;
-        font-family: Noto Serif;
         h1 {
             font-weight: 700;
         }
         h3 {
-            font-style: italic;
+            // font-style: italic;
         }
     }
     .image {
         position: absolute;
         width: 50vw;
-        max-width: $max_width * 0.6;
+        max-width: $max_width * 0.5;
         display: inline-block;
-        margin: 5vw 2.5vw;
+        margin: 2.5vw 0;
         z-index: 1;
         overflow: hidden;
-        height: calc(100% - 10vw);
+        height: calc(100% - 5vw);
         display: inline-flex;
         align-items: center;
         img {
@@ -62,9 +60,6 @@
 
 .topic-left {
     text-align: left;
-    .text {
-        margin-right: 2.5vw;
-    }
     .image {
         right: 0;
     }
@@ -72,9 +67,6 @@
 
 .topic-right {
     text-align: right;
-    .text {
-        margin-right: 2.5vw;
-    }
     .image {
         left: 0;
     }
@@ -86,7 +78,7 @@
 .tell-us-container {
     background-image: url(http://localhost:4200/assets/img/pdis-team.JPG);
     background-size: cover;
-    margin: 2.5vw;
+    margin: 0;
     padding: 2.5vw;
     text-align: center;
 }
@@ -95,7 +87,6 @@
     position: relative;
     background-color: white;
     opacity: 0.9;
-    width: 50vw;
     display: inline-block;
     padding: 2.5vw;
     img {
@@ -110,8 +101,9 @@
         font-size: 20pt;
     }
     h2 {
-        font-family: 'noto serif';
-        font-style: italic;
+        // font-family: 'noto serif';
+        // font-style: italic;
+        margin-bottom: 10px;
     }
 }
 
@@ -124,13 +116,13 @@
         display: flex;
         .text {
             width: 100%;
-            margin: 2.5vw 0;
+            margin: 0;
             max-width: $max_width;
         }
         .image {
             width: 100%;
             height: calc(100% - 5vw);
-            margin: 2.5vw 0;
+            margin: 0;
             max-width: $max_width;
             img {
                 height: 100%;
@@ -143,7 +135,7 @@
     .tell-us-container {
         background-image: url(http://localhost:4200/assets/img/pdis-team.JPG);
         background-size: cover;
-        margin: 2.5vw 0;
+        margin: 0;
         padding: 0px;
         text-align: center;
     }

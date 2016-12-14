@@ -1,6 +1,52 @@
-<div *ngIf="list" class="clearfix">
-  <h2 class="thumbnail-text">Tools</h2>
-  <div *ngFor="let post of list['post_stream'].posts">
-    <div class="col-sm-4 col-md-3 col-lg-2 thumbnail-pdis" [innerHTML]="post.cooked"></div>
-  </div>
+<div class="main-container">
+
+	<div class="slogan-container">
+
+		<div class="slogan">
+
+			<span>
+				We are commited to open our work process
+				<br>
+				See below the <span class="highlight">tools</span> we use everyday
+			</span>
+
+		</div>
+	</div>
+
+	<hr class="section-line" />
+
+	<h2>Tools</h2>
+
+	<!-- the blocks of tools -->
+	<div *ngIf="list" class="clearfix">
+
+		<div *ngFor="let post of list['post_stream'].posts">
+
+			<div class="col-sm-4 col-md-3 col-lg-2 thumbnail-pdis" [innerHTML]="post.cooked"></div>
+			
+		</div>
+	</div>
+
+	<!-- the desc of tools -->
+	<div class="topic-container topic-right"> <!-- topic-left -->
+
+		<div class="image">
+			<!-- <img src="../../assets/img/civic-participation.jpeg" alt=""> -->
+		</div>
+
+		<div class="text">
+
+ 			<h1>Civic​​ Participation</h1>
+
+			<h3>How might we refashion democracy to share agenda-setting power with the people?</h3>
+
+			<p>...democracy is defined as : (a) government by the people … key elements: (b) The active participation of the people,
+				as citizens, in politics and civic life.</p>
+			
+				<a class="btn-pdis" [routerLink]="['/what-we-do/civic-participation']" role="button">
+					More about Civic​​ Participation
+				</a> 
+
+		</div>
+	</div>
 </div>
