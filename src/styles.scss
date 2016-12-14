@@ -3,16 +3,21 @@
 $back_color:#4B0056;
 $hightlight:#D66FE5;
 $text_color:#111111;
-
 $max_width:1180px;
-$main-font-family:'noto serif', sans-serif;;
+$main-font-family:'noto serif',
+sans-serif;
+;
 $main-font-size: 16px;
-
 body {
     background-color: $back_color;
     font-family: $main-font-family;
     font-size: $main-font-size;
     color: $text_color;
+}
+
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+    line-height: normal;
+    margin-bottom: 20px;
 }
 
 .btn-pdis {
@@ -27,6 +32,7 @@ body {
 }
 
 .section-line {
+    margin: 2.5vw 0;
     height: 1px;
     background: -moz-linear-gradient(left, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
     /* FF3.6-15 */
@@ -48,3 +54,12 @@ body {
     padding: 0 2.5vw;
 }
 
+@media screen and (max-width: 767px) {
+    .main-container {
+        background-color: #EFEFEF;
+        box-shadow: 0 0 10px black;
+        max-width: $max_width;
+        margin: 90px auto 0;
+        padding: 0 2.5vw;
+    }
+}

@@ -10,6 +10,7 @@ $nav-hight-mobile:60px;
     transition: width 0.1s ease-in, margin-top 0.1s ease-in;
     width: $nav-hight;
     margin-top: $nav-hight / 3;
+    margin-left: 2.5vw;
     &.bigLogo {
         width: $nav-hight * 3;
         margin-top: $nav-hight / 10;
