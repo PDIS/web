@@ -1,0 +1,113 @@
+@import "../../styles.scss";
+$nav-hight:100px;
+$nav-hight-mobile:60px;
+.logo-container {
+    height: $nav-hight;
+    overflow: hidden;
+}
+
+.logo {
+    transition: width 0.1s ease-in, margin-top 0.1s ease-in;
+    width: $nav-hight;
+    margin-top: $nav-hight / 3;
+    margin-left: 2.5vw;
+    &.bigLogo {
+        width: $nav-hight * 3;
+        margin-top: $nav-hight / 10;
+    }
+}
+
+// .logo-square {
+//     width: $nav-hight;
+//     height: $nav-hight;
+//     opacity: 0;
+//     transition: opacity 0.3s linear;
+//     position: absolute;
+//     top: 0;
+// }
+.navbar-pdis {
+    background: linear-gradient(top, #FFFFFF, #EFEFEF);
+    background: -moz-linear-gradient(top, #FFFFFF, #EFEFEF);
+    background: -webkit-linear-gradient(top, #FFFFFF, #EFEFEF);
+    border: solid 0px;
+    top: 5px;
+    box-shadow: 0 0 5px black;
+    transition: top 0.3s linear;
+}
+
+.header-line {
+    background-color: $back_color;
+    height: 5px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    z-index: 1030;
+}
+
+.nav-item {
+    border-left: solid 3px;
+    color: $back_color;
+    margin: 20px 0;
+    padding: 0 30px 0 5px;
+    font-size: 1.25rem;
+    font-family: $btn_font_family;
+    white-space: pre-line;
+}
+
+.nav-item:hover {
+    color: $hightlight;
+    background-color: transparent;
+}
+
+.nav-item.active {
+    color: $hightlight;
+}
+
+.nav-container {
+    max-width: $max_width;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+    .logo-container {
+        height: $nav-hight-mobile;
+        overflow: hidden;
+    }
+    .icon-bar {
+        background-color: $back_color;
+    }
+    .navbar-toggle {
+        margin-top: ($nav-hight-mobile - 34px) / 2;
+    }
+    .navbar-nav {
+        margin: 0 -15px;
+    }
+    .nav>li {
+        border-top: solid 1px #999
+    }
+    .nav-item {
+        margin: 20px;
+        white-space: nowrap;
+    }
+    .navbar-collapse {
+        border: 0px;
+    }
+    .logo {
+        transition: width 0.1s ease-in, margin-top 0.1s ease-in;
+        width: $nav-hight-mobile;
+        margin-top: $nav-hight-mobile / 3;
+        &.bigLogo {
+            width: $nav-hight-mobile * 3;
+            margin-top: $nav-hight-mobile / 10;
+        }
+    }
+    .logo-square {
+        width: $nav-hight-mobile;
+        height: $nav-hight-mobile;
+        opacity: 0;
+        transition: opacity 0.3s linear;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}

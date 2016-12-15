@@ -1,19 +1,19 @@
 import { DataService } from './../../shared/dataService/data-service.service';
 import { Http } from '@angular/http';
 import { ConvertService } from './../../shared/convertService/convert.service';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
 @Component({
-  selector: 'app-track',
-  templateUrl: './track.component.html',
-  styleUrls: ['./track.component.css']
+  selector: 'app-tracks',
+  templateUrl: './tracks.component.html',
+  styleUrls: ['./tracks.component.scss']
 })
-export class TrackComponent implements OnInit {
+export class TracksComponent implements OnInit {
 
   posts = [];
-  // postarray = [];
+  tags = [];
 
   constructor(
     private dataService: DataService,
@@ -53,6 +53,8 @@ export class TrackComponent implements OnInit {
       ids.forEach(id => {
         this.getPost(id).subscribe(post=>{
           post = this.convertService.convertYAMLtoJSON(post)
+          console.log(post['tags']);
+          this.tags.push(post['tags']);
           this.posts.push(post);
           // sort date(yyyy/MM/dd)
           this.posts.sort(function(a,b){
@@ -60,7 +62,7 @@ export class TrackComponent implements OnInit {
           });
         })
       })
-
+      console.log(this.tags);
       console.log(this.posts);
     });
   }
