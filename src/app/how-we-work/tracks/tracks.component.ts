@@ -13,7 +13,13 @@ import 'rxjs/add/operator/do';
 export class TracksComponent implements OnInit {
 
   posts = [];
+  tag = [];
   tags = [];
+  speeches = [];
+  meetings = [];
+  conferences = [];
+  interviews = [];
+  others =[];
 
   constructor(
     private dataService: DataService,
@@ -53,10 +59,48 @@ export class TracksComponent implements OnInit {
       ids.forEach(id => {
         this.getPost(id).subscribe(post=>{
           post = this.convertService.convertYAMLtoJSON(post)
-          console.log(post['tags']);
-          this.tags.push(post['tags']);
+
+          if(post['category']=='speech'){
+              this.speeches.push(post);
+              this.speeches.sort(function(a,b){
+                  return new Date(b.date).getTime() - new Date(a.date).getTime();
+              });
+          }
+          if(post['category']=='meeting'){
+              this.meetings.push(post);
+              this.meetings.sort(function(a,b){
+                  return new Date(b.date).getTime() - new Date(a.date).getTime();
+              });
+          }
+          if(post['category']=='conference'){
+              this.conferences.push(post);
+              this.conferences.sort(function(a,b){
+                  return new Date(b.date).getTime() - new Date(a.date).getTime();
+              });
+          }
+          if(post['category']=='interview'){
+              this.interviews.push(post);
+              this.interviews.sort(function(a,b){
+                  return new Date(b.date).getTime() - new Date(a.date).getTime();
+              });
+          }
+          if(post['category']== null){
+              this.others.push(post);
+              this.others.sort(function(a,b){
+                  return new Date(b.date).getTime() - new Date(a.date).getTime();
+              });
+          }
+          for(var i in post['tags']){
+            this.tag = post['tags'][i];
+          }
+          console.log(post['tags'][0])
+          console.log(post['tags'][1])
+          console.log(post['tags'][2])
+          this.tags.push(this.tag);
           this.posts.push(post);
+
           // sort date(yyyy/MM/dd)
+
           this.posts.sort(function(a,b){
             return new Date(b.date).getTime() - new Date(a.date).getTime();
           });
