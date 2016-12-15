@@ -58,10 +58,15 @@ a:hover{
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
-.section-end{
+hr.section-end {
+    text-align: center;
+    height: 8rem;
+}
+
+hr.section-end:after {
     content:"#";
-    margin: 2vw 0;
     font-size: 6rem;
+    font-weight: 700;
     color: #DDDDDD;
 }
 
