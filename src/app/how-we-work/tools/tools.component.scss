@@ -4,8 +4,21 @@ h2{
 	text-align: center;
 	font-weight: 700;
 }
+/*-----------------thumb------------------*/
 
-/*-----------------------------------*/
+.thumb-container{
+    display: table;
+    margin: auto;
+    width: 55%;
+    background-color: #FFFFFF;
+    .thumb{
+        display: table-cell;
+        text-align: center;
+        
+    }
+}
+
+/*-----------------topic------------------*/
 
 .topic-container {
     // height: 550px;
@@ -20,12 +33,9 @@ h2{
         background-color: white;
         opacity: 0.9;
         padding: 2.5vw;
-        font-family: Noto Serif;
         h1 {
-            font-weight: 700;
         }
         h3 {
-            font-style: italic;
         }
     }
     .image {
