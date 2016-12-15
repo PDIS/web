@@ -4,6 +4,13 @@
 
 .slogan-container {
     text-align: center;
+    position: relative;
+    /deep/ canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
 }
 
 .slogan {
@@ -14,6 +21,8 @@
 
 .slogan-btn {
     padding-bottom: 50px;
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -31,12 +40,6 @@
         background-color: white;
         opacity: 0.9;
         padding: 2.5vw;
-        h1 {
-            font-weight: 700;
-        }
-        h3 {
-            // font-style: italic;
-        }
     }
     .image {
         position: absolute;
@@ -49,8 +52,9 @@
         height: calc(100% - 5vw);
         display: inline-flex;
         align-items: center;
-        img {
+        /deep/ img {
             width: 100%;
+            height: auto;
         }
     }
     .btn-pdis {
@@ -124,8 +128,9 @@
             height: 100%;
             margin: 0;
             max-width: $max_width;
-            img {
+            /deep/ img {
                 height: 100%;
+                width: auto;
             }
         }
     }

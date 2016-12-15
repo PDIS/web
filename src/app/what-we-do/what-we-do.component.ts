@@ -2,6 +2,8 @@ import { Http } from '@angular/http';
 import { DataService } from './../shared/dataService/data-service.service';
 import { Component, OnInit } from '@angular/core';
 
+declare var particlesJS: any;
+
 @Component({
   selector: 'app-what-we-do',
   templateUrl: './what-we-do.component.html',
@@ -9,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WhatWeDoComponent implements OnInit {
 
-  constructor(private dataService: DataService, private http:Http) { }
+  constructor(private dataService: DataService, private http: Http) { }
 
   private topics = [];
 
@@ -24,7 +26,7 @@ export class WhatWeDoComponent implements OnInit {
         });
         return ids;
       })
-      // .do(data => console.log(data));
+    // .do(data => console.log(data));
   }
 
   private getPost(id: string) {
@@ -39,20 +41,25 @@ export class WhatWeDoComponent implements OnInit {
         post['image'] = post_content[2];
         return post;
       })
-      // .do(data => console.log(data));
+    // .do(data => console.log(data));
   }
 
   ngOnInit() {
     this.getIds()
-    .subscribe(ids => {
-      ids.forEach(id => {
-        this.getPost(id)
-        .do(data => console.log(data))
-        .subscribe(post=>{
-          this.topics.push(post);
+      .subscribe(ids => {
+        ids.forEach(id => {
+          this.getPost(id)
+            .do(data => console.log(data))
+            .subscribe(post => {
+              this.topics.push(post);
+            })
         })
-      })
+      });
+
+    particlesJS.load("particles", "../../assets/particles.json", function () {
+      console.log('callback - particles.js config loaded');
     });
+
   }
 
 }
