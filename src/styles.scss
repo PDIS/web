@@ -14,7 +14,6 @@ $text_color:#111111;
 body {
     font-family: $main-font-family;
     background-color: $back_color;
-    font-family: $main-font-family;
     font-size: $main-font-size;
     color: $text_color;
 }
@@ -31,6 +30,8 @@ a{
 
 a:hover{
     color: $hightlight;
+    border-color: $hightlight;
+    text-decoration: none;
 }
 
 // ******************** 
@@ -55,6 +56,18 @@ a:hover{
     /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to right, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+hr.section-end {
+    text-align: center;
+    height: 8rem;
+}
+
+hr.section-end:after {
+    content:"#";
+    font-size: 6rem;
+    font-weight: 700;
+    color: #DDDDDD;
 }
 
 .highlight {

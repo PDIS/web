@@ -5,54 +5,87 @@ h2{
 	font-weight: 700;
 }
 
-/*-----------------------------------*/
+:host /deep/ img{
+    max-width: 100%;
+    height: auto;
+}
+
+/*-----------------thumb------------------*/
+
+.thumb-container{
+    margin: auto;
+    width: 60%;
+    text-align: center;
+
+    .thumb{
+        display: inline-block;
+        margin: 5px;
+        padding: 10px;
+        width: 30%;
+        height: 30vh;
+        text-align: center;
+        vertical-align: top;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .thumb-container{
+        width: 100%;
+
+        .thumb{
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+/*-----------------topic------------------*/
 
 .topic-container {
     // height: 550px;
     position: relative;
-    .text {
-        position: inherit;
-        width: 50vw;
-        max-width: $max_width * 0.6;
-        display: inline-block;
-        margin: 2.5vw;
-        z-index: 2;
-        background-color: white;
-        opacity: 0.9;
-        padding: 2.5vw;
-        font-family: Noto Serif;
-        h1 {
-            font-weight: 700;
-        }
-        h3 {
-            font-style: italic;
-        }
-    }
+
     .image {
         position: absolute;
         width: 50vw;
         max-width: $max_width * 0.6;
         display: inline-block;
-        margin: 5vw 2.5vw;
-        z-index: 1;
+        margin: 2.5vw 0;
+        z-index: 10;
         overflow: hidden;
-        height: calc(100% - 10vw);
+        height: calc(100% - 5vw);
         display: inline-flex;
         align-items: center;
-        img {
-            width: 100%;
+
+    }
+
+    .text {
+        position: relative;
+        width: 50vw;
+        max-width: $max_width * 0.6;
+        display: inline-block;
+        margin: 0;
+        z-index: 100;
+        background-color: #FFFFFF;
+        opacity: 0.9;
+        padding: 2.5vw;
+        h1 {
+            font-weight: 700;
         }
     }
-    .btn-pdis {
-        margin-top: 15px;
-    }
+
 }
 
 .topic-left {
     text-align: left;
+
     .text {
-        margin-right: 2.5vw;
+        // margin-right: 2.5vw;
     }
+
     .image {
         right: 0;
     }
@@ -60,9 +93,11 @@ h2{
 
 .topic-right {
     text-align: right;
+
     .text {
-        margin-right: 2.5vw;
+        // margin-right: 2.5vw;
     }
+
     .image {
         left: 0;
     }
