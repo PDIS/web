@@ -18,35 +18,39 @@
 	<h2>Tools</h2>
 
 	<!-- the blocks of tools -->
-	<div *ngIf="list" class="clearfix">
+	<div *ngIf="list" class="thumb-container clearfix">
 
-		<div *ngFor="let post of list['post_stream'].posts">
+		<div *ngFor="let post of list['post_stream'].posts" class="thumb col-sm-4 col-md-3 col-lg-2" [innerHTML]="post.cooked">
 
-			<div class="col-sm-4 col-md-3 col-lg-2 thumbnail-pdis" [innerHTML]="post.cooked"></div>
+			<!-- <div class="col-sm-4 col-md-3 col-lg-2 thumb" [innerHTML]="post.cooked"></div> -->
 			
 		</div>
 	</div>
 
+	<hr class="section-line" />
+
 	<!-- the desc of tools -->
-	<div class="topic-container topic-right"> <!-- topic-left -->
+	<div class="topic-container"> 
+		<div class="topic-right"><!-- topic-left -->
 
-		<div class="image">
-			<!-- <img src="../../assets/img/civic-participation.jpeg" alt=""> -->
-		</div>
+			<div class="image">
+				<img src="../../assets/img/civic-participation.jpeg" alt="">
+			</div>
 
-		<div class="text">
+			<div class="text">
 
- 			<h1>Civic​​ Participation</h1>
+	 			<h1>Civic​​ Participation</h1>
 
-			<h3>How might we refashion democracy to share agenda-setting power with the people?</h3>
+				<h3>How might we refashion democracy to share agenda-setting power with the people?</h3>
 
-			<p>...democracy is defined as : (a) government by the people … key elements: (b) The active participation of the people,
-				as citizens, in politics and civic life.</p>
-			
-				<a class="btn-pdis" [routerLink]="['/what-we-do/civic-participation']" role="button">
-					More about Civic​​ Participation
-				</a> 
+				<p>...democracy is defined as : (a) government by the people … key elements: (b) The active participation of the people,
+					as citizens, in politics and civic life.</p>
+				
+					<a class="btn-pdis" [routerLink]="['/what-we-do/civic-participation']" role="button">
+						More about Civic​​ Participation
+					</a> 
 
+			</div>
 		</div>
 	</div>
 </div>
