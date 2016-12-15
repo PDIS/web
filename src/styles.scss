@@ -58,6 +58,13 @@ a:hover{
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
+.section-end{
+    content:"#";
+    margin: 2vw 0;
+    font-size: 6rem;
+    color: #DDDDDD;
+}
+
 .highlight {
     color: $hightlight;
 }

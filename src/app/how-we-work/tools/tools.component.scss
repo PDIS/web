@@ -47,46 +47,45 @@ h2{
 .topic-container {
     // height: 550px;
     position: relative;
-    .text {
-        position: inherit;
-        width: 50vw;
-        max-width: $max_width * 0.6;
-        display: inline-block;
-        margin: 2.5vw;
-        z-index: 2;
-        background-color: white;
-        opacity: 0.9;
-        padding: 2.5vw;
-        h1 {
-        }
-        h3 {
-        }
-    }
+
     .image {
         position: absolute;
         width: 50vw;
         max-width: $max_width * 0.6;
         display: inline-block;
-        margin: 5vw 2.5vw;
-        z-index: 1;
+        margin: 2.5vw 0;
+        z-index: 10;
         overflow: hidden;
-        height: calc(100% - 10vw);
+        height: calc(100% - 5vw);
         display: inline-flex;
         align-items: center;
-        img {
-            width: 100%;
+
+    }
+
+    .text {
+        position: relative;
+        width: 50vw;
+        max-width: $max_width * 0.6;
+        display: inline-block;
+        margin: 0;
+        z-index: 100;
+        background-color: #FFFFFF;
+        opacity: 0.9;
+        padding: 2.5vw;
+        h1 {
+            font-weight: 700;
         }
     }
-    .btn-pdis {
-        margin-top: 15px;
-    }
+
 }
 
 .topic-left {
     text-align: left;
+
     .text {
-        margin-right: 2.5vw;
+        // margin-right: 2.5vw;
     }
+
     .image {
         right: 0;
     }
@@ -94,9 +93,11 @@ h2{
 
 .topic-right {
     text-align: right;
+
     .text {
-        margin-right: 2.5vw;
+        // margin-right: 2.5vw;
     }
+
     .image {
         left: 0;
     }
