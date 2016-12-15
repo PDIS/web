@@ -21,20 +21,35 @@
     <div id="navbar" class="collapse navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do']" class="nav-item">WHAT
+          <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do']" class="nav-item"><!-- 
+       -->WHAT
           WE
           DO
           </a>
         </li>
         <li>
-          <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']" class="nav-item">HOW
+          <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']" class="nav-item"><!-- 
+       -->HOW
           WE
           WORK
           </a>
+          <ul class="nav-child">
+            <li><a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']" class="nav-item"><!-- 
+         -->
+            TRACKS
+
+            </a></li>
+            <li><a [routerLinkActive]="['active']" [routerLink]="['/how-we-work/tools']" class="nav-item"><!-- 
+         -->
+            TOOLS
+
+            </a></li>
+          </ul>
         </li>
         <li>
-          <a [routerLinkActive]="['active']" [routerLink]="['/get-involved']" class="nav-item">GET
-            INVOLVED
+          <a [routerLinkActive]="['active']" [routerLink]="['/get-involved']" class="nav-item"><!-- 
+       -->GET
+          INVOLVED
 
           </a>
         </li>
