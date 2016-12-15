@@ -4,17 +4,41 @@ h2{
 	text-align: center;
 	font-weight: 700;
 }
+
+:host /deep/ img{
+    max-width: 100%;
+    height: auto;
+}
+
 /*-----------------thumb------------------*/
 
 .thumb-container{
-    display: table;
     margin: auto;
-    width: 55%;
-    background-color: #FFFFFF;
+    width: 60%;
+    text-align: center;
+
     .thumb{
-        display: table-cell;
+        display: inline-block;
+        margin: 5px;
+        padding: 10px;
+        width: 30%;
+        height: 30vh;
         text-align: center;
-        
+        vertical-align: top;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .thumb-container{
+        width: 100%;
+
+        .thumb{
+            display: block;
+            width: 100%;
+        }
     }
 }
 
