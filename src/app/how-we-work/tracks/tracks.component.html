@@ -4,8 +4,7 @@
       <span>
         We are commited to open our work process
         <br>
-        See and <span class="highlight">track</span> how we work
-      day by day:
+        See and <span class="highlight">track</span> how we work day by day:
       </span>
     </div>
   </div>
@@ -23,11 +22,11 @@
   <div class="card">
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">All</a></li>
-      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Speeches</a></li>
-      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Individual meetings</a></li>
-      <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Official conferences</a></li>
-      <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Media interviews</a></li>
-      <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Others</a></li>
+      <li role="presentation"><a href="#speech" aria-controls="speech" role="tab" data-toggle="tab">Speeches</a></li>
+      <li role="presentation"><a href="#meetings" aria-controls="meetings" role="tab" data-toggle="tab">Individual meetings</a></li>
+      <li role="presentation"><a href="#conference" aria-controls="conference" role="tab" data-toggle="tab">Official conferences</a></li>
+      <li role="presentation"><a href="#interview" aria-controls="interview" role="tab" data-toggle="tab">Media interviews</a></li>
+      <li role="presentation"><a href="#others" aria-controls="others" role="tab" data-toggle="tab">Others</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -35,149 +34,166 @@
 
       <div role="tabpanel" class="tab-pane active" id="home">
         <ul class="timeline">
-            <li *ngFor="let post of posts; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
-              <div class="timeline-badge"></div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <p class="title">{{post.title}}</p>
-                  <p class="participants"><span class="glyphicon glyphicon-user"></span> {{post.participants}}</p>
-                </div>
-                <div class="timeline-body">
-                  <p>
-                    <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
-                      class="btn btn-{{media | JSONpipes:'keys' | lowercase}} btn-new " role="button">{{media | JSONpipes:'keys'}}</a>
-                  </p>
-                </div>
-                <div class="timeline-footer">
-                  <p class="tag">
-                    <span class="glyphicon glyphicon-tag"></span>
-                    <a class="newtag" href="#" *ngFor="let tag of post.tags">{{tag}}</a>
-                  </p>
-                  <p class="date">{{post.date | date:"yyyy/MM/dd"}}</p>
-                </div>
+          <li *ngFor="let post of posts; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
+            <div class="timeline-badge"></div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <p class="title">{{post.title}}</p>
+                <p class="participants"><span class="glyphicon glyphicon-user"></span> {{post.participants}}</p>
               </div>
-            </li>
+              <div class="timeline-body">
+                <p>
+                  <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
+                    class="btn-{{media | JSONpipes:'keys' | lowercase}} btn-pdis" role="button">{{media | JSONpipes:'keys'}}</a>
+                </p>
+              </div>
+              <div class="timeline-footer">
+                <p class="tags">
+                  <!--<span class="glyphicon glyphicon-tag"></span>-->
+                  <label class="tag" *ngFor="let tag of post.tags">{{tag}}</label>
+                </p>
+                <p class="date">{{post.date | date:"yyyy/MM/dd"}}</p>
+              </div>
+            </div>
+          </li>
           <li class="clearfix no-float"></li>
         </ul>
       </div>
 
-      <div role="tabpanel" class="tab-pane" id="profile">
+      <div role="tabpanel" class="tab-pane" id="speech">
         <ul class="timeline">
-          <div *ngFor="let post of posts; let i = index">
-            <li>
-              <div class="tldate">{{post.date | date:"yyyy/MM/dd"}}</div>
-            </li>
-            <li *ngIf="i%2 === 0">
-
-              <div class="timeline-badge"><span class="glyphicon glyphicon-edit"></span></div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <div class="row">
-                    <div style="padding:0;" class="col-xs-12">
-                      <div style="padding:0;" class="col-xs-6">
-                        <h5>{{post.date | date:"yyyy/MM/dd"}}</h5>
-                      </div>
-                      <div style="padding:0;" class="col-xs-6">
-                        <div class="movetoright">
-                          <span class="glyphicon glyphicon-user"></span>
-                          <a class="timeline-tags" href="#">{{post.participants}}</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <h4 class="timeline-title">{{post.title}}</h4>
-                </div>
-                <div class="timeline-body">
-                  <p>
-                    <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
-                      class="btn btn-{{media | JSONpipes:'keys' | lowercase}} btn-new " role="button">{{media | JSONpipes:'keys'}}</a>
-                  </p>
-                  <p>
-                    <span class="glyphicon glyphicon-tag"></span>
-                    <a class="timeline-tags" href="#" *ngFor="let tag of post.tags">{{tag}} </a><br>
-                  </p>
-                </div>
+          <li *ngFor="let speech of speeches; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
+            <div class="timeline-badge"></div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <p class="title">{{speech.title}}</p>
+                <p class="participants"><span class="glyphicon glyphicon-user"></span> {{speech.participants}}</p>
               </div>
-            </li>
-            <li *ngIf="i%2 !== 0" class="timeline-inverted">
-              <div class="timeline-badge"><i class="glyphicon glyphicon-edit"></i></div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <div class="row">
-                    <div style="padding:0;" class="col-xs-12">
-                      <div style="padding:0;" class="col-xs-6">
-                        <h5>{{post.date | date:"yyyy/MM/dd"}}</h5>
-                      </div>
-                      <div style="padding:0;" class="col-xs-6">
-                        <div class="movetoright">
-                          <span class="glyphicon glyphicon-user"></span>
-                          <a class="timeline-tags" href="#">{{post.participants}}</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <h4 class="timeline-title">{{post.title}}</h4>
-                </div>
-                <div class="timeline-body">
-                  <p>
-                    <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
-                      class="btn btn-{{media | JSONpipes:'keys' | lowercase}} btn-new " role="button">{{media | JSONpipes:'keys'}}</a>
-                  </p>
-                  <p>
-                    <span class="glyphicon glyphicon-tag"></span>
-                    <a class="timeline-tags" href="#" *ngFor="let tag of post.tags">{{tag}} </a><br>
-                  </p>
-                </div>
+              <div class="timeline-body">
+                <p>
+                  <a *ngFor="let media of speech.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
+                    class="btn-{{media | JSONpipes:'keys' | lowercase}} btn-pdis" role="button">{{media | JSONpipes:'keys'}}</a>
+                </p>
               </div>
-            </li>
-          </div>
-          <!--<div *ngFor="let post of posts; let i = index">
-            
-          </div>-->
-
-        </ul>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="messages">
-        <!--<div class="timeline-centered">
-          <article class="timeline-entry" *ngFor="let post of posts">
-            <div class="timeline-entry-inner">
-              <div class="timeline-icon bg-circle">
-              </div>
-              <div class="timeline-label">
-                <h2>{{post.title}}</h2>
-                <p>{{post.date | date:"yyyy/MM/dd"}}</p>
-                <blockquote>
-                  <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
-                    class="btn btn-{{media | JSONpipes:'keys' | lowercase}}" role="button">{{media | JSONpipes:'keys'}}</a>
-                </blockquote>
-                <div class="movetoright">
-                  <span class="glyphicon glyphicon-user"></span> {{post.participants}}
-                </div>
-                <div class="movetoright">
-                  <span class="glyphicon glyphicon-tag"></span>
-                  <span class="label label-tags" *ngFor="let tag of post.tags ">{{tag}}</span>
-                </div>
+              <div class="timeline-footer">
+                <p class="tags">
+                  <!--<span class="glyphicon glyphicon-tag"></span>-->
+                  <label class="tag" *ngFor="let tag of speech.tags">{{tag}}</label>
+                </p>
+                <p class="date">{{speech.date | date:"yyyy/MM/dd"}}</p>
               </div>
             </div>
-
-          </article>
-        </div>-->
-
-
+          </li>
+          <li class="clearfix no-float"></li>
+        </ul>
       </div>
-      <div role="tabpanel" class="tab-pane" id="settings">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-        book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
-        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..
+      <div role="tabpanel" class="tab-pane" id="meetings">
+        <ul class="timeline">
+          <li *ngFor="let meeting of meetings; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
+            <div class="timeline-badge"></div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <p class="title">{{meeting.title}}</p>
+                <p class="participants"><span class="glyphicon glyphicon-user"></span> {{meeting.participants}}</p>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  <a *ngFor="let media of meeting.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
+                    class="btn-{{media | JSONpipes:'keys' | lowercase}} btn-pdis" role="button">{{media | JSONpipes:'keys'}}</a>
+                </p>
+              </div>
+              <div class="timeline-footer">
+                <p class="tags">
+                  <!--<span class="glyphicon glyphicon-tag"></span>-->
+                  <label class="tag" *ngFor="let tag of meeting.tags">{{tag}}</label>
+                </p>
+                <p class="date">{{meeting.date | date:"yyyy/MM/dd"}}</p>
+              </div>
+            </div>
+          </li>
+          <li class="clearfix no-float"></li>
+        </ul>
       </div>
-      <div role="tabpanel" class="tab-pane" id="settings">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-        book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
-        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..
+      <div role="tabpanel" class="tab-pane" id="conference">
+        <ul class="timeline">
+          <li *ngFor="let conference of conferences; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
+            <div class="timeline-badge"></div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <p class="title">{{conference.title}}</p>
+                <p class="participants"><span class="glyphicon glyphicon-user"></span> {{conference.participants}}</p>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  <a *ngFor="let media of conference.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
+                    class="btn-{{media | JSONpipes:'keys' | lowercase}} btn-pdis" role="button">{{media | JSONpipes:'keys'}}</a>
+                </p>
+              </div>
+              <div class="timeline-footer">
+                <p class="tags">
+                  <!--<span class="glyphicon glyphicon-tag"></span>-->
+                  <label class="tag" *ngFor="let tag of conference.tags">{{tag}}</label>
+                </p>
+                <p class="date">{{conference.date | date:"yyyy/MM/dd"}}</p>
+              </div>
+            </div>
+          </li>
+          <li class="clearfix no-float"></li>
+        </ul>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="interview">
+        <ul class="timeline">
+          <li *ngFor="let interview of interviews; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
+            <div class="timeline-badge"></div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <p class="title">{{interview.title}}</p>
+                <p class="participants"><span class="glyphicon glyphicon-user"></span> {{interview.participants}}</p>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  <a *ngFor="let media of interview.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
+                    class="btn-{{media | JSONpipes:'keys' | lowercase}} btn-pdis" role="button">{{media | JSONpipes:'keys'}}</a>
+                </p>
+              </div>
+              <div class="timeline-footer">
+                <p class="tags">
+                  <!--<span class="glyphicon glyphicon-tag"></span>-->
+                  <label class="tag" *ngFor="let tag of interview.tags">{{tag}}</label>
+                </p>
+                <p class="date">{{interview.date | date:"yyyy/MM/dd"}}</p>
+              </div>
+            </div>
+          </li>
+          <li class="clearfix no-float"></li>
+        </ul>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="others">
+        <ul class="timeline">
+          <li *ngFor="let other of others; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
+            <div class="timeline-badge"></div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <p class="title">{{other.title}}</p>
+                <p class="participants"><span class="glyphicon glyphicon-user"></span> {{other.participants}}</p>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  <a *ngFor="let media of other.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
+                    class="btn-{{media | JSONpipes:'keys' | lowercase}} btn-pdis" role="button">{{media | JSONpipes:'keys'}}</a>
+                </p>
+              </div>
+              <div class="timeline-footer">
+                <p class="tags">
+                  <!--<span class="glyphicon glyphicon-tag"></span>-->
+                  <label class="tag" *ngFor="let tag of other.tags">{{tag}}</label>
+                </p>
+                <p class="date">{{other.date | date:"yyyy/MM/dd"}}</p>
+              </div>
+            </div>
+          </li>
+          <li class="clearfix no-float"></li>
+        </ul>
       </div>
     </div>
   </div>
