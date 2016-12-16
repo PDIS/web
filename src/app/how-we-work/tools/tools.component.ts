@@ -1,6 +1,8 @@
 import { DataService } from './../../shared/dataService/data-service.service';
 import { Component, OnInit } from '@angular/core';
 
+declare var $;
+
 @Component({
     selector: 'app-tools',
     templateUrl: './tools.component.html',

@@ -34,7 +34,7 @@ export class DetailComponent implements OnInit {
   }
  
   ngOnInit() {
-    this.datadetail.getData(this.mappingTable[this.id])
+    this.datadetail.getData(this.id)
     .subscribe((value) => {
       this.item2 = JSON.parse(value.text());
       var tmp = this.item2.post_stream.posts; 
