@@ -1,6 +1,6 @@
 webpackJsonp([1,2],{
 
-/***/ 369:
+/***/ 379:
 /***/ function(module, exports) {
 
 /*
@@ -57,7 +57,7 @@ module.exports = function() {
 
 /***/ },
 
-/***/ 383:
+/***/ 393:
 /***/ function(module, exports) {
 
 /*
@@ -310,16 +310,16 @@ function updateLink(linkElement, obj) {
 
 /***/ },
 
-/***/ 388:
+/***/ 398:
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(650);
+var content = __webpack_require__(668);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(383)(content, {});
+var update = __webpack_require__(393)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -337,16 +337,16 @@ if(false) {
 
 /***/ },
 
-/***/ 389:
+/***/ 399:
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(651);
+var content = __webpack_require__(669);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(383)(content, {});
+var update = __webpack_require__(393)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -364,10 +364,10 @@ if(false) {
 
 /***/ },
 
-/***/ 650:
+/***/ 668:
 /***/ function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(369)();
+exports = module.exports = __webpack_require__(379)();
 // imports
 
 
@@ -379,10 +379,10 @@ exports.push([module.i, "/* font options: Noto Serif, Open Sans Condensed, Slabo
 
 /***/ },
 
-/***/ 651:
+/***/ 669:
 /***/ function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(369)();
+exports = module.exports = __webpack_require__(379)();
 // imports
 
 
@@ -394,14 +394,14 @@ exports.push([module.i, "/* You can add global styles to this file, and also imp
 
 /***/ },
 
-/***/ 706:
+/***/ 724:
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(389);
-module.exports = __webpack_require__(388);
+__webpack_require__(399);
+module.exports = __webpack_require__(398);
 
 
 /***/ }
 
-},[706]);
+},[724]);
 //# sourceMappingURL=styles.map
