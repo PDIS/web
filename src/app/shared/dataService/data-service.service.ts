@@ -24,7 +24,7 @@ export class DataService {
     var topics: Observable<any>;
     var posts = [];
     console.log('https://talk.pdis.nat.gov.tw/c/' + category + '.json');
-    topics
+    // topics
     this.httpData.get('https://talk.pdis.nat.gov.tw/c/' + category + '.json').subscribe((value) => {
       topics = JSON.parse(value.text());
 
