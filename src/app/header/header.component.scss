@@ -69,6 +69,7 @@ $nav-hight-mobile:60px;
 }
 
 #navbar li{
+// ************************* sub layer nav list
     position: relative;
 
     .nav-item+.nav-child{
@@ -78,7 +79,7 @@ $nav-hight-mobile:60px;
         padding: 0;
         list-style: none;
         color: $back_color;
-        background-color: rgba(255,255,255,0.5);
+        background-color: #F4F4F4;
 
         .nav-item{
             display: block;
@@ -118,6 +119,29 @@ $nav-hight-mobile:60px;
     .navbar-collapse {
         border: 0px;
     }
+
+    #navbar li{
+    // ************************* sub layer nav list
+        // position: relative;
+
+        .nav-item+.nav-child{
+            // display: none;
+            // position: absolute;
+            top: initial;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            // padding: 0;
+            // list-style: none;
+            // color: $back_color;
+            background-color: transparent;
+            
+            li{
+                display: inline-block;
+            }
+        }
+    }
+
     .logo {
         transition: width 0.1s ease-in, margin-top 0.1s ease-in;
         width: $nav-hight-mobile;
