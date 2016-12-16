@@ -13,13 +13,14 @@ import 'rxjs/add/operator/do';
 export class TracksComponent implements OnInit {
 
   posts = [];
-  tag = [];
+  private counts = {};
   tags = [];
+
   speeches = [];
   meetings = [];
   conferences = [];
   interviews = [];
-  others =[];
+  others = [];
 
   constructor(
     private dataService: DataService,
@@ -28,8 +29,8 @@ export class TracksComponent implements OnInit {
   { }
 
   isEmptyObject(obj) {
-  return (Object.keys(obj).length === 0);
-}
+    return (Object.keys(obj).length === 0);
+  }
   private getIds() {
     return this.http.get("https://talk.pdis.nat.gov.tw/c/pdis-site/how-we-work-track.json")
       .map(function (data) {
@@ -41,7 +42,7 @@ export class TracksComponent implements OnInit {
         });
         return ids;
       })
-      // .do(data => console.log(data));
+    // .do(data => console.log(data));
   }
 
   private getPost(id: string) {
@@ -51,61 +52,77 @@ export class TracksComponent implements OnInit {
         var rawString = data['post_stream']['posts'][0]['raw'];
         return rawString;
       })
-      // .do(data => console.log(data));
+    // .do(data => console.log(data));
   }
+
+
 
   ngOnInit() {
     this.getIds().subscribe(ids => {
       ids.forEach(id => {
-        this.getPost(id).subscribe(post=>{
+        this.getPost(id).subscribe(post => {
           post = this.convertService.convertYAMLtoJSON(post)
 
-          if(post['category']=='speech'){
-              this.speeches.push(post);
-              this.speeches.sort(function(a,b){
-                  return new Date(b.date).getTime() - new Date(a.date).getTime();
-              });
+          if (post['category'] == 'speech') {
+            this.speeches.push(post);
+            this.speeches.sort(function (a, b) {
+              return new Date(b.date).getTime() - new Date(a.date).getTime();
+            });
           }
-          if(post['category']=='meeting'){
-              this.meetings.push(post);
-              this.meetings.sort(function(a,b){
-                  return new Date(b.date).getTime() - new Date(a.date).getTime();
-              });
+          if (post['category'] == 'meeting') {
+            this.meetings.push(post);
+            this.meetings.sort(function (a, b) {
+              return new Date(b.date).getTime() - new Date(a.date).getTime();
+            });
           }
-          if(post['category']=='conference'){
-              this.conferences.push(post);
-              this.conferences.sort(function(a,b){
-                  return new Date(b.date).getTime() - new Date(a.date).getTime();
-              });
+          if (post['category'] == 'conference') {
+            this.conferences.push(post);
+            this.conferences.sort(function (a, b) {
+              return new Date(b.date).getTime() - new Date(a.date).getTime();
+            });
           }
-          if(post['category']=='interview'){
-              this.interviews.push(post);
-              this.interviews.sort(function(a,b){
-                  return new Date(b.date).getTime() - new Date(a.date).getTime();
-              });
+          if (post['category'] == 'interview') {
+            this.interviews.push(post);
+            this.interviews.sort(function (a, b) {
+              return new Date(b.date).getTime() - new Date(a.date).getTime();
+            });
           }
-          if(post['category']== null){
-              this.others.push(post);
-              this.others.sort(function(a,b){
-                  return new Date(b.date).getTime() - new Date(a.date).getTime();
-              });
+          if (post['category'] == null) {
+            this.others.push(post);
+            this.others.sort(function (a, b) {
+              return new Date(b.date).getTime() - new Date(a.date).getTime();
+            });
           }
-          for(var i in post['tags']){
-            this.tag = post['tags'][i];
-          }
-          console.log(post['tags'][0])
-          console.log(post['tags'][1])
-          console.log(post['tags'][2])
-          this.tags.push(this.tag);
+
+          var post_tags: Array<string> = post['tags'];
+          
+          post_tags.forEach(element => {
+            this.counts[element] = ( this.counts[element] || 0)+1;
+            console.log(this.counts)
+          });
+
+          
+
+          // for(var i in post['tags']){
+          //   this.tags.push(post['tags'][i]);
+          // }
+          // var count={};
+          // this.tags.forEach(function(x) {  this.counts[x] = ( this.counts[x] || 0)+1; });
+          // this.counts.push(count);
+          // console.log(count);
           this.posts.push(post);
 
           // sort date(yyyy/MM/dd)
 
-          this.posts.sort(function(a,b){
+          this.posts.sort(function (a, b) {
             return new Date(b.date).getTime() - new Date(a.date).getTime();
           });
         })
       })
+
+      // this.counts['x']=1;
+
+      console.log(this.counts);
       console.log(this.tags);
       console.log(this.posts);
     });

@@ -11,8 +11,9 @@
 
   <div class="section-line"></div>
   <div class="tag-cloud">
-    <ul class="cloud">
-      <li *ngFor="let tag of tags"><a href="#">{{tag}} </a></li>
+    {{counts|json}}
+    <ul class="cloud"> 
+      <!--<li *ngFor="let tag of counts"><a href="#">{{tag}} </a></li>-->
     </ul>
   </div>
   <div class="section-line"></div>
