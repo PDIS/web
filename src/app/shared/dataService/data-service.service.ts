@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class DataService {
 
-  constructor(private httpData: Http, private httpList: Http) {
+  constructor(private httpData: Http/*, private httpList: Http*/) {
     this.httpData = httpData;
-    this.httpList = httpList;
+    // this.httpList = httpList;
   }
 
   getData(id: string) {
@@ -15,15 +15,16 @@ export class DataService {
     return this.httpData.get('https://talk.pdis.nat.gov.tw/t/' + id + '.json');
   }
 
-  getList() {
-    return this.httpList.get('https://talk.pdis.nat.gov.tw/t/how-we-work-tools/54.json');
-  }
+  // getList() {
+  //   return this.httpList.get('https://talk.pdis.nat.gov.tw/t/how-we-work-tools/54.json');
+  // }
+  // ***************** isn't this the same as getData() ?
 
   getData2(category: string) {
     var topics: Observable<any>;
     var posts = [];
     console.log('https://talk.pdis.nat.gov.tw/c/' + category + '.json');
-    topics
+    // topics
     this.httpData.get('https://talk.pdis.nat.gov.tw/c/' + category + '.json').subscribe((value) => {
       topics = JSON.parse(value.text());
 

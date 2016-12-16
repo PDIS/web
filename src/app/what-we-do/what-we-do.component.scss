@@ -1,0 +1,151 @@
+@import "../../styles.scss";
+
+/*-----------------------------------*/
+
+.slogan-container {
+    text-align: center;
+    position: relative;
+    /deep/ canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+}
+
+.slogan {
+    // font-size: 5rem;
+    // font-family: "Maiden Orange";
+    padding: 100px 0 30px;
+}
+
+.slogan-btn {
+    padding-bottom: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+
+/*-----------------------------------*/
+
+.topic-container {
+    position: relative;
+    .text {
+        position: inherit;
+        width: 50vw;
+        max-width: $max_width * 0.5;
+        display: inline-block;
+        margin: 0;
+        z-index: 2;
+        background-color: white;
+        opacity: 0.9;
+        padding: 2.5vw;
+    }
+    .image {
+        position: absolute;
+        width: 50vw;
+        max-width: $max_width * 0.5;
+        display: inline-block;
+        margin: 2.5vw 0;
+        z-index: 1;
+        overflow: hidden;
+        height: calc(100% - 5vw);
+        display: inline-flex;
+        align-items: center;
+        /deep/ img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .btn-pdis {
+        margin-top: 15px;
+    }
+}
+
+.topic-left {
+    text-align: left;
+    .image {
+        right: 0;
+    }
+}
+
+.topic-right {
+    text-align: right;
+    .image {
+        left: 0;
+    }
+}
+
+
+/*-----------------------------------*/
+
+.tell-us-container {
+    background-image: url(assets/img/pdis-team.JPG);
+    background-size: cover;
+    margin: 0;
+    padding: 2.5vw;
+    text-align: center;
+}
+
+.tell-us-content {
+    position: relative;
+    background-color: white;
+    opacity: 0.9;
+    display: inline-block;
+    padding: 2.5vw;
+    img {
+        width: 50%
+    }
+    input {
+        width: 90%;
+        margin-top: 10px;
+        margin-bottom: 2.5vw;
+        border: solid 1px black;
+        height: 40px;
+        font-size: 20pt;
+    }
+    h2 {
+        // font-family: 'noto serif';
+        // font-style: italic;
+        margin-bottom: 10px;
+    }
+}
+
+
+/*-----------------------------------*/
+
+@media screen and (max-width: 767px) {
+    .topic-container {
+        width: 100%;
+        display: flex;
+        .text {
+            width: 100%;
+            margin: 0;
+            max-width: $max_width;
+        }
+        .image {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            max-width: $max_width;
+            /deep/ img {
+                height: 100%;
+                width: auto;
+            }
+        }
+    }
+    .topic-right {
+        text-align: left;
+    }
+    .tell-us-container {
+        background-image: url(http://localhost:4200/assets/img/pdis-team.JPG);
+        background-size: cover;
+        margin: 0;
+        padding: 0px;
+        text-align: center;
+    }
+    .tell-us-content {
+        width: 100%
+    }
+
+}

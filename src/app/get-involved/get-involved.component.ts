@@ -5,7 +5,7 @@ import { DataService } from '../shared/dataService/data-service.service';
 @Component({
   selector: 'app-get-involved',
   templateUrl: './get-involved.component.html',
-  styleUrls: ['./get-involved.component.css']
+  styleUrls: ['./get-involved.component.scss']
 })
 export class GetInvolvedComponent implements OnInit {
 
@@ -16,6 +16,7 @@ export class GetInvolvedComponent implements OnInit {
   err;
 
   constructor(private discoursesvcWwd: DiscourseService, private datasvcGi: DataService) { }
+
 
   ngOnInit() {
   }

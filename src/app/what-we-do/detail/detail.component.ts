@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
 
@@ -23,7 +23,7 @@ export class DetailComponent implements OnInit {
   id: string;
   params;
   dangerousVideoUrl;
-  videoUrl;
+  videoUrl=[];
   youtubecount;
   constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
     this.dataservice = datadetail;
@@ -34,7 +34,7 @@ export class DetailComponent implements OnInit {
   }
  
   ngOnInit() {
-    this.datadetail.getData(this.mappingTable[this.id])
+    this.datadetail.getData(this.id)
     .subscribe((value) => {
       this.item2 = JSON.parse(value.text());
       var tmp = this.item2.post_stream.posts; 
@@ -55,13 +55,13 @@ export class DetailComponent implements OnInit {
       this.youtube1 = doc.getElementsByClassName("lazyYT");                 
       if(this.youtube1.length != 0 ){
         this.updateVideoUrl(this.youtube1[0]['dataset'].youtubeId);
-        this.youtubecount['content'][j]="you-tube";        
+        this.youtubecount['content'][5]="you-tube";        
       }               
     }
   }
   updateVideoUrl(id: string) {
     this.dangerousVideoUrl = 'https://www.youtube.com/embed/' + id;
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousVideoUrl);
+    this.videoUrl[0] = this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousVideoUrl);
   } 
   ngOnDestroy() { }
 }

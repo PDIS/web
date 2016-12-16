@@ -1,22 +1,24 @@
-<!-- Begin Body -->
-
-<div class="container">
-  <section>
-    <div class="col-md-8 col-sm-12 get-involved-container">
-      <h4 class="desc">Come to our forum at <a class="link-pdis" target="_blank" href="https://talk.pdis.tw">talk.pdis.tw</a></h4>
-      <h4 class="desc">Or, tell us what you think about PDIS:</h4>
-      <textarea rows="4" cols="50" [(ngModel)]="think">
+<div class="main-container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 get-involved-container">
+      <h3 class="desc">
+        <em>Come to our forum at 
+        <a class="link-pdis" target="_blank" href="https://talk.pdis.tw">talk.pdis.tw</a>
+        </em>
+      </h3>
+      <h3 class="desc"><em>Or, tell us what you think about PDIS:</em></h3>
+      <textarea rows="4" class="think-area" [(ngModel)]="think">
       </textarea>
       <div *ngIf="err" class="alert alert-danger" [innerHTML]="err" [hidden]="err.length==0">
       </div>
       <div *ngIf="res" class="alert alert-success" [innerHTML]="res.cooked + ' successfully sent'" [hidden]="res.length==0">
       </div>
       <br><br>
-      <a class="btn btn-pdis get-involved-button" role="button" (click)="postDataToServer(think)">SUBMIT</a>
+      <a class="btn-pdis get-involved-button" role="button" (click)="postDataToServer(think)">SUBMIT</a>
     </div>
     <hr>
-    <h4>Comments</h4>
+    <!--<h4>Comments</h4>
     <div class="get-involved-comments">
-    </div>
-  </section>
+    </div>-->
+  </div>
 </div>

@@ -1,0 +1,124 @@
+@import "../../../styles.scss";
+
+h2{
+	text-align: center;
+	font-weight: 700;
+}
+
+:host /deep/ {
+
+    h4 {
+        font-weight: 700;
+    }
+
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+}
+/*-----------------thumb------------------*/
+
+.thumb-container{
+    margin: auto;
+    width: 60%;
+    text-align: center;
+
+    .thumb{
+        display: inline-block;
+        margin: 5px;
+        padding: 10px;
+        width: 30%;
+        height: 30vh;
+        text-align: center;
+        vertical-align: top;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .thumb-container{
+        width: 100%;
+
+        .thumb{
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+/*-----------------topic------------------*/
+
+.topic-container {
+    position: relative;
+
+    .text {
+        position: relative;
+        width: 40vw;
+        max-width: $max_width * 0.5;
+        display: inline-block;
+        margin: 0;
+        z-index: 100;
+        background-color: #FFFFFF;
+        opacity: 0.9;
+        padding: 2.5vw;
+    }
+
+    .image {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40vw;
+        max-width: $max_width * 0.5;
+        margin: 2.5vw 0;
+        z-index: 10;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+
+    }
+
+}
+
+.topic-left {
+    text-align: left;
+    position: relative;
+
+    .image {
+        right: 0;
+    }
+}
+
+.topic-right {
+    text-align: right;
+    position: relative;
+
+    .image {
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .topic-container {
+        width: 100%;
+        display: flex;
+        .text {
+            width: 100%;
+            margin: 0;
+            max-width: $max_width;
+        }
+        .image {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            max-width: $max_width;
+        }
+    }
+
+    .topic-right {
+        text-align: left;
+    }
+}
+/*-----------------------------------*/

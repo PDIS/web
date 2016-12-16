@@ -1,0 +1,63 @@
+@import "../../styles.scss";
+
+.footer-container {
+    max-width: $max_width;
+    margin: 50px auto;
+}
+
+.footer-content {
+    display: inline-block;
+    vertical-align: text-top;
+    padding-left: 30px;
+    font-family: 'noto serif', sans-serif;
+    h1 {
+        font-family: 'noto serif', sans-serif;
+        margin-top: 0px;
+        color: #EEE;
+        font-size: 3rem;
+        font-weight: 700;
+    }
+    a {
+        display: block;
+        color: #FFF;
+        font-size: 2rem;
+        &:hover {
+            color: $hightlight;
+        }
+    }
+    ul {
+        margin: 0.75em 0;
+        padding: 0 1.5em;
+        list-style: none;
+    }
+    li:before {
+        content: "";
+        border-color: transparent #FFF;
+        border-style: solid;
+        border-width: 0.35em 0 0.35em 0.45em;
+        display: block;
+        height: 0;
+        width: 0;
+        left: -1em;
+        top: 1.3em;
+        position: relative;
+    }
+    li:hover:before {
+        border-color: transparent $hightlight;
+    }
+}
+.footer-segment {
+    border-right: solid 1px white;
+    border-left: solid 1px white;
+}
+
+@media screen and (max-width: 767px) {
+    .footer-content {
+        display: block;
+        width: 100%;
+    }
+    .footer-segment {
+        border-right: solid 0px white;
+        border-left: solid 0px white;
+    }
+}

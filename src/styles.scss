@@ -1,0 +1,123 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+$back_color: #4B0056;
+$hightlight: #D66FE5;
+$max_width: 1180px;
+$main-font-family: 'Noto Serif', Georgia, serif; /* font options: Noto Serif, Open Sans Condensed, Slabo 27px */
+$main-font-size: 16px;
+$btn_font_family: 'Open Sans Condensed', sans-serif;
+$text_color:#111111;
+
+// ******************** html tag presets
+
+body {
+    font-family: $main-font-family;
+    background-color: $back_color;
+    font-size: $main-font-size;
+    color: $text_color;
+}
+
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+a{
+    transition: all 0.3s ease;
+    color: $back_color;
+}
+
+a:hover{
+    color: $hightlight;
+    border-color: $hightlight;
+    text-decoration: none;
+}
+
+textarea{
+    border: 0;
+}
+
+// ******************** 
+
+.btn-pdis {
+    padding: 12px 25px;
+    background: transparent;
+    border: solid 2px $back_color;
+    font-family: $btn_font_family;
+    color: $back_color;
+    margin: 0px;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.section-line {
+    margin: 2.5vw 0;
+    height: 1px;
+    background: -moz-linear-gradient(left, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+hr.section-end {
+    text-align: center;
+    height: 8rem;
+}
+
+hr.section-end:after {
+    content:"#";
+    font-size: 6rem;
+    font-weight: 700;
+    color: #DDDDDD;
+}
+
+hr.section-dot {
+    text-align: center;
+    height: 6rem;
+}
+
+hr.section-dot:after {
+    content:",";
+    font-size: 8rem;
+    line-height: 0;
+    font-weight: 700;
+    color: #DDDDDD;
+}
+
+.highlight {
+    color: $hightlight;
+}
+
+.main-container {
+    background-color: #EFEFEF;
+    box-shadow: 0 0 10px black;
+    max-width: $max_width;
+    margin: 150px auto 0;
+    padding: 0 2.5vw;
+}
+
+// ******************** slogan section
+
+.slogan-container {
+    text-align: center;
+}
+
+.slogan {
+    font-family: "Slabo 27px";
+    font-size: 5rem;
+    padding: 80px 0;
+}
+
+// ******************** 
+@media screen and (max-width: 767px) {
+    .main-container {
+        background-color: #EFEFEF;
+        box-shadow: 0 0 10px black;
+        max-width: $max_width;
+        margin: 90px auto 0;
+        padding: 0 2.5vw;
+    }
+}
