@@ -74,6 +74,19 @@ hr.section-end:after {
     color: #DDDDDD;
 }
 
+hr.section-dot {
+    text-align: center;
+    height: 6rem;
+}
+
+hr.section-dot:after {
+    content:",";
+    font-size: 8rem;
+    line-height: 0;
+    font-weight: 700;
+    color: #DDDDDD;
+}
+
 .highlight {
     color: $hightlight;
 }
