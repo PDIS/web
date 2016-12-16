@@ -18,9 +18,9 @@
 	<h2>Tools</h2>
 
 	<!-- the blocks of tools -->
-	<div *ngIf="list" class="thumb-container clearfix">
+	<div *ngIf="tools_list" class="thumb-container clearfix">
 
-		<div *ngFor="let post of list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked">
+		<div *ngFor="let post of tools_list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked">
 
 			<!-- <div class="col-sm-4 col-md-3 col-lg-2 thumb" [innerHTML]="post.cooked"></div> -->
 			

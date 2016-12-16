@@ -125,7 +125,7 @@ $nav-hight-mobile:60px;
         // position: relative;
 
         .nav-item+.nav-child{
-            // display: none;
+            display: block;
             // position: absolute;
             top: initial;
             bottom: 0;

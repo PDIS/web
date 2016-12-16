@@ -11,7 +11,7 @@ h2{
         font-weight: 700;
     }
 
-    img{
+    img, lazyYT{
         max-width: 100%;
         height: auto;
     }
@@ -56,8 +56,8 @@ h2{
 
     .image {
         position: absolute;
-        width: 50vw;
-        max-width: $max_width * 0.6;
+        width: 40vw;
+        max-width: $max_width * 0.5;
         display: inline-block;
         margin: 2.5vw 0;
         z-index: 10;
@@ -70,8 +70,8 @@ h2{
 
     .text {
         position: relative;
-        width: 50vw;
-        max-width: $max_width * 0.6;
+        width: 40vw;
+        max-width: $max_width * 0.5;
         display: inline-block;
         margin: 0;
         z-index: 100;
