@@ -5,11 +5,17 @@ h2{
 	font-weight: 700;
 }
 
-:host /deep/ img{
-    max-width: 100%;
-    height: auto;
-}
+:host /deep/ {
 
+    h4 {
+        font-weight: 700;
+    }
+
+    img, lazyYT{
+        max-width: 100%;
+        height: auto;
+    }
+}
 /*-----------------thumb------------------*/
 
 .thumb-container{
@@ -50,8 +56,8 @@ h2{
 
     .image {
         position: absolute;
-        width: 50vw;
-        max-width: $max_width * 0.6;
+        width: 40vw;
+        max-width: $max_width * 0.5;
         display: inline-block;
         margin: 2.5vw 0;
         z-index: 10;
@@ -64,17 +70,14 @@ h2{
 
     .text {
         position: relative;
-        width: 50vw;
-        max-width: $max_width * 0.6;
+        width: 40vw;
+        max-width: $max_width * 0.5;
         display: inline-block;
         margin: 0;
         z-index: 100;
         background-color: #FFFFFF;
         opacity: 0.9;
         padding: 2.5vw;
-        h1 {
-            font-weight: 700;
-        }
     }
 
 }

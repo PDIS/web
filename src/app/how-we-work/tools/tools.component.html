@@ -18,9 +18,9 @@
 	<h2>Tools</h2>
 
 	<!-- the blocks of tools -->
-	<div *ngIf="list" class="thumb-container clearfix">
+	<div *ngIf="tools_list" class="thumb-container clearfix">
 
-		<div *ngFor="let post of list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked">
+		<div *ngFor="let post of tools_list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked">
 
 			<!-- <div class="col-sm-4 col-md-3 col-lg-2 thumb" [innerHTML]="post.cooked"></div> -->
 			
@@ -39,13 +39,12 @@
 
 			<div class="text">
 
-				<h4>How might we refashion democracy to share agenda-setting power with the people?</h4>
+				<h4>Virtual Reality (VR)</h4>
 
-				<p>...democracy is defined as : (a) government by the people … key elements: (b) The active participation of the people, as citizens, in politics and civic life.</p>
+				<p>Face-to-face deliberation is magical but could be unbalanced and messy, virtual reality technology immerses real minds in digital worlds and provides participants more access to assistance from technology. Check Audrey's video and imagine how virtual reality for civic participation works.<br>
+				</p>
 				
-				<a class="btn-pdis" [routerLink]="['/what-we-do/civic-participation']" role="button">
-					More about Civic​​ Participation
-				</a> 
+				<div class="lazyYT" data-youtube-id="EynGwOoxlSE" data-youtube-title="Virtual Reality for Civic Deliberation" data-width="480" data-height="270" data-parameters="feature=oembed&amp;wmode=opaque"></div>
 
 			</div>
 		</div>
