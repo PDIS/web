@@ -18,13 +18,13 @@ $line-height-size:35px;
     p{                                      
         margin-top: 20px;
     }
-    em img {                                //右邊文繞圖
+    em img {                                //img float right
         float: right;
         width: 450px;
         height: 300px;
         margin: 8px 0px 17px 35px;
     }
-    strong img {                            //左邊文繞圖
+    strong img {                            //img float left
         float: left;
         width: 450px;
         height: 300px;
@@ -33,14 +33,14 @@ $line-height-size:35px;
     img {                                   
         margin: 15px 0px 15px 0px;
     }
-    dd{                                     //清除文繞圖效果
+    dd{                                     //clean img float
         clear: left;
     }
     blockquote{                             
         margin: -95px 0 -74px;
         border-left: 0px;
     }
-    blockquote::before{                     //blockquote { 樣式
+    blockquote::before{                     //blockquote { style
         content: "{";
         font-family: "Noto Serif", Georgia, serif;
         font-size: 135px;
@@ -49,7 +49,7 @@ $line-height-size:35px;
         left: -66px;
         top: 146px;
     }
-    blockquote::after{                      //blockquote } 樣式
+    blockquote::after{                      //blockquote } style
         content: "}";
         font-family: Georgia, serif;
         font-size: 135px;
@@ -58,23 +58,35 @@ $line-height-size:35px;
         left: 396px;
         top: -88px;
     }
-}
-.video-container {
-        margin-bottom: 10px;
+    strong iframe {                            //iframe float left
+        float: left;
+        width: 450px;
+        height: 300px;
+        margin: 8px 35px 17px 0px;
     }
-    
-@media screen and (max-width: 1200px) {     //螢幕小於1200px 消除 blockquote樣式
+    em iframe {                                //iframe float right
+        float: right;
+        width: 450px;
+        height: 300px;
+        margin: 8px 0px 17px 35px;
+    }
+    iframe {                             
+        width: 450px;
+        height: 300px;
+        border: 0px;
+    }
+      
+}
+@media screen and (max-width: 1200px) {     //window size <1200px clean blockquote style
     .detail-text blockquote::after, .detail-text blockquote::before{
         content: "}";
         font-size: 0px;
         position: relative;
         left: 0px;
-        top: 0px;
+        top: 0px;        
     }
 }
-
-
-@media screen and (max-width: 991px) {      //螢幕小於991px 改變成行動版本
+@media screen and (max-width: 991px) {      //window size < 991px change to mobile
    
     .detail-text img, .detail-text strong img, .detail-text em img {
         clear: left;
@@ -84,31 +96,31 @@ $line-height-size:35px;
         border: 0px;
         margin-left: 17px;
     }
-    .detail-text span img{                  //螢幕小於991px 改變成行動版本
+    .detail-text blockquote{
+        margin-bottom: -35px;
+    }
+    .detail-text span img{                 
         width: 40%;
         height: 40%;
     }
     .detail-text p,h2{
         margin: 25px 25px 25px 25px;
         word-break: break-word;
-        hyphens: auto;
+       
     }
-         
-    .video-container {
-        padding-top: 65%;
-    }
-    .video-container iframe{
-        position: absolute;
+    .detail-text iframe{
+        position: relative;
         top: 10px;
-        left: 5%;
-        width: 80%;
-        height: 80%;
+        left: 0;
+        width: 90%;
+        height: 50vw;
         border: 0px;
-        margin-left: 17px;
+        margin-left: 22px;
+        margin-bottom: 20px;
     }
  }
 
-@media screen and (min-width: 991px) {      //螢幕大於991px 圖片為滿版模式
+@media screen and (min-width: 991px) {      //window size > 991px img 100%
     .detail-container img {
         width: 100%;
         height: 100%;
