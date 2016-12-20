@@ -10,11 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  mappingTable = {
-    "open-api": "52",
-    "civic-participation": "53"
-  };
-
+  
   item2;
   posts = [];
   posts2 = [];
