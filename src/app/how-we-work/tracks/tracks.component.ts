@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { DataService } from './../../shared/dataService/data-service.service';
 import { Http } from '@angular/http';
 import { ConvertService } from './../../shared/convertService/convert.service';
@@ -13,14 +14,19 @@ import 'rxjs/add/operator/do';
 export class TracksComponent implements OnInit {
 
   posts = [];
-  private counts = {};
+  counts = {};
   tags = [];
-
   speeches = [];
   meetings = [];
   conferences = [];
   interviews = [];
   others = [];
+
+  test = [
+   { "text": "Garena", "weight": 5 }, { "text": "蝦皮", "weight": 5 }, { "text": "特色文創", "weight": 5 }, { "text": "Speech", "weight": 8 }, { "text": "E-commerce", "weight": 5 }, { "text": "電子商務", "weight": 5 }, { "text": "數位治理", "weight": 5 }, { "text": "PDIS", "weight": 5 }, { "text": "Meeting", "weight": 5 }, { "text": "國土", "weight": 5 }, { "text": "公共治理", "weight": 5 }, { "text": "Public hearing", "weight": 5 }, { "text": "電子競技", "weight": 5 }, { "text": "電競產業", "weight": 5 }, { "text": "e-Taxi platforms", "weight": 5 }, { "text": "數位經濟", "weight": 5 }, { "text": "社群互動", "weight": 5 }, { "text": "網路直播", "weight": 5 }, { "text": "專訪", "weight": 5 }, { "text": "speech", "weight": 5 }, { "text": "開源社群", "weight": 5 }, { "text": "澎湖科技大學", "weight": 5 }, { "text": "Silicon valley", "weight": 5 }, { "text": "國發會", "weight": 5 }, { "text": "Talks", "weight": 5 }, { "text": "American Chamber", "weight": 5 }, { "text": "Cyber-attack", "weight": 5 }, { "text": "開放政府", "weight": 6 }
+  ];
+
+
 
   constructor(
     private dataService: DataService,
@@ -95,36 +101,25 @@ export class TracksComponent implements OnInit {
           }
 
           var post_tags: Array<string> = post['tags'];
-          
           post_tags.forEach(element => {
-            this.counts[element] = ( this.counts[element] || 0)+1;
-            console.log(this.counts)
+            this.counts[element] = (this.counts[element] || 0) + 1;
           });
-
-          
-
-          // for(var i in post['tags']){
-          //   this.tags.push(post['tags'][i]);
-          // }
-          // var count={};
-          // this.tags.forEach(function(x) {  this.counts[x] = ( this.counts[x] || 0)+1; });
-          // this.counts.push(count);
-          // console.log(count);
+          var normalized = [] as { text: string, weight: number}[];
+          Object.keys(this.counts).forEach(tag => {
+            normalized.push({ text: tag, weight: this.counts[tag]+4});
+            
+          });
+          this.tags = normalized;
           this.posts.push(post);
-
-          // sort date(yyyy/MM/dd)
-
+          console.log(this.tags);
+          
           this.posts.sort(function (a, b) {
-            return new Date(b.date).getTime() - new Date(a.date).getTime();
+            return new Date(b.date).getTime() - new Date(a.date).getTime(); // sort date(yyyy/MM/dd)
           });
         })
       })
-
-      // this.counts['x']=1;
-
-      console.log(this.counts);
       console.log(this.tags);
-      console.log(this.posts);
+      console.log(this.counts);
     });
   }
 

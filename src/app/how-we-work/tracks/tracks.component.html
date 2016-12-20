@@ -10,13 +10,20 @@
   </div>
 
   <div class="section-line"></div>
-  <!--<div class="tag-cloud">
-    {{counts|json}}
-    <ul class="cloud"> 
+  <div >
+    {{test|json}}<br>
+    {{tags|json}}
+    <!--<ul class="cloud"> 
       <li *ngFor="let tag of counts"><a href="#">{{tag}} </a></li>
-    </ul>
+    </ul>-->
+    <angular-tag-cloud
+      [width]="1000"
+      [height]="400"
+      [data]="tags"
+      [removeOverflow]="true">
+    </angular-tag-cloud>
   </div>
-  <div class="section-line"></div>-->
+  <div class="section-line"></div>
   <div class="tracktitle">Track.PDIS</div>
 
   <!-- Nav tabs -->
@@ -40,7 +47,6 @@
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <p class="title">{{post.title}}</p>
-                <p class="participants"><span class="glyphicon glyphicon-user"></span> {{post.participants}}</p>
               </div>
               <div class="timeline-body">
                 <p>
@@ -50,7 +56,6 @@
               </div>
               <div class="timeline-footer">
                 <p class="tags">
-                  <!--<span class="glyphicon glyphicon-tag"></span>-->
                   <label class="tag" *ngFor="let tag of post.tags">{{tag}}</label>
                 </p>
                 <p class="date">{{post.date | date:"yyyy/MM/dd"}}</p>
@@ -68,7 +73,6 @@
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <p class="title">{{speech.title}}</p>
-                <p class="participants"><span class="glyphicon glyphicon-user"></span> {{speech.participants}}</p>
               </div>
               <div class="timeline-body">
                 <p>
@@ -78,7 +82,6 @@
               </div>
               <div class="timeline-footer">
                 <p class="tags">
-                  <!--<span class="glyphicon glyphicon-tag"></span>-->
                   <label class="tag" *ngFor="let tag of speech.tags">{{tag}}</label>
                 </p>
                 <p class="date">{{speech.date | date:"yyyy/MM/dd"}}</p>
@@ -95,7 +98,6 @@
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <p class="title">{{meeting.title}}</p>
-                <p class="participants"><span class="glyphicon glyphicon-user"></span> {{meeting.participants}}</p>
               </div>
               <div class="timeline-body">
                 <p>
@@ -105,7 +107,6 @@
               </div>
               <div class="timeline-footer">
                 <p class="tags">
-                  <!--<span class="glyphicon glyphicon-tag"></span>-->
                   <label class="tag" *ngFor="let tag of meeting.tags">{{tag}}</label>
                 </p>
                 <p class="date">{{meeting.date | date:"yyyy/MM/dd"}}</p>
@@ -122,7 +123,6 @@
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <p class="title">{{conference.title}}</p>
-                <p class="participants"><span class="glyphicon glyphicon-user"></span> {{conference.participants}}</p>
               </div>
               <div class="timeline-body">
                 <p>
@@ -132,7 +132,6 @@
               </div>
               <div class="timeline-footer">
                 <p class="tags">
-                  <!--<span class="glyphicon glyphicon-tag"></span>-->
                   <label class="tag" *ngFor="let tag of conference.tags">{{tag}}</label>
                 </p>
                 <p class="date">{{conference.date | date:"yyyy/MM/dd"}}</p>
@@ -159,7 +158,6 @@
               </div>
               <div class="timeline-footer">
                 <p class="tags">
-                  <!--<span class="glyphicon glyphicon-tag"></span>-->
                   <label class="tag" *ngFor="let tag of interview.tags">{{tag}}</label>
                 </p>
                 <p class="date">{{interview.date | date:"yyyy/MM/dd"}}</p>
@@ -176,7 +174,6 @@
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <p class="title">{{other.title}}</p>
-                <p class="participants"><span class="glyphicon glyphicon-user"></span> {{other.participants}}</p>
               </div>
               <div class="timeline-body">
                 <p>
@@ -186,7 +183,6 @@
               </div>
               <div class="timeline-footer">
                 <p class="tags">
-                  <!--<span class="glyphicon glyphicon-tag"></span>-->
                   <label class="tag" *ngFor="let tag of other.tags">{{tag}}</label>
                 </p>
                 <p class="date">{{other.date | date:"yyyy/MM/dd"}}</p>

@@ -17,6 +17,7 @@ import { GetInvolvedComponent } from './get-involved/get-involved.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { JSONPipesPipe } from './shared/jsonPipes/jsonpipes.pipe';
+import { TagCloudModule } from 'angular-tag-cloud-module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { JSONPipesPipe } from './shared/jsonPipes/jsonpipes.pipe';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TagCloudModule
   ],
   providers: [
     DataService,
