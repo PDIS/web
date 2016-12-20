@@ -3,7 +3,7 @@
   <div class="nav-container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button  #test type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+      <button  #mobileBtn type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
         aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -20,7 +20,7 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div id="navbar" class="collapse navbar-collapse collapse">
+    <div #navbar id="navbar" class="collapse navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
           <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do']" class="nav-item"><!-- 
