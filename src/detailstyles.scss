@@ -51,12 +51,12 @@ $line-height-size:35px;
     }
     blockquote::after{                      //blockquote } style
         content: "}";
-        font-family: Georgia, serif;
-        font-size: 135px;
+        font-family: "Noto Serif", Georgia, serif;
+        font-size: 133px;
         color: #ddd;
         position: relative;
-        left: 396px;
-        top: -88px;
+        left: 393px;
+        top: -93px;
     }
     strong iframe {                            //iframe float left
         float: left;
