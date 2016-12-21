@@ -31,16 +31,17 @@ export class ToolsComponent implements OnInit {
             // parsing raw html into param
             jsdata['post_stream']['posts'].forEach(data =>{
                 var post = {};
-                // var dom = angular.element(data);
+                // var dom = angular.element(data["cooked"]);
                 // var dom = $(data["cooked"]);
                 // post['title'] = dom.find("h4").text();
                 // post['text'] = dom.find("p").html();
                 // post['img'] = dom.find("img").attr("src");
                 var dom = (new DOMParser()).parseFromString(data["cooked"], "text/html");
-                // console.log(dom);
                 post['title'] = dom.querySelector("h4").innerText;
                 post['text'] = dom.querySelector("p").innerHTML;
                 post['img'] = dom.querySelector("img") && dom.querySelector("img").src || "/assets/img/placeholder-1000x518.png";
+                post['link'] = dom.querySelector("aside header a") && dom.querySelector("aside header a").outerHTML;
+                console.log(dom);
                 this.tools_detail_list.push(post);
             });
             // this.tools_detail_list['post_stream']['posts'][0]['cooked']

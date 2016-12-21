@@ -83,12 +83,11 @@ export class HeaderComponent {
 
     }
 
-    @ViewChild('test') el:ElementRef;
+    @ViewChild('mobileBtn') el:ElementRef;
     @ViewChild('navbar') navbar:ElementRef;
     constructor(private router: Router, private rd: Renderer) {
 
         this.router.events.pairwise().subscribe((e) => {
-            console.log(e);
             if (e[1] instanceof NavigationStart && this.navbar.nativeElement.classList.contains("in")) {
                 this.rd.invokeElementMethod(this.el.nativeElement,'click');
             }

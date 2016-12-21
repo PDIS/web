@@ -19,12 +19,7 @@
 
 	<!-- the blocks of tools -->
 	<div *ngIf="tools_list" class="thumb-container clearfix">
-
-		<div *ngFor="let post of tools_list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked">
-
-		<!-- <div class="col-sm-4 col-md-3 col-lg-2 thumb" [innerHTML]="post.cooked"></div> -->
-			
-		</div>
+		<div *ngFor="let post of tools_list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked"></div>	
 	</div>
 
 	<hr class="section-line" />
@@ -32,11 +27,10 @@
 	<!-- the detail of tools -->
 	<div class="topics"> 
 
-		<template ngFor let-post [ngForOf]="tools_detail_list" let-i="index" let-isLast="last" [ngForTrackBy]="trackByFn">
+		<template ngFor [ngForOf]="tools_detail_list" let-post let-i="index" let-isLast="last" let-isOdd="odd">
 
 			<!-- {i} -->
-			<div class="topic-container" [ngClass]="{'topic-right':(i%2===1),'topic-left':(i%2===0)}">
-			<!--<div class="topic-container" [ngClass]="{'topic-right':(i%2===1),'topic-left':(i%2===0)}">-->
+			<div class="topic-container" [ngClass]="{'topic-right':isOdd,'topic-left':!isOdd}">
 
 				<div class="image">
 					<img src="{{ post['img'] }}" alt="">
@@ -44,11 +38,14 @@
 
 				<div class="text">
 					<h4>{{ post['title'] }}</h4>
-					<div>{{ post['text'] }}</div>
+					<p [innerHTML]="post['text']"></p>
+					<p [innerHTML]="post['link']"></p>
 				</div>
+
 			</div>
 
 			<hr class="section-dot" *ngIf="!isLast" /> 
+
   		</template>
 
 	</div>
