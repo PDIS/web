@@ -1,0 +1,130 @@
+$back_color: #4B0056;
+$hightlight: #D66FE5;
+$max_width: 1180px;
+$main-font-family: 'Noto Serif', Georgia, serif; /* font options: Noto Serif, Open Sans Condensed, Slabo 27px */
+$main-font-size: 22px;
+$line-height-size:35px;
+
+:host /deep/ {
+
+    .detail-container{
+        margin: 0 0 2.5vw 0;      
+    }
+
+    .detail-text{                              //設定 detailcomponent 文字及圖片樣式 
+        justify-content:center;
+        font-family: $main-font-family;
+        font-size: $main-font-size;
+        line-height: $line-height-size;
+        p{                                      
+            margin-top: 20px;
+        }
+        em img {                                //img float right
+            float: right;
+            width: 450px;
+            height: 300px;
+            margin: 8px 0px 17px 35px;
+        }
+        strong img {                            //img float left
+            float: left;
+            width: 450px;
+            height: 300px;
+            margin: 8px 35px 17px 0px;
+        }
+        img {                                   
+            margin: 15px 0px 15px 0px;
+        }
+        dd{                                     //clean img float
+            clear: left;
+        }
+        blockquote{                             
+            margin: -95px 0 -74px;
+            border-left: 0px;
+        }
+        blockquote:before{                     //blockquote { style
+            content: "\007B";
+            font-family: "Noto Serif", Georgia, serif;
+            font-size: 135px;
+            color: #ddd;
+            position: relative;
+            left: -66px;
+            top: 146px;
+        }
+        
+        blockquote:after{                      //blockquote } style
+            content: "\007D";
+            font-family: "Noto Serif", Georgia, serif;
+            font-size: 133px;
+            color: #ddd;
+            position: relative;
+            left: 393px;
+            top: -93px;
+        }
+
+        strong iframe {                            //iframe float left
+            float: left;
+            width: 450px;
+            height: 300px;
+            margin: 8px 35px 17px 0px;
+        }
+        em iframe {                                //iframe float right
+            float: right;
+            width: 450px;
+            height: 300px;
+            margin: 8px 0px 17px 35px;
+        }
+        iframe {                             
+            width: 450px;
+            height: 300px;
+            border: 0px;
+        }
+        
+    }
+    @media screen and (max-width: 1200px) {     //window size <1200px clean blockquote style
+        .detail-text blockquote::after, .detail-text blockquote::before{
+            content: "</blockquote>";
+            font-size: 0px;     
+        }
+    }
+    @media screen and (max-width: 991px) {      //window size < 991px change to mobile
+    
+        .detail-text img, .detail-text strong img, .detail-text em img {
+            clear: left;
+            top: 10px;
+            width: 90%;
+            height: 90%;
+            border: 0px;
+            margin-left: 17px;
+        }
+        .detail-text blockquote{
+            margin-bottom: -35px;
+        }
+        .detail-text span img{                 
+            width: 40%;
+            height: 40%;
+        }
+        .detail-text p,h2{
+            margin: 25px 25px 25px 25px;
+            word-break: break-word;
+        
+        }
+        .detail-text iframe{
+            position: relative;
+            top: 10px;
+            left: 0;
+            width: 90%;
+            height: 50vw;
+            border: 0px;
+            margin-left: 22px;
+            margin-bottom: 20px;
+        }
+    }
+
+    @media screen and (min-width: 991px) {      //window size > 991px img 100%
+        .detail-container img {
+            width: 100%;
+            height: 100%;
+            border: 0px;
+        }
+    }
+}

@@ -1,6 +1,7 @@
 @import "../../styles.scss";
-$nav-hight:100px;
-$nav-hight-mobile:60px;
+$nav-hight: 100px;
+$nav-hight-mobile: 60px;
+
 .logo-container {
     height: $nav-hight;
     overflow: hidden;
@@ -11,10 +12,10 @@ $nav-hight-mobile:60px;
     width: $nav-hight;
     margin-top: $nav-hight / 3;
     margin-left: 2.5vw;
-    &.bigLogo {
+/*    &.bigLogo {
         width: $nav-hight * 3;
-        margin-top: $nav-hight / 10;
-    }
+        margin-top: -($nav-hight / 6);
+    }*/
 }
 
 // .logo-square {
@@ -148,7 +149,7 @@ $nav-hight-mobile:60px;
         margin-top: $nav-hight-mobile / 3;
         &.bigLogo {
             width: $nav-hight-mobile * 3;
-            margin-top: $nav-hight-mobile / 10;
+            margin-top: -($nav-hight-mobile / 10);
         }
     }
     .logo-square {

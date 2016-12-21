@@ -17,6 +17,7 @@ import { GetInvolvedComponent } from './get-involved/get-involved.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { JSONPipesPipe } from './shared/jsonPipes/jsonpipes.pipe';
+import { DatePipePipe } from './shared/datePipe/date-pipe.pipe';
 import { TagCloudModule } from 'angular-tag-cloud-module';
 
 @NgModule({
@@ -30,7 +31,8 @@ import { TagCloudModule } from 'angular-tag-cloud-module';
     GetInvolvedComponent,
     HeaderComponent,
     FooterComponent,
-    JSONPipesPipe
+    JSONPipesPipe,
+    DatePipePipe
   ],
   imports: [
     BrowserModule,
