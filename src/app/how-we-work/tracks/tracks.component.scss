@@ -172,15 +172,19 @@
 /*-----------------------------------*/
 
     .cloud {
-        display: inline;
-        list-style-type: none;
-        // width: 400px;
+        // display: inline;
+        // list-style-type: none;
+        // width: 50%;
         text-align: center;
+        // margin-right:0px;
         a{
             color: #4B0056;
         }
         a:hover{
             color: #D66FE5;
+        }
+        ul{
+            margin: 50px;
         }
     }
     
