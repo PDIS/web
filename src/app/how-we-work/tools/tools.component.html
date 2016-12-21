@@ -44,7 +44,7 @@
 
 				<div class="text">
 					<h4>{{ post['title'] }}</h4>
-					<div>{{ post['text'] }}</div>
+					<div [innerHTML]="post['text']">{{ post['text'] }}</div>
 				</div>
 			</div>
 

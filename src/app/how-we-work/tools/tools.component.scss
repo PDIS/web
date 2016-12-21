@@ -80,8 +80,10 @@ h2{
         display: inline-flex;
         align-items: center;
 
+        img{
+            margin: 0 auto;
+        }
     }
-
 }
 
 .topic-left {
