@@ -9,7 +9,7 @@ $line-height-size:35px;
 }
 
 :host /deep/ .detail-text{
-
+    
     p{                                      
         margin-top: 20px;
     }
@@ -43,7 +43,7 @@ $line-height-size:35px;
         border-left: 0px;
     }
     blockquote::before{                     //blockquote { style
-        content: "[";
+        content: "\007B";
         font-family: "Noto Serif", Georgia, serif;
         font-size: 135px;
         color: #ddd;
@@ -52,7 +52,7 @@ $line-height-size:35px;
         top: 146px;
     }
     blockquote::after{                      //blockquote } style
-        content: "]";
+        content: "\007D";
         font-family: "Noto Serif", Georgia, serif;
         font-size: 133px;
         color: #ddd;
@@ -86,7 +86,7 @@ $line-height-size:35px;
             // font-size: 0px;
             // position: relative;
             // left: 0px;
-            // top: 0px;        
+            // top: 0px;    
         }
     }
 }

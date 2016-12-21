@@ -13,14 +13,14 @@ export class JSONPipesPipe implements PipeTransform {
 
       case "not null object of array":
         var jsonArray: Array<Object> = json;
-        return jsonArray.filter(json => {
-          
-          for (var key in json) {
-            if (json[key] != null)
-              return true;
-          }
-          return false;
-        });
+        
+          return jsonArray.filter(json => {
+            for (var key in json) {
+              if (json[key] != null)
+                return true;
+            }
+            return false;
+          });
 
       case "audio only":
         var jsonArray: Array<Object> = json;
@@ -40,12 +40,12 @@ export class JSONPipesPipe implements PipeTransform {
 
       case "gettag":
         // var gettag: Array<Object> =[];
-        for (var i in json){
-          if (['meeting','talks','speech'].indexOf(json[i])>-1){
+        for (var i in json) {
+          if (['meeting', 'talks', 'speech'].indexOf(json[i]) > -1) {
             return json[i];
           }
         }
-        
+
       default:
         break;
     }
