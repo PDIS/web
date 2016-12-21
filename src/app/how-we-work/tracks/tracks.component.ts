@@ -40,7 +40,7 @@ export class TracksComponent implements OnInit {
         topics.forEach(function (topic) {
           ids.push(topic['id']);
         });
-        return ids;
+        return ids.slice(1);
       })
     // .do(data => console.log(data));
   }
