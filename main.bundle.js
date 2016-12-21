@@ -84482,7 +84482,7 @@ var HeaderComponent = (function () {
         this.bigLogo = true;
         this.router.events.pairwise().subscribe(function (e) {
             console.log(e);
-            if (e[1] instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router_src_router__["c" /* NavigationStart */]) {
+            if (e[1] instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router_src_router__["c" /* NavigationStart */] && _this.navbar.nativeElement.classList.contains("in")) {
                 _this.rd.invokeElementMethod(_this.el.nativeElement, 'click');
             }
         });
@@ -84537,16 +84537,20 @@ var HeaderComponent = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core_src_metadata_di__["f" /* ViewChild */])('test'), 
         __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__angular_core__["g" /* ElementRef */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_5__angular_core__["g" /* ElementRef */]) === 'function' && _a) || Object)
     ], HeaderComponent.prototype, "el", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core_src_metadata_di__["f" /* ViewChild */])('navbar'), 
+        __metadata('design:type', (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__angular_core__["g" /* ElementRef */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_5__angular_core__["g" /* ElementRef */]) === 'function' && _b) || Object)
+    ], HeaderComponent.prototype, "navbar", void 0);
     HeaderComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__angular_core__["G" /* Component */])({
             selector: 'app-header',
             template: __webpack_require__(687),
             styles: [__webpack_require__(678)]
         }), 
-        __metadata('design:paramtypes', [(typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router_src_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router_src_router__["a" /* Router */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core_src_render_api__["d" /* Renderer */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core_src_render_api__["d" /* Renderer */]) === 'function' && _c) || Object])
+        __metadata('design:paramtypes', [(typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router_src_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router_src_router__["a" /* Router */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core_src_render_api__["d" /* Renderer */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core_src_render_api__["d" /* Renderer */]) === 'function' && _d) || Object])
     ], HeaderComponent);
     return HeaderComponent;
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
 }());
 
 
@@ -87781,7 +87785,7 @@ module.exports = "<div class=\"main-container\">\r\n  <div class=\"row\">\r\n   
 /* 687 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"header-line\"></div>\r\n<nav class=\"navbar navbar-fixed-top navbar-pdis\" [style.top]=\"showNav ? '5px' : '-100px'\">\r\n  <div class=\"nav-container\">\r\n    <!-- Brand and toggle get grouped for better mobile display -->\r\n    <div class=\"navbar-header\">\r\n      <button  #test type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\"\r\n        aria-expanded=\"false\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <div class=\"logo-container\">\r\n        <!--<img [style.opacity]=\"bigLogo ? 1:0\" class=\"logo\" src=\"../../assets/img/PDIS-logo-revised-color.png\" alt=\"\">-->\r\n        <a [routerLink]=\"['/']\">\r\n          <img class=\"logo\" [ngClass]=\"{'bigLogo': bigLogo}\" src=\"../../assets/img/pdis-logo-08.png\" alt=\"\" />\r\n        </a>\r\n        <!--<img [style.opacity]=\"bigLogo ? 0:1\" class=\"logo-square\" src=\"../../assets/img/logo-01.svg\" alt=\"\">-->\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Collect the nav links, forms, and other content for toggling -->\r\n    <div id=\"navbar\" class=\"collapse navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li>\r\n          <a [routerLinkActive]=\"['active']\" [routerLink]=\"['/what-we-do']\" class=\"nav-item\"><!-- \r\n       -->WHAT\r\n          WE\r\n          DO\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a [routerLinkActive]=\"['active']\" [routerLink]=\"['/how-we-work']\" class=\"nav-item\"><!-- \r\n       -->HOW\r\n          WE\r\n          WORK\r\n          </a>\r\n          <ul class=\"nav-child\">\r\n            <li><a [routerLinkActive]=\"['active']\" [routerLink]=\"['/how-we-work/tracks']\" class=\"nav-item\"><!-- \r\n         -->\r\n            TRACKS\r\n\r\n            </a></li>\r\n            <li><a [routerLinkActive]=\"['active']\" [routerLink]=\"['/how-we-work/tools']\" class=\"nav-item\"><!-- \r\n         -->\r\n            TOOLS\r\n\r\n            </a></li>\r\n          </ul>\r\n        </li>\r\n        <li>\r\n          <a [routerLinkActive]=\"['active']\" [routerLink]=\"['/get-involved']\" class=\"nav-item\"><!-- \r\n       -->GET\r\n          INVOLVED\r\n\r\n          </a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n    <!-- /.navbar-collapse -->\r\n  </div>\r\n  <!-- /.container-fluid -->\r\n</nav>\r\n"
+module.exports = "<div class=\"header-line\"></div>\r\n<nav class=\"navbar navbar-fixed-top navbar-pdis\" [style.top]=\"showNav ? '5px' : '-100px'\">\r\n  <div class=\"nav-container\">\r\n    <!-- Brand and toggle get grouped for better mobile display -->\r\n    <div class=\"navbar-header\">\r\n      <button  #test type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\"\r\n        aria-expanded=\"false\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <div class=\"logo-container\">\r\n        <!--<img [style.opacity]=\"bigLogo ? 1:0\" class=\"logo\" src=\"../../assets/img/PDIS-logo-revised-color.png\" alt=\"\">-->\r\n        <a [routerLink]=\"['/']\">\r\n          <img class=\"logo\" [ngClass]=\"{'bigLogo': bigLogo}\" src=\"../../assets/img/pdis-logo-08.png\" alt=\"\" />\r\n        </a>\r\n        <!--<img [style.opacity]=\"bigLogo ? 0:1\" class=\"logo-square\" src=\"../../assets/img/logo-01.svg\" alt=\"\">-->\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Collect the nav links, forms, and other content for toggling -->\r\n    <div #navbar id=\"navbar\" class=\"collapse navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li>\r\n          <a [routerLinkActive]=\"['active']\" [routerLink]=\"['/what-we-do']\" class=\"nav-item\"><!-- \r\n       -->WHAT\r\n          WE\r\n          DO\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a [routerLinkActive]=\"['active']\" [routerLink]=\"['/how-we-work']\" class=\"nav-item\"><!-- \r\n       -->HOW\r\n          WE\r\n          WORK\r\n          </a>\r\n          <ul class=\"nav-child\">\r\n            <li><a [routerLinkActive]=\"['active']\" [routerLink]=\"['/how-we-work/tracks']\" class=\"nav-item\"><!-- \r\n         -->\r\n            TRACKS\r\n\r\n            </a></li>\r\n            <li><a [routerLinkActive]=\"['active']\" [routerLink]=\"['/how-we-work/tools']\" class=\"nav-item\"><!-- \r\n         -->\r\n            TOOLS\r\n\r\n            </a></li>\r\n          </ul>\r\n        </li>\r\n        <li>\r\n          <a [routerLinkActive]=\"['active']\" [routerLink]=\"['/get-involved']\" class=\"nav-item\"><!-- \r\n       -->GET\r\n          INVOLVED\r\n\r\n          </a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n    <!-- /.navbar-collapse -->\r\n  </div>\r\n  <!-- /.container-fluid -->\r\n</nav>\r\n"
 
 /***/ },
 /* 688 */
