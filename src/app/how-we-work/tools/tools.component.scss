@@ -30,8 +30,7 @@ h2{
         margin: 5px;
         padding: 10px;
         width: 30%;
-        height: 30vh;
-        overflow: hidden;
+        // height: 30vh;
         text-align: center;
         vertical-align: top;
         background-color: #FFFFFF;
@@ -59,7 +58,7 @@ h2{
 
     .text {
         position: relative;
-        width: 40vw;
+        // width: 40vw;
         max-width: $max_width * 0.5;
         display: inline-block;
         margin: 0;
