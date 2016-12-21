@@ -13,7 +13,7 @@ $nav-hight-mobile:60px;
     margin-left: 2.5vw;
     &.bigLogo {
         width: $nav-hight * 3;
-        margin-top: $nav-hight / 10;
+        margin-top: -($nav-hight / 6);
     }
 }
 
@@ -148,7 +148,7 @@ $nav-hight-mobile:60px;
         margin-top: $nav-hight-mobile / 3;
         &.bigLogo {
             width: $nav-hight-mobile * 3;
-            margin-top: $nav-hight-mobile / 10;
+            margin-top: -($nav-hight-mobile / 10);
         }
     }
     .logo-square {

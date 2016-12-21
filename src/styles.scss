@@ -18,6 +18,11 @@ body {
     color: $text_color;
 }
 
+body > .skiptranslate {
+    display: none; // Hide Google Translate top row
+}
+
+
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
     line-height: normal;
     margin-bottom: 20px;
