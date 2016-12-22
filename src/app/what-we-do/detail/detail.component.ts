@@ -12,14 +12,11 @@ import { Discourselink } from './../../discourselink';
 })
 export class DetailComponent implements OnInit {
  
-  // get_article;
   posts = [];
   page_id: string;
-  // edit_youtube;
 
-  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService, private sanitizer: DomSanitizer, private Dlink: Discourselink) {
-  // link;
-  // constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
+  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
+
     this.route.params.subscribe(params => {
     this.page_id = params['id'];
     }); 
@@ -42,10 +39,6 @@ export class DetailComponent implements OnInit {
 
       });
     });
-    
-    console.log(Discourselink.host);
-    
-    
   }
 
   lazyTY2iframe(article){
