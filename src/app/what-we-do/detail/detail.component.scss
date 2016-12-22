@@ -11,71 +11,53 @@ $line-height-size:35px;
 :host /deep/ .detail-text{
     
     p{                                      
-        margin-top: 20px;
+        margin: 1em 0;
     }
-    img {            
+
+    img, iframe {            
+        border: 0;
         display: block;           
         margin: 0 auto;            
         max-width: 100%;
-        height: auto;
+        // height: auto;
     }
-    em img {                                //img float right
+    em img, em iframe {                     //img float right
         float: right;            
         max-width: 50%;
         height: auto;
-        // width: 450px;
-        // height: 300px;
-        margin: 8px 0px 17px 35px;
+        margin: 0 0 1em 1em;
     }
-    strong img {                            //img float left
+    strong img, strong iframe {             //img float left
         float: left;            
         max-width: 50%;
         height: auto;
-        // width: 450px;
-        // height: 300px;
-        margin: 8px 35px 17px 0px;
+        margin: 0 1em 1em 0;
     }
     dd{                                     //clean img float
         clear: left;
     }
-    blockquote{                             
-        margin: -95px 0 -74px;
+
+    blockquote{                      
+        position: relative;
         border-left: 0px;
     }
     blockquote::before{                     //blockquote { style
         content: "\007B";
-        font-family: "Noto Serif", Georgia, serif;
-        font-size: 135px;
-        color: #ddd;
-        position: relative;
-        left: -66px;
-        top: 146px;
+        font-size: 8em;
+        line-height: 100%;
+        color: #DDDDDD;
+        position: absolute;
+        left: -50px;
+        top: 0;
     }
     blockquote::after{                      //blockquote } style
         content: "\007D";
-        font-family: "Noto Serif", Georgia, serif;
-        font-size: 133px;
-        color: #ddd;
-        position: relative;
-        left: 393px;
-        top: -93px;
-    }
-    strong iframe {                            //iframe float left
-        float: left;
-        width: 450px;
-        height: 300px;
-        margin: 8px 35px 17px 0px;
-    }
-    em iframe {                                //iframe float right
-        float: right;
-        width: 450px;
-        height: 300px;
-        margin: 8px 0px 17px 35px;
-    }
-    iframe {                             
-        width: 450px;
-        height: 300px;
-        border: 0px;
+        font-size: 8em;
+        line-height: 100%;
+        color: #DDDDDD;
+        position: absolute;
+        right: -30px;
+        top: 0;
     }
 }
 
@@ -83,44 +65,29 @@ $line-height-size:35px;
     :host /deep/ .detail-text{
         blockquote::after, blockquote::before{
             content: "";
-            // font-size: 0px;
-            // position: relative;
-            // left: 0px;
-            // top: 0px;    
         }
     }
 }
 @media screen and (max-width: 991px) {      //window size < 991px change to mobile
+
     :host /deep/ .detail-text{
+
+        p, h2{
+            margin: 1em 0.5em;
+            word-break: break-word;
+        }
+
         img, strong img, em img {
-            clear: left;
-            top: 10px;
-            width: 90%;
-            height: 90%;
-            border: 0px;
-            margin-left: 17px;
+            max-width: 90%;
+            margin: 0 5%;
         }
-        blockquote{
-            margin-bottom: -35px;
-        }
-        span img{                 
+        span img{                           // the head of author       
             width: 40%;
             height: 40%;
         }
-        p,h2{
-            margin: 25px 25px 25px 25px;
-            word-break: break-word;
-        
-        }
         iframe{
-            position: relative;
-            top: 10px;
-            left: 0;
             width: 90%;
             height: 50vw;
-            border: 0px;
-            margin-left: 22px;
-            margin-bottom: 20px;
         }
     }
 }
