@@ -48,7 +48,7 @@ $line-height-size:35px;
         color: #DDDDDD;
         position: absolute;
         left: -50px;
-        top: 1em;
+        top: 2rem;
     }
     blockquote::after{                      //blockquote } style
         content: "\007D";
@@ -57,7 +57,7 @@ $line-height-size:35px;
         color: #DDDDDD;
         position: absolute;
         right: -30px;
-        top: 1em;
+        top: 2rem;
     }
 }
 

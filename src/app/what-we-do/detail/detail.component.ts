@@ -2,7 +2,7 @@ import { DomSanitizer } from '@angular/platform-browser/src/security/dom_sanitiz
 import { DataService } from './../../shared/dataService/data-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Discourselink} from './../../discourselink';
+import { Discourselink } from './../../discourselink';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class DetailComponent implements OnInit {
   page_id: string;
   // edit_youtube;
 
-  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer,private Dlink: Discourselink) {
+  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService, private sanitizer: DomSanitizer, private Dlink: Discourselink) {
   // link;
   // constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
     this.route.params.subscribe(params => {
@@ -73,5 +73,5 @@ export class DetailComponent implements OnInit {
   }  
 
   ngOnDestroy() { }
-
+}
 
