@@ -94,20 +94,19 @@
     display: inline-block;
     padding: 2.5vw;
     img {
-        width: 50%
-    }
-    input {
-        width: 90%;
-        margin-top: 10px;
-        margin-bottom: 2.5vw;
-        border: solid 1px black;
-        height: 40px;
-        font-size: 20pt;
+        width: 25%
     }
     h2 {
-        // font-family: 'noto serif';
-        // font-style: italic;
         margin-bottom: 10px;
+    }
+    
+    .think-area{
+        display: block;
+        width: 80%;
+        max-width: $max_width / 2;
+        margin: 3rem auto;
+        // border: solid 1px black;
+        background: rgba(255,255,255,0.5);
     }
 }
 

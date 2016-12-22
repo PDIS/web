@@ -7,8 +7,7 @@
         </em>
       </h3>
       <h3 class="desc"><em>Or, tell us what you think about PDIS:</em></h3>
-      <textarea rows="4" class="think-area" [(ngModel)]="think">
-      </textarea>
+      <textarea rows="5" class="think-area" [(ngModel)]="think"></textarea>
       <div *ngIf="err" class="alert alert-danger" [innerHTML]="err" [hidden]="err.length==0">
       </div>
       <div *ngIf="res" class="alert alert-success" [innerHTML]="res.cooked + ' successfully sent'" [hidden]="res.length==0">

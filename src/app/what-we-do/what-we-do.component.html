@@ -12,10 +12,10 @@
     </div>
   </div>
 
-  <div class="section-line"></div>
+  <hr class="section-line">
 
-  <div *ngFor="let topic of topics; let i = index">
-    <div class="topic-container" [ngClass]="{'topic-right':(i%2===1),'topic-left':(i%2===0)}">
+  <div *ngFor="let topic of topics; let i = index; let isOdd = odd">
+    <div class="topic-container" [ngClass]="{'topic-right':isOdd,'topic-left':!isOdd}">
       <div class="text">
         <h1>{{topic.title}}</h1>
         <div [innerHTML]="topic['text']"></div>
@@ -25,18 +25,20 @@
       </div>
       <div class="image" [innerHTML]="topic['image']"></div>
     </div>
-    <div class="section-line"></div>
+
+    <hr class="section-line">
+
   </div>
 
   <div class="tell-us-container">
     <div class="tell-us-content">
       <h2>Tell us what you think about</h2>
-      <img src="../../assets/img/pdis-logo-08.png" alt="">
-      <input type="text" name="" value="">
+      <img src="/assets/img/PDIS-logo-text.png" alt="">
+      <textarea rows="5" class="think-area"></textarea>
       <button type="button" class="btn-pdis">SUBMIT</button>
     </div>
   </div>
 
-  <div class="section-line"></div>
+  <hr class="section-end">
 
 </div>

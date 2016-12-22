@@ -9,8 +9,8 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "deploy": "rm -rf dist/* ; ng build ; echo pdis.nat.gov.tw > dist/CNAME ; gh-pages -d dist",
-    "deploy-win": "rmdir /s /q dist & ng build & echo pdis.nat.gov.tw > dist/CNAME & gh-pages -d dist"
+    "deploy": "rm -rf dist/* ; ng build -prod; echo pdis.nat.gov.tw > dist/CNAME ; gh-pages -d dist",
+    "deploy-win": "rmdir /s /q dist & ng build -prod & echo pdis.nat.gov.tw > dist/CNAME & gh-pages -d dist"
   },
   "private": true,
   "dependencies": {

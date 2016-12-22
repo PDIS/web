@@ -11,6 +11,82 @@
 }
 
 .think-area{
-    width:90%;
+    display: block;
+    width: 80%;
     max-width: $max_width / 2;
+    margin: 3rem auto;
+    // border: solid 1px black;
+    background: rgba(255,255,255,0.5);
 }
+
+/*.btn-pdis {
+    position: relative;
+    padding: 15px 20px;
+    border-radius: 0px;
+    border-color: black;
+    border: 2px solid;
+    color: #333;
+}
+
+.btn-pdis:hover {
+    border: 2px solid black;
+    color: #fff;
+    background-color: #000;
+}
+
+input {
+    margin: 10px 0 20px;
+    width: 90%
+}
+
+.col-centered {
+    text-align: center;
+    margin: 0 auto;
+    float: none;
+}
+
+.get-involved-container {
+    margin: 0 auto;
+    float: none;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.get-involved-comments {
+    float: none;
+    text-align: justify;
+    position: relative;
+    z-index: 2;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Noto Serif", "NotoSerifRegular", sans-serif;
+    font-weight: bold;
+    line-height: normal;
+    text-align: center;
+}
+
+.desc {
+    font-family: "Noto Serif", "NotoSerifRegular", sans-serif;
+    font-weight: normal;
+    font-style: italic;
+    line-height: normal;
+    text-align: center;
+}
+
+.get-involved-button {
+    font-family: "Franklin Gothic Condensed", "Franklin Gothic Medium", "Franklin Gothic";
+}
+
+hr {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+  border-style: solid none;
+  border-width: 1px 0;
+  margin: 18px 0;
+}*/

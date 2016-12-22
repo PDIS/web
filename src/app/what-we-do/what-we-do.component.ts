@@ -1,7 +1,7 @@
 import { Http } from '@angular/http';
 import { DataService } from './../shared/dataService/data-service.service';
 import { Component, OnInit } from '@angular/core';
-
+import { Discourselink } from './../../assets/discourselink';
 declare var particlesJS: any;
 
 @Component({
@@ -16,7 +16,7 @@ export class WhatWeDoComponent implements OnInit {
   private topics = [];
 
   private getIds() {
-    return this.http.get("https://talk.pdis.nat.gov.tw/c/pdis-site/what-we-do.json")
+    return this.http.get(Discourselink.host+"c/pdis-site/"+Discourselink.whatwedo+".json")
       .map(function (data) {
         data = data.json();
         var ids = [];
@@ -30,7 +30,7 @@ export class WhatWeDoComponent implements OnInit {
   }
 
   private getPost(id: string) {
-    return this.http.get("https://talk.pdis.nat.gov.tw/t/" + id + ".json")
+    return this.http.get(Discourselink.host+"t/" + id + ".json")
       .map(function (data) {
         data = data.json();
         var post = {};
