@@ -18,6 +18,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { JSONPipesPipe } from './shared/jsonPipes/jsonpipes.pipe';
 import { DatePipePipe } from './shared/datePipe/date-pipe.pipe';
+import { TagCloudComponent } from './how-we-work/tracks/tag-cloud/tag-cloud.component';
+
 import { TagCloudModule } from 'angular-tag-cloud-module';
 
 import { Discourselink } from './discourselink';
@@ -36,7 +38,8 @@ import { Discourselink } from './discourselink';
     HeaderComponent,
     FooterComponent,
     JSONPipesPipe,
-    DatePipePipe
+    DatePipePipe,
+    TagCloudComponent
   ],
   imports: [
     BrowserModule,
