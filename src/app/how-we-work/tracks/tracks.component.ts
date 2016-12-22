@@ -46,7 +46,7 @@ export class TracksComponent implements OnInit {
         topics.forEach(function (topic) {
           ids.push(topic['id']);
         });
-        return ids;
+        return ids.slice(1);
       })
     // .do(data => console.log(data));
   }
@@ -100,27 +100,36 @@ export class TracksComponent implements OnInit {
             });
           }
 
-          var post_tags: Array<string> = post['tags'];
-          post_tags.forEach(element => {
-            this.counts[element] = (this.counts[element] || 0) + 1;
-          });
-          var normalized = [] as { text: string, weight: number}[];
-          Object.keys(this.counts).forEach(tag => {
-            normalized.push({ text: tag, weight: this.counts[tag]+4});
-            
-          });
-          this.tags = normalized;
           this.posts.push(post);
-          console.log(this.tags);
           
           this.posts.sort(function (a, b) {
             return new Date(b.date).getTime() - new Date(a.date).getTime(); // sort date(yyyy/MM/dd)
           });
         })
       })
-      console.log(this.tags);
-      console.log(this.counts);
+      // console.log(this.tags);
+      // console.log(this.counts);
     });
+
+    this.http.get("https://talk.pdis.nat.gov.tw/tags/filter/search.json")
+    .map(data => {
+      data = data.json();
+      var tags = [];
+      var discourseTags:[Object] = data['results'];
+      for( var i in discourseTags)
+      {
+        var tag = {};
+        tag['text'] = discourseTags[i]['text'];
+        tag['weight'] = discourseTags[i]['count'];
+        tag['link'] = "http://localhost:4200/#/how-we-work/tracks?q="+discourseTags[i]['text'];
+        tags.push(tag);
+      }
+      return tags;
+    })
+    .do(data=>{console.log(data);})
+    .subscribe(
+      tags => {this.tags = tags;}
+    )
   }
 
 }

@@ -10,19 +10,12 @@
   </div>
 
   <div class="section-line"></div>
-  <div >
-    {{test|json}}<br>
-    {{tags|json}}
-    <!--<ul class="cloud"> 
-      <li *ngFor="let tag of counts"><a href="#">{{tag}} </a></li>
-    </ul>-->
-    <angular-tag-cloud
+    <app-tag-cloud
       [width]="1000"
-      [height]="400"
+      [height]="200"
       [data]="tags"
       [removeOverflow]="true">
-    </angular-tag-cloud>
-  </div>
+    </app-tag-cloud>
   <div class="section-line"></div>
   <div class="tracktitle">Track.PDIS</div>
 
