@@ -20,6 +20,10 @@ import { JSONPipesPipe } from './shared/jsonPipes/jsonpipes.pipe';
 import { DatePipePipe } from './shared/datePipe/date-pipe.pipe';
 import { TagCloudModule } from 'angular-tag-cloud-module';
 
+import { Discourselink } from './discourselink';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +48,8 @@ import { TagCloudModule } from 'angular-tag-cloud-module';
   providers: [
     DataService,
     DiscourseService,
-    ConvertService
+    ConvertService,
+    Discourselink
   ],
   bootstrap: [AppComponent]
 })
