@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-
 $back_color: #4B0056;
 $hightlight: #D66FE5;
 $max_width: 1180px;
@@ -17,6 +16,11 @@ body {
     font-size: $main-font-size;
     color: $text_color;
 }
+
+body > .skiptranslate {
+    display: none; // Hide Google Translate top row
+}
+
 
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
     line-height: normal;

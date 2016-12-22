@@ -19,221 +19,35 @@
 
 	<!-- the blocks of tools -->
 	<div *ngIf="tools_list" class="thumb-container clearfix">
-
-		<div *ngFor="let post of tools_list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked">
-
-		<!-- <div class="col-sm-4 col-md-3 col-lg-2 thumb" [innerHTML]="post.cooked"></div> -->
-			
-		</div>
+		<div *ngFor="let post of tools_list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked"></div>	
 	</div>
 
 	<hr class="section-line" />
 
-	<!-- the desc of tools -->
+	<!-- the detail of tools -->
 	<div class="topics"> 
 
-		<!-- 0 -->
+		<template ngFor [ngForOf]="tools_detail_list" let-post let-i="index" let-isLast="last" let-isOdd="odd">
 
-<!-- 		<div *ngFor="let post of tools_detail_list; let i = index; " [ngClass]="{'topic-right':(i%2===1),'topic-left':(i%2===0)}">
+			<!-- {i} -->
+			<div class="topic-container" [ngClass]="{'topic-right':isOdd,'topic-left':!isOdd}">
 
-			<div class="image">
-				<img src="{{ post['img'] }}" alt="">
-			</div>
-
-			<div class="text">
-				<h4>{{ post['title'] }}</h4>
-				<p>{{ post['text'] }}</p>
-			</div>
-			
-		</div>
-
-		<hr class="section-dot" /> -->
-
-		<div class="topic-container topic-right">
-		<!-- 1 -->
-
-			<div class="image">
-				<img src="/assets/img/placeholder-1000x518.png" alt="">
-			</div>
-
-			<div class="text">
-
-				<h4>Virtual Reality (VR)</h4>
-
-				<p>Face-to-face deliberation is magical but could be unbalanced and messy, virtual reality technology immerses real minds in digital worlds and provides participants more access to assistance from technology. Check Audrey's video and imagine how virtual reality for civic participation works.<br>
-				</p>
-				
-				<div class="lazyYT" data-youtube-id="EynGwOoxlSE" data-youtube-title="Virtual Reality for Civic Deliberation" data-width="480" data-height="270" data-parameters="feature=oembed&amp;wmode=opaque"></div>
-
-			</div>
-		</div>
-
-		<hr class="section-dot" />
-
-		<div class="topic-container topic-left">
-		<!-- 2 -->
-
-			<div class="image">
-				<img src="/assets/img/placeholder-1000x518.png" alt="">
-			</div>
-
-			<div class="text">
-
-				<h4>ORID</h4>
-
-				<p>The ORID (Objective, Reflective, Interpretive, Decisional) method is a form of a structured conversation that should be ideally led by a facilitator. By listing out objective, reflection, interpretation toward a certain topic, the process naturally guides participants to a consensus decision. When facing a more complex topic, it's often used for structuring conversation, helping converge discussion and highlight key issues. Fast-paced ideation in a smaller group could also apply ORID by quickly underlining fact, feeling, idea and then arrives at a short-term decision.<br><a href="http://pacific-edge.info/2010/08/orid/" class="onebox" target="_blank">http://pacific-edge.info/2010/08/orid/</a></p>
-
-			</div>
-		</div>
-
-		<hr class="section-dot" />
-
-		<div class="topic-container topic-right">
-		<!-- 3 -->
-
-			<div class="image">
-				<img src="/assets/img/placeholder-1000x518.png" alt="">
-			</div>
-
-			<div class="text">
-
-				<h4>Build-Test-Repeat</h4>
-
-				<p>In the rapid changing world, we encourage workgroups to set up a rapid prototyping culture. Build-test-repeat explains the culture of not afraid of making mistakes cause one can always repeat the loop and make it better. <br><aside class="onebox whitelistedgeneric">
-				<header class="source">
-				<a href="https://itunes.apple.com/us/podcast/design-build-test-repeat-podcast/id1078314311?mt=2" target="_blank">iTunes</a>
-				</header>
-				<article class="onebox-body">
-				<img src="http://is5.mzstatic.com/image/thumb/Music71/v4/3c/cd/00/3ccd00b6-f47b-a65a-8517-0b5edd744c8f/source/1200x630bf.jpg" class="thumbnail" width="129" height="68">
-
-				<h3><a href="https://itunes.apple.com/us/podcast/design-build-test-repeat-podcast/id1078314311?mt=2" target="_blank">Design, Build, Test, Repeat Podcast by Mike Kivikos...</a></h3>
-
-				<p>Download past episodes or subscribe to future episodes of Design, Build, Test, Repeat Podcast by Mike Kivikoski &amp; Eric Bailey for free.</p>
-
-				</article>
-				<div class="onebox-metadata">
-
-
+				<div class="image">
+					<img src="{{ post['img'] }}" alt="">
 				</div>
-				<div style="clear: both"></div>
-				</aside>
-				</p>
 
-			</div>
-
-		</div>
-
-		<hr class="section-dot" />
-
-		<div class="topic-container topic-left">
-		<!-- 4 -->
-
-			<div class="image">
-				<img src="/assets/img/placeholder-1000x518.png" alt="">
-			</div>
-
-			<div class="text">
-
-				<h4>Sandstorm</h4>
-
-				<p>Sandstorm is a self-hostable web productivity suite. We host a sandstorm instance and open it to people working with us. It's a handy online platform that has collaboration apps or tools such as shared document, shared folder, instant message system, diagram drawing tools and a lot more. It's open-sourced so anyone can request for new features to the developers or even become a contributor.<br><a href="https://sandstorm.io/" class="onebox" target="_blank">https://sandstorm.io/</a></p>
-
-			</div>
-
-		</div>
-
-		<hr class="section-dot" />
-
-		<div class="topic-container topic-right">
-		<!-- 5 -->
-
-			<div class="image">
-				<img src="/assets/img/placeholder-1000x518.png" alt="">
-			</div>
-
-			<div class="text">
-
-				<h4>OKR</h4>
-
-				<p>Objectives and Key Results (OKR) is a popular technique for setting and communicating goals and results in organizations. Its main goal is to connect company, team and personal objectives to measurable results, making people move together in right direction. OKR is used by companies like Google, LinkedIn and Intel.</p>
-
-			</div>
-
-		</div>
-
-		<hr class="section-dot" />
-
-		<div class="topic-container topic-left">
-		<!-- 6 -->
-
-			<div class="image">
-				<img src="/assets/img/placeholder-1000x518.png" alt="">
-			</div>
-			
-			<div class="text">
-
-				<h4>Kanban</h4>
-
-				<p>Kanban is an inventory-control system to control the supply chain developed by Taiichi Ohno, an industrial engineer at Toyota, to improved manufacturing efficiency. Nowadays, Kanban has evolved as an effective tool for project management especially when having clear output or objectives. One example of online project management tools that implements kanban is Trello. <br><aside class="onebox wikipedia">
-				<header class="source">
-				<a href="https://en.wikipedia.org/wiki/Kanban#cite_note-13" target="_blank">en.wikipedia.org</a>
-				</header>
-				<article class="onebox-body">
-				<img src="//upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Kanban_principles.svg/360px-Kanban_principles.svg.png" class="thumbnail" width="129" height="64">
-
-				<h3><a href="https://en.wikipedia.org/wiki/Kanban#cite_note-13" target="_blank">Kanban</a></h3>
-
-				<p>Kanban (看板?) (literally signboard or billboard in Japanese) is a scheduling system for lean manufacturing and just-in-time manufacturing (JIT). Kanban is an inventory-control system to control the supply chain. Taiichi Ohno, an industrial engineer at Toyota, developed kanban to improved manufacturing efficiency. Kanban is one method to achieve JIT. Kanban became an effective tool to support running a production system as a whole, and an excellent way to promote improvement. Problem areas are high...</p>
-
-				</article>
-				<div class="onebox-metadata">
-
-
+				<div class="text">
+					<h4>{{ post['title'] }}</h4>
+					<p [innerHTML]="post['text']"></p>
+					<p [innerHTML]="post['link']"></p>
 				</div>
-				<div style="clear: both"></div>
-				</aside>
-				<br><a href="https://trello.com/" class="onebox" target="_blank">https://trello.com/</a></p>
 
 			</div>
 
-		</div>
+			<hr class="section-dot" *ngIf="!isLast" /> 
 
-		<hr class="section-dot" />
+  		</template>
 
-		<div class="topic-container topic-right">
-		<!-- 7 -->
-
-			<div class="image">
-				<img src="/assets/img/placeholder-1000x518.png" alt="">
-			</div>
-
-			<div class="text">
-
-				<h4>Business Origami</h4>
-
-				<p>Business Origami is a method that has been invented by the Hitachi Design Center. It uses paper cut-outs as symbolic representations of people, groups, channels and environments, to create a miniature model of a system. The cut-outs are placed on a whiteboard or a big piece of paper where the different areas, interactions and flows between the system elements are drawn.<br><aside class="onebox whitelistedgeneric">
-				<header class="source">
-				<a href="https://experience.sap.com/skillup/business-origami/" target="_blank">experience.sap.com</a>
-				</header>
-				<article class="onebox-body">
-				<img src="https://experience.sap.com/wp-content/uploads/2014/09/BusinessOrigami1.png" class="thumbnail" width="129" height="92">
-
-				<h3><a href="https://experience.sap.com/skillup/business-origami/" target="_blank">Business Origami - SAP User Experience Community</a></h3>
-
-				<p>Business Origami is a method that has been invented by the Hitachi Design Center. It uses paper cut-outs as symbolic representations of people, groups, channels and environments, to create a miniature model of a system.</p>
-
-				</article>
-				<div class="onebox-metadata">
-
-
-				</div>
-				<div style="clear: both"></div>
-				</aside>
-				</p>
-
-			</div>
-
-		</div>
 	</div>
 
 	<hr class="section-end" />

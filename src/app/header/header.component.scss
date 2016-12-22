@@ -1,30 +1,65 @@
 @import "../../styles.scss";
-$nav-hight:100px;
-$nav-hight-mobile:60px;
+$nav-hight: 100px;
+$nav-hight-mobile: 60px;
+
+// *************************** LOGO section
+
 .logo-container {
     height: $nav-hight;
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 .logo {
-    transition: width 0.1s ease-in, margin-top 0.1s ease-in;
+    transition: all 0.3s ease;
     width: $nav-hight;
-    margin-top: $nav-hight / 3;
-    margin-left: 2.5vw;
-    &.bigLogo {
+    margin: 10px 0 0 15px;
+    box-shadow: 1px 1px 10px 2px rgba(0,0,0,0.3);
+    // margin-top: $nav-hight / 3;
+    // margin-left: 2.5vw;
+/*    &.bigLogo {
         width: $nav-hight * 3;
-        margin-top: $nav-hight / 10;
-    }
+        margin-top: -($nav-hight / 6);
+    }*/
 }
 
-// .logo-square {
-//     width: $nav-hight;
-//     height: $nav-hight;
-//     opacity: 0;
-//     transition: opacity 0.3s linear;
-//     position: absolute;
-//     top: 0;
-// }
+/*.logo-square {
+    width: $nav-hight;
+    height: $nav-hight;
+    opacity: 0;
+    transition: opacity 0.3s linear;
+    position: absolute;
+    top: 0;
+}*/
+
+@media screen and (max-width: 767px) {
+    .logo-container {
+        height: $nav-hight-mobile;
+        // overflow: hidden;
+    }
+    .logo {
+        // transition: all 0.3s ease;
+        width: $nav-hight-mobile;
+        margin: 0 0 0 15px;
+        box-shadow: 0;
+        // margin-top: $nav-hight-mobile / 3;
+/*        &.bigLogo {
+            width: $nav-hight-mobile * 3;
+            margin-top: -($nav-hight-mobile / 10);
+        }*/
+    }
+/*    .logo-square {
+        width: $nav-hight-mobile;
+        height: $nav-hight-mobile;
+        opacity: 0;
+        transition: opacity 0.3s linear;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }*/
+}
+
+// *************************** nav bar section
+
 .navbar-pdis {
     background: linear-gradient(to bottom, #FFFFFF, #EFEFEF);
     background: -moz-linear-gradient(to bottom, #FFFFFF, #EFEFEF);
@@ -96,10 +131,7 @@ $nav-hight-mobile:60px;
 
 
 @media screen and (max-width: 767px) {
-    .logo-container {
-        height: $nav-hight-mobile;
-        overflow: hidden;
-    }
+
     .icon-bar {
         background-color: $back_color;
     }
@@ -140,24 +172,5 @@ $nav-hight-mobile:60px;
                 display: inline-block;
             }
         }
-    }
-
-    .logo {
-        transition: width 0.1s ease-in, margin-top 0.1s ease-in;
-        width: $nav-hight-mobile;
-        margin-top: $nav-hight-mobile / 3;
-        &.bigLogo {
-            width: $nav-hight-mobile * 3;
-            margin-top: $nav-hight-mobile / 10;
-        }
-    }
-    .logo-square {
-        width: $nav-hight-mobile;
-        height: $nav-hight-mobile;
-        opacity: 0;
-        transition: opacity 0.3s linear;
-        position: absolute;
-        left: 0;
-        top: 0;
     }
 }

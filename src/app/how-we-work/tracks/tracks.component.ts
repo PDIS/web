@@ -1,3 +1,4 @@
+import { TagCloudModule } from 'angular-tag-cloud-module';
 import { element } from 'protractor';
 import { DataService } from './../../shared/dataService/data-service.service';
 import { Http } from '@angular/http';
@@ -21,12 +22,7 @@ export class TracksComponent implements OnInit {
   conferences = [];
   interviews = [];
   others = [];
-
-  test = [
-   { "text": "Garena", "weight": 5 }, { "text": "蝦皮", "weight": 5 }, { "text": "特色文創", "weight": 5 }, { "text": "Speech", "weight": 8 }, { "text": "E-commerce", "weight": 5 }, { "text": "電子商務", "weight": 5 }, { "text": "數位治理", "weight": 5 }, { "text": "PDIS", "weight": 5 }, { "text": "Meeting", "weight": 5 }, { "text": "國土", "weight": 5 }, { "text": "公共治理", "weight": 5 }, { "text": "Public hearing", "weight": 5 }, { "text": "電子競技", "weight": 5 }, { "text": "電競產業", "weight": 5 }, { "text": "e-Taxi platforms", "weight": 5 }, { "text": "數位經濟", "weight": 5 }, { "text": "社群互動", "weight": 5 }, { "text": "網路直播", "weight": 5 }, { "text": "專訪", "weight": 5 }, { "text": "speech", "weight": 5 }, { "text": "開源社群", "weight": 5 }, { "text": "澎湖科技大學", "weight": 5 }, { "text": "Silicon valley", "weight": 5 }, { "text": "國發會", "weight": 5 }, { "text": "Talks", "weight": 5 }, { "text": "American Chamber", "weight": 5 }, { "text": "Cyber-attack", "weight": 5 }, { "text": "開放政府", "weight": 6 }
-  ];
-
-
+  total = [];
 
   constructor(
     private dataService: DataService,
@@ -34,17 +30,25 @@ export class TracksComponent implements OnInit {
     private http: Http)
   { }
 
-  isEmptyObject(obj) {
-    return (Object.keys(obj).length === 0);
+  private getCategory() {
+    return this.http.get("https://talk.pdis.nat.gov.tw/t/category/305.json?include_raw=1")
+      .map(function (data) {
+        data = data.json();
+        var rawString = data['post_stream']['posts'][0]['raw'];
+        return rawString;
+      })
   }
+
   private getIds() {
     return this.http.get("https://talk.pdis.nat.gov.tw/c/pdis-site/how-we-work-track.json")
       .map(function (data) {
         data = data.json();
         var ids = [];
+        var tags = [];
         var topics = data['topic_list']['topics'];
         topics.forEach(function (topic) {
           ids.push(topic['id']);
+          tags.push(topic['tags']);
         });
         return ids.slice(1);
       })
@@ -65,6 +69,7 @@ export class TracksComponent implements OnInit {
 
   ngOnInit() {
     this.getIds().subscribe(ids => {
+      console.log(ids);
       ids.forEach(id => {
         this.getPost(id).subscribe(post => {
           post = this.convertService.convertYAMLtoJSON(post)
@@ -99,7 +104,6 @@ export class TracksComponent implements OnInit {
               return new Date(b.date).getTime() - new Date(a.date).getTime();
             });
           }
-
           this.posts.push(post);
           
           this.posts.sort(function (a, b) {
@@ -129,7 +133,36 @@ export class TracksComponent implements OnInit {
     .do(data=>{console.log(data);})
     .subscribe(
       tags => {this.tags = tags;}
-    )
+    );
+
+    this.getCategory().subscribe(category => {
+      category = this.convertService.convertYAMLtoJSON(category)
+      this.getIds().subscribe(ids => {
+        ids.forEach(id => {
+          this.getPost(id).subscribe(post => {
+            post = this.convertService.convertYAMLtoJSON(post)
+            // var normalized = [] as { category: string, posts: Object }[];
+            var normalized = {};
+            var k=0;
+            Object.keys(category).forEach(key => {
+              for (var i = 0; i < category[key].length; i++) {
+                
+                if (post['title'].indexOf(category[key][i]) > -1) {
+                  k=1;
+                  normalized = ({category:key,posts:post})
+                }
+                if (post['title'].indexOf(category[key][i]) == -1 && k!=1) {
+                  normalized = ({category:null,posts:post})
+                }
+              }   
+            })
+            this.total.push(normalized);
+          }
+          )
+        })
+      })
+      console.log(this.total);
+    })
   }
 
 }
