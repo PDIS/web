@@ -2,7 +2,7 @@ import { DomSanitizer } from '@angular/platform-browser/src/security/dom_sanitiz
 import { DataService } from './../../shared/dataService/data-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Discourselink } from './../../discourselink';
+import { Discourselink } from './../../../assets/discourselink';
 
 
 @Component({

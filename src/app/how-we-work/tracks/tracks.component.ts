@@ -6,7 +6,7 @@ import { ConvertService } from './../../shared/convertService/convert.service';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
-
+import { Discourselink } from './../../../assets/discourselink';
 @Component({
   selector: 'app-tracks',
   templateUrl: './tracks.component.html',
@@ -32,7 +32,7 @@ export class TracksComponent implements OnInit {
   { }
 
   private getCategory() {
-    return this.http.get("https://talk.pdis.nat.gov.tw/t/how-we-work-track/73.json?include_raw=1")
+    return this.http.get(Discourselink.host+"t/"+Discourselink.HOWWEWORKTRACK+"/73.json?include_raw=1")
       .map(function (data) {
         data = data.json();
         var rawString = data['post_stream']['posts'][0]['raw'];
@@ -41,7 +41,7 @@ export class TracksComponent implements OnInit {
   }
 
   private getIds() {
-    return this.http.get("https://talk.pdis.nat.gov.tw/c/pdis-site/how-we-work-track.json")
+    return this.http.get(Discourselink.host+"c/pdis-site/"+Discourselink.HOWWEWORKTRACK+".json")
       .map(function (data) {
         data = data.json();
         var ids = [];
@@ -57,7 +57,7 @@ export class TracksComponent implements OnInit {
   }
 
   private getPost(id: string) {
-    return this.http.get("https://talk.pdis.nat.gov.tw/t/" + id + ".json?include_raw=1")
+    return this.http.get(Discourselink.host+"t/"+ id + ".json?include_raw=1")
       .map(function (data) {
         data = data.json();
         var rawString = data['post_stream']['posts'][0]['raw'];
@@ -117,7 +117,7 @@ export class TracksComponent implements OnInit {
       // console.log(this.counts);
     });
 
-    this.http.get("https://talk.pdis.nat.gov.tw/tags/filter/search.json")
+    this.http.get(Discourselink.host+"tags/filter/search.json")
     .map(data => {
       data = data.json();
       var tags = [];
