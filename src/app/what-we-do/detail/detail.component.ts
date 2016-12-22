@@ -16,7 +16,8 @@ export class DetailComponent implements OnInit {
   posts = [];
   page_id: string;
   edit_youtube;
-  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer,private Dlink: Discourselink) {
+  link;
+  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
     this.route.params.subscribe(params => {
     this.page_id = params['id'];
     }); 
@@ -33,9 +34,13 @@ export class DetailComponent implements OnInit {
         this.edit_youtube=article_sort;           
         this.youtube();         
         this.posts.push(this.edit_youtube); /***Send to the web page***/
-      }     
+      }  
+         
     });
-    this.Dlink.getFoods();
+    
+    console.log(Discourselink.host);
+    
+    
   }
   youtube(){
     var dom = new DOMParser();
@@ -55,17 +60,4 @@ export class DetailComponent implements OnInit {
   }  
   ngOnDestroy() { }
 
-// getComments() : Observable<Comment[]> {
-
-//          // ...using get request
-//          return this.http.get(this.commentsUrl)
-//                         // ...and calling .json() on the response to return data
-//                          .map((discourselink:Response) => discourselink.json())
-//                          //...errors if any
-//                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-
-//      }
-
-
-}
 
