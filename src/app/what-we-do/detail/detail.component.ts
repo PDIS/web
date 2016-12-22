@@ -14,16 +14,9 @@ export class DetailComponent implements OnInit {
  
   posts = [];
   page_id: string;
-<<<<<<< HEAD
- 
-  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
-=======
-  // edit_youtube;
 
-  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService, private sanitizer: DomSanitizer, private Dlink: Discourselink) {
-  // link;
-  // constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
->>>>>>> 0a002022bd82324d12509c6ac051c0b1ab319f64
+  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
+
     this.route.params.subscribe(params => {
     this.page_id = params['id'];
     }); 
