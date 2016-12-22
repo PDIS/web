@@ -18,6 +18,8 @@ export class DetailComponent implements OnInit {
   // edit_youtube;
 
   constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer,private Dlink: Discourselink) {
+  // link;
+  // constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
     this.route.params.subscribe(params => {
     this.page_id = params['id'];
     }); 
@@ -27,18 +29,23 @@ export class DetailComponent implements OnInit {
     this.datadetail.getData(this.page_id)
     .subscribe((value) => {
 
-      /***get_article***/
+      /*** get articles from json ***/
       var articles = JSON.parse(value.text()).post_stream.posts;
-
+      // let each article to be split and converted
       articles.forEach(element => {
-        /***split an article by <hr>***/
+        /*** split an article by <hr> ***/
         var article = element['cooked'].split("<hr>"); 
+        // convert lazyYT into iframe
         article = this.lazyTY2iframe(article);
+        // push back into posts
         this.posts.push(article);
 
       });
     });
-    this.Dlink.getFoods();
+    
+    console.log(Discourselink.host);
+    
+    
   }
 
   lazyTY2iframe(article){
@@ -67,16 +74,4 @@ export class DetailComponent implements OnInit {
 
   ngOnDestroy() { }
 
-// getComments() : Observable<Comment[]> {
-
-//          // ...using get request
-//          return this.http.get(this.commentsUrl)
-//                         // ...and calling .json() on the response to return data
-//                          .map((discourselink:Response) => discourselink.json())
-//                          //...errors if any
-//                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-
-//      }
-
-}
 
