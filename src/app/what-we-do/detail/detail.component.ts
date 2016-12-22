@@ -2,6 +2,8 @@ import { DomSanitizer } from '@angular/platform-browser/src/security/dom_sanitiz
 import { DataService } from './../../shared/dataService/data-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Discourselink} from './../../discourselink';
+
 
 @Component({
   selector: 'app-detail',
@@ -15,7 +17,7 @@ export class DetailComponent implements OnInit {
   page_id: string;
   // edit_youtube;
 
-  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer) {
+  constructor(private router: Router, private route: ActivatedRoute, private datadetail: DataService,private sanitizer: DomSanitizer,private Dlink: Discourselink) {
     this.route.params.subscribe(params => {
     this.page_id = params['id'];
     }); 
@@ -36,6 +38,7 @@ export class DetailComponent implements OnInit {
 
       });
     });
+    this.Dlink.getFoods();
   }
 
   lazyTY2iframe(article){
@@ -63,6 +66,17 @@ export class DetailComponent implements OnInit {
   }  
 
   ngOnDestroy() { }
+
+// getComments() : Observable<Comment[]> {
+
+//          // ...using get request
+//          return this.http.get(this.commentsUrl)
+//                         // ...and calling .json() on the response to return data
+//                          .map((discourselink:Response) => discourselink.json())
+//                          //...errors if any
+//                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+
+//      }
 
 }
 
