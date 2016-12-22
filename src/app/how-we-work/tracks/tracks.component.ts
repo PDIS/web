@@ -23,7 +23,7 @@ export class TracksComponent implements OnInit {
   interviews = [];
   others = [];
   total = [];
-
+  cate = [];
 
 
   test = [
@@ -38,35 +38,15 @@ export class TracksComponent implements OnInit {
     private http: Http)
   { }
 
-  // private getTagslist() {
-  //   return this.http.get("https://talk.pdis.nat.gov.tw/c/pdis-site/how-we-work-track.json")
-  //     .map(function (data) {
-  //       data = data.json();
-  //       var tag_list = [];
-  //       tag_list = data['topic_list']['tags'];
-  //       return tag_list;
-  //     })
-  // }
   private getCategory() {
-    return this.http.get("https://talk.pdis.nat.gov.tw/t/category/305.json?include_raw=1")
+    return this.http.get("https://talk.pdis.nat.gov.tw/t/how-we-work-track/73.json?include_raw=1")
       .map(function (data) {
         data = data.json();
         var rawString = data['post_stream']['posts'][0]['raw'];
         return rawString;
       })
   }
-  private getTags() {
-    return this.http.get("https://talk.pdis.nat.gov.tw/c/pdis-site/how-we-work-track.json")
-      .map(function (data) {
-        data = data.json();
-        var tags = [];
-        var topics = data['topic_list']['topics'];
-        topics.forEach(function (topic) {
-          tags.push(topic['tags']);
-        });
-        return tags;
-      })
-  }
+
   private getIds() {
     return this.http.get("https://talk.pdis.nat.gov.tw/c/pdis-site/how-we-work-track.json")
       .map(function (data) {
@@ -97,92 +77,108 @@ export class TracksComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getIds().subscribe(ids => {
-      console.log(ids);
-      ids.forEach(id => {
-        this.getPost(id).subscribe(post => {
-          post = this.convertService.convertYAMLtoJSON(post)
+    // this.getIds().subscribe(ids => {
+    //   console.log(ids);
+    //   ids.forEach(id => {
+    //     this.getPost(id).subscribe(post => {
+    //       post = this.convertService.convertYAMLtoJSON(post)
 
-          if (post['category'] == 'speech') {
-            this.speeches.push(post);
-            this.speeches.sort(function (a, b) {
-              return new Date(b.date).getTime() - new Date(a.date).getTime();
-            });
-          }
-          if (post['category'] == 'meeting') {
-            this.meetings.push(post);
-            this.meetings.sort(function (a, b) {
-              return new Date(b.date).getTime() - new Date(a.date).getTime();
-            });
-          }
-          if (post['category'] == 'conference') {
-            this.conferences.push(post);
-            this.conferences.sort(function (a, b) {
-              return new Date(b.date).getTime() - new Date(a.date).getTime();
-            });
-          }
-          if (post['category'] == 'interview') {
-            this.interviews.push(post);
-            this.interviews.sort(function (a, b) {
-              return new Date(b.date).getTime() - new Date(a.date).getTime();
-            });
-          }
-          if (post['category'] == null) {
-            this.others.push(post);
-            this.others.sort(function (a, b) {
-              return new Date(b.date).getTime() - new Date(a.date).getTime();
-            });
-          }
-          var post_tags: Array<string> = post['tags'];
-          post_tags.forEach(element => {
-            this.counts[element] = (this.counts[element] || 0) + 1;
-          });
-          var normalized = [] as { text: string, weight: number }[];
-          Object.keys(this.counts).forEach(tag => {
-            normalized.push({ text: tag, weight: this.counts[tag] + 4 });
+    //       if (post['category'] == 'speech') {
+    //         this.speeches.push(post);
+    //         this.speeches.sort(function (a, b) {
+    //           return new Date(b.date).getTime() - new Date(a.date).getTime();
+    //         });
+    //       }
+    //       if (post['category'] == 'meeting') {
+    //         this.meetings.push(post);
+    //         this.meetings.sort(function (a, b) {
+    //           return new Date(b.date).getTime() - new Date(a.date).getTime();
+    //         });
+    //       }
+    //       if (post['category'] == 'conference') {
+    //         this.conferences.push(post);
+    //         this.conferences.sort(function (a, b) {
+    //           return new Date(b.date).getTime() - new Date(a.date).getTime();
+    //         });
+    //       }
+    //       if (post['category'] == 'interview') {
+    //         this.interviews.push(post);
+    //         this.interviews.sort(function (a, b) {
+    //           return new Date(b.date).getTime() - new Date(a.date).getTime();
+    //         });
+    //       }
+    //       if (post['category'] == null) {
+    //         this.others.push(post);
+    //         this.others.sort(function (a, b) {
+    //           return new Date(b.date).getTime() - new Date(a.date).getTime();
+    //         });
+    //       }
+    //       var post_tags: Array<string> = post['tags'];
+    //       post_tags.forEach(element => {
+    //         this.counts[element] = (this.counts[element] || 0) + 1;
+    //       });
+    //       var normalized = [] as { text: string, weight: number }[];
+    //       Object.keys(this.counts).forEach(tag => {
+    //         normalized.push({ text: tag, weight: this.counts[tag] + 4 });
 
-          });
-          this.tags = normalized;
-          this.posts.push(post);
-          // console.log(this.tags);
+    //       });
+    //       this.tags = normalized;
+    //       this.posts.push(post);
+    //       // console.log(this.tags);
 
-          this.posts.sort(function (a, b) {
-            return new Date(b.date).getTime() - new Date(a.date).getTime(); // sort date(yyyy/MM/dd)
-          });
-        })
-      })
-      // console.log(this.tags);
-      // console.log(this.counts);
-      console.log(this.posts);
-    });
+    //       this.posts.sort(function (a, b) {
+    //         return new Date(b.date).getTime() - new Date(a.date).getTime(); // sort date(yyyy/MM/dd)
+    //       });
+    //     })
+    //   })
+    //   // console.log(this.tags);
+    //   // console.log(this.counts);
+    //   console.log(this.posts);
+    // });
+
     this.getCategory().subscribe(category => {
       category = this.convertService.convertYAMLtoJSON(category)
+      this.total.push({ category: 'All', posts: new Array<string>() });
+      Object.keys(category).forEach(key => {
+        this.total.push({ category: key, posts: new Array<string>() });
+      })
+      this.total.push({ category: 'Other', posts: new Array<string>() });
+
       this.getIds().subscribe(ids => {
         ids.forEach(id => {
           this.getPost(id).subscribe(post => {
             post = this.convertService.convertYAMLtoJSON(post)
-            // var normalized = [] as { category: string, posts: Object }[];
+
             var normalized = {};
-            var k=0;
+            var k = 0;
+
             Object.keys(category).forEach(key => {
               for (var i = 0; i < category[key].length; i++) {
-                
+
                 if (post['title'].indexOf(category[key][i]) > -1) {
-                  k=1;
-                  normalized = ({category:key,posts:post})
+                  k = 1;
+                  normalized = ({ category: key, posts: post })
                 }
-                if (post['title'].indexOf(category[key][i]) == -1 && k!=1) {
-                  normalized = ({category:null,posts:post})
+                if (post['title'].indexOf(category[key][i]) == -1 && k != 1) {
+                  normalized = ({ category: 'Other', posts: post })
                 }
-              }   
+              }
             })
-            this.total.push(normalized);
-          }
-          )
+            this.total[0]['posts'].push(normalized);
+            this.total.forEach(object => {
+              if (object['category'] === normalized['category']) {
+                object['posts'].push(normalized['posts']);
+              }
+            })
+
+
+          })
+
         })
+
       })
       console.log(this.total);
-    })
+    });
   }
 
 }
