@@ -6,7 +6,7 @@ import { ConvertService } from './../../shared/convertService/convert.service';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
-
+import { Discourselink } from './../../../assets/discourselink';
 @Component({
   selector: 'app-tracks',
   templateUrl: './tracks.component.html',
@@ -24,6 +24,7 @@ export class TracksComponent implements OnInit {
   others = [];
   total = [];
 
+
   constructor(
     private dataService: DataService,
     private convertService: ConvertService,
@@ -31,7 +32,7 @@ export class TracksComponent implements OnInit {
   { }
 
   private getCategory() {
-    return this.http.get("https://talk.pdis.nat.gov.tw/t/category/305.json?include_raw=1")
+    return this.http.get(Discourselink.host+"t/"+Discourselink.HOWWEWORKTRACK+"/73.json?include_raw=1")
       .map(function (data) {
         data = data.json();
         var rawString = data['post_stream']['posts'][0]['raw'];
@@ -40,7 +41,7 @@ export class TracksComponent implements OnInit {
   }
 
   private getIds() {
-    return this.http.get("https://talk.pdis.nat.gov.tw/c/pdis-site/how-we-work-track.json")
+    return this.http.get(Discourselink.host+"c/pdis-site/"+Discourselink.HOWWEWORKTRACK+".json")
       .map(function (data) {
         data = data.json();
         var ids = [];
@@ -56,7 +57,7 @@ export class TracksComponent implements OnInit {
   }
 
   private getPost(id: string) {
-    return this.http.get("https://talk.pdis.nat.gov.tw/t/" + id + ".json?include_raw=1")
+    return this.http.get(Discourselink.host+"t/"+ id + ".json?include_raw=1")
       .map(function (data) {
         data = data.json();
         var rawString = data['post_stream']['posts'][0]['raw'];
@@ -68,6 +69,7 @@ export class TracksComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.getIds().subscribe(ids => {
       console.log(ids);
       ids.forEach(id => {
@@ -115,7 +117,7 @@ export class TracksComponent implements OnInit {
       // console.log(this.counts);
     });
 
-    this.http.get("https://talk.pdis.nat.gov.tw/tags/filter/search.json")
+    this.http.get(Discourselink.host+"tags/filter/search.json")
     .map(data => {
       data = data.json();
       var tags = [];
@@ -137,32 +139,47 @@ export class TracksComponent implements OnInit {
 
     this.getCategory().subscribe(category => {
       category = this.convertService.convertYAMLtoJSON(category)
+      this.total.push({ category: 'All', posts: new Array<string>() });
+      Object.keys(category).forEach(key => {
+        this.total.push({ category: key, posts: new Array<string>() });
+      })
+      this.total.push({ category: 'Other', posts: new Array<string>() });
+
       this.getIds().subscribe(ids => {
         ids.forEach(id => {
           this.getPost(id).subscribe(post => {
             post = this.convertService.convertYAMLtoJSON(post)
-            // var normalized = [] as { category: string, posts: Object }[];
+
             var normalized = {};
-            var k=0;
+            var k = 0;
+
             Object.keys(category).forEach(key => {
               for (var i = 0; i < category[key].length; i++) {
-                
+
                 if (post['title'].indexOf(category[key][i]) > -1) {
-                  k=1;
-                  normalized = ({category:key,posts:post})
+                  k = 1;
+                  normalized = ({ category: key, posts: post })
                 }
-                if (post['title'].indexOf(category[key][i]) == -1 && k!=1) {
-                  normalized = ({category:null,posts:post})
+                if (post['title'].indexOf(category[key][i]) == -1 && k != 1) {
+                  normalized = ({ category: 'Other', posts: post })
                 }
-              }   
+              }
             })
-            this.total.push(normalized);
-          }
-          )
+            this.total[0]['posts'].push(normalized);
+            this.total.forEach(object => {
+              if (object['category'] === normalized['category']) {
+                object['posts'].push(normalized['posts']);
+              }
+            })
+
+
+          })
+
         })
+
       })
       console.log(this.total);
-    })
+    });
   }
 
 }

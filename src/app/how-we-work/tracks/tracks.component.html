@@ -10,56 +10,45 @@
   </div>
 
   <div class="section-line"></div>
-    <app-tag-cloud
-      [width]="1000"
-      [height]="200"
-      [data]="tags"
-      [removeOverflow]="true">
-    </app-tag-cloud>
-  <div class="section-line"></div>
-  <div class="tracktitle">Track.PDIS</div>
 
+  <div class="section-line"></div>
   <!-- Nav tabs -->
   <div class="card">
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">All</a></li>
-      <li role="presentation"><a href="#speech" aria-controls="speech" role="tab" data-toggle="tab">Speeches</a></li>
-      <li role="presentation"><a href="#meetings" aria-controls="meetings" role="tab" data-toggle="tab">Individual meetings</a></li>
-      <li role="presentation"><a href="#conference" aria-controls="conference" role="tab" data-toggle="tab">Official conferences</a></li>
-      <li role="presentation"><a href="#interview" aria-controls="interview" role="tab" data-toggle="tab">Media interviews</a></li>
-      <li role="presentation"><a href="#others" aria-controls="others" role="tab" data-toggle="tab">Others</a></li>
+      <li *ngFor="let object of total" role="presentation" [ngClass]="{'active':(object.category ==='All')}">
+        <a href="#{{object.category}}" [attr.aria-controls]="object.category" role="tab" data-toggle="tab">{{object.category}}</a>
+      </li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
-
-      <div role="tabpanel" class="tab-pane active" id="home">
+      <div *ngFor="let object of total" role="tabpanel" [ngClass]="{'tab-pane fade in active':(object.category ==='All'),'tab-pane fade':(object.category !=='All')}" id="{{object.category}}">
         <ul class="timeline">
-          <li *ngFor="let post of posts; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
-            <div class="timeline-badge"></div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <p class="title">{{post.title}}</p>
-              </div>
-              <div class="timeline-body">
-                <p>
+            <li *ngFor="let post of object.posts; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
+              <div class="timeline-badge"></div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <p class="title">{{post.title}}</p>
+                </div>
+                <div class="timeline-body">
+                  <!--<p>
                   <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
                     class="btn-{{media | JSONpipes:'keys' | lowercase}} btn-pdis" role="button">{{media | JSONpipes:'keys'}}</a>
-                </p>
+                  </p>-->
+                </div>
+                <div class="timeline-footer">
+                  <p class="tags">
+                    <label class="tag" *ngFor="let tag of post.tags">{{tag}}</label>
+                  </p>
+                  <p class="date">{{post.date | datePipe:"yyyy/MM/dd"}}</p>
+                </div>
               </div>
-              <div class="timeline-footer">
-                <p class="tags">
-                  <label class="tag" *ngFor="let tag of post.tags">{{tag}}</label>
-                </p>
-                <p class="date">{{post.date | datePipe:"yyyy/MM/dd"}}</p>
-              </div>
-            </div>
-          </li>
-          <li class="clearfix no-float"></li>
+            </li>
+            <li class="clearfix no-float"></li>
         </ul>
       </div>
 
-      <div role="tabpanel" class="tab-pane" id="speech">
+      <!--<div role="tabpanel" class="tab-pane" id="speech">
         <ul class="timeline">
           <li *ngFor="let speech of speeches; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
             <div class="timeline-badge"></div>
@@ -83,8 +72,8 @@
           </li>
           <li class="clearfix no-float"></li>
         </ul>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="meetings">
+      </div>-->
+      <!--<div role="tabpanel" class="tab-pane" id="meetings">
         <ul class="timeline">
           <li *ngFor="let meeting of meetings; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
             <div class="timeline-badge"></div>
@@ -108,8 +97,8 @@
           </li>
           <li class="clearfix no-float"></li>
         </ul>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="conference">
+      </div>-->
+      <!--<div role="tabpanel" class="tab-pane" id="conference">
         <ul class="timeline">
           <li *ngFor="let conference of conferences; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
             <div class="timeline-badge"></div>
@@ -133,8 +122,8 @@
           </li>
           <li class="clearfix no-float"></li>
         </ul>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="interview">
+      </div>-->
+      <!--<div role="tabpanel" class="tab-pane" id="interview">
         <ul class="timeline">
           <li *ngFor="let interview of interviews; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
             <div class="timeline-badge"></div>
@@ -159,8 +148,8 @@
           </li>
           <li class="clearfix no-float"></li>
         </ul>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="others">
+      </div>-->
+      <!--<div role="tabpanel" class="tab-pane" id="others">
         <ul class="timeline">
           <li *ngFor="let other of others; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
             <div class="timeline-badge"></div>
@@ -184,7 +173,7 @@
           </li>
           <li class="clearfix no-float"></li>
         </ul>
-      </div>
+      </div>-->
     </div>
   </div>
 
