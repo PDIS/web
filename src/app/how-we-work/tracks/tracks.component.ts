@@ -23,13 +23,6 @@ export class TracksComponent implements OnInit {
   interviews = [];
   others = [];
   total = [];
-  cate = [];
-
-
-  test = [
-    { "text": "Speech", "weight": 8 }, { "text": "數位治理", "weight": 5 }, { "text": "PDIS", "weight": 5 }, { "text": "Garena", "weight": 5 }, { "text": "蝦皮", "weight": 5 }, { "text": "特色文創", "weight": 5 }, { "text": "E-commerce", "weight": 5 }, { "text": "電子商務", "weight": 5 }, { "text": "Meeting", "weight": 5 }, { "text": "國土", "weight": 5 }, { "text": "公共治理", "weight": 5 }, { "text": "Public hearing", "weight": 5 }, { "text": "電子競技", "weight": 5 }, { "text": "電競產業", "weight": 5 }, { "text": "e-Taxi platforms", "weight": 5 }, { "text": "數位經濟", "weight": 5 }, { "text": "社群 互動", "weight": 5 }, { "text": "網路直播", "weight": 5 }, { "text": "專訪", "weight": 5 }, { "text": "speech", "weight": 5 }, { "text": "開源社群", "weight": 5 }, { "text": "澎湖科技大學", "weight": 5 }, { "text": "Silicon valley", "weight": 5 }, { "text": "國發會", "weight": 5 }, { "text": "開放 政府", "weight": 6 }, { "text": "Talks", "weight": 5 }, { "text": "American Chamber", "weight": 5 }, { "text": "Cyber-attack", "weight": 5 }
-  ];
-
 
 
   constructor(
@@ -58,8 +51,7 @@ export class TracksComponent implements OnInit {
           ids.push(topic['id']);
           tags.push(topic['tags']);
         });
-        ids = ids.slice(1);
-        return ids;
+        return ids.slice(1);
       })
     // .do(data => console.log(data));
   }
@@ -77,64 +69,73 @@ export class TracksComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.getIds().subscribe(ids => {
-    //   console.log(ids);
-    //   ids.forEach(id => {
-    //     this.getPost(id).subscribe(post => {
-    //       post = this.convertService.convertYAMLtoJSON(post)
 
-    //       if (post['category'] == 'speech') {
-    //         this.speeches.push(post);
-    //         this.speeches.sort(function (a, b) {
-    //           return new Date(b.date).getTime() - new Date(a.date).getTime();
-    //         });
-    //       }
-    //       if (post['category'] == 'meeting') {
-    //         this.meetings.push(post);
-    //         this.meetings.sort(function (a, b) {
-    //           return new Date(b.date).getTime() - new Date(a.date).getTime();
-    //         });
-    //       }
-    //       if (post['category'] == 'conference') {
-    //         this.conferences.push(post);
-    //         this.conferences.sort(function (a, b) {
-    //           return new Date(b.date).getTime() - new Date(a.date).getTime();
-    //         });
-    //       }
-    //       if (post['category'] == 'interview') {
-    //         this.interviews.push(post);
-    //         this.interviews.sort(function (a, b) {
-    //           return new Date(b.date).getTime() - new Date(a.date).getTime();
-    //         });
-    //       }
-    //       if (post['category'] == null) {
-    //         this.others.push(post);
-    //         this.others.sort(function (a, b) {
-    //           return new Date(b.date).getTime() - new Date(a.date).getTime();
-    //         });
-    //       }
-    //       var post_tags: Array<string> = post['tags'];
-    //       post_tags.forEach(element => {
-    //         this.counts[element] = (this.counts[element] || 0) + 1;
-    //       });
-    //       var normalized = [] as { text: string, weight: number }[];
-    //       Object.keys(this.counts).forEach(tag => {
-    //         normalized.push({ text: tag, weight: this.counts[tag] + 4 });
+    this.getIds().subscribe(ids => {
+      console.log(ids);
+      ids.forEach(id => {
+        this.getPost(id).subscribe(post => {
+          post = this.convertService.convertYAMLtoJSON(post)
 
-    //       });
-    //       this.tags = normalized;
-    //       this.posts.push(post);
-    //       // console.log(this.tags);
+          if (post['category'] == 'speech') {
+            this.speeches.push(post);
+            this.speeches.sort(function (a, b) {
+              return new Date(b.date).getTime() - new Date(a.date).getTime();
+            });
+          }
+          if (post['category'] == 'meeting') {
+            this.meetings.push(post);
+            this.meetings.sort(function (a, b) {
+              return new Date(b.date).getTime() - new Date(a.date).getTime();
+            });
+          }
+          if (post['category'] == 'conference') {
+            this.conferences.push(post);
+            this.conferences.sort(function (a, b) {
+              return new Date(b.date).getTime() - new Date(a.date).getTime();
+            });
+          }
+          if (post['category'] == 'interview') {
+            this.interviews.push(post);
+            this.interviews.sort(function (a, b) {
+              return new Date(b.date).getTime() - new Date(a.date).getTime();
+            });
+          }
+          if (post['category'] == null) {
+            this.others.push(post);
+            this.others.sort(function (a, b) {
+              return new Date(b.date).getTime() - new Date(a.date).getTime();
+            });
+          }
+          this.posts.push(post);
+          
+          this.posts.sort(function (a, b) {
+            return new Date(b.date).getTime() - new Date(a.date).getTime(); // sort date(yyyy/MM/dd)
+          });
+        })
+      })
+      // console.log(this.tags);
+      // console.log(this.counts);
+    });
 
-    //       this.posts.sort(function (a, b) {
-    //         return new Date(b.date).getTime() - new Date(a.date).getTime(); // sort date(yyyy/MM/dd)
-    //       });
-    //     })
-    //   })
-    //   // console.log(this.tags);
-    //   // console.log(this.counts);
-    //   console.log(this.posts);
-    // });
+    this.http.get("https://talk.pdis.nat.gov.tw/tags/filter/search.json")
+    .map(data => {
+      data = data.json();
+      var tags = [];
+      var discourseTags:[Object] = data['results'];
+      for( var i in discourseTags)
+      {
+        var tag = {};
+        tag['text'] = discourseTags[i]['text'];
+        tag['weight'] = discourseTags[i]['count'];
+        tag['link'] = "http://localhost:4200/#/how-we-work/tracks?q="+discourseTags[i]['text'];
+        tags.push(tag);
+      }
+      return tags;
+    })
+    .do(data=>{console.log(data);})
+    .subscribe(
+      tags => {this.tags = tags;}
+    );
 
     this.getCategory().subscribe(category => {
       category = this.convertService.convertYAMLtoJSON(category)
