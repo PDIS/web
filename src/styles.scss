@@ -2,11 +2,12 @@
 
 $back_color: #4B0056;
 $hightlight: #D66FE5;
+$text_color: #111111;
 $max_width: 1180px;
 $main-font-family: 'Noto Serif',"微軟正黑體", Georgia, serif; /* font options: Noto Serif, Open Sans Condensed, Slabo 27px */
 $main-font-size: 16px;
-$btn_font_family: 'Open Sans Condensed', sans-serif;
-$text_color:#111111;
+$btn_font: 'Open Sans Condensed', Arial, 'Microsoft JhengHei', sans-serif;
+$slogan_font: 'Slabo 27px', Georgia, 'Microsoft JhengHei', serif;
 
 // ******************** html tag presets
 
@@ -30,29 +31,88 @@ body > .skiptranslate {
 a{
     transition: all 0.3s ease;
     color: $back_color;
-}
-
-a:hover{
-    color: $hightlight;
-    border-color: $hightlight;
-    text-decoration: none;
+    &:hover{
+        color: $hightlight;
+        // border-color: $hightlight;
+        text-decoration: none;
+    }
 }
 
 textarea{
-    border: 0;
+    display: block;
+    width: 80%;
+    max-width: $max_width / 2;
+    margin: 3rem auto;
+    border: solid 1px lightgray;
+    background: rgba(255,255,255,0.8);
 }
 
-// ******************** 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+// ******************** main section
+
+.main-container {
+    background-color: #F0F0F0;
+    box-shadow: 0 0 15px 5px rgba(28, 28, 28, 0.5);
+    max-width: $max_width;
+    margin: 150px auto 0;
+    padding: 0 2.5vw;
+    min-height: 40vw;
+}
+
+@media screen and (max-width: 767px) {
+    .main-container {
+        margin: 90px auto 0;
+    }
+}
+
+// ******************** slogan section
+
+.slogan-container {
+    position: relative;
+    text-align: center;
+}
+
+.slogan {
+    position: relative;
+    font-family: $slogan_font;
+    font-size: 5rem;
+    padding: 10rem 0;
+    z-index: 100;
+}
+
+.slogan-btn {
+    position: relative;
+    padding: 5rem;
+    z-index: 100;
+}
+
+// ******************** content section
 
 .btn-pdis {
-    padding: 12px 25px;
-    background: transparent;
-    border: solid 2px $back_color;
-    font-family: $btn_font_family;
-    color: $back_color;
-    margin: 0px;
     display: inline-block;
+    // margin: 0px;
+    padding: 12px 25px;
+    transition: all 0.3s ease;
+    background: transparent;
+    font-family: $btn_font;
+    color: $back_color;
+    border: solid 2px $back_color;
     text-transform: uppercase;
+    &:hover{
+        color: $hightlight;
+        border: solid 2px $hightlight;
+    }
 }
 
 .section-line {
@@ -69,59 +129,26 @@ textarea{
 hr.section-end {
     text-align: center;
     height: 8rem;
-}
-
-hr.section-end:after {
-    content:"#";
-    font-size: 6rem;
-    font-weight: 700;
-    color: #DDDDDD;
+    &:after {
+        content:"#";
+        font-size: 6rem;
+        font-weight: 700;
+        color: #DDDDDD;
+    }
 }
 
 hr.section-dot {
     text-align: center;
     height: 6rem;
-}
-
-hr.section-dot:after {
-    content:",";
-    font-size: 8rem;
-    line-height: 0;
-    font-weight: 700;
-    color: #DDDDDD;
+    &:after {
+        content:",";
+        font-size: 8rem;
+        line-height: 0;
+        font-weight: 700;
+        color: #DDDDDD;
+    }
 }
 
 .highlight {
     color: $hightlight;
-}
-
-.main-container {
-    background-color: #EFEFEF;
-    box-shadow: 0 0 10px black;
-    max-width: $max_width;
-    margin: 150px auto 0;
-    padding: 0 2.5vw;
-}
-
-// ******************** slogan section
-
-.slogan-container {
-    text-align: center;
-}
-
-.slogan {
-    font-family: "Slabo 27px";
-    font-size: 5rem;
-    padding: 80px 0;
-}
-
-// ******************** 
-@media screen and (max-width: 767px) {
-    .main-container {
-        background-color: #EFEFEF;
-        box-shadow: 0 0 10px black;
-        max-width: $max_width;
-        margin: 90px auto 0;
-        padding: 0 2.5vw;
-    }
 }

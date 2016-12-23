@@ -1,8 +1,10 @@
 import { DataService } from './../../shared/dataService/data-service.service';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser/src/security/dom_sanitization_service';
 
+declare var particlesJS: any;
 // declare var angular: any;
-declare var $;
+// declare var $;
 
 @Component({
     selector: 'app-tools',
@@ -14,10 +16,15 @@ export class ToolsComponent implements OnInit {
     private tools_list;
     private tools_detail_list = [];
 
-    constructor(private datasvcHww: DataService) {
+    constructor(private datasvcHww: DataService, private sanitizer: DomSanitizer) {
     }
 
     ngOnInit() {
+        // ******************** particlesJS
+        particlesJS.load("particles", "../../assets/particles.json", function () {
+            console.log('callback - particles.js config loaded');
+        });
+
         // how-we-work-tools = 54
         // fetch the title & thumb of tools
         this.datasvcHww.getData("54").subscribe(value => {
@@ -27,21 +34,30 @@ export class ToolsComponent implements OnInit {
 
         // how-we-work-tools-detail-version = 208
         this.datasvcHww.getData("208").subscribe(value => {
-            var jsdata = JSON.parse(value.text());
+            let jsdata = JSON.parse(value.text());
             // parsing raw html into param
             jsdata['post_stream']['posts'].forEach(data =>{
-                var post = {};
+                let post = {};
+                let ytdata;
+                let dom = (new DOMParser()).parseFromString(data["cooked"], "text/html");
                 // var dom = angular.element(data["cooked"]);
                 // var dom = $(data["cooked"]);
                 // post['title'] = dom.find("h4").text();
                 // post['text'] = dom.find("p").html();
                 // post['img'] = dom.find("img").attr("src");
-                var dom = (new DOMParser()).parseFromString(data["cooked"], "text/html");
                 post['title'] = dom.querySelector("h4").innerText;
                 post['text'] = dom.querySelector("p").innerHTML;
                 post['img'] = dom.querySelector("img") && dom.querySelector("img").src || "/assets/img/placeholder-1000x518.png";
                 post['link'] = dom.querySelector("aside header a") && (<HTMLElement>dom.querySelector("aside header a")).outerHTML;
-                console.log(dom);
+                
+                // if lazyYT exist, then return its converted iframe
+                post['yt'] = dom.querySelector(".lazyYT") && (
+                    ytdata = (<HTMLElement>dom.querySelector(".lazyYT")).dataset
+                ) && (
+                    /*** sanitized from xss ***/
+                    this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + ytdata["youtubeId"])
+                );
+
                 this.tools_detail_list.push(post);
             });
             // this.tools_detail_list['post_stream']['posts'][0]['cooked']

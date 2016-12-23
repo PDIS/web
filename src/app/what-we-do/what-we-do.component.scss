@@ -2,32 +2,6 @@
 
 /*-----------------------------------*/
 
-.slogan-container {
-    text-align: center;
-    position: relative;
-    /deep/ canvas {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-    }
-}
-
-.slogan {
-    // font-size: 5rem;
-    // font-family: "Maiden Orange";
-    padding: 100px 0 30px;
-}
-
-.slogan-btn {
-    padding-bottom: 50px;
-    position: relative;
-    z-index: 2;
-}
-
-
-/*-----------------------------------*/
-
 .topic-container {
     position: relative;
     .text {
@@ -37,8 +11,7 @@
         display: inline-block;
         margin: 0;
         z-index: 2;
-        background-color: white;
-        opacity: 0.9;
+        background-color: rgba(255,255,255,0.9);
         padding: 2.5vw;
     }
     .image {
@@ -52,10 +25,6 @@
         height: calc(100% - 5vw);
         display: inline-flex;
         align-items: center;
-        /deep/ img {
-            width: 100%;
-            height: auto;
-        }
     }
     .btn-pdis {
         margin-top: 15px;
@@ -89,8 +58,7 @@
 
 .tell-us-content {
     position: relative;
-    background-color: white;
-    opacity: 0.9;
+    background-color: rgba(255,255,255,0.9);
     display: inline-block;
     padding: 2.5vw;
     img {
@@ -98,15 +66,6 @@
     }
     h2 {
         margin-bottom: 10px;
-    }
-    
-    .think-area{
-        display: block;
-        width: 80%;
-        max-width: $max_width / 2;
-        margin: 3rem auto;
-        // border: solid 1px black;
-        background: rgba(255,255,255,0.5);
     }
 }
 
@@ -136,6 +95,9 @@
     .topic-right {
         text-align: left;
     }
+
+    /*-----------------------------------*/
+
     .tell-us-container {
         background-image: url(http://localhost:4200/assets/img/pdis-team.JPG);
         background-size: cover;

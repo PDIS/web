@@ -13,7 +13,7 @@ $nav-hight-mobile: 60px;
     transition: all 0.3s ease;
     width: $nav-hight;
     margin: 10px 0 0 15px;
-    box-shadow: 1px 1px 10px 2px rgba(0,0,0,0.3);
+    box-shadow: 1px 5px 15px 2px rgba(20, 20, 20, 0.4);
     // margin-top: $nav-hight / 3;
     // margin-left: 2.5vw;
 /*    &.bigLogo {
@@ -64,10 +64,10 @@ $nav-hight-mobile: 60px;
     background: linear-gradient(to bottom, #FFFFFF, #EFEFEF);
     background: -moz-linear-gradient(to bottom, #FFFFFF, #EFEFEF);
     background: -webkit-linear-gradient(to bottom, #FFFFFF, #EFEFEF);
-    border: solid 0px;
-    top: 5px;
-    box-shadow: 0 0 5px black;
-    transition: top 0.3s linear;
+    border: 0;
+    // top: 5px;
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.5);
+    transition: top 0.3s ease;
 }
 
 .header-line {
@@ -85,7 +85,7 @@ $nav-hight-mobile: 60px;
     margin: 20px 0;
     padding: 0 30px 0 5px;
     font-size: 1.25rem;
-    font-family: $btn_font_family;
+    font-family: $btn_font;
     white-space: pre-line;
 }
 

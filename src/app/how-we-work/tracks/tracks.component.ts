@@ -8,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { Discourselink } from './../../../assets/discourselink';
+
+declare var particlesJS: any;
+
 @Component({
     selector: 'app-tracks',
     templateUrl: './tracks.component.html',
     styleUrls: ['./tracks.component.scss']
 })
+
 export class TracksComponent implements OnInit {
 
     posts = [];
@@ -80,6 +84,7 @@ export class TracksComponent implements OnInit {
                 detail['content'] = data['post_stream']['posts'][0]['raw'];
                 detail['tags'] = data['tags'];
                 return detail;
+
 
             })
         // .do(data => console.log(data));
