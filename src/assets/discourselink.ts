@@ -7,4 +7,6 @@ export class Discourselink {
     static Category = "c/pdis-site/";
     static Text = "t/";
     static Filename = ".json"
+    static tmp = "about-the-how-we-work-track-tmp-category";
+    static getId ="how-we-work-track-tmp";
 }

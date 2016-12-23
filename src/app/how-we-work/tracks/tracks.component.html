@@ -19,10 +19,11 @@
         <a href="#{{object.category}}" [attr.aria-controls]="object.category" role="tab" data-toggle="tab">{{object.category}}</a>
       </li>
     </ul>
+    
 
     <!-- Tab panes -->
     <div class="tab-content">
-      <div *ngFor="let object of total" role="tabpanel" [ngClass]="{'tab-pane fade in active':(object.category ==='All'),'tab-pane fade':(object.category !=='All')}" id="{{object.category}}">
+      <div *ngFor="let object of total" role="tabpanel" class="tab-pane fade" [ngClass]="{'in active':(object.category ==='All')}" id="{{object.category}}">
         <ul class="timeline">
             <li *ngFor="let post of object.posts; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
               <div class="timeline-badge"></div>
@@ -31,10 +32,10 @@
                   <p class="title">{{post.title}}</p>
                 </div>
                 <div class="timeline-body">
-                  <!--<p>
+                  <p>
                   <a *ngFor="let media of post.content | JSONpipes:'not null object of array'" target="_blank" href="{{media | JSONpipes:'values'}}"
                     class="btn-{{media | JSONpipes:'keys' | lowercase}} btn-pdis" role="button">{{media | JSONpipes:'keys'}}</a>
-                  </p>-->
+                  </p>
                 </div>
                 <div class="timeline-footer">
                   <p class="tags">

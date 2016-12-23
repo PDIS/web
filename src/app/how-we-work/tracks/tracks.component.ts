@@ -8,178 +8,143 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { Discourselink } from './../../../assets/discourselink';
 @Component({
-  selector: 'app-tracks',
-  templateUrl: './tracks.component.html',
-  styleUrls: ['./tracks.component.scss']
+    selector: 'app-tracks',
+    templateUrl: './tracks.component.html',
+    styleUrls: ['./tracks.component.scss']
 })
 export class TracksComponent implements OnInit {
 
-  posts = [];
-  counts = {};
-  tags = [];
-  speeches = [];
-  meetings = [];
-  conferences = [];
-  interviews = [];
-  others = [];
-  total = [];
+    posts = [];
+    counts = {};
+    tags = [];
+    speeches = [];
+    meetings = [];
+    conferences = [];
+    interviews = [];
+    others = [];
+    total = [];
 
 
-  constructor(
-    private dataService: DataService,
-    private convertService: ConvertService,
-    private http: Http)
-  { }
+    constructor(
+        private dataService: DataService,
+        private convertService: ConvertService,
+        private http: Http)
+    { }
 
-  private getCategory() {
-    return this.http.get(Discourselink.Host+Discourselink.Text+Discourselink.HOWWEWORKTRACK+"/73.json?include_raw=1")
-      .map(function (data) {
-        data = data.json();
-        var rawString = data['post_stream']['posts'][0]['raw'];
-        return rawString;
-      })
-  }
+    private getCategory() {
+        return this.http.get(Discourselink.Host + Discourselink.Text + Discourselink.tmp + "/306.json?include_raw=1")
+            .map(function(data) {
+                data = data.json();
+                var rawString = data['post_stream']['posts'][0]['raw'];
+                return rawString;
+            })
+    }
 
-  private getIds() {
-    return this.http.get(Discourselink.Host+Discourselink.Category+Discourselink.HOWWEWORKTRACK+Discourselink.Filename)
-      .map(function (data) {
-        data = data.json();
-        var ids = [];
-        var tags = [];
-        var topics = data['topic_list']['topics'];
-        topics.forEach(function (topic) {
-          ids.push(topic['id']);
-          tags.push(topic['tags']);
-        });
-        return ids.slice(1);
-      })
-    // .do(data => console.log(data));
-  }
+    private getIds() {
+        return this.http.get(Discourselink.Host + Discourselink.Category + Discourselink.getId + Discourselink.Filename)
+            .map(function(data) {
+                data = data.json();
+                var ids = [];
+                var topics = data['topic_list']['topics'];
+                topics.forEach(function(topic) {
+                    ids.push(topic['id']);
+                });
+                return ids.slice(1);
+            })
+    }
 
-  private getPost(id: string) {
-    return this.http.get(Discourselink.Host+Discourselink.Text+ id + ".json?include_raw=1")
-      .map(function (data) {
-        data = data.json();
-        var rawString = data['post_stream']['posts'][0]['raw'];
-        return rawString;
-      })
-    // .do(data => console.log(data));
-  }
+    private getPost(id: string) {
+        return this.http.get(Discourselink.Host + Discourselink.Text + id + ".json?include_raw=1")
+            .map(function(data) {
+                data = data.json();
+                var detail = {};
+                detail['title'] = data['title'];
+                detail['date'] = data['created_at'];
+                detail['content'] = data['post_stream']['posts'][0]['raw'];
+                detail['tags'] = data['tags'];
+                return detail;
 
+            })
+        // .do(data => console.log(data));
+    }
 
-
-  ngOnInit() {
-
-    this.getIds().subscribe(ids => {
-      console.log(ids);
-      ids.forEach(id => {
-        this.getPost(id).subscribe(post => {
-          post = this.convertService.convertYAMLtoJSON(post)
-
-          if (post['category'] == 'speech') {
-            this.speeches.push(post);
-            this.speeches.sort(function (a, b) {
-              return new Date(b.date).getTime() - new Date(a.date).getTime();
-            });
-          }
-          if (post['category'] == 'meeting') {
-            this.meetings.push(post);
-            this.meetings.sort(function (a, b) {
-              return new Date(b.date).getTime() - new Date(a.date).getTime();
-            });
-          }
-          if (post['category'] == 'conference') {
-            this.conferences.push(post);
-            this.conferences.sort(function (a, b) {
-              return new Date(b.date).getTime() - new Date(a.date).getTime();
-            });
-          }
-          if (post['category'] == 'interview') {
-            this.interviews.push(post);
-            this.interviews.sort(function (a, b) {
-              return new Date(b.date).getTime() - new Date(a.date).getTime();
-            });
-          }
-          if (post['category'] == null) {
-            this.others.push(post);
-            this.others.sort(function (a, b) {
-              return new Date(b.date).getTime() - new Date(a.date).getTime();
-            });
-          }
-          this.posts.push(post);
-          
-          this.posts.sort(function (a, b) {
-            return new Date(b.date).getTime() - new Date(a.date).getTime(); // sort date(yyyy/MM/dd)
-          });
-        })
-      })
-      // console.log(this.tags);
-      // console.log(this.counts);
-    });
-
-    this.http.get(Discourselink.Host+"tags/filter/search.json")
-    .map(data => {
-      data = data.json();
-      var tags = [];
-      var discourseTags:[Object] = data['results'];
-      for( var i in discourseTags)
-      {
-        var tag = {};
-        tag['text'] = discourseTags[i]['text'];
-        tag['weight'] = discourseTags[i]['count'];
-        tag['link'] = "http://localhost:4200/#/how-we-work/tracks?q="+discourseTags[i]['text'];
-        tags.push(tag);
-      }
-      return tags;
-    })
-    .do(data=>{console.log(data);})
-    .subscribe(
-      tags => {this.tags = tags;}
-    );
-
-    this.getCategory().subscribe(category => {
-      category = this.convertService.convertYAMLtoJSON(category)
-      this.total.push({ category: 'All', posts: new Array<string>() });
-      Object.keys(category).forEach(key => {
-        this.total.push({ category: key, posts: new Array<string>() });
-      })
-      this.total.push({ category: 'Other', posts: new Array<string>() });
-
-      this.getIds().subscribe(ids => {
-        ids.forEach(id => {
-          this.getPost(id).subscribe(post => {
-            post = this.convertService.convertYAMLtoJSON(post)
-
-            var normalized = {};
-            var k = 0;
-
-            Object.keys(category).forEach(key => {
-              for (var i = 0; i < category[key].length; i++) {
-
+    private distribute_post(category, post) {
+post['category'] = 'Other';
+        Object.keys(category).forEach(key => {
+            for (var i = 0; i < category[key].length; i++) {
                 if (post['title'].indexOf(category[key][i]) > -1) {
-                  k = 1;
-                  normalized = ({ category: key, posts: post })
+                    post['category'] = key;
+                    return post;
                 }
-                if (post['title'].indexOf(category[key][i]) == -1 && k != 1) {
-                  normalized = ({ category: 'Other', posts: post })
-                }
-              }
-            })
-            this.total[0]['posts'].push(normalized);
-            this.total.forEach(object => {
-              if (object['category'] === normalized['category']) {
-                object['posts'].push(normalized['posts']);
-              }
-            })
-
-
-          })
-
+            }
         })
 
-      })
-      console.log(this.total);
-    });
-  }
+        
+        return post;
+
+    }
+
+
+    ngOnInit() {
+
+        this.http.get(Discourselink.Host + "tags/filter/search.json")
+            .map(data => {
+                data = data.json();
+                var tags = [];
+                var discourseTags: [Object] = data['results'];
+                for (var i in discourseTags) {
+                    var tag = {};
+                    tag['text'] = discourseTags[i]['text'];
+                    tag['weight'] = discourseTags[i]['count'];
+                    tag['link'] = "http://localhost:4200/#/how-we-work/tracks?q=" + discourseTags[i]['text'];
+                    tags.push(tag);
+                }
+                return tags;
+            })
+            // .do(data => { console.log(data); })
+            .subscribe(
+            tags => { this.tags = tags; }
+            );
+
+        this.getCategory().subscribe(category => {
+            category = this.convertService.convertYAMLtoJSON(category)
+            this.total.push({ category: 'All', posts: new Array<string>() });
+            Object.keys(category).forEach(key => {
+                this.total.push({ category: key, posts: new Array<string>() });
+            })
+            this.total.push({ category: 'Other', posts: new Array<string>() });
+
+            this.getIds().subscribe(ids => {
+                ids.forEach(id => {
+                    this.getPost(id).subscribe(post => {
+
+                        // console.log(post);
+
+                        var content = this.convertService.convertYAMLtoJSON(post['content'])
+
+                        // console.log(content['content']);
+                        // console.log(post);
+                        post['content'] = content['content']
+
+                        post = this.distribute_post(category, post);
+                        
+                    console.log(post['title'] + "   " +post['category'])
+
+                        this.total[0]['posts'].push(post);
+                        this.total.forEach(object => {
+                            if (object['category'] === post['category']) {
+                                object['posts'].push(post);
+                            }
+                        })
+
+
+                    })
+
+                })
+
+            })
+            // console.log(this.total);
+        });
+    }
 
 }
