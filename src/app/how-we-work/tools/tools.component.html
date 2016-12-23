@@ -39,7 +39,8 @@
 				<div class="text">
 					<h4>{{ post['title'] }}</h4>
 					<p [innerHTML]="post['text']"></p>
-					<p [innerHTML]="post['link']"></p>
+					<p [innerHTML]="post['link']" *ngIf="post['link']" ></p>
+					<iframe [src]="post['yt']" *ngIf="post['yt']" frameborder="0"></iframe>
 				</div>
 
 			</div>
