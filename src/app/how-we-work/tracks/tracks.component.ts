@@ -32,7 +32,7 @@ export class TracksComponent implements OnInit {
   { }
 
   private getCategory() {
-    return this.http.get(Discourselink.host+"t/"+Discourselink.HOWWEWORKTRACK+"/73.json?include_raw=1")
+    return this.http.get(Discourselink.Host+Discourselink.Text+Discourselink.HOWWEWORKTRACK+"/73.json?include_raw=1")
       .map(function (data) {
         data = data.json();
         var rawString = data['post_stream']['posts'][0]['raw'];
@@ -41,7 +41,7 @@ export class TracksComponent implements OnInit {
   }
 
   private getIds() {
-    return this.http.get(Discourselink.host+"c/pdis-site/"+Discourselink.HOWWEWORKTRACK+".json")
+    return this.http.get(Discourselink.Host+Discourselink.Category+Discourselink.HOWWEWORKTRACK+Discourselink.Filename)
       .map(function (data) {
         data = data.json();
         var ids = [];
@@ -57,7 +57,7 @@ export class TracksComponent implements OnInit {
   }
 
   private getPost(id: string) {
-    return this.http.get(Discourselink.host+"t/"+ id + ".json?include_raw=1")
+    return this.http.get(Discourselink.Host+Discourselink.Text+ id + ".json?include_raw=1")
       .map(function (data) {
         data = data.json();
         var rawString = data['post_stream']['posts'][0]['raw'];
@@ -117,7 +117,7 @@ export class TracksComponent implements OnInit {
       // console.log(this.counts);
     });
 
-    this.http.get(Discourselink.host+"tags/filter/search.json")
+    this.http.get(Discourselink.Host+"tags/filter/search.json")
     .map(data => {
       data = data.json();
       var tags = [];
