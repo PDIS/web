@@ -16,7 +16,7 @@ export class WhatWeDoComponent implements OnInit {
   private topics = [];
 
   private getIds() {
-    return this.http.get(Discourselink.host+"c/pdis-site/"+Discourselink.whatwedo+".json")
+    return this.http.get(Discourselink.Host+Discourselink.Category+Discourselink.Whatwedo+Discourselink.Filename)
       .map(function (data) {
         data = data.json();
         var ids = [];
@@ -30,7 +30,7 @@ export class WhatWeDoComponent implements OnInit {
   }
 
   private getPost(id: string) {
-    return this.http.get(Discourselink.host+"t/" + id + ".json")
+    return this.http.get(Discourselink.Host+Discourselink.Text + id + Discourselink.Filename)
       .map(function (data) {
         data = data.json();
         var post = {};
