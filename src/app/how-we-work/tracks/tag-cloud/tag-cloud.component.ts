@@ -27,6 +27,11 @@ export class TagCloudComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+
+    if(window.innerWidth*0.9 < this.width){
+      this.width = window.innerWidth*0.9;
+    }
+
     this.el.nativeElement.innerHTML="";
     if (!this.data) {
       console.error('angular-tag-cloud: No data passed. Please pass tags data as json');
