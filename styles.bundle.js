@@ -1,6 +1,48 @@
 webpackJsonp([1,2],{
 
-/***/ 380:
+/***/ 398:
+/***/ function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(671);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(720)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!./../node_modules/css-loader/index.js?sourcemap!./../node_modules/postcss-loader/index.js!./../node_modules/sass-loader/index.js?sourcemap!./styles.scss", function() {
+			var newContent = require("!!./../node_modules/css-loader/index.js?sourcemap!./../node_modules/postcss-loader/index.js!./../node_modules/sass-loader/index.js?sourcemap!./styles.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ },
+
+/***/ 671:
+/***/ function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(672)();
+// imports
+
+
+// module
+exports.push([module.i, "@charset \"UTF-8\";\n/* You can add global styles to this file, and also import other style files */\n/* font options: Noto Serif, Open Sans Condensed, Slabo 27px */\nbody {\n  font-family: \"Noto Serif\", \"\\5FAE\\8EDF\\6B63\\9ED1\\9AD4\", Georgia, serif;\n  background-color: #4B0056;\n  font-size: 16px;\n  color: #111111; }\n\nbody > .skiptranslate {\n  display: none; }\n\n.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {\n  line-height: normal;\n  margin-bottom: 20px; }\n\na {\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n  color: #4B0056; }\n  a:hover {\n    color: #D66FE5;\n    text-decoration: none; }\n\ntextarea {\n  display: block;\n  width: 80%;\n  max-width: 590px;\n  margin: 3rem auto;\n  border: solid 1px lightgray;\n  background: rgba(255, 255, 255, 0.8); }\n\nimg {\n  max-width: 100%;\n  height: auto; }\n\ncanvas {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1; }\n\n.main-container {\n  background-color: #F0F0F0;\n  box-shadow: 0 0 15px 5px rgba(28, 28, 28, 0.5);\n  max-width: 1180px;\n  margin: 150px auto 0;\n  padding: 0 2.5vw;\n  min-height: 40vw; }\n\n@media screen and (max-width: 767px) {\n  .main-container {\n    margin: 90px auto 0; } }\n\n.slogan-container {\n  position: relative;\n  text-align: center; }\n\n.slogan {\n  position: relative;\n  font-family: \"Slabo 27px\", Georgia, \"Microsoft JhengHei\", serif;\n  font-size: 5rem;\n  padding: 10rem 0;\n  z-index: 100; }\n\n.slogan-btn {\n  position: relative;\n  padding: 5rem;\n  z-index: 100; }\n\n.btn-pdis {\n  display: inline-block;\n  padding: 12px 25px;\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n  background: transparent;\n  font-family: \"Open Sans Condensed\", Arial, \"Microsoft JhengHei\", sans-serif;\n  color: #4B0056;\n  border: solid 2px #4B0056;\n  text-transform: uppercase; }\n  .btn-pdis:hover {\n    color: #D66FE5;\n    border: solid 2px #D66FE5; }\n\n.section-line {\n  margin: 2.5vw 0;\n  height: 1px;\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(left, rgba(214, 111, 229, 0) 10%, #d66fe5 50%, rgba(214, 111, 229, 0) 90%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to right, rgba(214, 111, 229, 0) 10%, #d66fe5 50%, rgba(214, 111, 229, 0) 90%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }\n\nhr.section-end {\n  text-align: center;\n  height: 8rem; }\n  hr.section-end:after {\n    content: \"#\";\n    font-size: 6rem;\n    font-weight: 700;\n    color: #DDDDDD; }\n\nhr.section-dot {\n  text-align: center;\n  height: 6rem; }\n  hr.section-dot:after {\n    content: \",\";\n    font-size: 8rem;\n    line-height: 0;\n    font-weight: 700;\n    color: #DDDDDD; }\n\n.highlight {\n  color: #D66FE5; }\n", ""]);
+
+// exports
+
+
+/***/ },
+
+/***/ 672:
 /***/ function(module, exports) {
 
 /*
@@ -57,7 +99,7 @@ module.exports = function() {
 
 /***/ },
 
-/***/ 394:
+/***/ 720:
 /***/ function(module, exports) {
 
 /*
@@ -310,98 +352,13 @@ function updateLink(linkElement, obj) {
 
 /***/ },
 
-/***/ 399:
+/***/ 730:
 /***/ function(module, exports, __webpack_require__) {
 
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(671);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(394)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!./../node_modules/css-loader/index.js?sourcemap!./../node_modules/postcss-loader/index.js!./../node_modules/sass-loader/index.js?sourcemap!./detailstyles.scss", function() {
-			var newContent = require("!!./../node_modules/css-loader/index.js?sourcemap!./../node_modules/postcss-loader/index.js!./../node_modules/sass-loader/index.js?sourcemap!./detailstyles.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ },
-
-/***/ 400:
-/***/ function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(672);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(394)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!./../node_modules/css-loader/index.js?sourcemap!./../node_modules/postcss-loader/index.js!./../node_modules/sass-loader/index.js?sourcemap!./styles.scss", function() {
-			var newContent = require("!!./../node_modules/css-loader/index.js?sourcemap!./../node_modules/postcss-loader/index.js!./../node_modules/sass-loader/index.js?sourcemap!./styles.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ },
-
-/***/ 671:
-/***/ function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(380)();
-// imports
-
-
-// module
-exports.push([module.i, "/* font options: Noto Serif, Open Sans Condensed, Slabo 27px */\n.detail-container {\n  margin: 0 0 2.5vw 0; }\n\n.detail-text {\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  font-family: \"Noto Serif\", Georgia, serif;\n  font-size: 22px;\n  line-height: 35px; }\n  .detail-text p {\n    margin-top: 20px; }\n  .detail-text em img {\n    float: right;\n    width: 450px;\n    height: 300px;\n    margin: 8px 0px 17px 35px; }\n  .detail-text strong img {\n    float: left;\n    width: 450px;\n    height: 300px;\n    margin: 8px 35px 17px 0px; }\n  .detail-text img {\n    margin: 15px 0px 15px 0px; }\n  .detail-text dd {\n    clear: left; }\n  .detail-text blockquote {\n    margin: -95px 0 -74px;\n    border-left: 0px; }\n  .detail-text blockquote::before {\n    content: \"{\";\n    font-family: \"Noto Serif\", Georgia, serif;\n    font-size: 135px;\n    color: #ddd;\n    position: relative;\n    left: -66px;\n    top: 146px; }\n  .detail-text blockquote::after {\n    content: \"}\";\n    font-family: Georgia, serif;\n    font-size: 135px;\n    color: #ddd;\n    position: relative;\n    left: 396px;\n    top: -88px; }\n\n.video-container {\n  margin-bottom: 10px; }\n\n@media screen and (max-width: 1200px) {\n  .detail-text blockquote::after, .detail-text blockquote::before {\n    content: \"}\";\n    font-size: 0px;\n    position: relative;\n    left: 0px;\n    top: 0px; } }\n\n@media screen and (max-width: 991px) {\n  .detail-text img, .detail-text strong img, .detail-text em img {\n    clear: left;\n    top: 10px;\n    width: 90%;\n    height: 90%;\n    border: 0px;\n    margin-left: 17px; }\n  .detail-text span img {\n    width: 40%;\n    height: 40%; }\n  .detail-text p, h2 {\n    margin: 25px 25px 25px 25px;\n    word-break: break-all; }\n  .video-container {\n    padding-top: 65%; }\n  .video-container iframe {\n    position: absolute;\n    top: 10px;\n    left: 5%;\n    width: 80%;\n    height: 80%;\n    border: 0px;\n    margin-left: 17px; } }\n\n@media screen and (min-width: 991px) {\n  .detail-container img {\n    width: 100%;\n    height: 100%;\n    border: 0px; } }\n", ""]);
-
-// exports
-
-
-/***/ },
-
-/***/ 672:
-/***/ function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(380)();
-// imports
-
-
-// module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n/* font options: Noto Serif, Open Sans Condensed, Slabo 27px */\nbody {\n  font-family: \"Noto Serif\", Georgia, serif;\n  background-color: #4B0056;\n  font-size: 16px;\n  color: #111111; }\n\nbody > .skiptranslate {\n  display: none; }\n\n.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {\n  line-height: normal;\n  margin-bottom: 20px; }\n\na {\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n  color: #4B0056; }\n\na:hover {\n  color: #D66FE5;\n  border-color: #D66FE5;\n  text-decoration: none; }\n\ntextarea {\n  border: 0; }\n\n.btn-pdis {\n  padding: 12px 25px;\n  background: transparent;\n  border: solid 2px #4B0056;\n  font-family: \"Open Sans Condensed\", sans-serif;\n  color: #4B0056;\n  margin: 0px;\n  display: inline-block;\n  text-transform: uppercase; }\n\n.section-line {\n  margin: 2.5vw 0;\n  height: 1px;\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(left, rgba(214, 111, 229, 0) 10%, #d66fe5 50%, rgba(214, 111, 229, 0) 90%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to right, rgba(214, 111, 229, 0) 10%, #d66fe5 50%, rgba(214, 111, 229, 0) 90%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }\n\nhr.section-end {\n  text-align: center;\n  height: 8rem; }\n\nhr.section-end:after {\n  content: \"#\";\n  font-size: 6rem;\n  font-weight: 700;\n  color: #DDDDDD; }\n\nhr.section-dot {\n  text-align: center;\n  height: 6rem; }\n\nhr.section-dot:after {\n  content: \",\";\n  font-size: 8rem;\n  line-height: 0;\n  font-weight: 700;\n  color: #DDDDDD; }\n\n.highlight {\n  color: #D66FE5; }\n\n.main-container {\n  background-color: #EFEFEF;\n  box-shadow: 0 0 10px black;\n  max-width: 1180px;\n  margin: 150px auto 0;\n  padding: 0 2.5vw; }\n\n.slogan-container {\n  text-align: center; }\n\n.slogan {\n  font-family: \"Slabo 27px\";\n  font-size: 5rem;\n  padding: 80px 0; }\n\n@media screen and (max-width: 767px) {\n  .main-container {\n    background-color: #EFEFEF;\n    box-shadow: 0 0 10px black;\n    max-width: 1180px;\n    margin: 90px auto 0;\n    padding: 0 2.5vw; } }\n", ""]);
-
-// exports
-
-
-/***/ },
-
-/***/ 727:
-/***/ function(module, exports, __webpack_require__) {
-
-__webpack_require__(400);
-module.exports = __webpack_require__(399);
+module.exports = __webpack_require__(398);
 
 
 /***/ }
 
-},[727]);
+},[730]);
 //# sourceMappingURL=styles.map
