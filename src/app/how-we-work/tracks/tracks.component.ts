@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { TagCloudModule } from 'angular-tag-cloud-module';
 import { element } from 'protractor';
 import { DataService } from './../../shared/dataService/data-service.service';
@@ -23,16 +24,18 @@ export class TracksComponent implements OnInit {
     interviews = [];
     others = [];
     total = [];
+    q = "";
 
 
     constructor(
         private dataService: DataService,
         private convertService: ConvertService,
-        private http: Http)
+        private http: Http,
+        private activatedRoute: ActivatedRoute)
     { }
 
     private getCategory() {
-        return this.http.get(Discourselink.Host + Discourselink.Text + Discourselink.tmp + "/306.json?include_raw=1")
+        return this.http.get(Discourselink.Host + Discourselink.Text + Discourselink.HOWWEWORKTRACK + "/73.json?include_raw=1")
             .map(function(data) {
                 data = data.json();
                 var rawString = data['post_stream']['posts'][0]['raw'];
@@ -41,16 +44,30 @@ export class TracksComponent implements OnInit {
     }
 
     private getIds() {
-        return this.http.get(Discourselink.Host + Discourselink.Category + Discourselink.getId + Discourselink.Filename)
-            .map(function(data) {
-                data = data.json();
-                var ids = [];
-                var topics = data['topic_list']['topics'];
-                topics.forEach(function(topic) {
-                    ids.push(topic['id']);
-                });
-                return ids.slice(1);
-            })
+        if (this.q === undefined) {
+            return this.http.get(Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename)
+                .map(function(data) {
+                    data = data.json();
+                    var ids = [];
+                    var topics = data['topic_list']['topics'];
+                    topics.forEach(function(topic) {
+                        ids.push(topic['id']);
+                    });
+                    return ids.slice(1);
+                })
+        }
+        else {
+            return this.http.get(Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + this.q + ".json")
+                .map(function(data) {
+                    data = data.json();
+                    var ids = [];
+                    var topics = data['topic_list']['topics'];
+                    topics.forEach(function(topic) {
+                        ids.push(topic['id']);
+                    });
+                    return ids.slice(1);
+                })
+        }
     }
 
     private getPost(id: string) {
@@ -69,7 +86,7 @@ export class TracksComponent implements OnInit {
     }
 
     private distribute_post(category, post) {
-post['category'] = 'Other';
+        post['category'] = 'Other';
         Object.keys(category).forEach(key => {
             for (var i = 0; i < category[key].length; i++) {
                 if (post['title'].indexOf(category[key][i]) > -1) {
@@ -79,7 +96,7 @@ post['category'] = 'Other';
             }
         })
 
-        
+
         return post;
 
     }
@@ -87,6 +104,14 @@ post['category'] = 'Other';
 
     ngOnInit() {
 
+        // Tag Query
+        this.activatedRoute.params.subscribe(
+            (param: any) => {
+                this.q = param['q'];
+                // console.log(this.q);
+            });
+
+        // Tags Cloud
         this.http.get(Discourselink.Host + "tags/filter/search.json")
             .map(data => {
                 data = data.json();
@@ -96,7 +121,7 @@ post['category'] = 'Other';
                     var tag = {};
                     tag['text'] = discourseTags[i]['text'];
                     tag['weight'] = discourseTags[i]['count'];
-                    tag['link'] = "http://localhost:4200/#/how-we-work/tracks?q=" + discourseTags[i]['text'];
+                    // tag['link'] = "http://localhost:4200/#/how-we-work/tracks?q=" + discourseTags[i]['text'];
                     tags.push(tag);
                 }
                 return tags;
@@ -106,6 +131,9 @@ post['category'] = 'Other';
             tags => { this.tags = tags; }
             );
 
+
+
+        // Timeline
         this.getCategory().subscribe(category => {
             category = this.convertService.convertYAMLtoJSON(category)
             this.total.push({ category: 'All', posts: new Array<string>() });
@@ -118,32 +146,29 @@ post['category'] = 'Other';
                 ids.forEach(id => {
                     this.getPost(id).subscribe(post => {
 
-                        // console.log(post);
-
                         var content = this.convertService.convertYAMLtoJSON(post['content'])
 
-                        // console.log(content['content']);
-                        // console.log(post);
                         post['content'] = content['content']
 
-                        post = this.distribute_post(category, post);
-                        
-                    console.log(post['title'] + "   " +post['category'])
+                        post = this.distribute_post(category, post); // match category
 
                         this.total[0]['posts'].push(post);
                         this.total.forEach(object => {
                             if (object['category'] === post['category']) {
                                 object['posts'].push(post);
                             }
+                            object['posts'].sort(function(a, b) {
+                                return new Date(b.date).getTime() - new Date(a.date).getTime();
+                            });
                         })
-
+                       
 
                     })
 
                 })
 
             })
-            // console.log(this.total);
+            console.log(this.total);
         });
     }
 

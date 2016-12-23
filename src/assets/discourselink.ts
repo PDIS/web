@@ -5,6 +5,7 @@ export class Discourselink {
     static Whatwedo = "what-we-do";
     static GETINVOLVED = "get-involved";
     static Category = "c/pdis-site/";
+    static Tags = "tags/";
     static Text = "t/";
     static Filename = ".json"
     static tmp = "about-the-how-we-work-track-tmp-category";
