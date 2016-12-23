@@ -41,7 +41,7 @@ export class TracksComponent implements OnInit {
   }
 
   private getIds() {
-    return this.http.get(Discourselink.Host+Discourselink.Category+Discourselink.HOWWEWORKTRACK+".json")
+    return this.http.get(Discourselink.Host+Discourselink.Category+Discourselink.HOWWEWORKTRACK+Discourselink.Filename)
       .map(function (data) {
         data = data.json();
         var ids = [];
