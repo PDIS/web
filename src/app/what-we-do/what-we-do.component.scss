@@ -49,7 +49,7 @@
 /*-----------------------------------*/
 
 .tell-us-container {
-    background-image: url(assets/img/pdis-team.JPG);
+    background-image: url("/assets/img/pdis-team.JPG");
     background-size: cover;
     margin: 0;
     padding: 2.5vw;
@@ -99,14 +99,14 @@
     /*-----------------------------------*/
 
     .tell-us-container {
-        background-image: url(http://localhost:4200/assets/img/pdis-team.JPG);
-        background-size: cover;
-        margin: 0;
+        // background-image: url(http://localhost:4200/assets/img/pdis-team.JPG);
+        // background-size: cover;
+        // margin: 0;
         padding: 0px;
-        text-align: center;
+        // text-align: center;
     }
     .tell-us-content {
-        width: 100%
+        // width: 100%
     }
 
 }
