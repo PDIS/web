@@ -1,8 +1,9 @@
 import { DataService } from './../../shared/dataService/data-service.service';
 import { Component, OnInit } from '@angular/core';
 
+declare var particlesJS: any;
 // declare var angular: any;
-declare var $;
+// declare var $;
 
 @Component({
     selector: 'app-tools',
@@ -18,6 +19,11 @@ export class ToolsComponent implements OnInit {
     }
 
     ngOnInit() {
+        // ******************** particlesJS
+        particlesJS.load("particles", "../../assets/particles.json", function () {
+            console.log('callback - particles.js config loaded');
+        });
+
         // how-we-work-tools = 54
         // fetch the title & thumb of tools
         this.datasvcHww.getData("54").subscribe(value => {

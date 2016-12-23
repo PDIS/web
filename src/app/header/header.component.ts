@@ -6,15 +6,16 @@ import 'rxjs/add/operator/pairwise';
 import { HostListener } from '@angular/core/src/metadata/directives';
 import { Component, OnInit } from '@angular/core';
 import {ElementRef} from '@angular/core';
+
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
+
 export class HeaderComponent {
 
-
-
+    topPos = 50;
     isTop: boolean = true;
 
     lastDirection: string;
@@ -27,19 +28,14 @@ export class HeaderComponent {
     moveStart: number;
     moveLength: number;
 
-    bigLogo: boolean = true;
-
-    
-
-    
+    // bigLogo: boolean = true;
 
     @HostListener('window:scroll', ['$event'])
+
     doSomething(event) {
 
         var scrollY = window.scrollY;
-
-        this.isTop = scrollY < 50;
-
+        this.isTop = scrollY < this.topPos;
         this.currentDirection = (scrollY > this.currentPosition) ? 'down' : 'up';
 
         if (this.currentDirection != this.lastDirection) {
@@ -55,32 +51,30 @@ export class HeaderComponent {
 
         if (this.currentDirection == 'down') {
             if (this.isTop) {
-                this.bigLogo = true;
+                // this.bigLogo = true;
                 this.showNav = true;
             }
             else {
-                if (this.moveLength > 100) {
-                    this.bigLogo = false;
+                if (this.moveLength > 2*this.topPos) {
+                    // this.bigLogo = false;
                 }
-                else if (this.moveLength > 50) {
+                else if (this.moveLength > 1.5*this.topPos) {
                     this.showNav = false;
                 }
             }
         }
-        else {
+        else { /* this.currentDirection == 'up' */
             if (this.isTop) {
-                this.bigLogo = true;
+                // this.bigLogo = true;
                 this.showNav = true;
             }
             else {
-                if (this.moveLength > 50) {
+                if (this.moveLength > this.topPos) {
                     this.showNav = true;
-                    this.bigLogo = false;
+                    // this.bigLogo = false;
                 }
             }
-
         }
-
     }
 
     @ViewChild('mobileBtn') el:ElementRef;
@@ -92,7 +86,5 @@ export class HeaderComponent {
                 this.rd.invokeElementMethod(this.el.nativeElement,'click');
             }
         });
-
     }
-
 }

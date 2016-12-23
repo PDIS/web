@@ -7,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { Discourselink } from './../../../assets/discourselink';
+
+declare var particlesJS: any;
+
 @Component({
   selector: 'app-tracks',
   templateUrl: './tracks.component.html',
   styleUrls: ['./tracks.component.scss']
 })
+
 export class TracksComponent implements OnInit {
 
   posts = [];
@@ -69,6 +73,10 @@ export class TracksComponent implements OnInit {
 
 
   ngOnInit() {
+        // ******************** particlesJS
+        particlesJS.load("particles", "../../assets/particles.json", function () {
+            console.log('callback - particles.js config loaded');
+        });
 
     this.getIds().subscribe(ids => {
       console.log(ids);
