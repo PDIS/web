@@ -18,33 +18,35 @@ img{
 
 /*-----------------thumb------------------*/
 
-.thumb-container{
+ul.thumb-container{
     margin: auto;
+    padding: 0;
     width: 60%;
     text-align: center;
 
-    .thumb{
+    li.thumb{
         display: inline-block;
         margin: 5px;
         padding: 10px;
         width: 30%;
-        // height: 30vh;
+        height: 14em; /* not sure */
         text-align: center;
         vertical-align: top;
         background-color: #FFFFFF;
         border-radius: 10px;
-        // overflow: hidden;
+        overflow: hidden;
     }
 }
 
 @media screen and (max-width: 767px) {
 
-    .thumb-container{
+    ul.thumb-container{
         width: 100%;
 
-        .thumb{
+        li.thumb{
             display: block;
             width: 100%;
+            height: auto;
         }
     }
 }

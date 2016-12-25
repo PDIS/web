@@ -46,8 +46,8 @@ export class ToolsComponent implements OnInit {
                 // post['text'] = dom.find("p").html();
                 // post['img'] = dom.find("img").attr("src");
                 post['title'] = dom.querySelector("h4").innerText;
-                post['text'] = dom.querySelector("p").innerHTML;
                 post['img'] = dom.querySelector("img") && dom.querySelector("img").src || "/assets/img/placeholder-1000x518.png";
+                post['text'] = dom.querySelector("p").innerHTML;
                 post['link'] = dom.querySelector("aside header a") && (<HTMLElement>dom.querySelector("aside header a")).outerHTML;
                 
                 // if lazyYT exist, then return its converted iframe

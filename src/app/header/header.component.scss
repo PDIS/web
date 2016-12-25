@@ -107,8 +107,12 @@ $nav-hight-mobile: 60px;
 // ************************* sub layer nav list
     position: relative;
 
-    .nav-item+.nav-child{
-        display: none;
+    .nav-item+ul.nav-child{
+        // display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease;
+
         position: absolute;
         top: 80%;
         padding: 0;
@@ -116,14 +120,15 @@ $nav-hight-mobile: 60px;
         color: $back_color;
         background-color: #F4F4F4;
 
-        .nav-item{
+        a.nav-item{
             display: block;
             margin: 0;
         }
     }
 
-    .nav-item:hover+.nav-child, .nav-item+.nav-child:hover{
-        display: block;
+    .nav-item:hover+ul.nav-child, .nav-item+ul.nav-child:hover{
+        // display: block;
+        max-height: 8em; /* used to hide ul instead of display:none */
         color: $hightlight;
     }
 }
@@ -156,8 +161,9 @@ $nav-hight-mobile: 60px;
     // ************************* sub layer nav list
         // position: relative;
 
-        .nav-item+.nav-child{
-            display: block;
+        .nav-item+ul.nav-child{
+            // display: block;
+            max-height: 8em; /* used to hide ul instead of display:none */
             // position: absolute;
             top: initial;
             bottom: 0;

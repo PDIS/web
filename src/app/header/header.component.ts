@@ -59,9 +59,9 @@ export class HeaderComponent {
                     // this.bigLogo = false;
                     this.showNav = false;
                 }
-                else if (this.moveLength > 1.5*this.topPos) {
-                    this.showNav = false;
-                }
+                // else if (this.moveLength > 1.5*this.topPos) {
+                    // this.showNav = false;
+                // }
             }
         }
         else { /* this.currentDirection == 'up' */
@@ -70,7 +70,7 @@ export class HeaderComponent {
                 this.showNav = true;
             }
             else {
-                if (this.moveLength > this.topPos) {
+                if (this.moveLength > 2*this.topPos) {
                     this.showNav = true;
                     // this.bigLogo = false;
                 }

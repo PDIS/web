@@ -88,14 +88,20 @@ canvas {
     position: relative;
     font-family: $slogan_font;
     font-size: 5rem;
-    padding: 10rem 0;
+    padding: 3em 0;
     z-index: 100;
 }
 
 .slogan-btn {
     position: relative;
-    padding: 5rem;
+    padding: 3rem;
     z-index: 100;
+}
+
+@media screen and (max-width: 767px) {
+    .slogan {
+        font-size: 3rem;
+    }
 }
 
 // ******************** content section
