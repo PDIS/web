@@ -37,6 +37,7 @@ export class HeaderComponent {
         var scrollY = window.scrollY;
         this.isTop = scrollY < this.topPos;
         this.currentDirection = (scrollY > this.currentPosition) ? 'down' : 'up';
+        this.currentPosition = scrollY;
 
         if (this.currentDirection != this.lastDirection) {
             this.moveStart = scrollY;
@@ -47,16 +48,16 @@ export class HeaderComponent {
             this.moveLength = Math.abs(this.moveStart - scrollY);
         }
 
-        this.currentPosition = scrollY;
 
         if (this.currentDirection == 'down') {
             if (this.isTop) {
                 // this.bigLogo = true;
-                this.showNav = true;
+                // this.showNav = true;
             }
             else {
                 if (this.moveLength > 2*this.topPos) {
                     // this.bigLogo = false;
+                    this.showNav = false;
                 }
                 else if (this.moveLength > 1.5*this.topPos) {
                     this.showNav = false;
