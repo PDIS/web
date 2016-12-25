@@ -89,6 +89,7 @@
             /deep/ img {
                 height: 100%;
                 width: auto;
+                max-width: none;
             }
         }
     }
@@ -99,9 +100,9 @@
     /*-----------------------------------*/
 
     .tell-us-container {
-        // background-image: url(http://localhost:4200/assets/img/pdis-team.JPG);
-        // background-size: cover;
-        // margin: 0;
+        background-image: url(assets/img/pdis-team.JPG);
+        background-size: cover;
+        margin: 0;
         padding: 0px;
         // text-align: center;
     }
