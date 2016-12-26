@@ -49,40 +49,40 @@
     .btn-pdis{
         font-size: 1.5rem;
         margin-right: 5px;
-        padding: 4px 9px 4px 9px;
+        padding: 1em;
         text-decoration: none;
     }
     .btn-youtube{
         border-color: #cc181e; 
         color: #cc181e;
-    }
-    .btn-youtube:hover {
-        border-color: #FF0000; 
-        color: #FF0000;    
+        &:hover {
+            border-color: #FF0000; 
+            color: #FF0000;    
         }
+    }
     .btn-transcript{
         border-color: darkorange;
         color: darkorange;
-    }
-    .btn-transcript:hover {
-        border-color: orange;
-        color: orange;
+        &:hover {
+            border-color: orange;
+            color: orange;
+        }
     }
     .btn-soundcloud{
         border-color:#fd3c1b;
         color: #fd3c1b;
-    }
-    .btn-soundcloud:hover {
-        border-color:#ff5e00;
-        color: #ff5e00;
+        &:hover {
+            border-color:#ff5e00;
+            color: #ff5e00;
+        }
     }
     .btn-slido{
         border-color:#38921a;
         color: #38921a;
-    }
-    .btn-slido:hover {
-        border-color:#70bd4e;
-        color: #70bd4e;
+        &:hover {
+            border-color:#70bd4e;
+            color: #70bd4e;
+        }
     }
 
     .movetoright {
@@ -322,7 +322,7 @@
     // .timeline  li.timeline-inverted  .timeline-panel:after {
     // }
 
-    // æ™‚é–“è»¸åœ“åœˆ
+    // •régİSˆAÈ¦
     .timeline  li  .timeline-badge {
         color: #fff;
         width: 15px;
@@ -354,10 +354,11 @@
     }
     .timeline-heading{
     
-        padding: 2px 10px;
-        background-color: lightgray;
         position: relative;
-        
+        padding: 1em;
+        background-color: #f4f4f4;
+        box-shadow: inset 0px -5px 7px -5px rgba(0, 0, 0, 0.1);
+
         .title{
             color: black;
             // letter-spacing: 2px;
@@ -382,21 +383,22 @@
         text-align: center;
     }
     .timeline-footer {
-        padding: 5px 15px;
-        background-color:#f4f4f4;
-    }
-    .timeline-footer {
         position: relative;
         font-size: 1.2rem;
+        padding: 0 1em;
+        background-color: lightgray;
+        box-shadow: inset 0 5px 5px -5px rgba(0, 0, 0, 0.2);
+
         .tags{
             float: left;
             width: 75%;
             margin: 0;
+
             .tag{
                 color: black;
                 font-style: normal;
                 font-weight: 400;
-                padding: 2px 5px;
+                padding: 0.5em;
                 margin: 0;
                 transition: all 300ms ease-in-out;
                 &:hover{
@@ -410,7 +412,8 @@
             float: right;
             margin: 0;
             span{
-                vertical-align: middle;
+                display: inline-block;
+                padding: 0.5em;
             }
         }
         &::after{ /* to clearfix */
@@ -462,39 +465,27 @@
         ul.timeline  li > .timeline-panel {
             float: right;
         }
-        ul.timeline  li > .timeline-panel .timeline-body::before {
+        ul.timeline  li > .timeline-panel .timeline-body::before,
+        ul.timeline  li.timeline-inverted > .timeline-panel .timeline-body:before {
             border-left-width: 0;
-            border-right-width: 10px;
-            left: -10px;
+            border-right-width: 14px;
+            left: -15px;
             right: auto;
-            top: 25px;
+            // top: 25px;
         }
-        ul.timeline  li > .timeline-panel .timeline-body::after {
+        ul.timeline  li > .timeline-panel .timeline-body::after,
+        ul.timeline  li.timeline-inverted > .timeline-panel .timeline-body:after {
             border-left-width: 0;
-            border-right-width: 10px;
-            left: -10px;
+            border-right-width: 14px;
+            left: -14px;
             right: auto;
-            top: 25px;
+            // top: 25px;
         }
         .timeline  li.timeline-inverted {
             float: left;
             clear: left;
             margin-top: 30px;
             margin-bottom: 30px;
-        }
-        ul.timeline  li.timeline-inverted > .timeline-panel .timeline-body:before {
-            border-left-width: 0;
-            border-right-width: 10px;
-            left: -10px;
-            right: auto;
-            top: 27px;
-        }
-        .timeline  li.timeline-inverted > .timeline-panel .timeline-body:after {
-            border-left-width: 0;
-            border-right-width: 10px;
-            left: -10px;
-            right: auto;
-            top: 27px;
         }
         .timeline  li.timeline-inverted > .timeline-badge {
             left: 0;
