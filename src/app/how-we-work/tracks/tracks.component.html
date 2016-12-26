@@ -45,7 +45,9 @@
                   <p class="tags">
                     <label class="tag" *ngFor="let tag of post.tags">{{tag}}</label>
                   </p>
-                  <p class="date">{{post.date | datePipe:"yyyy/MM/dd"}}</p>
+                  <p class="date">
+                    <span>{{post.date | datePipe:"yyyy/MM/dd"}}</span>
+                  </p>
                 </div>
               </div>
             </li>
