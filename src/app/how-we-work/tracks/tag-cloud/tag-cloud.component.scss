@@ -1,6 +1,7 @@
 @import './../../../../styles.scss';
 
 :host {
+    font-family: $btn_font;
     font-size: 10px;
     line-height: normal;
 }

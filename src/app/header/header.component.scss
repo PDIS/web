@@ -89,13 +89,9 @@ $nav-hight-mobile: 60px;
     white-space: pre-line;
 }
 
-.nav-item:hover {
+.nav-item:hover, .nav-item:focus, .nav-item:active {
     color: $hightlight;
     background-color: transparent;
-}
-
-.nav-item.active {
-    color: $hightlight;
 }
 
 .nav-container {
