@@ -439,7 +439,7 @@
         float: none !important;
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: $breakpoint_tablet) {
         ul.timeline:before {
             left: 7px;
         }

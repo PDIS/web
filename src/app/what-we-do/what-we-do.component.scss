@@ -72,7 +72,7 @@
 
 /*-----------------------------------*/
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $breakpoint_tablet) {
     .topic-container {
         width: 100%;
         display: flex;

@@ -38,4 +38,5 @@ Development Environment Setup
 Deploy
 ------
 
--   ```npm run deploy``` or ```npm run deploy-win```
+-   ```npm run deploy``` 
+-   ```npm run deploy-win```

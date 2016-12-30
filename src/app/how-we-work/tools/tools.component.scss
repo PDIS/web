@@ -38,7 +38,7 @@ ul.thumb-container{
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $breakpoint_tablet) {
 
     ul.thumb-container{
         width: 100%;
@@ -104,7 +104,7 @@ ul.thumb-container{
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $breakpoint_tablet) {
 
     .topic-container {
         width: 100%;

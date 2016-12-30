@@ -61,14 +61,14 @@ $line-height-size:35px;
     }
 }
 
-@media screen and (max-width: 1200px) {     //window size <1200px clean blockquote style
+@media screen and (max-width: $breakpoint_tablet*1.56) {     //window size <1200px clean blockquote style
     :host /deep/ .detail-text{
         blockquote::after, blockquote::before{
             content: "";
         }
     }
 }
-@media screen and (max-width: 991px) {      //window size < 991px change to mobile
+@media screen and (max-width: $breakpoint_tablet*1.29) {      //window size < 991px change to mobile
 
     :host /deep/ .detail-text{
 
