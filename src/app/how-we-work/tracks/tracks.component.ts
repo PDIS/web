@@ -38,7 +38,7 @@ export class TracksComponent implements OnInit {
         private activatedRoute: ActivatedRoute)
     { }
 
-    private getCategory() {
+    private getCategory() { //取得分類(置頂文章)
         return this.http.get(Discourselink.Host + Discourselink.Text + Discourselink.HOWWEWORKTRACK + "/73.json?include_raw=1")
             .map(function(data) {
                 data = data.json();
@@ -47,7 +47,7 @@ export class TracksComponent implements OnInit {
             })
     }
 
-    private getIds() {
+    private getIds() { //取得討論區每篇文的ID
         if (this.q === undefined) {
             return this.http.get(Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename)
                 .map(function(data) {
@@ -74,7 +74,7 @@ export class TracksComponent implements OnInit {
         }
     }
 
-    private getPost(id: string) {
+    private getPost(id: string) { // 取得每篇PO文
         return this.http.get(Discourselink.Host + Discourselink.Text + id + ".json?include_raw=1")
             .map(function(data) {
                 data = data.json();
@@ -87,10 +87,9 @@ export class TracksComponent implements OnInit {
 
 
             })
-        // .do(data => console.log(data));
     }
 
-    private distribute_post(category, post) {
+    private distribute_post(category, post) { //將每篇PO文與各分類中的關鍵字比對
         post['category'] = 'Other';
         Object.keys(category).forEach(key => {
             for (var i = 0; i < category[key].length; i++) {
@@ -130,7 +129,7 @@ export class TracksComponent implements OnInit {
                     var tag = {};
                     tag['text'] = discourseTags[i]['text'];
                     tag['weight'] = discourseTags[i]['count'];
-                    // tag['link'] = "http://localhost:4200/#/how-we-work/tracks?q=" + discourseTags[i]['text'];
+                    tag['link'] = "http://localhost:4200/#/how-we-work/tracks?q=" + discourseTags[i]['text'];
                     tags.push(tag);
                 }
                 return tags;
