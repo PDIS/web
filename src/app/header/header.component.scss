@@ -90,7 +90,7 @@ $nav-hight-mobile: 60px;
 }
 
 .nav-item:hover, .nav-item:focus, .nav-item:active {
-    color: $hightlight;
+    color: $highlight;
     background-color: transparent;
 }
 
@@ -125,7 +125,7 @@ $nav-hight-mobile: 60px;
     .nav-item:hover+ul.nav-child, .nav-item+ul.nav-child:hover{
         // display: block;
         max-height: 8em; /* used to hide ul instead of display:none */
-        color: $hightlight;
+        color: $highlight;
     }
 }
 

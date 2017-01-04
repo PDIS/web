@@ -26,14 +26,14 @@ ul.thumb-container{
 
     li.thumb{
         display: inline-block;
-        margin: 5px;
+        margin: 1px;
         padding: 10px;
         width: 30%;
         height: 14em; /* not sure */
         text-align: center;
         vertical-align: top;
         background-color: #FFFFFF;
-        border-radius: 10px;
+        // border-radius: 10px;
         overflow: hidden;
     }
 }
@@ -66,6 +66,7 @@ ul.thumb-container{
         background-color: #FFFFFF;
         opacity: 0.9;
         padding: 2.5vw;
+        text-align: left;
     }
 
     .image {

@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 $back_color: #4B0056;
-$hightlight: #D66FE5;
+$highlight: #D66FE5;
 $text_color: #111111;
 $max_width: 1180px;
 $breakpoint_tablet: 767px;
@@ -34,8 +34,8 @@ a{
     transition: all 0.3s ease;
     color: $back_color;
     &:hover{
-        color: $hightlight;
-        // border-color: $hightlight;
+        color: $highlight;
+        // border-color: $highlight;
         text-decoration: none;
     }
 }
@@ -118,19 +118,20 @@ canvas {
     border: solid 2px $back_color;
     text-transform: uppercase;
     &:hover{
-        color: $hightlight;
-        border: solid 2px $hightlight;
+        color: $highlight;
+        border: solid 2px $highlight;
     }
 }
 
 .section-line {
     margin: 2.5vw 0;
     height: 1px;
-    background: -moz-linear-gradient(left, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
+    background: linear-gradient(to right, transparent 10%, $highlight 50%, transparent 90%);
+    // background: -moz-linear-gradient(left, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
     /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
+    // background: -webkit-linear-gradient(left, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
     /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
+    // background: linear-gradient(to right, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
@@ -147,10 +148,10 @@ hr.section-end {
 
 hr.section-dot {
     text-align: center;
-    height: 6rem;
+    height: 3rem;
     &:after {
         content:",";
-        font-size: 8rem;
+        font-size: 6rem;
         line-height: 0;
         font-weight: 700;
         color: #DDDDDD;
@@ -158,5 +159,5 @@ hr.section-dot {
 }
 
 .highlight {
-    color: $hightlight;
+    color: $highlight;
 }

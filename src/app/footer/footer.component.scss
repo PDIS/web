@@ -3,6 +3,10 @@
 .footer-container {
     max-width: $max_width;
     margin: 50px auto;
+
+    footer{
+        text-align: center;
+    }
 }
 
 .footer-content {
@@ -36,14 +40,14 @@
         position: relative;
     }
     li:hover::before {
-        border-color: transparent $hightlight;
+        border-color: transparent $highlight;
         transition: all 0.3s ease;
     }
     a {
         display: block;
         color: #FFFFFF;
         &:hover {
-            color: $hightlight;
+            color: $highlight;
         }
     }
 
