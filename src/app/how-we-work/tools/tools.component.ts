@@ -38,18 +38,19 @@ export class ToolsComponent implements OnInit {
             // parsing raw html into param
             jsdata['post_stream']['posts'].forEach(data =>{
                 let post = {};
-                let ytdata;
                 let dom = (new DOMParser()).parseFromString(data["cooked"], "text/html");
-                // var dom = angular.element(data["cooked"]);
-                // var dom = $(data["cooked"]);
-                // post['title'] = dom.find("h4").text();
-                // post['text'] = dom.find("p").html();
-                // post['img'] = dom.find("img").attr("src");
+
                 post['title'] = dom.querySelector("h4").innerText;
-                post['img'] = dom.querySelector("img") && dom.querySelector("img").src || "/assets/img/placeholder-1000x518.png";
+
+                let imgs = dom.querySelectorAll("img");
+                post['img'] = imgs && imgs[imgs.length - 1].src || imgs[imgs.length - 1].getAttribute("src") || "http://lorempixel.com/g/600/400/nature";
+                // post['img'] = dom.querySelector("img") && dom.querySelector("img").src || dom.querySelector("img").getAttribute("src") || "/assets/img/placeholder-1000x518.png";
+
                 post['text'] = dom.querySelector("p").innerHTML;
+
                 post['link'] = dom.querySelector("aside header a") && (<HTMLElement>dom.querySelector("aside header a")).outerHTML;
                 
+                let ytdata;
                 // if lazyYT exist, then return its converted iframe
                 post['yt'] = dom.querySelector(".lazyYT") && (
                     ytdata = (<HTMLElement>dom.querySelector(".lazyYT")).dataset
