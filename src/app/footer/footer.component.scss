@@ -6,6 +6,11 @@
 
     footer{
         text-align: center;
+        color: #AAAAAA;
+        border-top: 1px dashed #AAAAAA;
+        margin: 0 10%;
+        padding: 1em;
+        clear: both;
     }
 }
 
@@ -24,7 +29,7 @@
         font-weight: 700;
     }
     ul {
-        margin: 0 0 1em -2.3em;
+        margin: 0 0 1em -1.3em;
         list-style: none;
     }
     li::before {
