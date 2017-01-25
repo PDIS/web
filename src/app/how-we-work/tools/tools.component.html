@@ -5,9 +5,7 @@
 		<div class="slogan animated fadeInUp">
 
 			<span>
-				We are commited to open our work process
-				<br>
-				See below the <span class="highlight">tools</span> we use everyday
+				See below the <span class="highlight">tools</span> we use everyday:
 			</span>
 
 		</div>
@@ -18,9 +16,9 @@
 	<h2>Tools</h2>
 
 	<!-- the blocks of tools -->
-	<div *ngIf="tools_list" class="thumb-container clearfix">
-		<div *ngFor="let post of tools_list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked"></div>	
-	</div>
+	<ul *ngIf="tools_list" class="thumb-container clearfix">
+		<li *ngFor="let post of tools_list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked"></li>	
+	</ul>
 
 	<hr class="section-line" />
 
@@ -33,14 +31,14 @@
 			<div class="topic-container" [ngClass]="{'topic-right':isOdd,'topic-left':!isOdd}">
 
 				<div class="image">
-					<img src="{{ post['img'] }}" alt="">
+					<img [src]="post['img']" alt="">
 				</div>
 
 				<div class="text">
 					<h4>{{ post['title'] }}</h4>
 					<p [innerHTML]="post['text']"></p>
 					<p [innerHTML]="post['link']" *ngIf="post['link']" ></p>
-					<iframe [src]="post['yt']" *ngIf="post['yt']" frameborder="0"></iframe>
+					<iframe [src]="post['yt']" *ngIf="post['yt']" width="480" height="270" frameborder="0" allowfullscreen></iframe>
 				</div>
 
 			</div>

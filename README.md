@@ -5,18 +5,14 @@ Function
 --------
 
 -   a landing page
-
 -   show people what PDIS do
-
 -   open a channel for thoughts contribution
-
 -   team building
-
 -   mainly in english
-
 -   anyone can subscribe to PDIS
-
 -   anyone can leave their thoughts
+-   [12/25] about us page
+-	[12/25] lazy-load pages || images?
 
 Design Mockup
 -------------
@@ -27,9 +23,7 @@ Comment
 -------
 
 -   please help :)
-
 -   quick in, quick out (easy to read, understand)
-
 -   more attractive & fun
 
 Development Environment Setup
@@ -44,4 +38,5 @@ Development Environment Setup
 Deploy
 ------
 
--   ```npm run deploy```
+-   ```npm run deploy``` 
+-   ```npm run deploy-win```

@@ -49,7 +49,7 @@
 /*-----------------------------------*/
 
 .tell-us-container {
-    background-image: url(assets/img/pdis-team.JPG);
+    background-image: url("/assets/img/pdis-team.JPG");
     background-size: cover;
     margin: 0;
     padding: 2.5vw;
@@ -65,14 +65,14 @@
         width: 25%
     }
     h2 {
-        margin-bottom: 10px;
+        margin-bottom: 1em;
     }
 }
 
 
 /*-----------------------------------*/
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $breakpoint_tablet) {
     .topic-container {
         width: 100%;
         display: flex;
@@ -89,6 +89,7 @@
             /deep/ img {
                 height: 100%;
                 width: auto;
+                max-width: none;
             }
         }
     }
@@ -99,14 +100,14 @@
     /*-----------------------------------*/
 
     .tell-us-container {
-        background-image: url(http://localhost:4200/assets/img/pdis-team.JPG);
+        background-image: url(assets/img/pdis-team.JPG);
         background-size: cover;
         margin: 0;
         padding: 0px;
-        text-align: center;
+        // text-align: center;
     }
     .tell-us-content {
-        width: 100%
+        // width: 100%
     }
 
 }
