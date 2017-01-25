@@ -1,44 +1,73 @@
 <div class="main-container">
-  <div class="slogan-container" id="particles">
-    <div class="slogan animated fadeInUp">
-      <span>
-        We incubate and facilitate
-        <br>
-        public digital <span class="highlight">innovation</span> and <span class="highlight">service</span>.
-      </span>
-    </div>
-    <div class="slogan-btn">
-      <button type="button" class="btn-pdis" [routerLink]="'/how-we-work/'">MORE ABOUT PDIS</button>
-    </div>
-  </div>
 
-  <hr class="section-line">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="margin:0 -2.5vw">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        </ol>
 
-  <div *ngFor="let topic of topics; let i = index; let isOdd = odd">
-    <div class="topic-container" [ngClass]="{'topic-right':isOdd,'topic-left':!isOdd}">
-      <div class="text">
-        <h1>{{topic.title}}</h1>
-        <div [innerHTML]="topic['text']"></div>
-        <a class="btn-pdis" [routerLink]="'/what-we-do/'+topic.id" role="button">
-        More about {{topic.title}}
-      </a>
-      </div>
-      <div class="image" [innerHTML]="topic['image']"></div>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <div class="slogan-container" id="particles">
+                    <div class="slogan animated fadeInUp">
+                        <span>
+                          We incubate and facilitate
+                          <br>
+                          public digital <span class="highlight">innovation</span> and <span class="highlight">service</span>.
+                        </span>
+                    </div>
+                    <div class="slogan-btn">
+                        <button type="button" class="btn-pdis" [routerLink]="'/how-we-work/'">MORE ABOUT PDIS</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div style="min-height:552px">
+                    <iframe width="100%" height="552" src="https://www.youtube-nocookie.com/embed/ROA7u1gMZo0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="background-image:initial">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" style="background-image:initial">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 
     <hr class="section-line">
 
-  </div>
+    <div *ngFor="let topic of topics; let i = index; let isOdd = odd">
+        <div class="topic-container" [ngClass]="{'topic-right':isOdd,'topic-left':!isOdd}">
+            <div class="text">
+                <h1>{{topic.title}}</h1>
+                <div [innerHTML]="topic['text']"></div>
+                <a class="btn-pdis" [routerLink]="'/what-we-do/'+topic.id" role="button">
+        More about {{topic.title}}
+      </a>
+            </div>
+            <div class="image" [innerHTML]="topic['image']"></div>
+        </div>
 
-  <div class="tell-us-container">
-    <div class="tell-us-content">
-      <h2>Tell us what you think about</h2>
-      <img src="/assets/img/PDIS-logo-text.png" alt="">
-      <textarea rows="5" class="think-area"></textarea>
-      <button type="button" class="btn-pdis">SUBMIT</button>
+        <hr class="section-line">
+
     </div>
-  </div>
 
-  <hr class="section-end">
+    <div class="tell-us-container">
+        <div class="tell-us-content">
+            <h2>Tell us what you think about</h2>
+            <img src="/assets/img/PDIS-logo-text.png" alt="">
+            <textarea rows="5" class="think-area"></textarea>
+            <button type="button" class="btn-pdis">SUBMIT</button>
+        </div>
+    </div>
+
+    <hr class="section-end">
 
 </div>
