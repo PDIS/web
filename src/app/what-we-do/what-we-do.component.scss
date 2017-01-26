@@ -2,6 +2,24 @@
 
 /*-----------------------------------*/
 
+.carousel {
+    margin: 0 -2.5vw;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+.carousel-indicators {
+    bottom: 0;
+    li {
+        border-color: gray;
+    }
+    .active {
+        background-color: gray;
+    }
+}
+
+/*-----------------------------------*/
+
 .topic-container {
     position: relative;
     .text {
