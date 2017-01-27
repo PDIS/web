@@ -40,11 +40,12 @@ export class ToolsComponent implements OnInit {
                 let post = {};
                 let dom = (new DOMParser()).parseFromString(data["cooked"], "text/html");
 
-                post['title'] = dom.querySelector("h4").innerText;
+                post['title'] = (<HTMLElement>dom.querySelector("h1,h2,h3,h4,h5,h6")).innerText;
 
                 let imgs = dom.querySelectorAll("img");
-                post['img'] = imgs && imgs[imgs.length - 1].src || imgs[imgs.length - 1].getAttribute("src") || "http://lorempixel.com/g/600/400/nature";
-                // post['img'] = dom.querySelector("img") && dom.querySelector("img").src || dom.querySelector("img").getAttribute("src") || "/assets/img/placeholder-1000x518.png";
+                post['img'] = imgs && (
+                    imgs[imgs.length - 1].src || imgs[imgs.length - 1].getAttribute("src")
+                ) || "http://lorempixel.com/g/600/400/nature";
 
                 post['text'] = dom.querySelector("p").innerHTML;
 
@@ -62,7 +63,6 @@ export class ToolsComponent implements OnInit {
                 this.tools_detail_list.push(post);
             });
             // this.tools_detail_list['post_stream']['posts'][0]['cooked']
-
             // console.log(this.tools_detail_list);
         });
 
