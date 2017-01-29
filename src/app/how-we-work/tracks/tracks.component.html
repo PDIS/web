@@ -16,18 +16,21 @@
   </div>
 
   <div class="section-line"></div>
+
   <!-- Nav tabs -->
   <div class="card">
+
     <ul class="nav nav-tabs" role="tablist">
       <li *ngFor="let object of total" role="presentation" [ngClass]="{'active':(object.category ==='All')}">
         <a href="#{{object.category}}" [attr.aria-controls]="object.category" role="tab" data-toggle="tab">{{object.category}}</a>
       </li>
     </ul>
     
-
     <!-- Tab panes -->
     <div class="tab-content">
+      <!-- when user hit the ground, total should be update. -->
       <div *ngFor="let object of total" role="tabpanel" class="tab-pane fade" [ngClass]="{'in active':(object.category ==='All')}" id="{{object.category}}">
+
         <ul class="timeline">
             <li *ngFor="let post of object.posts; let i = index" [ngClass]="{'timeline-inverted':(i%2!==0)}">
               <div class="timeline-badge"></div>
@@ -53,9 +56,16 @@
             </li>
             <li class="clearfix no-float"></li>
         </ul>
+
       </div>
     </div>
-    
+
+    <!-- event binding -->
+    <!-- <autoload (onEnd)="getMorePosts(more_url)"></autoload> -->
+    <p class="text-center">
+      <button type="button" class="btn btn-default" (click)="getMorePosts(more_url)"> read more </button>
+    </p>
+
   </div>
 
 

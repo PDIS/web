@@ -7,6 +7,7 @@ import { ConvertService } from './../../shared/convertService/convert.service';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+// import 'rxjs/add/operator/toPromise';
 import { Discourselink } from './../../../assets/discourselink';
 
 declare var particlesJS: any;
@@ -19,17 +20,17 @@ declare var particlesJS: any;
 
 export class TracksComponent implements OnInit {
 
-    posts = [];
-    counts = {};
+    // posts = [];
+    // counts = {};
     tags = [];
-    speeches = [];
-    meetings = [];
-    conferences = [];
-    interviews = [];
-    others = [];
+    // speeches = [];
+    // meetings = [];
+    // conferences = [];
+    // interviews = [];
+    // others = [];
     total = [];
     q = "";
-
+    more_url: string
 
     constructor(
         private dataService: DataService,
@@ -38,7 +39,7 @@ export class TracksComponent implements OnInit {
         private activatedRoute: ActivatedRoute)
     { }
 
-    private getCategory() { //å–å¾—åˆ†é¡ž(ç½®é ‚æ–‡ç« )
+    private getCategory() { //È¡µÃ·Öî(ÖÃí”ÎÄÕÂ)
         return this.http.get(Discourselink.Host + Discourselink.Text + Discourselink.HOWWEWORKTRACK + "/73.json?include_raw=1")
             .map(function(data) {
                 data = data.json();
@@ -47,34 +48,27 @@ export class TracksComponent implements OnInit {
             })
     }
 
-    private getIds() { //å–å¾—è¨Žè«–å€æ¯ç¯‡æ–‡çš„ID
-        if (this.q === undefined) {
-            return this.http.get(Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename)
-                .map(function(data) {
+    private getIds() { //È¡µÃÓ‘Õ“…^Ã¿ÆªÎÄµÄID
+
+        let data = (this.q === undefined) ?
+                (this.http.get(Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename)) :
+                (this.http.get(Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + this.q + Discourselink.Filename))
+
+        return data.map(function(data) {
                     data = data.json();
                     var ids = [];
                     var topics = data['topic_list']['topics'];
+
                     topics.forEach(function(topic) {
                         ids.push(topic['id']);
                     });
+
+                    /* discard first post */
                     return ids.slice(1);
-                })
-        }
-        else {
-            return this.http.get(Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + this.q + ".json")
-                .map(function(data) {
-                    data = data.json();
-                    var ids = [];
-                    var topics = data['topic_list']['topics'];
-                    topics.forEach(function(topic) {
-                        ids.push(topic['id']);
-                    });
-                    return ids.slice(1);
-                })
-        }
+        })
     }
 
-    private getPost(id: string) { // å–å¾—æ¯ç¯‡POæ–‡
+    private getPost(id: string) { // È¡µÃÃ¿ÆªPOÎÄ
         return this.http.get(Discourselink.Host + Discourselink.Text + id + ".json?include_raw=1")
             .map(function(data) {
                 data = data.json();
@@ -89,7 +83,7 @@ export class TracksComponent implements OnInit {
             })
     }
 
-    private distribute_post(category, post) { //å°‡æ¯ç¯‡POæ–‡èˆ‡å„åˆ†é¡žä¸­çš„é—œéµå­—æ¯”å°
+    private distribute_post(category, post) { //Œ¢Ã¿ÆªPOÎÄÅc¸÷·ÖîÖÐµÄêPæI×Ö±ÈŒ¦
         post['category'] = 'Other';
         Object.keys(category).forEach(key => {
             for (var i = 0; i < category[key].length; i++) {
@@ -105,6 +99,56 @@ export class TracksComponent implements OnInit {
 
     }
 
+    getMorePosts(more_url: string) {
+        /* an event handler for more post */
+
+        /* save link for getMorePosts() */
+        if(more_url === "")
+            this.http
+                .get(Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename)
+                .map(rspn => rspn.json().topic_list.more_topics_url)
+                .subscribe(more_url => this.more_url = more_url)
+        else {
+            // /c/pdis-site/how-we-work-track/l/latest.json?page=1
+            this.http
+                .get(Discourselink.Host + more_url.replace(/latest/,'latest.json'))
+                .map(rspn => rspn.json().topic_list.more_topics_url)
+                .subscribe(more_url => this.more_url = more_url)
+
+            // /* fetch 30 more post from backend when user hit the ground (call this) */
+            // // data["topic_list"]["more_topics_url"] = "/c/pdis-site/how-we-work-track/l/latest?page=1"
+            this.http
+                .get(Discourselink.Host + more_url.replace(/latest/,'latest.json'))
+                // .toPromise()
+                // .then(response => response.json().data)
+                // .catch(error => console.error("more's error", error))
+                .map(rspn => rspn.json().topic_list.topics)
+                .subscribe(topics => {
+                    /* seems that first post will duplicate with previous last post */
+                    // topics.slice(1)
+                    
+                    /* use topics[i].id to get each post */
+                    for(let topic of topics){
+
+                        this.getPost(topic.id).subscribe(post => {
+                            let content = this.convertService.convertYAMLtoJSON(post['content'])
+                            post['content'] = content['content']
+                            /* distribute category for each post */
+                            post = this.distribute_post('Other', post);
+                            /* category: All */
+                            this.total[0]['posts'].push(post);
+                            /* category: Other, etc... */
+                            let cat_list = this.total.map(cat => cat['category'])
+                            this.total[cat_list.indexOf(post['category'])]['posts'].push(post)
+                            /* need sort? */
+                            this.total[cat_list.indexOf(post['category'])]['posts'].sort((a, b) => b.date - a.date)
+                        })
+
+                    }
+
+                })
+        }
+    }
 
     ngOnInit() {
         // ******************** particlesJS
@@ -129,14 +173,14 @@ export class TracksComponent implements OnInit {
                     var tag = {};
                     tag['text'] = discourseTags[i]['text'];
                     tag['weight'] = discourseTags[i]['count'];
-                    tag['link'] = "http://localhost:4200/#/how-we-work/tracks?q=" + discourseTags[i]['text'];
+                    tag['link'] = "/#/how-we-work/tracks?q=" + discourseTags[i]['text'];
                     tags.push(tag);
                 }
                 return tags;
             })
             // .do(data => { console.log(data); })
             .subscribe(
-            tags => { this.tags = tags; }
+                tags => { this.tags = tags; }
             );
 
 
@@ -176,8 +220,11 @@ export class TracksComponent implements OnInit {
                 })
 
             })
-            console.log(this.total);
+            // console.log(this.total);
         });
+
+        /* get the first more_url */
+        this.getMorePosts("");
     }
 
 }
