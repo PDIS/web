@@ -39,6 +39,9 @@ footer {
                 font-size: 3rem;
                 font-weight: 700;
                 border-right: 1px solid $back_color;
+                @media screen and (max-width: $breakpoint_tablet) {
+                    border-right: 0;
+                }
             }
             &:last-child {
                 h1 {

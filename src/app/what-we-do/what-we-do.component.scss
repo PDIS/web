@@ -4,17 +4,41 @@
 
 .carousel {
     margin: 0 -2.5vw;
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
+    .iframeWrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        padding-top: 25px;
+        height: 0;
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
 .carousel-indicators {
-    bottom: 0;
+    bottom: -10px;
+
     li {
         border-color: gray;
     }
     .active {
         background-color: gray;
+    }
+}
+.carousel-control {
+    color: $sheet_color;
+
+    /* move out from slider content */
+    &.left {
+        // left: -15%;
+    }
+    &.right {
+        // right: -15%;
     }
 }
 

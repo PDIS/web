@@ -4,46 +4,53 @@
     .nav-tabs {
         border-bottom: 2px solid #DDD;
         text-align: center;
-    }
+
+        li{
+            float: none;
+            display: inline-block;
+        }
+
+        >li >a {
+            border: none;
+            color: #666;
+
+            &::after {
+                content: "";
+                background: #4B0056;
+                height: 2px;
+                position: absolute;
+                width: 100%;
+                left: 0px;
+                bottom: -1px;
+                transition: all 250ms ease 0s;
+                transform: scale(0);
+            }
+
+            &.active, 
+            &.active:focus, 
+            &.active:hover {
+                border-width: 0;
+            }
+        }
+    } 
     
-    .nav-tabs li{
-        float: none;
-        display: inline-block;
-        // font-family: Georgia;
-    }
-    .nav-tabs > li > a.active, .nav-tabs > li > a.active:focus, .nav-tabs > li > a.active:hover {
-        border-width: 0;
-    }
-    
-    .nav-tabs > li > a {
-        border: none;
-        color: #666;
-    }
-    
-    .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
+    .nav-tabs > li.active > a,
+    .nav-tabs > li > a:hover {
         border: none;
         color: #4B0056 !important;
         background: transparent;
-    }
-    
-    .nav-tabs > li > a::after {
-        content: "";
-        background: #4B0056;
-        height: 2px;
-        position: absolute;
-        width: 100%;
-        left: 0px;
-        bottom: -1px;
-        transition: all 250ms ease 0s;
-        transform: scale(0);
-    }
-    
-    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {
-        transform: scale(1);
+
+        &::after {
+            transform: scale(1);
+        }
     }
     
     .btn{
         font-family: $btn_font;
+
+        &.more {
+            width: 50%; 
+        }
     }
 
     .btn-pdis{
@@ -92,14 +99,12 @@
     }
     
     .button-source {
-        /*padding: 10px 20px;*/
         margin: 5px;
     }
     .btn-more{
         text-align: center;
         color: white;
         background: darkgray;
-        // font-family: "Noto Sans", sans-serif;
         border-radius: 0;
     }
     .movetocenter{
@@ -125,19 +130,6 @@
         
     }
 
-/*    .slogan-container {
-        text-align: center;
-    }
-
-    .slogan {
-        font-family: Georgia;
-        font-size: 2.5rem;
-        padding: 80px 0 80px;
-    }
-
-    .slogan-btn {
-        padding-bottom: 50px;
-    }*/
 
 /*-----------------------------------*/
 

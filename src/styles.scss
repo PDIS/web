@@ -67,11 +67,11 @@ canvas {
 
 .main-container {
     background-color: #F0F0F0;
-    box-shadow: 0 0 15px 5px rgba(28, 28, 28, 0.5);
+    // box-shadow: 0 0 15px 5px rgba(28, 28, 28, 0.5);
     max-width: $max_width;
     margin: 150px auto 0;
     padding: 0 2.5vw;
-    min-height: 40vw;
+    // min-height: 40vw;
 }
 
 @media screen and (max-width: 767px) {
@@ -125,10 +125,10 @@ canvas {
     }
 }
 
-.section-line {
+hr.section-line {
     margin: 2.5vw 0;
     height: 1px;
-    background: linear-gradient(to right, transparent 10%, $highlight 50%, transparent 90%);
+    background: linear-gradient(to right, transparent 10%, lightgray 50%, transparent 90%);
     // background: -moz-linear-gradient(left, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
     /* FF3.6-15 */
     // background: -webkit-linear-gradient(left, rgba(214, 111, 229, 0) 10%, rgba(214, 111, 229, 1) 50%, rgba(214, 111, 229, 0) 90%);
@@ -138,26 +138,48 @@ canvas {
 }
 
 hr.section-end {
-    text-align: center;
-    height: 8rem;
+    // text-align: center;
+    height: 5rem;
+    margin: 0 -2.5vw; /* remove container's padding */
+
+    position: relative;
     &:after {
-        content:"#";
-        font-size: 6rem;
-        font-weight: 700;
-        color: #DDDDDD;
+        // content:"#";
+        // font-size: 3rem;
+        // font-weight: 700;
+        // color: lightgray;
+        // opacity: .7;
+
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        border-style: solid;
+        border-color: transparent $back_color;
+        border-width: 2em 3em 0 0;
     }
 }
 
 hr.section-dot {
-    text-align: center;
-    height: 3rem;
-    &:after {
-        content:",";
-        font-size: 6rem;
-        line-height: 0;
-        font-weight: 700;
-        color: #DDDDDD;
-    }
+    // text-align: center;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    margin: 1rem auto;
+    background: lightgray;
+    box-shadow: inset -1px -1px 0 darkgray;
+    opacity: .7;
+    // &:after {
+    //     content:".";
+    //     font-size: 6rem;
+    //     line-height: 0;
+    //     font-weight: 700;
+    //     color: lightgray;
+    //     text-shadow: 3px 3px 1px darkgrey; 
+    // }
 }
 
 .highlight {

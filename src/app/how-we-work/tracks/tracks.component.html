@@ -9,13 +9,11 @@
     </div>
   </div>
 
-  <div class="section-line"></div>
-
   <div class="cloud">
     <app-tag-cloud [width]="1000" [height]="200" [data]="tags" [removeOverflow]="true"></app-tag-cloud>
   </div>
 
-  <div class="section-line"></div>
+  <hr class="section-line" />
 
   <!-- Nav tabs -->
   <div class="card">
@@ -63,13 +61,11 @@
     <!-- event binding -->
     <!-- <autoload (onEnd)="getMorePosts(more_url)"></autoload> -->
     <p class="text-center">
-      <button type="button" class="btn btn-default" style="width: 50%; margin-bottom: 1ex" (click)="getMorePosts(more_url)"> read more... </button>
+      <button type="button" class="btn btn-default more" (click)="getMorePosts(more_url)"> <i class="fa fa-toggle-down"></i> READ MORE... </button>
     </p>
 
   </div>
 
-
-
-
+  <hr class="section-end">
 
 </div>
