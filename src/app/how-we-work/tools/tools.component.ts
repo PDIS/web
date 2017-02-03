@@ -2,9 +2,9 @@ import { DataService } from './../../shared/dataService/data-service.service';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser/src/security/dom_sanitization_service';
 
-declare var particlesJS: any;
-// declare var angular: any;
+// declare var particlesJS: any;
 // declare var $;
+// declare var WOW: any;
 
 @Component({
     selector: 'app-tools',
@@ -20,10 +20,6 @@ export class ToolsComponent implements OnInit {
     }
 
     ngOnInit() {
-        // ******************** particlesJS
-        particlesJS.load("particles", "../../assets/particles.json", function () {
-            console.log('callback - particles.js config loaded');
-        });
 
         // how-we-work-tools = 54
         // fetch the title & thumb of tools

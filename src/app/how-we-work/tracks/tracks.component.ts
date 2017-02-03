@@ -10,7 +10,7 @@ import 'rxjs/add/operator/do';
 // import 'rxjs/add/operator/toPromise';
 import { Discourselink } from './../../../assets/discourselink';
 
-declare var particlesJS: any;
+// declare var particlesJS: any;
 
 @Component({
     selector: 'app-tracks',
@@ -152,9 +152,9 @@ export class TracksComponent implements OnInit {
 
     ngOnInit() {
         // ******************** particlesJS
-        particlesJS.load("particles", "../../assets/particles.json", function () {
-            console.log('callback - particles.js config loaded');
-        });
+        // particlesJS.load("particles", "../../assets/particles.json", function () {
+        //     console.log('callback - particles.js config loaded');
+        // });
 
         // Tag Query
         this.activatedRoute.params.subscribe(

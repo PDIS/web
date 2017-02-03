@@ -2,7 +2,7 @@ import { Http } from '@angular/http';
 import { DataService } from './../shared/dataService/data-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Discourselink } from './../../assets/discourselink';
-declare var particlesJS: any;
+// declare var particlesJS: any;
 
 @Component({
   selector: 'app-what-we-do',
@@ -56,9 +56,12 @@ export class WhatWeDoComponent implements OnInit {
         })
       });
 
-    particlesJS.load("particles", "../../assets/particles.json", function () {
-      console.log('callback - particles.js config loaded');
-    });
+
+    // ******************** particlesJS
+    // particlesJS.load("particles", "../../assets/particles.json", function () {
+    //     console.log('callback - particles.js config loaded');
+    // });
+
 
   }
 

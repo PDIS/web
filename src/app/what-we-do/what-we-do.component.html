@@ -21,8 +21,8 @@
 
             <div class="item">
 
-                <div class="slogan-container" id="particles">
-                    <div class="slogan animated fadeInUp">
+                <div class="slogan-container">
+                    <div class="slogan">
                         <span>
                           We incubate and facilitate
                           <br>
@@ -51,8 +51,8 @@
 
     <hr class="section-line">
 
-    <div *ngFor="let topic of topics; let i = index; let isOdd = odd">
-        <div class="topic-container" [ngClass]="{'topic-right':isOdd,'topic-left':!isOdd}">
+    <div *ngFor=" let topic of topics; let i = index; let isOdd = odd ">
+        <div class="topic-container wow" [ngClass]="{'topic-right fadeInRight':isOdd,'topic-left fadeInLeft':!isOdd}">
             <div class="text">
                 <h1>{{topic.title}}</h1>
                 <div [innerHTML]="topic['text']"></div>
@@ -68,7 +68,7 @@
     </div>
 
     <div class="tell-us-container">
-        <div class="tell-us-content">
+        <div class="tell-us-content wow zoomIn">
             <h2>Tell us what you think about</h2>
             <img src="/assets/img/PDIS-logo-text.png" alt="">
             <textarea rows="5" class="think-area"></textarea>
