@@ -50,15 +50,16 @@ footer {
             }
 
             ul {
-                margin: 0 0 1em 0;
-                padding: 0 1em;
+                // margin: 0 0 1em 0;
                 list-style: none;
+                padding: 0;
 
                 li {
                     line-height: 2em;
                     position: relative;
 
-                    &::before {
+                    /* &::before {
+                        // triangle list-style
                         content: "";
                         border-color: transparent $sheet_color;
                         border-style: solid;
@@ -72,24 +73,27 @@ footer {
 
                         @media screen and (max-width: $breakpoint_tablet) {
                             display: none;
-                        }
+                        } 
                     }
 
-                    &:hover::before {
+                     &:hover::before {
                         border-color: transparent $highlight;
                         transition: all 0.3s ease;
-                    }
+                    } */
 
                     a {
                         display: block;
                         color: $sheet_color;
+                        padding: 0 1em;
 
                         @media screen and (max-width: $breakpoint_tablet) {
                             text-align: center;
                         }
 
                         &:hover {
-                            color: $highlight;
+                            // color: $highlight;
+                            color: $back_color;
+                            background: $sheet_color;
                         }
                     }
                 }
