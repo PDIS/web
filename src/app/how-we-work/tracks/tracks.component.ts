@@ -39,7 +39,7 @@ export class TracksComponent implements OnInit {
         private activatedRoute: ActivatedRoute)
     { }
 
-    private getCategory() { //È¡µÃ·Öî(ÖÃí”ÎÄÕÂ)
+    private getCategory() { //å–å¾—åˆ†é¡ž(ç½®é ‚æ–‡ç« )
         return this.http.get(Discourselink.Host + Discourselink.Text + Discourselink.HOWWEWORKTRACK + "/73.json?include_raw=1")
             .map(function(data) {
                 data = data.json();
@@ -48,7 +48,7 @@ export class TracksComponent implements OnInit {
             })
     }
 
-    private getIds() { //È¡µÃÓ‘Õ“…^Ã¿ÆªÎÄµÄID
+    private getIds() { //å–å¾—è¨Žè«–å€æ¯ç¯‡æ–‡çš„ID
 
         let data = (this.q === undefined) ?
                 (this.http.get(Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename)) :
@@ -68,7 +68,7 @@ export class TracksComponent implements OnInit {
         })
     }
 
-    private getPost(id: string) { // È¡µÃÃ¿ÆªPOÎÄ
+    private getPost(id: string) { // å–å¾—æ¯ç¯‡POæ–‡
         return this.http.get(Discourselink.Host + Discourselink.Text + id + ".json?include_raw=1")
             .map(function(data) {
                 data = data.json();
@@ -83,7 +83,7 @@ export class TracksComponent implements OnInit {
             })
     }
 
-    private distribute_post(category, post) { //Œ¢Ã¿ÆªPOÎÄÅc¸÷·ÖîÖÐµÄêPæI×Ö±ÈŒ¦
+    private distribute_post(category, post) { //å°‡æ¯ç¯‡POæ–‡èˆ‡å„åˆ†é¡žä¸­çš„é—œéµå­—æ¯”å°
         post['category'] = 'Other';
         Object.keys(category).forEach(key => {
             for (var i = 0; i < category[key].length; i++) {
