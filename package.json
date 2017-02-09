@@ -51,6 +51,7 @@
     "tslint": "3.13.0",
     "typescript": "~2.0.3",
     "webdriver-manager": "10.2.5",
-    "yamljs": "^0.2.8"
+    "yamljs": "^0.2.8",
+    "extract-text-webpack-plugin": "2.0.0-beta.4"
   }
 }
