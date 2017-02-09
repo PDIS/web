@@ -49,19 +49,17 @@ export class WhatWeDoComponent implements OnInit {
       .subscribe(ids => {
         ids.forEach(id => {
           this.getPost(id)
-            .do(data => console.log(data))
+            // .do(data => console.log(data))
             .subscribe(post => {
               this.topics.push(post);
             })
         })
       });
 
-
     // ******************** particlesJS
     // particlesJS.load("particles", "../../assets/particles.json", function () {
     //     console.log('callback - particles.js config loaded');
     // });
-
 
   }
 

@@ -156,7 +156,7 @@ hr.section-end {
         height: 0;
         position: absolute;
         right: 0;
-        bottom: 0;
+        bottom: -1px;
         border-style: solid;
         border-color: transparent $back_color;
         border-width: 2em 3em 0 0;

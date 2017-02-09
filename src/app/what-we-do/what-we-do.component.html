@@ -1,26 +1,17 @@
 <div class="main-container">
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="30000000">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        </ol>
-
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-
+            <!-- 1 -->
             <div class="item active">
-
                 <!-- <div style="min-height:650px"> -->
                 <div class="iframeWrapper">
                     <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshu.w.zhengwei%2Fvideos%2F161981934293085%2F%3Fl%3D598307961771178061&show_text=false&show_captions=true&appId" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
                 </div>
-
             </div>
-
+            <!-- 2 -->
             <div class="item">
-
                 <div class="slogan-container">
                     <div class="slogan">
                         <span>
@@ -33,11 +24,14 @@
                         <button type="button" class="btn-pdis" [routerLink]="'/how-we-work/'">MORE ABOUT PDIS</button>
                     </div>
                 </div>
-
             </div>
-
+            <!---->
         </div>
-
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        </ol>
         <!-- Controls -->
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="background-image:initial">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -57,8 +51,8 @@
                 <h1>{{topic.title}}</h1>
                 <div [innerHTML]="topic['text']"></div>
                 <a class="btn-pdis" [routerLink]="'/what-we-do/'+topic.id" role="button">
-        More about {{topic.title}}
-      </a>
+                    More about {{topic.title}}
+                </a>
             </div>
             <div class="image" [innerHTML]="topic['image']"></div>
         </div>
