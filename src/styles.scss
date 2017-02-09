@@ -20,10 +20,35 @@ body {
     background-color: $back_color;
     font-size: $main-font-size;
     color: $text_color;
-}
-
-body > .skiptranslate {
-    display: none; // Hide Google Translate top row
+    /***************** Hide Google Translate top row */
+    > .skiptranslate {
+        display: none; 
+    }
+    /***************** Style Google Translate corner */
+    > #google_translate_element {
+        width: 300px;
+        height: 240px;
+        background: salmon;
+        border-radius: 50%;
+        opacity: 0.8;
+        z-index: 99999;
+        position: fixed;
+        bottom: -170px;
+        right: -140px;
+        padding: 30px 0 0 40px;
+        transition: all .3s ease;
+        &:hover {
+            bottom: -120px;
+            right: -110px;
+            opacity: 1;
+        }
+        &::before {
+            /* translation */
+            content: "翻譯米糕";
+            display: block;
+            font-size: 3rem;
+        }
+    }
 }
 
 

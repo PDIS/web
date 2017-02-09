@@ -38,10 +38,10 @@
     width: 5%;
     /* move out from slider content */
     &.left {
-        left: calc((100vw - 100%)/-4);
+        left: calc((100vw - 100%) / -4 + 1em);
     }
     &.right {
-        right: calc((100vw - 100%)/4);
+        right: calc((100vw - 100%) / -4 + 1em);
     }
 }
 
