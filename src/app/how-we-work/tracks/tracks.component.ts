@@ -7,10 +7,10 @@ import { ConvertService } from './../../shared/convertService/convert.service';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
-// import 'rxjs/add/operator/toPromise';
 import { Discourselink } from './../../../assets/discourselink';
 
 // declare var particlesJS: any;
+declare var WOW: any;
 
 @Component({
     selector: 'app-tracks',
@@ -20,14 +20,7 @@ import { Discourselink } from './../../../assets/discourselink';
 
 export class TracksComponent implements OnInit {
 
-    // posts = [];
-    // counts = {};
     tags = [];
-    // speeches = [];
-    // meetings = [];
-    // conferences = [];
-    // interviews = [];
-    // others = [];
     total = [];
     q = "";
     more_url: string
@@ -151,6 +144,9 @@ export class TracksComponent implements OnInit {
     }
 
     ngOnInit() {
+        /* WOW for animateCSS */
+        new WOW().init();
+        
         // ******************** particlesJS
         // particlesJS.load("particles", "../../assets/particles.json", function () {
         //     console.log('callback - particles.js config loaded');

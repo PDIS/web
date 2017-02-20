@@ -58,37 +58,11 @@ footer {
                     line-height: 2em;
                     position: relative;
 
-                    /* &::before {
-                        // triangle list-style
-                        content: "";
-                        border-color: transparent $sheet_color;
-                        border-style: solid;
-                        border-width: 0.25em 0 0.25em 0.25em;
-                        display: block;
-                        height: 0;
-                        width: 0;
-                        top: .75em;
-                        left: -1ex;
-                        position: absolute;
-
-                        @media screen and (max-width: $breakpoint_tablet) {
-                            display: none;
-                        } 
-                    }
-
-                     &:hover::before {
-                        border-color: transparent $highlight;
-                        transition: all 0.3s ease;
-                    } */
-
                     a {
                         display: block;
                         color: $sheet_color;
                         padding: 0 1em;
-
-                        @media screen and (max-width: $breakpoint_tablet) {
-                            text-align: center;
-                        }
+                        text-align: center;
 
                         &:hover {
                             // color: $highlight;

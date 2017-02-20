@@ -2,10 +2,13 @@
 
 /*-----------------------------------*/
 
-.carousel {
+.swiper-container {
     margin: 0 -2.5vw;
-    // display: flex;
-    // align-items: center;
+
+    .swiper-wrapper{
+        align-items: center;
+    }
+
     .iframeWrapper {
         position: relative;
         padding-bottom: 56.25%; /* 16:9 */
@@ -21,29 +24,25 @@
             overflow: hidden;
         }
     }
-}
-.carousel-indicators {
-    bottom: -10px;
-    li {
-        border: 0;
-        // border-color: gray;
-        background-color: lightgray;
+
+    .slogan-container {
+        text-align: center;
+        font-size: 5rem;
+        @media screen and (max-width: $breakpoint_tablet) {
+            font-size: 2.5rem;
+        }
+        .slogan {
+            font-family: $slogan_font;
+            padding: 2em 0;
+        }
+        a.more {
+            font-size: 50%;
+            font-family: $btn_font;
+            display: flex;
+            flex-flow: column;
+        }
     }
-    li.active {
-        background-color: gray;
-    }
-}
-.carousel-control {
-    color: $sheet_color;
-    width: 5%;
-    /* move out from slider content */
-    &.left {
-        left: calc((100vw - 100%) / -4 + 1em);
-    }
-    &.right {
-        right: calc((100vw - 100%) / -4 + 1em);
-    }
-}
+}      
 
 /*-----------------------------------*/
 
@@ -54,21 +53,13 @@
     &.topic-left {
         flex-flow: row;
         text-align: left;
-        // .image {
-        // right: 0;
-        // }
     }
     &.topic-right {
         flex-flow: row-reverse;
         text-align: right;
-        // .image {
-        // left: 0;
-        // }
     }
     .text {
         flex: 3;
-        // position: inherit;
-        // width: 50vw;
         max-width: $max_width * 0.5;
         display: inline-block;
         margin: 0 -1em;
@@ -78,8 +69,6 @@
     }
     .image {
         flex: 2;
-        // position: absolute;
-        // width: 50vw;
         max-width: $max_width * 0.5;
         display: inline-block;
         margin: 2.5vw -1em;
@@ -119,13 +108,6 @@
     }
 }
 
-
-/*-----------------------------------*/
-// :host /deep/ img {
-//     height: 100%;
-//     width: auto;
-//     max-width: none;
-// }
 @media screen and (max-width: $breakpoint_tablet) {
     .topic-container {
         width: 100%;
@@ -147,23 +129,13 @@
         }
     }
 
-    /*-----------------------------------*/
-
     .tell-us-container {
-        // background-image: url("assets/img/pdis-team.JPG");
-        // background-size: cover;
-        // margin: 0;
-        // padding: 2.5vw;
-        // text-align: center;
         .tell-us-content {
             // width: 100%
             h2 {
                 font-size: 2rem;
                 // margin-bottom: 1em;
             }
-            // img {
-                // width: 6em;
-            // }
         }
     }
 

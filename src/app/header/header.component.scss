@@ -1,61 +1,31 @@
 @import "../../styles.scss";
-$nav-hight: 100px;
-$nav-hight-mobile: 60px;
 
 // *************************** LOGO section
 
 .logo-container {
-    height: $nav-hight;
+    height: $nav-height;
     // overflow: hidden;
 }
 
 .logo {
     transition: all 0.3s ease;
-    width: $nav-hight;
+    width: $nav-height;
     margin: 10px 0 0 15px;
     box-shadow: 1px 5px 15px 2px rgba(20, 20, 20, 0.4);
-    // margin-top: $nav-hight / 3;
-    // margin-left: 2.5vw;
-/*    &.bigLogo {
-        width: $nav-hight * 3;
-        margin-top: -($nav-hight / 6);
-    }*/
 }
-
-/*.logo-square {
-    width: $nav-hight;
-    height: $nav-hight;
-    opacity: 0;
-    transition: opacity 0.3s linear;
-    position: absolute;
-    top: 0;
-}*/
 
 @media screen and (max-width: $breakpoint_tablet) {
     .logo-container {
-        height: $nav-hight-mobile;
+        height: $nav-height-mobile;
         // overflow: hidden;
     }
     .logo {
         // transition: all 0.3s ease;
-        width: $nav-hight-mobile;
+        width: $nav-height-mobile;
         margin: 0 0 0 15px;
         box-shadow: 0;
         // margin-top: $nav-hight-mobile / 3;
-/*        &.bigLogo {
-            width: $nav-hight-mobile * 3;
-            margin-top: -($nav-hight-mobile / 10);
-        }*/
     }
-/*    .logo-square {
-        width: $nav-hight-mobile;
-        height: $nav-hight-mobile;
-        opacity: 0;
-        transition: opacity 0.3s linear;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }*/
 }
 
 // *************************** nav bar section
@@ -137,7 +107,7 @@ $nav-hight-mobile: 60px;
         background-color: $back_color;
     }
     .navbar-toggle {
-        margin-top: ($nav-hight-mobile - 34px) / 2;
+        margin-top: ($nav-height-mobile - 34px) / 2;
     }
     .navbar-nav {
         margin: 0 -15px;

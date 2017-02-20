@@ -3,6 +3,8 @@ import { DataService } from './../shared/dataService/data-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Discourselink } from './../../assets/discourselink';
 // declare var particlesJS: any;
+declare var WOW: any;
+declare var Swiper: any;
 
 @Component({
   selector: 'app-what-we-do',
@@ -56,11 +58,23 @@ export class WhatWeDoComponent implements OnInit {
         })
       });
 
-    // ******************** particlesJS
+    /* WOW for animateCSS */
+    new WOW().init();
+
+    /* particlesJS */
     // particlesJS.load("particles", "../../assets/particles.json", function () {
     //     console.log('callback - particles.js config loaded');
     // });
 
+    new Swiper('.swiper-container', {
+      // Optional parameters
+      autoplay: 10000, /* 10 sec to change */
+      keyboardControl: true,
+      direction: 'horizontal',
+      loop: true,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+    })
   }
 
 }

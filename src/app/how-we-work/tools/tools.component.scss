@@ -16,6 +16,30 @@ img{
     // width:auto;
 }
 
+// ******************** slogan section
+
+.slogan-container {
+    position: relative;
+    text-align: center;
+}
+
+.slogan {
+    position: relative;
+    font-family: $slogan_font;
+    font-size: 5rem;
+    padding: 3em 0;
+    z-index: 100;
+    @media screen and (max-width: $breakpoint_tablet) {
+        font-size: 3rem;
+    }
+}
+
+.slogan-btn {
+    position: relative;
+    padding: 3rem;
+    z-index: 100;
+}
+
 /*-----------------thumb------------------*/
 
 ul.thumb-container{

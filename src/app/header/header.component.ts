@@ -15,7 +15,7 @@ import {ElementRef} from '@angular/core';
 
 export class HeaderComponent {
 
-    topPos = 50;
+    topPos = 30;
     isTop: boolean = true;
 
     lastDirection: string;
