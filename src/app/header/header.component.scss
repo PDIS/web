@@ -1,18 +1,91 @@
 @import "../../styles.scss";
 
+/* site-nav */
+// $h-nav: $nav-height;
+$h-nav: 10rem;
+nav.site-nav {
+    background: white;
+    height: $h-nav;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0 calc((100vw - #{$max_width})/2);
+    .logo {
+        padding: 3px 0;
+        img {
+            max-height: 100%;
+            width: auto;
+        }
+    }
+    .menu {
+        ul {
+            padding: 0;
+        }
+        ul>li { /* items */
+            background: white;
+            display: inline-block;
+            position: relative;
+            vertical-align: top;
+            a { /* item links */
+                font-family: $btn_font;
+                color: $text_color;
+                height: $h-nav;
+                width: 10ch;
+                padding: 0 3ch;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                &:hover {
+                    color: white;
+                    background: $text_color;
+                    +ul { /* showed sub menus */
+                        max-height: initial;
+                    }
+                }
+            }
+            ul { /* hidden sub menus */
+                position: absolute;
+                top: $h-nav;
+                left: 0;
+                max-height: 0;
+                overflow: hidden;
+                z-index: 1000;
+                &:hover { /* showed sub menus */
+                    max-height: initial;
+                }
+            }
+        }
+    }
+}
+
+#top {
+    position: fixed;
+    bottom: .5em;
+    left: .5em;
+    font-size: 3rem;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba($highlight, 0.8);
+    z-index: 99999;
+}
+
 // *************************** LOGO section
 
 .logo-container {
     height: $nav-height;
     // overflow: hidden;
+    .logo {
+        transition: all 0.3s ease;
+        width: $nav-height;
+        margin: 10px 0 0 15px;
+        box-shadow: 1px 5px 15px 2px rgba(20, 20, 20, 0.4);
+    }
 }
 
-.logo {
-    transition: all 0.3s ease;
-    width: $nav-height;
-    margin: 10px 0 0 15px;
-    box-shadow: 1px 5px 15px 2px rgba(20, 20, 20, 0.4);
-}
 
 @media screen and (max-width: $breakpoint_tablet) {
     .logo-container {

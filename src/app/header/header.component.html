@@ -1,4 +1,34 @@
-<div class="header-line"></div>
+<a id="top" href="#" role="button" (click)="goAnchor('top')"> <i class="fa fa-arrow-up"></i> </a>
+
+<nav style="display:none" class="site-nav">
+  <div class="logo">
+    <a [routerLink]="['/']">
+      <img src="/assets/img/pdis-logo-final-inverse.png" alt="logo"></a>
+  </div>
+  <div class="menu">
+    <ul>
+      <li>
+        <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do']">What We Do</a>
+      </li>
+      <li>
+        <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']">How We Work</a>
+        <ul>
+          <li>
+            <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work/tracks']">Tracks</a>
+          </li>
+          <li>
+            <a [routerLinkActive]="['active']" [routerLink]="['/how-we-works/tools']">Tools</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a [routerLinkActive]="['active']" [routerLink]="['/get-involved']">Get Involved</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--<div class="header-line"></div>-->
 <nav class="navbar navbar-fixed-top navbar-pdis" [style.top]="showNav ? '5px' : '-115px'">
   <div class="nav-container">
     <!-- Brand and toggle get grouped for better mobile display -->
