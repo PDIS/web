@@ -35,11 +35,12 @@
             font-family: $slogan_font;
             padding: 2em 0;
         }
-        a.more {
-            font-size: 50%;
+        .more {
+            font-size: 40%;
             font-family: $btn_font;
             display: flex;
             flex-flow: column;
+            align-items: center;
         }
     }
 }      

@@ -13,13 +13,14 @@
                         </span>
                     </p>
                     <p class="text-center">
-                        <a [routerLink]="'/how-we-work/'" class="more">
-                            <i class="fa fa-3x fa-angle-double-down animated pulse infinite"></i>
-                            <span>MORE ABOUT PDIS</span>
-                        </a>
+                        <span class="more">
+                            <a class="btn-pdis" href="#" role="button" (click)="goAnchor('#start')">MORE ABOUT PDIS</a>
+                            <i class="fa fa-3x fa-angle-double-down animated fadeOutDown infinite"></i>
+                        </span>
                     </p>
                 </div>
             </div>
+            <!-- Slides -->
             <div class="swiper-slide">
                 <div class="iframeWrapper">
                     <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshu.w.zhengwei%2Fvideos%2F161981934293085%2F%3Fl%3D598307961771178061&show_text=false&show_captions=true&appId" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
@@ -31,9 +32,9 @@
         <div class="swiper-button-next"></div>
     </div>
     
-    <hr class="section-line">
+    <hr id="start" class="section-line">
 
-    <div *ngFor=" let topic of topics; let i = index; let isOdd = odd ">
+    <div *ngFor="let topic of topics; let i = index; let isOdd = odd ">
         <div class="topic-container wow fadeInUp" [ngClass]="{'topic-right':isOdd,'topic-left':!isOdd}">
             <div class="text">
                 <h1>{{topic.title}}</h1>

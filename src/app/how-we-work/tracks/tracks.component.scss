@@ -62,10 +62,11 @@
     }
 }
 
-a.more {
+.more {
     font-family: $btn_font;
     display: flex;
     flex-flow: column;
+    align-items: center;
 }
 
 .btn-pdis {

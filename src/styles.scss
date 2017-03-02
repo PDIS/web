@@ -3,7 +3,7 @@
 $back_color: #4B0056;
 $sheet_color: #EEEEEE;
 $highlight: #D66FE5;
-$text_color: #111111;
+$text_color: #231f20;
 
 $max_width: 1180px;
 $breakpoint_tablet: 767px;
@@ -31,7 +31,7 @@ body {
     > #google_translate_element {
         font-size: 3rem;
         display: flex;
-        background: rgba($highlight, 0.5);
+        background: rgba($highlight, 0.8);
         z-index: 99999;
         position: fixed;
         bottom: .5em;
@@ -40,7 +40,7 @@ body {
         transition: all .3s ease;
         &:hover {
             right: 0;
-            background: rgba($highlight, 0.8);
+            background: rgba($highlight, 1);
         }
         &::before {
             /* button */

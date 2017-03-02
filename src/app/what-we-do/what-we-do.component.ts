@@ -5,6 +5,7 @@ import { Discourselink } from './../../assets/discourselink';
 // declare var particlesJS: any;
 declare var WOW: any;
 declare var Swiper: any;
+declare var $: any;
 
 @Component({
   selector: 'app-what-we-do',
@@ -44,6 +45,25 @@ export class WhatWeDoComponent implements OnInit {
         return post;
       })
     // .do(data => console.log(data));
+  }
+
+  /* an event handler to go #anchor scroll position */
+  goAnchor(anchor){
+    if(anchor == "top"){
+      /* go to top */
+      $('html, body').animate({
+        scrollTop: 0,
+      }, 1000)
+    }
+    else if(anchor){
+      /* get the top position of anchor */
+      let anchor_y = $(anchor).offset().top
+      /* go to anchor (animation to do) */
+      $('html, body').animate({
+        scrollTop: anchor_y,
+      }, 1000)
+    }
+    return false
   }
 
   ngOnInit() {

@@ -63,10 +63,10 @@
     <!-- <autoload (onEnd)="getMorePosts(more_url)"></autoload> -->
     <p class="text-center">
       <!--<button type="button" class="btn btn-default more" (click)="getMorePosts(more_url)"> <i class="fa fa-toggle-down"></i> READ MORE... </button>-->
-      <a href="#" (click)="getMorePosts(more_url); false" class="more">
-        <i class="fa fa-3x fa-angle-double-down animated pulse infinite"></i>
-        <span>READ MORE</span>
-      </a>
+      <span class="more">
+        <a class="btn-pdis" role="button" href="#" (click)="getMorePosts(more_url); false"> READ MORE </a>
+        <i class="fa fa-3x fa-angle-double-down animated fadeOutDown infinite"></i>
+      </span>
     </p>
 
   </div>
