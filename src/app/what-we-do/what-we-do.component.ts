@@ -92,8 +92,10 @@ export class WhatWeDoComponent implements OnInit {
       keyboardControl: true,
       direction: 'horizontal',
       loop: true,
-      nextButton: '.swiper-button-next',
-      prevButton: '.swiper-button-prev',
+      spaceBetween: 30,
+      grabCursor: true,
+      pagination: '.swiper-pagination',
+      paginationType: 'fraction'
     })
   }
 

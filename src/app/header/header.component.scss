@@ -1,65 +1,6 @@
 @import "../../styles.scss";
 
-/* site-nav */
-// $h-nav: $nav-height;
-$h-nav: 10rem;
-nav.site-nav {
-    background: white;
-    height: $h-nav;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: stretch;
-    padding: 0 calc((100vw - #{$max_width})/2);
-    .logo {
-        padding: 3px 0;
-        img {
-            max-height: 100%;
-            width: auto;
-        }
-    }
-    .menu {
-        ul {
-            padding: 0;
-        }
-        ul>li { /* items */
-            background: white;
-            display: inline-block;
-            position: relative;
-            vertical-align: top;
-            a { /* item links */
-                font-family: $btn_font;
-                color: $text_color;
-                height: $h-nav;
-                width: 10ch;
-                padding: 0 3ch;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                &:hover {
-                    color: white;
-                    background: $text_color;
-                    +ul { /* showed sub menus */
-                        max-height: initial;
-                    }
-                }
-            }
-            ul { /* hidden sub menus */
-                position: absolute;
-                top: $h-nav;
-                left: 0;
-                max-height: 0;
-                overflow: hidden;
-                z-index: 1000;
-                &:hover { /* showed sub menus */
-                    max-height: initial;
-                }
-            }
-        }
-    }
-}
-
+/* to-top button */
 #top {
     position: fixed;
     bottom: .5em;
@@ -71,6 +12,71 @@ nav.site-nav {
     border-radius: 50%;
     background: rgba($highlight, 0.8);
     z-index: 99999;
+}
+
+/* site-nav */
+$nav-h: $nav-height;
+$nav-color: $sheet_color;
+$nav-bg-color: $text_color;
+nav.site-nav {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: $nav-bg-color;
+    height: $nav-h;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0 calc((100% - #{$max_width})/2);
+    .logo {
+        padding: 3px 0;
+        img {
+            border: 3px solid $sheet_color;
+            max-height: 100%;
+            width: auto;
+        }
+    }
+    .menu {
+        ul {
+            padding: 0;
+        }
+        ul>li { /* items */
+            background: $nav-bg-color;
+            display: inline-block;
+            position: relative;
+            vertical-align: top;
+            a { /* item links */
+                font-family: $btn_font;
+                color: $nav-color;
+                height: $nav-h;
+                width: 10ch;
+                padding: 0 3ch;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                &:hover {
+                    color: $nav-bg-color;
+                    background: $nav-color;
+                    +ul { /* showed sub menus */
+                        max-height: initial;
+                    }
+                }
+            }
+            ul { /* hidden sub menus */
+                position: absolute;
+                top: $nav-h;
+                left: 0;
+                max-height: 0;
+                overflow: hidden;
+                &:hover { /* showed sub menus */
+                    max-height: initial;
+                }
+            }
+        }
+    }
 }
 
 // *************************** LOGO section

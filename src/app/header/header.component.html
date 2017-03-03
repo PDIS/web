@@ -1,6 +1,6 @@
 <a id="top" href="#" role="button" (click)="goAnchor('top')"> <i class="fa fa-arrow-up"></i> </a>
 
-<nav style="display:none" class="site-nav">
+<nav class="site-nav">
   <div class="logo">
     <a [routerLink]="['/']">
       <img src="/assets/img/pdis-logo-final-inverse.png" alt="logo"></a>
@@ -29,7 +29,7 @@
 </nav>
 
 <!--<div class="header-line"></div>-->
-<nav class="navbar navbar-fixed-top navbar-pdis" [style.top]="showNav ? '5px' : '-115px'">
+<nav style="display:none" class="navbar navbar-fixed-top navbar-pdis" [style.top]="showNav ? '5px' : '-115px'">
   <div class="nav-container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">

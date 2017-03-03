@@ -6,6 +6,7 @@ import 'rxjs/add/operator/pairwise';
 import { HostListener } from '@angular/core/src/metadata/directives';
 import { Component, OnInit } from '@angular/core';
 import {ElementRef} from '@angular/core';
+declare var $: any;
 
 @Component({
     selector: 'app-header',
