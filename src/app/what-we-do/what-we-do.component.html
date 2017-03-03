@@ -33,7 +33,7 @@
     <hr id="start" class="section-line">
 
     <div *ngFor="let topic of topics; let i = index; let isOdd = odd ">
-        <div class="topic-container wow fadeInUp" [ngClass]="{'topic-right':isOdd,'topic-left':!isOdd}">
+        <div class="topic-container" [ngClass]="{'topic-right':isOdd,'topic-left':!isOdd}">
             <div class="text">
                 <h1>{{topic.title}}</h1>
                 <div [innerHTML]="topic['text']"></div>
@@ -41,7 +41,7 @@
                     More about {{topic.title}}
                 </a>
             </div>
-            <div class="image" [innerHTML]="topic['image']"></div>
+            <div class="image wow fadeInUp" [innerHTML]="topic['image']"></div>
         </div>
 
         <hr class="section-dot">

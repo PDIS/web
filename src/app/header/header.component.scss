@@ -18,6 +18,7 @@
 $nav-h: $nav-height;
 $nav-color: $sheet_color;
 $nav-bg-color: $text_color;
+$nav-sub-num: 2;
 nav.site-nav {
     position: fixed;
     top: 0;
@@ -61,7 +62,7 @@ nav.site-nav {
                     color: $nav-bg-color;
                     background: $nav-color;
                     +ul { /* showed sub menus */
-                        max-height: initial;
+                        max-height: $nav-h * $nav-sub-num;
                     }
                 }
             }
@@ -71,8 +72,9 @@ nav.site-nav {
                 left: 0;
                 max-height: 0;
                 overflow: hidden;
+                transition: all .3s ease;
                 &:hover { /* showed sub menus */
-                    max-height: initial;
+                    max-height: $nav-h * $nav-sub-num;
                 }
             }
         }

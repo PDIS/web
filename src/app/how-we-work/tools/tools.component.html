@@ -15,7 +15,7 @@
 
 	<!-- the blocks of tools -->
 	<ul *ngIf="tools_list" class="thumb-container">
-		<li *ngFor="let post of tools_list['post_stream'].posts" class="thumb wow zoomIn" [innerHTML]="post.cooked"></li>	
+		<li *ngFor="let post of tools_list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked"></li>	
 	</ul>
 
 	<hr class="section-line" />
@@ -26,9 +26,9 @@
 		<template ngFor [ngForOf]="tools_detail_list" let-post let-i="index" let-isLast="last" let-isOdd="odd">
 
 			<!-- {i} -->
-			<div class="topic-container wow" [ngClass]="{'topic-right fadeInRight':isOdd,'topic-left fadeInLeft':!isOdd}">
+			<div class="topic-container" [ngClass]="{'topic-right':isOdd,'topic-left':!isOdd}">
 
-				<div class="image">
+				<div class="image wow fadeInUp">
 					<img [src]="post['img']" alt="">
 				</div>
 

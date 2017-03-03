@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser/src/security/dom_sanitiz
 
 // declare var particlesJS: any;
 // declare var $;
-// declare var WOW: any;
+declare var WOW: any;
 
 @Component({
     selector: 'app-tools',
@@ -20,6 +20,8 @@ export class ToolsComponent implements OnInit {
     }
 
     ngOnInit() {
+        /* WOW for animateCSS */
+        new WOW().init();
 
         // how-we-work-tools = 54
         // fetch the title & thumb of tools
