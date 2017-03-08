@@ -25,7 +25,7 @@ nav.site-nav {
         position: relative;
     }
     top: 0;
-    &.hidden {
+    &.hidenav {
         top: -100%;
     }
     transition: all .3s ease;

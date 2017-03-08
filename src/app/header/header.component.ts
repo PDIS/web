@@ -89,15 +89,15 @@ export class HeaderComponent {
     }
     
     /* add 'hide' class when nav leave top */
-    // $('.site-nav').addClass('hide')
+    // $('.site-nav').addClass('hidenav')
 
-    @ViewChild('mobileBtn') el:ElementRef;
-    @ViewChild('navbar') navbar:ElementRef;
-    constructor(private router: Router, private rd: Renderer) {
-        this.router.events.pairwise().subscribe((e) => {
-            if (e[1] instanceof NavigationStart && this.navbar.nativeElement.classList.contains("in")) {
-                this.rd.invokeElementMethod(this.el.nativeElement,'click');
-            }
-        })
-    }
+    //@ViewChild('mobileBtn') el:ElementRef;
+    //@ViewChild('navbar') navbar:ElementRef;
+    //constructor(private router: Router, private rd: Renderer) {
+    //    this.router.events.pairwise().subscribe((e) => {
+    //        if (e[1] instanceof NavigationStart && this.navbar.nativeElement.classList.contains("in")) {
+    //            this.rd.invokeElementMethod(this.el.nativeElement,'click');
+    //        }
+    //    })
+    //}
 }

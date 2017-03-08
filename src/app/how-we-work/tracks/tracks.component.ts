@@ -30,7 +30,10 @@ export class TracksComponent implements OnInit {
         private convertService: ConvertService,
         private http: Http,
         private activatedRoute: ActivatedRoute)
-    { }
+    { 
+    
+    
+    }
 
     private getCategory() { //取得分類(置頂文章)
         return this.http.get(Discourselink.Host + Discourselink.Text + Discourselink.HOWWEWORKTRACK + "/73.json?include_raw=1")
@@ -45,8 +48,8 @@ export class TracksComponent implements OnInit {
 
         let data = (this.q === undefined) ?
                 (this.http.get(Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename)) :
-                (this.http.get(Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + this.q + Discourselink.Filename))
-
+                (this.http.get(Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + this.q + Discourselink.Filename))
+	console.log(Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + this.q + Discourselink.Filename)
         return data.map(function(data) {
                     data = data.json();
                     var ids = [];
@@ -153,10 +156,11 @@ export class TracksComponent implements OnInit {
         // });
 
         // Tag Query
-        this.activatedRoute.params.subscribe(
+	/* use 'queryParams' instead of 'params' */
+        this.activatedRoute.queryParams.subscribe(
             (param: any) => {
                 this.q = param['q'];
-                // console.log(this.q);
+                console.log(param);
             });
 
         // Tags Cloud
@@ -216,7 +220,7 @@ export class TracksComponent implements OnInit {
                 })
 
             })
-            // console.log(this.total);
+            console.log(this.total.length);
         });
 
         /* get the first more_url */

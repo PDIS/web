@@ -95,7 +95,7 @@ export class WhatWeDoComponent implements OnInit {
       spaceBetween: 30,
       grabCursor: true,
       pagination: '.swiper-pagination',
-      paginationType: 'fraction'
+      //paginationType: 'fraction'
     })
   }
 

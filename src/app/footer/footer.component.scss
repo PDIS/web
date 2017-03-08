@@ -4,6 +4,7 @@ footer {
 
     max-width: $max_width;
     margin: 1em auto;
+    background: $sheet_color;
 
     .container {
 
@@ -34,8 +35,8 @@ footer {
 
             h1 {
                 text-align: center;
-                background: $sheet_color;
-                color: $back_color;
+                //background: $sheet_color;
+                //color: $back_color;
                 font-size: 3rem;
                 font-weight: 700;
                 border-right: 1px solid $back_color;
@@ -60,14 +61,13 @@ footer {
 
                     a {
                         display: block;
-                        color: $sheet_color;
+                        //color: $sheet_color;
                         padding: 0 1em;
                         text-align: center;
 
                         &:hover {
-                            // color: $highlight;
-                            color: $back_color;
-                            background: $sheet_color;
+                            //color: $back_color;
+                            //background: $sheet_color;
                         }
                     }
                 }
