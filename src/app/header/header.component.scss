@@ -28,7 +28,7 @@ nav.site-nav {
     &.hidenav {
         top: -100%;
     }
-    transition: all .3s ease;
+    transition: all .5s ease-in-out;
     z-index: 1000;
     width: 100%;
     background: $nav-bg-color;
@@ -47,7 +47,7 @@ nav.site-nav {
         height: 100%;
         padding: 3px 0;
         img {
-            border: 3px solid $sheet_color;
+            border: 3px solid $nav-color;
             border-radius: 3px;
             max-height: 100%;
             width: auto;

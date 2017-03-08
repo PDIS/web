@@ -23,17 +23,14 @@ export class TracksComponent implements OnInit {
     tags = [];
     total = [];
     q = "";
-    more_url: string
+    more_url: string = ""
 
     constructor(
         private dataService: DataService,
         private convertService: ConvertService,
         private http: Http,
-        private activatedRoute: ActivatedRoute)
-    { 
-    
-    
-    }
+        private activatedRoute: ActivatedRoute
+    ){}
 
     private getCategory() { //取得分類(置頂文章)
         return this.http.get(Discourselink.Host + Discourselink.Text + Discourselink.HOWWEWORKTRACK + "/73.json?include_raw=1")
@@ -49,7 +46,7 @@ export class TracksComponent implements OnInit {
         let data = (this.q === undefined) ?
                 (this.http.get(Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename)) :
                 (this.http.get(Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + this.q + Discourselink.Filename))
-	console.log(Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + this.q + Discourselink.Filename)
+
         return data.map(function(data) {
                     data = data.json();
                     var ids = [];
@@ -74,12 +71,12 @@ export class TracksComponent implements OnInit {
                 detail['content'] = data['post_stream']['posts'][0]['raw'];
                 detail['tags'] = data['tags'];
                 return detail;
-
-
             })
     }
 
     private distribute_post(category, post) { //將每篇PO文與各分類中的關鍵字比對
+        // category = {conference:['xx','oo'], ...}
+        // post = {title:'xxxoo'}
         post['category'] = 'Other';
         Object.keys(category).forEach(key => {
             for (var i = 0; i < category[key].length; i++) {
@@ -89,10 +86,7 @@ export class TracksComponent implements OnInit {
                 }
             }
         })
-
-
         return post;
-
     }
 
     getMorePosts(more_url: string) {
@@ -105,15 +99,24 @@ export class TracksComponent implements OnInit {
                 .map(rspn => rspn.json().topic_list.more_topics_url)
                 .subscribe(more_url => this.more_url = more_url)
         else {
-            // /c/pdis-site/how-we-work-track/l/latest.json?page=1
+            // '/c/pdis-site/how-we-work-track/l/latest.json?page=1'
             this.http
                 .get(Discourselink.Host + more_url.replace(/latest/,'latest.json'))
                 .map(rspn => rspn.json().topic_list.more_topics_url)
                 .subscribe(more_url => this.more_url = more_url)
 
-            // /* fetch 30 more post from backend when user hit the ground (call this) */
-            // // data["topic_list"]["more_topics_url"] = "/c/pdis-site/how-we-work-track/l/latest?page=1"
-            this.http
+            /* init categories */
+            this.getCategory().subscribe(category => {
+                category = this.convertService.convertYAMLtoJSON(category)
+                // this.total.push({ category: 'All', posts: new Array<string>() });
+                // Object.keys(category).forEach(key => {
+                //     this.total.push({ category: key, posts: new Array<string>() });
+                // })
+                // this.total.push({ category: 'Other', posts: new Array<string>() });
+
+                /* fetch 30 more post from backend when user hit the ground (call this) */
+                // data["topic_list"]["more_topics_url"] = "/c/pdis-site/how-we-work-track/l/latest?page=1"
+                this.http
                 .get(Discourselink.Host + more_url.replace(/latest/,'latest.json'))
                 // .toPromise()
                 // .then(response => response.json().data)
@@ -130,38 +133,32 @@ export class TracksComponent implements OnInit {
                             let content = this.convertService.convertYAMLtoJSON(post['content'])
                             post['content'] = content['content']
                             /* distribute category for each post */
-                            post = this.distribute_post('Other', post);
+                            post = this.distribute_post(category, post);
                             /* category: All */
                             this.total[0]['posts'].push(post);
                             /* category: Other, etc... */
                             let cat_list = this.total.map(cat => cat['category'])
-                            this.total[cat_list.indexOf(post['category'])]['posts'].push(post)
+                            let cat_index = cat_list.indexOf(post['category'])
+                            this.total[cat_index]['posts'].push(post)
                             /* need sort? */
-                            this.total[cat_list.indexOf(post['category'])]['posts'].sort((a, b) => b.date - a.date)
+                            this.total[cat_index]['posts'].sort((a, b) => b.date - a.date)
                         })
-
                     }
-
                 })
+            })
         }
     }
 
     ngOnInit() {
         /* WOW for animateCSS */
         new WOW().init();
-        
-        // ******************** particlesJS
-        // particlesJS.load("particles", "../../assets/particles.json", function () {
-        //     console.log('callback - particles.js config loaded');
-        // });
 
         // Tag Query
-	/* use 'queryParams' instead of 'params' */
-        this.activatedRoute.queryParams.subscribe(
-            (param: any) => {
-                this.q = param['q'];
-                console.log(param);
-            });
+        /* use 'queryParams' instead of 'params' */
+        this.activatedRoute.queryParams.subscribe(param => {
+            this.q = param['q'];
+            console.log(param['q']||'no q');
+        });
 
         // Tags Cloud
         this.http.get(Discourselink.Host + "tags/filter/search.json")
@@ -183,9 +180,8 @@ export class TracksComponent implements OnInit {
                 tags => { this.tags = tags; }
             );
 
-
-
         // Timeline
+        /* init categories */
         this.getCategory().subscribe(category => {
             category = this.convertService.convertYAMLtoJSON(category)
             this.total.push({ category: 'All', posts: new Array<string>() });
@@ -193,17 +189,13 @@ export class TracksComponent implements OnInit {
                 this.total.push({ category: key, posts: new Array<string>() });
             })
             this.total.push({ category: 'Other', posts: new Array<string>() });
-
+            /* get the posts */
             this.getIds().subscribe(ids => {
                 ids.forEach(id => {
                     this.getPost(id).subscribe(post => {
-
                         var content = this.convertService.convertYAMLtoJSON(post['content'])
-
                         post['content'] = content['content']
-
                         post = this.distribute_post(category, post); // match category
-
                         this.total[0]['posts'].push(post);
                         this.total.forEach(object => {
                             if (object['category'] === post['category']) {
@@ -213,18 +205,14 @@ export class TracksComponent implements OnInit {
                                 return new Date(b.date).getTime() - new Date(a.date).getTime();
                             });
                         })
-                       
-
                     })
-
                 })
-
             })
-            console.log(this.total.length);
+            // console.log(this.total[0].posts.length);
         });
 
         /* get the first more_url */
-        this.getMorePosts("");
+        this.getMorePosts(this.more_url)
     }
 
 }
