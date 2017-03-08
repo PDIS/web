@@ -17,43 +17,68 @@
 /* site-nav */
 $nav-h: $nav-height;
 $nav-color: $sheet_color;
-$nav-bg-color: $text_color;
+$nav-bg-color: $link_color;
 $nav-sub-num: 2;
 nav.site-nav {
     position: fixed;
+    @media only screen and (max-width: $breakpoint_tablet){
+        position: relative;
+    }
     top: 0;
+    &.hidden {
+        top: -100%;
+    }
+    transition: all .3s ease;
     z-index: 1000;
     width: 100%;
     background: $nav-bg-color;
     height: $nav-h;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-between;
     align-items: stretch;
     padding: 0 calc((100% - #{$max_width})/2);
     .logo {
+        text-align: center;
+        flex: 0 0 auto;
+        @media only screen and (max-width: $breakpoint_tablet){
+            flex: 1 0 100%; /* take all the width */
+        }
+        height: 100%;
         padding: 3px 0;
         img {
             border: 3px solid $sheet_color;
+            border-radius: 3px;
             max-height: 100%;
             width: auto;
         }
     }
     .menu {
+        font-size: 100%;
+        flex: 0 0 auto;
+        @media only screen and (max-width: $breakpoint_tablet){
+            font-size: 80%;
+            flex: 1 0 100%; /* take all the width */
+        }
         ul {
             padding: 0;
+            display: flex;
+            flex-flow: row nowrap;
         }
         ul>li { /* items */
             background: $nav-bg-color;
             display: inline-block;
             position: relative;
             vertical-align: top;
+            flex: 1 0 0px;
             a { /* item links */
                 font-family: $btn_font;
                 color: $nav-color;
                 height: $nav-h;
-                width: 10ch;
-                padding: 0 3ch;
+                @media only screen and (max-width: $breakpoint_tablet){
+                    height: 100%;
+                }
+                padding: 1ch;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -61,124 +86,128 @@ nav.site-nav {
                 &:hover {
                     color: $nav-bg-color;
                     background: $nav-color;
-                    +ul { /* showed sub menus */
+                    +ul { /* show sub menus */
                         max-height: $nav-h * $nav-sub-num;
                     }
                 }
             }
-            ul { /* hidden sub menus */
+            ul { /* hide sub menus */
                 position: absolute;
                 top: $nav-h;
+                @media only screen and (max-width: $breakpoint_tablet){
+                    top: 100%;
+                }
                 left: 0;
                 max-height: 0;
+                width: 100%;
                 overflow: hidden;
                 transition: all .3s ease;
-                &:hover { /* showed sub menus */
+                flex-flow: column;
+                &:hover { /* show sub menus */
                     max-height: $nav-h * $nav-sub-num;
                 }
             }
         }
     }
 }
-
 // *************************** LOGO section
 
-.logo-container {
-    height: $nav-height;
-    // overflow: hidden;
-    .logo {
-        transition: all 0.3s ease;
-        width: $nav-height;
-        margin: 10px 0 0 15px;
-        box-shadow: 1px 5px 15px 2px rgba(20, 20, 20, 0.4);
-    }
-}
+// .logo-container {
+//     height: $nav-height;
+//     // overflow: hidden;
+//     .logo {
+//         transition: all 0.3s ease;
+//         width: $nav-height;
+//         margin: 10px 0 0 15px;
+//         box-shadow: 1px 5px 15px 2px rgba(20, 20, 20, 0.4);
+//     }
+// }
 
 
-@media screen and (max-width: $breakpoint_tablet) {
-    .logo-container {
-        height: $nav-height-mobile;
-        // overflow: hidden;
-    }
-    .logo {
-        // transition: all 0.3s ease;
-        width: $nav-height-mobile;
-        margin: 0 0 0 15px;
-        box-shadow: 0;
-        // margin-top: $nav-hight-mobile / 3;
-    }
-}
+// @media screen and (max-width: $breakpoint_tablet) {
+//     .logo-container {
+//         height: $nav-height-mobile;
+//         // overflow: hidden;
+//         .logo {
+//             // transition: all 0.3s ease;
+//             width: $nav-height-mobile;
+//             margin: 0 0 0 15px;
+//             box-shadow: 0;
+//             // margin-top: $nav-hight-mobile / 3;
+//         }
+//     }
+// }
 
 // *************************** nav bar section
 
-.navbar-pdis {
-    background: linear-gradient(to bottom, #FFFFFF, #EFEFEF);
-    background: -moz-linear-gradient(to bottom, #FFFFFF, #EFEFEF);
-    background: -webkit-linear-gradient(to bottom, #FFFFFF, #EFEFEF);
-    border: 0;
-    // top: 5px;
-    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.5);
-    transition: top 0.3s ease;
-}
+// .navbar-pdis {
+//     background: linear-gradient(to bottom, #FFFFFF, #EFEFEF);
+//     background: -moz-linear-gradient(to bottom, #FFFFFF, #EFEFEF);
+//     background: -webkit-linear-gradient(to bottom, #FFFFFF, #EFEFEF);
+//     border: 0;
+//     // top: 5px;
+//     box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.5);
+//     transition: top 0.3s ease;
+// }
 
-.header-line {
-    background-color: $back_color;
-    height: 5px;
-    width: 100%;
-    position: fixed;
-    top: 0px;
-    z-index: 1030;
-}
+// .header-line {
+//     background-color: $back_color;
+//     height: 5px;
+//     width: 100%;
+//     position: fixed;
+//     top: 0px;
+//     z-index: 1030;
+// }
 
-.nav-item {
-    border-left: solid 3px;
-    color: $back_color;
-    margin: 20px 0;
-    padding: 0 30px 0 5px;
-    font-size: 1.25rem;
-    font-family: $btn_font;
-    white-space: pre-line;
-}
+// .nav-item {
+//     border-left: solid 3px;
+//     color: $back_color;
+//     margin: 20px 0;
+//     padding: 0 30px 0 5px;
+//     font-size: 1.25rem;
+//     font-family: $btn_font;
+//     white-space: pre-line;
+// }
 
-.nav-item:hover, .nav-item:focus, .nav-item:active {
-    color: $highlight;
-    background-color: transparent;
-}
+// .nav-item:hover, .nav-item:focus, .nav-item:active {
+//     color: $highlight;
+//     background-color: transparent;
+// }
 
-.nav-container {
-    max-width: $max_width;
-    margin: 0 auto;
-}
+// .nav-container {
+//     max-width: $max_width;
+//     margin: 0 auto;
+// }
 
-#navbar li{
-// ************************* sub layer nav list
-    position: relative;
+// #navbar li{
+// // ************************* sub layer nav list
+//     position: relative;
 
-    .nav-item+ul.nav-child{
-        // display: none;
-        max-height: 0;
-        overflow: hidden;
-        transition: all 0.5s ease;
+//     .nav-item+ul.nav-child{
+//         // display: none;
+//         max-height: 0;
+//         overflow: hidden;
+//         transition: all 0.5s ease;
 
-        position: absolute;
-        top: 80%;
-        padding: 0;
-        list-style: none;
-        color: $back_color;
-        background-color: #F4F4F4;
+//         position: absolute;
+//         top: 80%;
+//         padding: 0;
+//         list-style: none;
+//         color: $back_color;
+//         background-color: #F4F4F4;
 
-        a.nav-item{
-            display: block;
-            margin: 0;
-        }
-    }
+//         a.nav-item{
+//             display: block;
+//             margin: 0;
+//         }
+//     }
 
-    .nav-item:hover+ul.nav-child, .nav-item+ul.nav-child:hover{
-        // display: block;
-        max-height: 8em; /* used to hide ul instead of display:none */
-        color: $highlight;
-    }
-}
+//     .nav-item:hover+ul.nav-child, .nav-item+ul.nav-child:hover{
+//         // display: block;
+//         max-height: 8em; /* used to hide ul instead of display:none */
+//         color: $highlight;
+//     }
+// }
 
 
 

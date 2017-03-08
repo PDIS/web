@@ -18,28 +18,20 @@ export class HeaderComponent {
 
     topPos = 30;
     isTop: boolean = true;
-
     lastDirection: string;
     currentDirection: string;
-
     showNav: boolean = true;
-
     currentPosition: number;
-
     moveStart: number;
     moveLength: number;
-
     // bigLogo: boolean = true;
 
     @HostListener('window:scroll', ['$event'])
-
     doSomething(event) {
-
         var scrollY = window.scrollY;
         this.isTop = scrollY < this.topPos;
         this.currentDirection = (scrollY > this.currentPosition) ? 'down' : 'up';
         this.currentPosition = scrollY;
-
         if (this.currentDirection != this.lastDirection) {
             this.moveStart = scrollY;
             this.moveLength = 0;
@@ -48,8 +40,6 @@ export class HeaderComponent {
         else {
             this.moveLength = Math.abs(this.moveStart - scrollY);
         }
-
-
         if (this.currentDirection == 'down') {
             if (this.isTop) {
                 // this.bigLogo = true;
@@ -82,30 +72,32 @@ export class HeaderComponent {
     /* an event handler to go #anchor scroll position */
     goAnchor(anchor){
         if(anchor == "top"){
-        /* go to top */
-        $('html, body').animate({
-            scrollTop: 0,
-        }, 1000)
+            /* go to top */
+            $('html, body').animate({
+                scrollTop: 0,
+            }, 1000)
         }
         else if(anchor){
-        /* get the top position of anchor */
-        let anchor_y = $(anchor).offset().top
-        /* go to anchor (animation to do) */
-        $('html, body').animate({
-            scrollTop: anchor_y,
-        }, 1000)
+            /* get the top position of anchor */
+            let anchor_y = $(anchor).offset().top
+            /* go to anchor (animation to do) */
+            $('html, body').animate({
+                scrollTop: anchor_y,
+            }, 1000)
         }
         return false
     }
     
+    /* add 'hide' class when nav leave top */
+    // $('.site-nav').addClass('hide')
+
     @ViewChild('mobileBtn') el:ElementRef;
     @ViewChild('navbar') navbar:ElementRef;
     constructor(private router: Router, private rd: Renderer) {
-
         this.router.events.pairwise().subscribe((e) => {
             if (e[1] instanceof NavigationStart && this.navbar.nativeElement.classList.contains("in")) {
                 this.rd.invokeElementMethod(this.el.nativeElement,'click');
             }
-        });
+        })
     }
 }

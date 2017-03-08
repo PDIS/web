@@ -1,6 +1,6 @@
 <a id="top" href="#" role="button" (click)="goAnchor('top')"> <i class="fa fa-arrow-up"></i> </a>
 
-<nav class="site-nav">
+<nav class="site-nav" [ngClass]="(showNav) ? '' : 'hidden'">
   <div class="logo">
     <a [routerLink]="['/']">
       <img src="/assets/img/pdis-logo-final-inverse.png" alt="logo"></a>
@@ -8,10 +8,10 @@
   <div class="menu">
     <ul>
       <li>
-        <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do']">What We Do</a>
+        <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do']">WHAT WE DO</a>
       </li>
       <li>
-        <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']">How We Work</a>
+        <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']">HOW WE WORK</a>
         <ul>
           <li>
             <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work/tracks']">Tracks</a>
@@ -22,72 +22,58 @@
         </ul>
       </li>
       <li>
-        <a [routerLinkActive]="['active']" [routerLink]="['/get-involved']">Get Involved</a>
+        <a [routerLinkActive]="['active']" [routerLink]="['/get-involved']">GET INVOLVED</a>
       </li>
     </ul>
   </div>
 </nav>
-
-<!--<div class="header-line"></div>-->
-<nav style="display:none" class="navbar navbar-fixed-top navbar-pdis" [style.top]="showNav ? '5px' : '-115px'">
+<!--
+<div class="header-line"></div>
+<nav class="navbar navbar-fixed-top navbar-pdis" [style.top]="showNav ? '5px' : '-115px'">
   <div class="nav-container">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-
-      <button  #mobileBtn type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+      <button #mobileBtn type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
         aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
       <div class="logo-container">
         <a [routerLink]="['/']">
           <img class="logo" src="/assets/img/pdis-logo-final-inverse.png" alt="logo" />
         </a>
       </div>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div #navbar id="navbar" class="collapse navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do']" class="nav-item"><!-- 
-       -->WHAT
+          <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do']" class="nav-item">WHAT
           WE
           DO
           </a>
         </li>
         <li>
-          <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']" class="nav-item"><!-- 
-       -->HOW
+          <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']" class="nav-item">HOW
           WE
           WORK
           </a>
           <ul class="nav-child">
-            <li><a [routerLinkActive]="['active']" [routerLink]="['/how-we-work/tracks']" class="nav-item"><!-- 
-         -->
+            <li><a [routerLinkActive]="['active']" [routerLink]="['/how-we-work/tracks']" class="nav-item">
             TRACKS
-
             </a></li>
-            <li><a [routerLinkActive]="['active']" [routerLink]="['/how-we-work/tools']" class="nav-item"><!-- 
-         -->
+            <li><a [routerLinkActive]="['active']" [routerLink]="['/how-we-work/tools']" class="nav-item">
             TOOLS
-
             </a></li>
           </ul>
         </li>
         <li>
-          <a [routerLinkActive]="['active']" [routerLink]="['/get-involved']" class="nav-item"><!-- 
-       -->GET
+          <a [routerLinkActive]="['active']" [routerLink]="['/get-involved']" class="nav-item">GET
           INVOLVED
-
           </a>
         </li>
       </ul>
     </div>
-    <!-- /.navbar-collapse -->
   </div>
-  <!-- /.container-fluid -->
 </nav>
+-->

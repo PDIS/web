@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
-$back_color: #4B0056;
-$sheet_color: #EEEEEE;
+$back_color: #CCCCCC;
+$sheet_color: #F8F8F8;
 $highlight: #D66FE5;
+$link_color: #4B0056;
 $text_color: #231f20;
 
 $max_width: 1180px;
@@ -61,7 +62,7 @@ body {
 
 a{
     transition: all 0.3s ease;
-    color: $back_color;
+    color: $link_color;
     &:hover{
         color: $highlight;
         text-decoration: none;
@@ -92,7 +93,7 @@ canvas {
 // ******************** main section
 
 .main-container {
-    background-color: #F0F0F0;
+    background-color: $sheet_color;
     // box-shadow: 0 0 15px 5px rgba(28, 28, 28, 0.5);
     max-width: $max_width;
     margin: calc(#{$nav-height} + 1em) auto 0;
@@ -112,8 +113,8 @@ canvas {
     transition: all 0.3s ease;
     background: transparent;
     font-family: $btn_font;
-    color: $back_color;
-    border: solid 2px $back_color;
+    color: $link_color;
+    border: solid 2px $link_color;
     text-transform: uppercase;
     &:hover{
         color: $highlight;
