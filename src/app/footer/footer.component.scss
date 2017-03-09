@@ -11,7 +11,10 @@ footer {
         padding: 0;
         width: 100%;
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: row nowrap;
+        @media screen and (max-width: $breakpoint_tablet) {
+            flex-flow: column nowrap;
+        }
         justify-content: center;
         align-items: stretch;
 
@@ -19,17 +22,33 @@ footer {
             flex: 1 1 0px;
             padding: 0;
 
-            @media screen and (max-width: $breakpoint_tablet) {
-                flex: 1 1 100%;
-            }
-
             &.feed {
                 flex: 2 1 0px;
-                iframe {
-                    border: 0;
-                    width: 100%; /* override iframe's width */
-                    height: 255px; /* hide iframe's mark */
-                    overflow: hidden;
+                .rss {
+                    padding: 0 1em;
+                    height: 20em;
+                    @media screen and (max-width: $breakpoint_tablet) {
+                        height: auto;
+                    }
+                    overflow: auto;
+                    a.item{
+                        color: $text_color;
+                        margin: 0 0 1em 0;
+                        display: inline-block;
+                        border-bottom: 1px solid lightgray;
+                        &:last-of-type{
+                            border-bottom: 0;
+                        }
+                        .title{
+                            font-size: 120%;
+                            font-weight: 700;
+                        }
+                        .date{
+                            font-size: 80%;
+                            font-style: oblique;
+                            text-align: right;
+                        }
+                    }
                 }
             }
 

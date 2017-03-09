@@ -23,7 +23,7 @@ export class TracksComponent implements OnInit {
 
     tags = [];
     total = [];
-    q = "";
+    // q = "";
     more_url: string = ""
 
     constructor(
@@ -49,7 +49,7 @@ export class TracksComponent implements OnInit {
                     (Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename) :
                     (Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + q + Discourselink.Filename)
 
-        console.log(query)
+        // console.log(query)
         return this.http
                    .get(query)
                    .map(function(data) {
