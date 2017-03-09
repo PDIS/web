@@ -45,19 +45,22 @@ export class TracksComponent implements OnInit {
 
     private getIds(q: string) { //取得討論區每篇文的ID
         /* fetch date base on if 'q' query string exist */
-        let data = (q === undefined) ?
-                (this.http.get(Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename)) :
-                (this.http.get(Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + q + Discourselink.Filename))
+        let query = (q === '') ?
+                    (Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename) :
+                    (Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + q + Discourselink.Filename)
 
-        return data.map(function(data) {
-                    data = data.json();
-                    let ids = [];
-                    let topics = data['topic_list']['topics'];
-                    topics.forEach(function(topic) {
-                        ids.push(topic['id']);
-                    });
-                    return ids;
-        })
+        console.log(query)
+        return this.http
+                   .get(query)
+                   .map(function(data) {
+                       data = data.json();
+                       let ids = [];
+                       let topics = data['topic_list']['topics'];
+                       topics.forEach(function(topic) {
+                           ids.push(topic['id']);
+                       });
+                       return ids;
+                   })
     }
 
     private getPost(id: string) { // 取得單篇PO文
@@ -165,33 +168,31 @@ export class TracksComponent implements OnInit {
                 tags => { this.tags = tags; }
             );
 
-        // Tag Query
-        /* use 'queryParams' instead of 'params' */
-        this.activatedRoute.queryParams.subscribe(param => {
-            this.q = param['q'];
-            console.log(param['q']||'no q');
-        });
-
-        /* init categories */
+        /* init categories tab header */
         this.getCategories()
-            .subscribe(categories => {
-                /* init categories tab header */
-                this.total.push({ category: 'All', posts: new Array<string>() });
-                Object.keys(categories).forEach(key => {
-                    this.total.push({ category: key, posts: new Array<string>() });
-                })
-                this.total.push({ category: 'Other', posts: new Array<string>() });
-        })
+            .subscribe(cats => {
+                /* if cate-tab already generated then break */
+                if(this.total.length > 0) return
+                this.total.push({ category: 'All', posts: new Array<string>() })
+                Object.keys(cats).forEach(key => this.total.push({ category: key, posts: new Array<string>() }))
+                this.total.push({ category: 'Other', posts: new Array<string>() })
+            })
 
-        // Timeline
+        /* Tag Query & Timeline */
         let categories
-        this.getCategories()
-            /* get the posts' id */
+        let q:string
+        this.activatedRoute.queryParams
+            .do(param => q = param['q'] || '')
+            /* empty all the total[n].posts */
+            .do(() => this.total.forEach(t => t.posts = []))
+            .mergeMap(() => this.getCategories())
+            /* save for later use */
             .do(cats => categories = cats)
-            .mergeMap(() => this.getIds(this.q))
-            /* discard first post */
+            /* get the posts' id */
+            .mergeMap(() => this.getIds(q))
+            /* discard first post if no tag query (avoid the head post) */
             /* concat observable<any[]> into observable[]<> */
-            .mergeMap(ids => ids.slice(1))
+            .mergeMap(ids => (q) ? ids : ids.slice(1))
             /* get the posts by ids */
             /* flatten observable<observable> into observable<> */
             .mergeMap(id => this.getPost(id))
@@ -210,6 +211,7 @@ export class TracksComponent implements OnInit {
                         return new Date(b.date).getTime() - new Date(a.date).getTime();
                     })
                 })
+                // console.log(post)
             })
 
         /* get the first more_url */
