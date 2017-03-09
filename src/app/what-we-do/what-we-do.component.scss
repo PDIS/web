@@ -2,9 +2,13 @@
 
 /*-----------------------------------*/
 
+:host /deep/ .swiper-pagination-bullet-active{
+    background: $link_color;
+}
+
 .swiper-container {
     margin: 0 -2.5vw;
-    padding: 1em 2.5vw;
+    padding: 1em 50px;
 
     .swiper-wrapper{
         align-items: center;

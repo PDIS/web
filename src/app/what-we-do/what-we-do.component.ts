@@ -91,8 +91,8 @@ export class WhatWeDoComponent implements OnInit {
       autoplay: 10000, /* 10 sec to change */
       keyboardControl: true,
       direction: 'horizontal',
-      loop: true,
-      spaceBetween: 30,
+      // loop: true,
+      spaceBetween: 50,
       grabCursor: true,
       pagination: '.swiper-pagination',
       //paginationType: 'fraction'

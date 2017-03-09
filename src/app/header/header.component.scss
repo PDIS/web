@@ -11,7 +11,13 @@
     text-align: center;
     border-radius: 50%;
     background: rgba($highlight, 0.8);
+    box-shadow: -3px 3px 5px 0 rgba($text_color, 0.3);
     z-index: 99999;
+    &:hover{
+        color: $text_color;
+        background: rgba($highlight, 1);
+        transform: scale(1.1)
+    }
 }
 
 /* site-nav */
@@ -38,6 +44,7 @@ nav.site-nav {
     justify-content: space-between;
     align-items: stretch;
     padding: 0 calc((100% - #{$max_width})/2);
+    box-shadow: -3px 3px 5px 0 rgba($text_color, 0.3);
     .logo {
         text-align: center;
         flex: 0 0 auto;

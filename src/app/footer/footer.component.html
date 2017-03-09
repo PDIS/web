@@ -33,7 +33,7 @@
     <div class="content feed">
       <h1>News</h1>
       <div class="rss">
-        <a class="item" *ngFor="let item of rss.items" [href]="item.link">
+        <a class="item" *ngFor="let item of rss.items | slice:0:3" [href]="item.link">
           <div class="title" [innerHTML]="item.title"></div>
           <div class="content" [innerHTML]="item.content"></div>
           <div class="date" [innerHTML]="item.pubDate"></div>

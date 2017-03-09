@@ -3,7 +3,7 @@
 footer {
 
     max-width: $max_width;
-    margin: 1em auto;
+    margin: 1em auto 0 auto;
     background: $sheet_color;
 
     .container {
@@ -26,10 +26,10 @@ footer {
                 flex: 2 1 0px;
                 .rss {
                     padding: 0 1em;
-                    height: 20em;
-                    @media screen and (max-width: $breakpoint_tablet) {
-                        height: auto;
-                    }
+                    // height: 20em;
+                    // @media screen and (max-width: $breakpoint_tablet) {
+                    //     height: auto;
+                    // }
                     overflow: auto;
                     a.item{
                         color: $text_color;
@@ -96,6 +96,7 @@ footer {
     }
 
     .footer{
+        padding: 1em 0;
         text-align: center;
         a {
             color: gray;

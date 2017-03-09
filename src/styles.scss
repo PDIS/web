@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-$back_color: #CCCCCC;
+$back_color: #DDDDDD;
 $sheet_color: #F8F8F8;
 $highlight: #D66FE5;
 $link_color: #4B0056;
@@ -32,7 +32,8 @@ body {
     > #google_translate_element {
         font-size: 3rem;
         display: flex;
-        background: rgba($highlight, 1);
+        background: rgba($highlight, 0.8);
+        box-shadow: -3px 3px 5px 0 rgba($text_color, 0.3);
         z-index: 99999;
         position: fixed;
         bottom: .5em;
