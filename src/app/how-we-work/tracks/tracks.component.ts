@@ -7,6 +7,7 @@ import { ConvertService } from './../../shared/convertService/convert.service';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/mergeMap';
 import { Discourselink } from './../../../assets/discourselink';
 
 // declare var particlesJS: any;
@@ -32,55 +33,56 @@ export class TracksComponent implements OnInit {
         private activatedRoute: ActivatedRoute
     ){}
 
-    private getCategory() { //取得分類(置頂文章)
+    private getCategories() { //取得分類(置頂文章)
         return this.http.get(Discourselink.Host + Discourselink.Text + Discourselink.HOWWEWORKTRACK + "/73.json?include_raw=1")
-            .map(function(data) {
-                data = data.json();
-                var rawString = data['post_stream']['posts'][0]['raw'];
-                return rawString;
-            })
+                        .map(res => {
+                            let data = res.json()
+                            let raw = data['post_stream']['posts'][0]['raw']
+                            let categories = this.convertService.convertYAMLtoJSON(raw)
+                            return categories
+                        })
     }
 
-    private getIds() { //取得討論區每篇文的ID
-
-        let data = (this.q === undefined) ?
+    private getIds(q: string) { //取得討論區每篇文的ID
+        /* fetch date base on if 'q' query string exist */
+        let data = (q === undefined) ?
                 (this.http.get(Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename)) :
-                (this.http.get(Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + this.q + Discourselink.Filename))
+                (this.http.get(Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + q + Discourselink.Filename))
 
         return data.map(function(data) {
                     data = data.json();
-                    var ids = [];
-                    var topics = data['topic_list']['topics'];
-
+                    let ids = [];
+                    let topics = data['topic_list']['topics'];
                     topics.forEach(function(topic) {
                         ids.push(topic['id']);
                     });
-
-                    /* discard first post */
-                    return ids.slice(1);
+                    return ids;
         })
     }
 
-    private getPost(id: string) { // 取得每篇PO文
+    private getPost(id: string) { // 取得單篇PO文
         return this.http.get(Discourselink.Host + Discourselink.Text + id + ".json?include_raw=1")
-            .map(function(data) {
-                data = data.json();
-                var detail = {};
-                detail['title'] = data['title'];
-                detail['date'] = data['created_at'];
-                detail['content'] = data['post_stream']['posts'][0]['raw'];
-                detail['tags'] = data['tags'];
-                return detail;
-            })
+                        .map(res => {
+                            let data = res.json();
+                            let post = {};
+                            post['title'] = data['title'];
+                            post['date'] = data['created_at'];
+                            post['tags'] = data['tags'];
+                            // post['content'] = data['post_stream']['posts'][0]['raw'];
+                            let raw = data['post_stream']['posts'][0]['raw'];
+                            post['content'] = this.convertService.convertYAMLtoJSON(raw)['content']
+                            return post;
+                        })
     }
 
-    private distribute_post(category, post) { //將每篇PO文與各分類中的關鍵字比對
-        // category = {conference:['xx','oo'], ...}
+    private categorizePost(post, categories) { //將每篇PO文與各分類中的關鍵字比對
+        // categories = {conference:['xx','oo'], ...}
         // post = {title:'xxxoo'}
+        /* set default */
         post['category'] = 'Other';
-        Object.keys(category).forEach(key => {
-            for (var i = 0; i < category[key].length; i++) {
-                if (post['title'].indexOf(category[key][i]) > -1) {
+        Object.keys(categories).forEach(key => {
+            for (var i = 0; i < categories[key].length; i++) {
+                if (post['title'].indexOf(categories[key][i]) > -1) {
                     post['category'] = key;
                     return post;
                 }
@@ -106,21 +108,12 @@ export class TracksComponent implements OnInit {
                 .subscribe(more_url => this.more_url = more_url)
 
             /* init categories */
-            this.getCategory().subscribe(category => {
-                category = this.convertService.convertYAMLtoJSON(category)
-                // this.total.push({ category: 'All', posts: new Array<string>() });
-                // Object.keys(category).forEach(key => {
-                //     this.total.push({ category: key, posts: new Array<string>() });
-                // })
-                // this.total.push({ category: 'Other', posts: new Array<string>() });
+            this.getCategories().subscribe(categories => {
 
                 /* fetch 30 more post from backend when user hit the ground (call this) */
                 // data["topic_list"]["more_topics_url"] = "/c/pdis-site/how-we-work-track/l/latest?page=1"
                 this.http
                 .get(Discourselink.Host + more_url.replace(/latest/,'latest.json'))
-                // .toPromise()
-                // .then(response => response.json().data)
-                // .catch(error => console.error("more's error", error))
                 .map(rspn => rspn.json().topic_list.topics)
                 .subscribe(topics => {
                     /* seems that first post will duplicate with previous last post */
@@ -130,10 +123,9 @@ export class TracksComponent implements OnInit {
                     for(let topic of topics){
 
                         this.getPost(topic.id).subscribe(post => {
-                            let content = this.convertService.convertYAMLtoJSON(post['content'])
-                            post['content'] = content['content']
+
                             /* distribute category for each post */
-                            post = this.distribute_post(category, post);
+                            post = this.categorizePost(post, categories);
                             /* category: All */
                             this.total[0]['posts'].push(post);
                             /* category: Other, etc... */
@@ -152,13 +144,6 @@ export class TracksComponent implements OnInit {
     ngOnInit() {
         /* WOW for animateCSS */
         new WOW().init();
-
-        // Tag Query
-        /* use 'queryParams' instead of 'params' */
-        this.activatedRoute.queryParams.subscribe(param => {
-            this.q = param['q'];
-            console.log(param['q']||'no q');
-        });
 
         // Tags Cloud
         this.http.get(Discourselink.Host + "tags/filter/search.json")
@@ -180,36 +165,52 @@ export class TracksComponent implements OnInit {
                 tags => { this.tags = tags; }
             );
 
-        // Timeline
+        // Tag Query
+        /* use 'queryParams' instead of 'params' */
+        this.activatedRoute.queryParams.subscribe(param => {
+            this.q = param['q'];
+            console.log(param['q']||'no q');
+        });
+
         /* init categories */
-        this.getCategory().subscribe(category => {
-            category = this.convertService.convertYAMLtoJSON(category)
-            this.total.push({ category: 'All', posts: new Array<string>() });
-            Object.keys(category).forEach(key => {
-                this.total.push({ category: key, posts: new Array<string>() });
-            })
-            this.total.push({ category: 'Other', posts: new Array<string>() });
-            /* get the posts */
-            this.getIds().subscribe(ids => {
-                ids.forEach(id => {
-                    this.getPost(id).subscribe(post => {
-                        var content = this.convertService.convertYAMLtoJSON(post['content'])
-                        post['content'] = content['content']
-                        post = this.distribute_post(category, post); // match category
-                        this.total[0]['posts'].push(post);
-                        this.total.forEach(object => {
-                            if (object['category'] === post['category']) {
-                                object['posts'].push(post);
-                            }
-                            object['posts'].sort(function(a, b) {
-                                return new Date(b.date).getTime() - new Date(a.date).getTime();
-                            });
-                        })
+        this.getCategories()
+            .subscribe(categories => {
+                /* init categories tab header */
+                this.total.push({ category: 'All', posts: new Array<string>() });
+                Object.keys(categories).forEach(key => {
+                    this.total.push({ category: key, posts: new Array<string>() });
+                })
+                this.total.push({ category: 'Other', posts: new Array<string>() });
+        })
+
+        // Timeline
+        let categories
+        this.getCategories()
+            /* get the posts' id */
+            .do(cats => categories = cats)
+            .mergeMap(() => this.getIds(this.q))
+            /* discard first post */
+            /* concat observable<any[]> into observable[]<> */
+            .mergeMap(ids => ids.slice(1))
+            /* get the posts by ids */
+            /* flatten observable<observable> into observable<> */
+            .mergeMap(id => this.getPost(id))
+            .subscribe(post => {
+                // console.log(post);
+                post = this.categorizePost(post, categories)
+                /* put in ALL */
+                this.total[0]['posts'].push(post);
+                /* put in respective category */
+                this.total.forEach(object => {
+                    if (object['category'] === post['category']) {
+                        object['posts'].push(post);
+                    }
+                    /* sort by date */
+                    object['posts'].sort(function(a, b) {
+                        return new Date(b.date).getTime() - new Date(a.date).getTime();
                     })
                 })
             })
-            // console.log(this.total[0].posts.length);
-        });
 
         /* get the first more_url */
         this.getMorePosts(this.more_url)
