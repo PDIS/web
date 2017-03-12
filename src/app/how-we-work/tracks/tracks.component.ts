@@ -63,7 +63,7 @@ export class TracksComponent implements OnInit {
             })
     }
 
-    private getPost(id: string) { // 取得單篇PO文
+    private getPost(id: {}) { // 取得單篇PO文
         return this.http.get(Discourselink.Host + Discourselink.Text + id + ".json?include_raw=1")
             .map(res => {
                 let data = res.json();
