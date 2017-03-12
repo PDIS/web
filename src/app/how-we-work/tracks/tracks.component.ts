@@ -11,7 +11,7 @@ import 'rxjs/add/operator/mergeMap';
 import { Discourselink } from './../../../assets/discourselink';
 
 // declare var particlesJS: any;
-declare var WOW: any;
+declare var WOW,$: any;
 
 @Component({
     selector: 'app-tracks',
@@ -35,47 +35,47 @@ export class TracksComponent implements OnInit {
 
     private getCategories() { //取得分類(置頂文章)
         return this.http.get(Discourselink.Host + Discourselink.Text + Discourselink.HOWWEWORKTRACK + "/73.json?include_raw=1")
-                        .map(res => {
-                            let data = res.json()
-                            let raw = data['post_stream']['posts'][0]['raw']
-                            let categories = this.convertService.convertYAMLtoJSON(raw)
-                            return categories
-                        })
+            .map(res => {
+                let data = res.json()
+                let raw = data['post_stream']['posts'][0]['raw']
+                let categories = this.convertService.convertYAMLtoJSON(raw)
+                return categories
+            })
     }
 
     private getIds(q: string) { //取得討論區每篇文的ID
         /* fetch date base on if 'q' query string exist */
         let query = (q === '') ?
-                    (Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename) :
-                    (Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + q + Discourselink.Filename)
+            (Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename) :
+            (Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + q + Discourselink.Filename)
 
         // console.log(query)
         return this.http
-                   .get(query)
-                   .map(function(data) {
-                       data = data.json();
-                       let ids = [];
-                       let topics = data['topic_list']['topics'];
-                       topics.forEach(function(topic) {
-                           ids.push(topic['id']);
-                       });
-                       return ids;
-                   })
+            .get(query)
+            .map(function(data) {
+                data = data.json();
+                let ids = [];
+                let topics = data['topic_list']['topics'];
+                topics.forEach(function(topic) {
+                    ids.push(topic['id']);
+                });
+                return ids;
+            })
     }
 
     private getPost(id: string) { // 取得單篇PO文
         return this.http.get(Discourselink.Host + Discourselink.Text + id + ".json?include_raw=1")
-                        .map(res => {
-                            let data = res.json();
-                            let post = {};
-                            post['title'] = data['title'];
-                            post['date'] = data['created_at'];
-                            post['tags'] = data['tags'];
-                            // post['content'] = data['post_stream']['posts'][0]['raw'];
-                            let raw = data['post_stream']['posts'][0]['raw'];
-                            post['content'] = this.convertService.convertYAMLtoJSON(raw)['content']
-                            return post;
-                        })
+            .map(res => {
+                let data = res.json();
+                let post = {};
+                post['title'] = data['title'];
+                post['date'] = data['created_at'];
+                post['tags'] = data['tags'];
+                // post['content'] = data['post_stream']['posts'][0]['raw'];
+                let raw = data['post_stream']['posts'][0]['raw'];
+                post['content'] = this.convertService.convertYAMLtoJSON(raw)['content']
+                return post;
+            })
     }
 
     private categorizePost(post, categories) { //將每篇PO文與各分類中的關鍵字比對
@@ -116,30 +116,30 @@ export class TracksComponent implements OnInit {
                 /* fetch 30 more post from backend when user hit the ground (call this) */
                 // data["topic_list"]["more_topics_url"] = "/c/pdis-site/how-we-work-track/l/latest?page=1"
                 this.http
-                .get(Discourselink.Host + more_url.replace(/latest/,'latest.json'))
-                .map(rspn => rspn.json().topic_list.topics)
-                .subscribe(topics => {
-                    /* seems that first post will duplicate with previous last post */
-                    // topics.slice(1)
-                    
-                    /* use topics[i].id to get each post */
-                    for(let topic of topics){
+                    .get(Discourselink.Host + more_url.replace(/latest/,'latest.json'))
+                    .map(rspn => rspn.json().topic_list.topics)
+                    .subscribe(topics => {
+                        /* seems that first post will duplicate with previous last post */
+                        // topics.slice(1)
 
-                        this.getPost(topic.id).subscribe(post => {
+                        /* use topics[i].id to get each post */
+                        for(let topic of topics){
 
-                            /* distribute category for each post */
-                            post = this.categorizePost(post, categories);
-                            /* category: All */
-                            this.total[0]['posts'].push(post);
-                            /* category: Other, etc... */
-                            let cat_list = this.total.map(cat => cat['category'])
-                            let cat_index = cat_list.indexOf(post['category'])
-                            this.total[cat_index]['posts'].push(post)
-                            /* need sort? */
-                            this.total[cat_index]['posts'].sort((a, b) => b.date - a.date)
-                        })
-                    }
-                })
+                            this.getPost(topic.id).subscribe(post => {
+
+                                /* distribute category for each post */
+                                post = this.categorizePost(post, categories);
+                                /* category: All */
+                                this.total[0]['posts'].push(post);
+                                /* category: Other, etc... */
+                                let cat_list = this.total.map(cat => cat['category'])
+                                let cat_index = cat_list.indexOf(post['category'])
+                                this.total[cat_index]['posts'].push(post)
+                                /* need sort? */
+                                this.total[cat_index]['posts'].sort((a, b) => b.date - a.date)
+                            })
+                        }
+                    })
             })
         }
     }
@@ -165,7 +165,7 @@ export class TracksComponent implements OnInit {
             })
             // .do(data => { console.log(data); })
             .subscribe(
-                tags => { this.tags = tags; }
+            tags => { this.tags = tags; }
             );
 
         /* init categories tab header */
@@ -183,6 +183,7 @@ export class TracksComponent implements OnInit {
         let q:string
         this.activatedRoute.queryParams
             .do(param => q = param['q'] || '')
+            .do(() => {if(q)this.goAnchor('#cloud')})
             /* empty all the total[n].posts */
             .do(() => this.total.forEach(t => t.posts = []))
             .mergeMap(() => this.getCategories())
@@ -216,6 +217,26 @@ export class TracksComponent implements OnInit {
 
         /* get the first more_url */
         this.getMorePosts(this.more_url)
+    }
+
+    /* an event handler to go #anchor scroll position */
+    goAnchor(anchor) {
+        console.log(anchor)
+        if (anchor == "top") {
+            /* go to top */
+            $('html, body').animate({
+                scrollTop: 0,
+            }, 1000)
+        }
+        else if (anchor) {
+            /* get the top position of anchor */
+            let anchor_y = $(anchor).offset().top
+            /* go to anchor (animation to do) */
+            $('html, body').animate({
+                scrollTop: anchor_y,
+            }, 1000)
+        }
+        return false
     }
 
 }
