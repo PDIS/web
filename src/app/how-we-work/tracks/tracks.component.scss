@@ -23,44 +23,7 @@
     z-index: 100;
 }
 
-.nav-tabs {
-    border-bottom: 2px solid #DDD;
-    text-align: center;
-    li {
-        float: none;
-        display: inline-block;
-    }
-    >li>a {
-        border: none;
-        color: #666;
-        &::after {
-            content: "";
-            background: #4B0056;
-            height: 2px;
-            position: absolute;
-            width: 100%;
-            left: 0px;
-            bottom: -1px;
-            transition: all 250ms ease 0s;
-            transform: scale(0);
-        }
-        &.active,
-        &.active:focus,
-        &.active:hover {
-            border-width: 0;
-        }
-    }
-}
-
-.nav-tabs>li.active>a,
-.nav-tabs>li>a:hover {
-    border: none;
-    color: #4B0056 !important;
-    background: transparent;
-    &::after {
-        transform: scale(1);
-    }
-}
+/******************************/
 
 .more {
     font-family: $btn_font;
@@ -68,91 +31,6 @@
     flex-flow: column;
     align-items: center;
 }
-
-.btn-pdis {
-    font-size: 1.5rem;
-    margin-right: 5px;
-    padding: 1em;
-    text-decoration: none;
-}
-
-.btn-youtube {
-    border-color: #cc181e;
-    color: #cc181e;
-    &:hover {
-        border-color: #FF0000;
-        color: #FF0000;
-    }
-}
-
-.btn-transcript {
-    border-color: darkorange;
-    color: darkorange;
-    &:hover {
-        border-color: orange;
-        color: orange;
-    }
-}
-
-.btn-soundcloud {
-    border-color: #fd3c1b;
-    color: #fd3c1b;
-    &:hover {
-        border-color: #ff5e00;
-        color: #ff5e00;
-    }
-}
-
-.btn-slido {
-    border-color: #38921a;
-    color: #38921a;
-    &:hover {
-        border-color: #70bd4e;
-        color: #70bd4e;
-    }
-}
-
-.movetoright {
-    text-align: right;
-    vertical-align: bottom;
-    margin: 7px 0px 10px 0px;
-}
-
-.button-source {
-    margin: 5px;
-}
-
-.btn-more {
-    text-align: center;
-    color: white;
-    background: darkgray;
-    border-radius: 0;
-}
-
-.movetocenter {
-    vertical-align: bottom;
-    text-align: center;
-}
-
-.timeline-body .glyphicon-tag {
-    margin-top: 5px;
-}
-
-.label-tag {
-    display: inline-block;
-    margin: 5px 5px 10px 0;
-    padding: 3px 5px;
-    background: rgba(222, 123, 92, 0.86);
-    font-size: 12px;
-    color: #FFF;
-    font-weight: 400;
-    border-radius: 0px;
-}
-
-.row {
-    margin-left: 0px;
-}
-
 
 /*-----------------------------------*/
 
@@ -171,22 +49,6 @@
         margin-bottom: 10px;
     }
 }
-
-
-/*-----------------------------------*/
-
-.timeline-tags {
-    font-size: 1.4rem;
-    font-family: Georgia;
-    color: #4B0056;
-    text-decoration: underline;
-}
-
-.timeline-tags:hover {
-    color: #D66FE5;
-}
-
-
 /*-----------------------------------*/
 
 .cloud {
@@ -232,6 +94,170 @@
 .tag-cloud {
     padding: 10px;
     margin: 20px;
+}
+
+/************* tabs of categories *****************/
+
+.nav-tabs {
+    border-bottom: 2px solid #DDD;
+    text-align: center;
+    li {
+        float: none; /* suppress bootstrap's float:left */
+        display: inline-block;
+    }
+    >li>a {
+        border: none;
+        color: #666;
+        &::after {
+            content: "";
+            background: #4B0056;
+            height: 2px;
+            position: absolute;
+            width: 100%;
+            left: 0px;
+            bottom: -1px;
+            transition: all 250ms ease 0s;
+            transform: scale(0);
+        }
+        &.active,
+        &.active:focus,
+        &.active:hover {
+            border-width: 0;
+        }
+    }
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li>a:hover {
+    border: none;
+    color: #4B0056 !important;
+    background: transparent;
+    &::after {
+        transform: scale(1);
+    }
+}
+
+/********* buttons **********/
+
+.btn-pdis {
+    font-size: 1.5rem;
+    margin-right: 5px;
+    padding: 1em;
+    text-decoration: none;
+}
+
+.btn-youtube {
+    // border-color: #cc181e;
+    // color: #cc181e;
+    // &:hover {
+    //     border-color: #FF0000;
+    //     color: #FF0000;
+    // }
+}
+
+.btn-transcript {
+    // border-color: darkorange;
+    // color: darkorange;
+    // &:hover {
+    //     border-color: orange;
+    //     color: orange;
+    // }
+}
+
+.btn-soundcloud {
+    // border-color: #fd3c1b;
+    // color: #fd3c1b;
+    // &:hover {
+    //     border-color: #ff5e00;
+    //     color: #ff5e00;
+    // }
+}
+
+.btn-slido {
+    // border-color: #38921a;
+    // color: #38921a;
+    // &:hover {
+    //     border-color: #70bd4e;
+    //     color: #70bd4e;
+    // }
+}
+
+/******************************/
+
+.movetoright {
+    text-align: right;
+    vertical-align: bottom;
+    margin: 7px 0px 10px 0px;
+}
+
+.button-source {
+    margin: 5px;
+}
+
+.btn-more {
+    text-align: center;
+    color: white;
+    background: darkgray;
+    border-radius: 0;
+}
+
+.movetocenter {
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.timeline-body .glyphicon-tag {
+    margin-top: 5px;
+}
+
+.label-tag {
+    display: inline-block;
+    margin: 5px 5px 10px 0;
+    padding: 3px 5px;
+    background: rgba(222, 123, 92, 0.86);
+    font-size: 12px;
+    color: #FFF;
+    font-weight: 400;
+    border-radius: 0px;
+}
+
+.row {
+    margin-left: 0px;
+}
+
+/*----------------- categories highlight ------------------*/
+
+$speech: darkcyan;
+$meeting: chocolate;
+$conference: cornflowerblue;
+$interview: indianred;
+$other: darkolivegreen;
+.nav-tabs li a {
+    &.Speech { color: $speech }
+    &.Meeting { color: $meeting }
+    &.Conference { color: $conference }
+    &.Interview { color: $interview }
+    &.Other { color: $other }
+}
+.timeline li .timeline-badge {
+    &.Speech { background: $speech }
+    &.Meeting { background: $meeting }
+    &.Conference { background: $conference }
+    &.Interview { background: $interview }
+    &.Other { background: $other }
+}
+
+/*-----------------------------------*/
+
+.timeline-tags {
+    font-size: 1.4rem;
+    font-family: Georgia;
+    color: #4B0056;
+    text-decoration: underline;
+}
+
+.timeline-tags:hover {
+    color: #D66FE5;
 }
 
 
@@ -429,15 +455,16 @@
         width: 75%;
         margin: 0;
         .tag {
-            color: black;
+            display: inline-block;
+            color: $text_color;
             font-style: normal;
             font-weight: 400;
             padding: 0.5em;
             margin: 0;
             transition: all 300ms ease-in-out;
             &:hover {
-                color: #fff;
-                background-color: $back_color;
+                color: $back_color;
+                background-color: $link_color;
                 text-decoration: none;
             }
         }

@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/concatMap';
 import { Discourselink } from './../../../assets/discourselink';
 
 // declare var particlesJS: any;
@@ -23,8 +24,8 @@ export class TracksComponent implements OnInit {
 
     tags = [];
     total = [];
-    // q = "";
-    more_url: string = ""
+    q:string = '';
+    more_url: string = ''
 
     constructor(
         private dataService: DataService,
@@ -43,24 +44,38 @@ export class TracksComponent implements OnInit {
             })
     }
 
-    private getIds(q: string) { //取得討論區每篇文的ID
-        /* fetch date base on if 'q' query string exist */
-        let query = (q === '') ?
-            (Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename) :
-            (Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + q + Discourselink.Filename)
-
-        // console.log(query)
+    private getIds(q: string, more_url: string) { //取得討論區每篇文的ID & more_url
+        /* fetch date base on if 'q' & 'more_url' exist */
+        /*
+            https://talk.pdis.nat.gov.tw/c/pdis-site/how-we-work-track
+            /c/pdis-site/how-we-work-track/l/latest?page=1
+            https://talk.pdis.nat.gov.tw/tags/c/pdis-site/how-we-work-track/TAG
+            /tags/c/pdis-site/how-we-work-track/TAG/l/latest?page=1
+        */
+        let query
+        if (q) {
+            if (more_url) {
+                query = Discourselink.Host + more_url.replace(/latest/,'latest.json')
+            }
+            else {
+                query = Discourselink.Host + Discourselink.Tags + Discourselink.Category + Discourselink.HOWWEWORKTRACK + '/' + q + Discourselink.Filename
+            }
+        }
+        else {
+            if (more_url) {
+                query = Discourselink.Host + more_url.replace(/latest/,'latest.json')
+            }
+            else {
+                query = Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename
+            }
+        }
+        
         return this.http
             .get(query)
-            .map(function(data) {
-                data = data.json();
-                let ids = [];
-                let topics = data['topic_list']['topics'];
-                topics.forEach(function(topic) {
-                    ids.push(topic['id']);
-                });
-                return ids;
-            })
+            /* to get more_url */
+            .do(data => this.more_url = data.json().topic_list.more_topics_url || '')
+            /* to get ids */
+            .map(data => data.json().topic_list.topics.map(topic => topic['id']))
     }
 
     private getPost(id: {}) { // 取得單篇PO文
@@ -94,54 +109,49 @@ export class TracksComponent implements OnInit {
         return post;
     }
 
-    getMorePosts(more_url: string) {
-        /* an event handler for more post */
-
-        /* save link for getMorePosts() */
-        if(more_url === "")
-            this.http
-                .get(Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename)
-                .map(rspn => rspn.json().topic_list.more_topics_url)
-                .subscribe(more_url => this.more_url = more_url)
-        else {
-            // '/c/pdis-site/how-we-work-track/l/latest.json?page=1'
-            this.http
-                .get(Discourselink.Host + more_url.replace(/latest/,'latest.json'))
-                .map(rspn => rspn.json().topic_list.more_topics_url)
-                .subscribe(more_url => this.more_url = more_url)
-
-            /* init categories */
-            this.getCategories().subscribe(categories => {
-
-                /* fetch 30 more post from backend when user hit the ground (call this) */
-                // data["topic_list"]["more_topics_url"] = "/c/pdis-site/how-we-work-track/l/latest?page=1"
-                this.http
-                    .get(Discourselink.Host + more_url.replace(/latest/,'latest.json'))
-                    .map(rspn => rspn.json().topic_list.topics)
-                    .subscribe(topics => {
-                        /* seems that first post will duplicate with previous last post */
-                        // topics.slice(1)
-
-                        /* use topics[i].id to get each post */
-                        for(let topic of topics){
-
-                            this.getPost(topic.id).subscribe(post => {
-
-                                /* distribute category for each post */
-                                post = this.categorizePost(post, categories);
-                                /* category: All */
-                                this.total[0]['posts'].push(post);
-                                /* category: Other, etc... */
-                                let cat_list = this.total.map(cat => cat['category'])
-                                let cat_index = cat_list.indexOf(post['category'])
-                                this.total[cat_index]['posts'].push(post)
-                                /* need sort? */
-                                this.total[cat_index]['posts'].sort((a, b) => b.date - a.date)
-                            })
-                        }
-                    })
+    getMorePosts(q:string, more_url:string) {
+    /* an event handler to get more ids and then post them */
+        let categories
+        /* init categories */
+        this.getCategories()
+            .do(cats => categories = cats)
+            /* get the posts' id */
+            .mergeMap(() => this.getIds(q, more_url))
+            /* seems that first post is duplicated */
+            /* concat observable<any[]> into observable[]<> */
+            .mergeMap(ids => ids.slice(1))
+            /* get the posts by ids */
+            .concatMap(id => this.getPost(id))
+            .do(post => {
+                post = this.categorizePost(post, categories)
+                /* put in ALL */
+                this.total[0]['posts'].push(post);
+                /* put in respective category */
+                let cat_list = this.total.map(cat => cat['category'])
+                let cat_index = cat_list.indexOf(post['category'])
+                this.total[cat_index]['posts'].push(post)
             })
+            .subscribe()
+    }
+
+    /* an event handler to go #anchor scroll position */
+    goAnchor(anchor) {
+        // console.log(anchor)
+        if (anchor == "top") {
+            /* go to top */
+            $('html, body').animate({
+                scrollTop: 0,
+            }, 300)
         }
+        else if (anchor) {
+            /* get the top position of anchor */
+            let anchor_y = $(anchor).offset().top
+            /* go to anchor (animation to do) */
+            $('html, body').animate({
+                scrollTop: anchor_y,
+            }, 300)
+        }
+        return false
     }
 
     ngOnInit() {
@@ -180,63 +190,33 @@ export class TracksComponent implements OnInit {
 
         /* Tag Query & Timeline */
         let categories
-        let q:string
         this.activatedRoute.queryParams
-            .do(param => q = param['q'] || '')
-            .do(() => {if(q)this.goAnchor('#cloud')})
+            .do(param => this.q = param['q'] || '')
+            .do(() => { if(this.q) this.goAnchor('#cloud') })
             /* empty all the total[n].posts */
             .do(() => this.total.forEach(t => t.posts = []))
             .mergeMap(() => this.getCategories())
             /* save for later use */
             .do(cats => categories = cats)
             /* get the posts' id */
-            .mergeMap(() => this.getIds(q))
+            .mergeMap(() => this.getIds(this.q, ''))
             /* discard first post if no tag query (avoid the head post) */
             /* concat observable<any[]> into observable[]<> */
-            .mergeMap(ids => (q) ? ids : ids.slice(1))
+            .mergeMap(ids => (this.q) ? ids : ids.slice(1))
             /* get the posts by ids */
             /* flatten observable<observable> into observable<> */
-            .mergeMap(id => this.getPost(id))
-            .subscribe(post => {
-                // console.log(post);
+            /* use concat instead of merge to remain sorted */
+            .concatMap(id => this.getPost(id))
+            .do(post => {
                 post = this.categorizePost(post, categories)
                 /* put in ALL */
                 this.total[0]['posts'].push(post);
                 /* put in respective category */
-                this.total.forEach(object => {
-                    if (object['category'] === post['category']) {
-                        object['posts'].push(post);
-                    }
-                    /* sort by date */
-                    object['posts'].sort(function(a, b) {
-                        return new Date(b.date).getTime() - new Date(a.date).getTime();
-                    })
-                })
-                // console.log(post)
+                let cat_list = this.total.map(cat => cat['category'])
+                let cat_index = cat_list.indexOf(post['category'])
+                this.total[cat_index]['posts'].push(post)
             })
-
-        /* get the first more_url */
-        this.getMorePosts(this.more_url)
-    }
-
-    /* an event handler to go #anchor scroll position */
-    goAnchor(anchor) {
-        console.log(anchor)
-        if (anchor == "top") {
-            /* go to top */
-            $('html, body').animate({
-                scrollTop: 0,
-            }, 1000)
-        }
-        else if (anchor) {
-            /* get the top position of anchor */
-            let anchor_y = $(anchor).offset().top
-            /* go to anchor (animation to do) */
-            $('html, body').animate({
-                scrollTop: anchor_y,
-            }, 1000)
-        }
-        return false
+            .subscribe()
     }
 
 }
