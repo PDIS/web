@@ -1,56 +1,56 @@
 <footer>
 
-  <div class="container">
+    <div class="container">
 
-    <div class="content">
-      <h1>Projects</h1>
-      <ul>
-        <li> <a target="_blank" href="https://github.com/PDIS/web">PDIS-Site Project</a> </li>
-        <li> <a target="_blank" href="https://github.com/PDIS/tools-manage-sandstorm">Sandstorm Tools</a> </li>
-        <li> <a target="_blank" href="https://github.com/PDIS/swagger_file">API Sketches</a> </li>
-      </ul>
+        <div class="content">
+            <h1>Projects</h1>
+            <ul>
+                <li> <a target="_blank" href="https://github.com/PDIS/web">PDIS-Site Project</a> </li>
+                <li> <a target="_blank" href="https://github.com/PDIS/tools-manage-sandstorm">Sandstorm Tools</a> </li>
+                <li> <a target="_blank" href="https://github.com/PDIS/swagger_file">API Sketches</a> </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Media</h1>
+            <ul>
+                <li> <a target="_blank" href="https://www.facebook.com/shu.w.zhengwei">Facebook</a> </li>
+                <li> <a target="_blank" href="https://twitter.com/TaiwanPDIS">Twitter</a> </li>
+                <li> <a target="_blank" href="https://www.youtube.com/channel/UCExDf4hkbSU-pmJcyT_sDtg">YouTube</a> </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Forums</h1>
+            <ul>
+                <li> <a target="_blank" href="https://vtaiwan.tw/">vTaiwan</a> </li>
+                <li> <a target="_blank" href="http://join.gov.tw/">JOIN.gov</a> </li>
+                <li> <a target="_blank" href="https://talk.pdis.nat.gov.tw/">talk.PDIS</a> </li>
+            </ul>
+        </div>
+
+        <!-- https://www.google.com.tw/alerts/feeds/11419317490390774846/8364829402486342759 -->
+        <div class="content feed">
+            <h1>News</h1>
+            <div class="rss">
+                <a class="item" *ngFor="let item of rss.items | slice:0:3" [href]="item.link | replacePipe">
+                    <div class="title" [innerHTML]="item.title"></div>
+                    <div class="content" [innerHTML]="item.content"></div>
+                    <div class="date" [innerHTML]="item.pubDate"></div>
+                </a>
+            </div>
+        </div>
+
     </div>
 
-    <div class="content">
-      <h1>Media</h1>
-      <ul>
-        <li> <a target="_blank" href="https://www.facebook.com/shu.w.zhengwei">Facebook</a> </li>
-        <li> <a target="_blank" href="https://twitter.com/TaiwanPDIS">Twitter</a> </li>
-        <li> <a target="_blank" href="https://www.youtube.com/channel/UCExDf4hkbSU-pmJcyT_sDtg">YouTube</a> </li>
-      </ul>
+    <div class="footer">
+
+        <a target="_blank" href="https://github.com/pdis/web"> <i class="fa fa-3x fa-github"></i> </a>
+        <a target="_blank" href="https://www.youtube.com/channel/UCExDf4hkbSU-pmJcyT_sDtg"> <i class="fa fa-3x fa-youtube-play"></i> </a>
+        <a href="/"> <img src="/assets/img/pdis-logo-final-inverse.png" alt="logo" class="img-circle" /> </a>
+        <a target="_blank" href="https://twitter.com/TaiwanPDIS"> <i class="fa fa-3x fa-twitter"></i> </a>
+        <a target="_blank" href="https://www.facebook.com/shu.w.zhengwei"> <i class="fa fa-3x fa-facebook"></i> </a>
+
     </div>
-
-    <div class="content">
-      <h1>Forums</h1>
-      <ul>
-        <li> <a target="_blank" href="https://vtaiwan.tw/">vTaiwan</a> </li>
-        <li> <a target="_blank" href="http://join.gov.tw/">JOIN.gov</a> </li>
-        <li> <a target="_blank" href="https://talk.pdis.nat.gov.tw/">talk.PDIS</a> </li>
-      </ul>
-    </div>
-
-    <!-- https://www.google.com.tw/alerts/feeds/11419317490390774846/8364829402486342759 -->
-    <div class="content feed">
-      <h1>News</h1>
-      <div class="rss">
-        <a class="item" *ngFor="let item of rss.items | slice:0:3" [href]="item.link">
-          <div class="title" [innerHTML]="item.title"></div>
-          <div class="content" [innerHTML]="item.content"></div>
-          <div class="date" [innerHTML]="item.pubDate"></div>
-        </a>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="footer">
-
-      <a target="_blank" href="https://github.com/pdis/web"> <i class="fa fa-3x fa-github"></i> </a>
-      <a target="_blank" href="https://www.youtube.com/channel/UCExDf4hkbSU-pmJcyT_sDtg"> <i class="fa fa-3x fa-youtube-play"></i> </a>
-      <a href="/"> <img src="/assets/img/pdis-logo-final-inverse.png" alt="logo" class="img-circle" /> </a>
-      <a target="_blank" href="https://twitter.com/TaiwanPDIS"> <i class="fa fa-3x fa-twitter"></i> </a>
-      <a target="_blank" href="https://www.facebook.com/shu.w.zhengwei"> <i class="fa fa-3x fa-facebook"></i> </a>
-
-  </div>
 
 </footer>
