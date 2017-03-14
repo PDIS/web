@@ -12,7 +12,8 @@ import 'rxjs/add/operator/concatMap';
 import { Discourselink } from './../../../assets/discourselink';
 
 // declare var particlesJS: any;
-// declare var WOW,$: any;
+// declare var WOW: any;
+declare var $: any;
 
 @Component({
     selector: 'app-tracks',
@@ -156,7 +157,7 @@ export class TracksComponent implements OnInit {
 
     ngOnInit() {
         /* WOW for animateCSS */
-        new WOW().init();
+        // new WOW().init();
 
         // Tags Cloud
         this.http.get(Discourselink.Host + "tags/filter/search.json")
