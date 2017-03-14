@@ -33,11 +33,11 @@ body {
         font-size: 3rem;
         display: flex;
         background: rgba($highlight, 0.8);
-        box-shadow: -3px 3px 5px 0 rgba($text_color, 0.3);
+        box-shadow: -1px 2px 3px 0 rgba($text_color, 0.3);
         z-index: 99999;
         position: fixed;
         bottom: .5em;
-        right: (-147px + -5px);
+        right: -147px;
         padding: .2em;
         transition: all .3s ease;
         &:hover {
@@ -62,7 +62,7 @@ body {
 }
 
 a{
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
     color: $link_color;
     &:hover{
         color: $highlight;

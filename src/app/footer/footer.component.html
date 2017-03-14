@@ -29,11 +29,10 @@
             </ul>
         </div>
 
-        <!-- https://www.google.com.tw/alerts/feeds/11419317490390774846/8364829402486342759 -->
         <div class="content feed">
             <h1>News</h1>
             <div class="rss">
-                <a class="item" *ngFor="let item of rss.items | slice:0:3" [href]="item.link | replacePipe">
+                <a class="item" *ngFor="let item of rss.items | slice:0:3" [href]="item.link | replacePipe" target="_blank">
                     <div class="title" [innerHTML]="item.title"></div>
                     <div class="content" [innerHTML]="item.content"></div>
                     <div class="date" [innerHTML]="item.pubDate"></div>

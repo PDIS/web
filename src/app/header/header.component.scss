@@ -11,7 +11,7 @@
     text-align: center;
     border-radius: 50%;
     background: rgba($highlight, 0.8);
-    box-shadow: -3px 3px 5px 0 rgba($text_color, 0.3);
+    box-shadow: -1px 2px 3px 0 rgba($text_color, 0.3);
     z-index: 99999;
     &:hover{
         color: $text_color;
@@ -44,7 +44,7 @@ nav.site-nav {
     justify-content: space-between;
     align-items: stretch;
     padding: 0 calc((100% - #{$max_width})/2);
-    box-shadow: -3px 3px 5px 0 rgba($text_color, 0.3);
+    box-shadow: 0 3px 5px 0 rgba($text_color, 0.3);
     .logo {
         text-align: center;
         flex: 0 0 auto;
@@ -53,11 +53,18 @@ nav.site-nav {
         }
         height: 100%;
         padding: 3px 0;
-        img {
-            border: 3px solid $nav-color;
+        a {
+            display: inline-block;
+            box-shadow: -1px 2px 10px -3px black;
             border-radius: 3px;
-            max-height: 100%;
-            width: auto;
+            height: 100%;
+            img{
+                max-height: 100%;
+                width: auto;
+            }
+            &:hover{
+                transform: scale(1.05);
+            }
         }
     }
     .menu {
@@ -110,6 +117,7 @@ nav.site-nav {
                 overflow: hidden;
                 transition: all .3s ease;
                 flex-flow: column;
+                box-shadow: 0 3px 5px 0 rgba($text_color, 0.3);
                 &:hover { /* show sub menus */
                     max-height: $nav-h * $nav-sub-num;
                 }

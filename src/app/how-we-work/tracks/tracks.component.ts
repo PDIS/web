@@ -12,7 +12,7 @@ import 'rxjs/add/operator/concatMap';
 import { Discourselink } from './../../../assets/discourselink';
 
 // declare var particlesJS: any;
-declare var WOW,$: any;
+// declare var WOW,$: any;
 
 @Component({
     selector: 'app-tracks',

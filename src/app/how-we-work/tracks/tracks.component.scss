@@ -34,6 +34,24 @@
 
 /*-----------------------------------*/
 
+.tagging{
+    font-size: 120%;
+    .tag{
+        font-family: $btn_font;
+        font-size: 150%;
+        position: relative;
+        padding: 0 1ch;
+        background: white;
+        border: 1px solid $back_color;
+        .dismiss{
+            position: absolute;
+            right: -1ch;
+            top: -0.5em;
+            font-size: 80%;
+        }
+    }
+}
+
 .card {
     padding-top: 10px;
     width: 100%;
@@ -99,7 +117,7 @@
 /************* tabs of categories *****************/
 
 .nav-tabs {
-    border-bottom: 2px solid #DDD;
+    border-bottom: 1px solid $back_color;
     text-align: center;
     li {
         float: none; /* suppress bootstrap's float:left */
@@ -110,12 +128,12 @@
         color: #666;
         &::after {
             content: "";
-            background: #4B0056;
-            height: 2px;
+            background: $link_color;
+            height: 1px;
             position: absolute;
             width: 100%;
-            left: 0px;
-            bottom: -1px;
+            left: 0;
+            bottom: 0;
             transition: all 250ms ease 0s;
             transform: scale(0);
         }
@@ -271,13 +289,13 @@ $other: darkolivegreen;
     position: relative;
     font-weight: 300;
 }
-
+/* straight line */
 .timeline:before {
     top: 0;
     bottom: 0;
     position: absolute;
     content: " ";
-    width: 2px;
+    width: 1px;
     background: #DDD;
     left: 50%;
     margin-left: -1.5px;
@@ -315,8 +333,6 @@ $other: darkolivegreen;
     margin-left: 10px;
     margin-right: 10px;
     width: calc(100% - 35px);
-    width: -moz-calc(100% - 35px);
-    width: -webkit-calc(100% - 35px);
     float: left;
     border: 1px solid #dcdcdc;
     background: #ffffff;
