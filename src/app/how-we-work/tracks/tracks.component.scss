@@ -27,9 +27,16 @@
 
 .more {
     font-family: $btn_font;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
+    // display: flex;
+    // flex-flow: column;
+    // align-items: center;
+    display: inline-block;
+    width: 100%;
+    line-height: 2.5em;
+    text-align: center;
+    background: white;
+    border: 1px solid $back_color;
+    box-shadow: 0px 3px 5px -1px $back_color;
 }
 
 /*-----------------------------------*/
@@ -43,6 +50,7 @@
         padding: 0 1ch;
         background: white;
         border: 1px solid $back_color;
+        box-shadow: 0px 3px 5px -1px $back_color;
         .dismiss{
             position: absolute;
             right: -1ch;
@@ -83,9 +91,6 @@
     }
     ul {
         margin: 50px;
-    }
-    app-tag-cloud {
-        margin: 0 auto;
     }
 }
 
@@ -330,8 +335,8 @@ $other: darkolivegreen;
 }
 
 .timeline li .timeline-panel {
-    margin-left: 10px;
-    margin-right: 10px;
+    // margin-left: 10px;
+    // margin-right: 10px;
     width: calc(100% - 35px);
     float: left;
     border: 1px solid #dcdcdc;
