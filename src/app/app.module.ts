@@ -1,3 +1,4 @@
+import { replacePipe } from './shared/replacePipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -39,6 +40,7 @@ import { Discourselink } from './../assets/discourselink';
     FooterComponent,
     JSONPipesPipe,
     DatePipePipe,
+    replacePipe,
     TagCloudComponent
   ],
   imports: [

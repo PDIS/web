@@ -99,14 +99,15 @@ footer {
         padding: 1em 0;
         text-align: center;
         a {
-            color: gray;
+            color: black;
+            opacity: 0.5;
             text-decoration: none;
             padding: 0 .5em;
             &:hover {
-                color: lightgray;
+                opacity: 1;
             }
             img {
-                width: 50px;
+                width: 3em;
                 vertical-align: bottom;
             }
         }

@@ -24,6 +24,7 @@ export class FooterComponent implements OnInit {
     }
 
     /* api for rss */
+    /* https://www.google.com.tw/alerts/feeds/11419317490390774846/8364829402486342759 */ 
     let query = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.google.com.tw%2Falerts%2Ffeeds%2F11419317490390774846%2F8364829402486342759'
     this.http
         .get(query)

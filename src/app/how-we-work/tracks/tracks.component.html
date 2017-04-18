@@ -11,17 +11,25 @@
   </div>
 
   <div class="cloud" id="cloud">
-    <app-tag-cloud [width]="1000" [height]="200" [data]="tags" [removeOverflow]="true" (click)="goAnchor('cloud')"></app-tag-cloud>
+    <app-tag-cloud [width]="1000" [height]="200" [data]="tags" [removeOverflow]="true"></app-tag-cloud>
   </div>
 
   <hr class="section-line" />
+
+  <div class="tagging text-center" *ngIf="q">
+    You are now tracking with
+    <span class="tag">
+      {{ q }}
+      <sup class="dismiss"> <a [routerLink]="['/how-we-work/tracks']"> <i class="fa fa-close"></i> </a> </sup>
+    </span>
+  </div>
 
   <!-- Nav tabs -->
   <div class="card">
 
     <ul class="nav nav-tabs" role="tablist">
       <li *ngFor="let object of total" role="presentation" [ngClass]="{'active':(object.category ==='All')}">
-        <a href="#{{object.category}}" [attr.aria-controls]="object.category" role="tab" data-toggle="tab">{{object.category}}</a>
+        <a href="#{{object.category}}" [attr.aria-controls]="object.category" role="tab" data-toggle="tab" [ngClass]="object.category">{{object.category}} ({{object.posts.length}})</a>
       </li>
     </ul>
     
@@ -31,8 +39,8 @@
       <div *ngFor="let object of total" role="tabpanel" class="tab-pane fade" [ngClass]="{'in active':(object.category ==='All')}" id="{{object.category}}">
 
         <ul class="timeline">
-            <li *ngFor="let post of object.posts; let i = index" class="wow fadeInUp" [ngClass]="{'timeline-inverted':(i%2!==0)}">
-              <div class="timeline-badge"></div>
+            <li *ngFor="let post of object.posts; let i = index" class="animated fadeInUp" [ngClass]="{'timeline-inverted':(i%2!==0)}">
+              <div class="timeline-badge" [ngClass]="post.category"></div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
                   <p class="title">{{post.title}}</p>
@@ -45,7 +53,7 @@
                 </div>
                 <div class="timeline-footer">
                   <p class="tags">
-                    <label class="tag" *ngFor="let tag of post.tags">{{tag}}</label>
+                    <a [routerLink]="['/how-we-work/tracks']" [queryParams]="{q: tag}" class="tag" *ngFor="let tag of post.tags">{{tag}}</a>
                   </p>
                   <p class="date">
                     <span>{{post.date | datePipe:"yyyy/MM/dd"}}</span>
@@ -59,14 +67,16 @@
       </div>
     </div>
 
-    <!-- event binding -->
-    <!-- <autoload (onEnd)="getMorePosts(more_url)"></autoload> -->
     <p class="text-center">
       <!--<button type="button" class="btn btn-default more" (click)="getMorePosts(more_url)"> <i class="fa fa-toggle-down"></i> READ MORE... </button>-->
-      <span class="more">
-        <a class="btn-pdis" role="button" href="#" (click)="getMorePosts(more_url); false"> READ MORE </a>
+      <a role="button" class="more" href="#" (click)="getMorePosts(q, more_url); false">
+        READ MORE
+        <i class="fa fa-plus-circle"></i>
+      </a>
+      <!-- <span class="more" *ngIf="more_url">
+        <a class="btn-pdis" role="button" href="#" (click)="getMorePosts(q, more_url); false"> READ MORE </a>
         <i class="fa fa-3x fa-angle-double-down animated fadeOutDown infinite"></i>
-      </span>
+      </span> -->
     </p>
 
   </div>
