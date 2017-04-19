@@ -24,6 +24,8 @@ import { TagCloudComponent } from './how-we-work/tracks/tag-cloud/tag-cloud.comp
 import { TagCloudModule } from 'angular-tag-cloud-module';
 
 import { Discourselink } from './../assets/discourselink';
+import { WorkComponent } from "app/what-we-do/work/work.component";
+import { WorklistComponent } from "app/what-we-do/worklist/worklist.component";
 
 
 
@@ -41,7 +43,9 @@ import { Discourselink } from './../assets/discourselink';
     JSONPipesPipe,
     DatePipePipe,
     replacePipe,
-    TagCloudComponent
+    TagCloudComponent,
+    WorklistComponent,
+    WorkComponent
   ],
   imports: [
     BrowserModule,

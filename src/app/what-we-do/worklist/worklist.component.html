@@ -1,0 +1,19 @@
+<div class="main-container container">
+  <div style="padding-top:50px"></div>
+  <div class="row">
+    <div class="col-md-1 "></div>
+    <div class="col-md-10 ">
+      <h1>Work List</h1>
+    </div>
+    <div class="col-md-1 "></div>
+  </div>
+  <div *ngFor="let title of titles">
+      <div class="row">
+        <div class="col-md-1 "></div>
+        <div class="col-md-10 detail-text" [innerHTML]="title"></div>
+      </div>
+  </div>
+
+  <hr class="section-end">
+
+</div>

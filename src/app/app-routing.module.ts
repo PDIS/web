@@ -6,9 +6,13 @@ import { HowWeWorkComponent } from './how-we-work/how-we-work.component';
 import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { WorkComponent } from "app/what-we-do/work/work.component";
+import { WorklistComponent } from "app/what-we-do/worklist/worklist.component";
 
 const routes: Routes = [
   { path: '', redirectTo:'what-we-do', pathMatch:'full' },
+  { path: 'what-we-do/work', component: WorkComponent },
+  { path: 'what-we-do/worklist', component: WorklistComponent },
   { path: 'what-we-do/:id', component: DetailComponent },
   { path: 'what-we-do', component: WhatWeDoComponent },
   { path: 'how-we-work/tools', component: ToolsComponent },

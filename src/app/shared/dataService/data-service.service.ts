@@ -20,23 +20,24 @@ export class DataService {
   // }
   // ***************** isn't this the same as getData() ?
 
-  getData2(category: string) {
-    var topics: Observable<any>;
-    var posts = [];
+  getList(category: string) {
+    var topics = [];
+    var titles = [];
     console.log('https://talk.pdis.nat.gov.tw/c/' + category + '.json');
+    
     // topics
     this.httpData.get('https://talk.pdis.nat.gov.tw/c/' + category + '.json').subscribe((value) => {
-      topics = JSON.parse(value.text());
-
-      console.log(topics['topic_list']['topics']);
-      for (var i in topics['topic_list']['topics']) {
-        this.getData(topics[i]).subscribe((value) => { posts.push(value.text()) });
+      topics = JSON.parse(value.text()).topic_list.topics;
+      
+      for (var i in topics) {
+        console.log("i: " + i);
+        console.log(topics[i].title);
+        titles.push(topics[i].title);
+      //   // console.log(topics[i].post_stream.posts);
+      //   // this.getData(topics[i]).subscribe((value) => { titles.push(value.text()) });
       }
     });;
-
-    console.log(posts);
-
-    return posts;
+    return titles;
   }
 
 }
