@@ -42,10 +42,11 @@
 /*-----------------------------------*/
 
 .tagging{
+    margin: 1em 0;
     font-size: 120%;
     .tag{
         font-family: $btn_font;
-        font-size: 150%;
+        font-size: 120%;
         position: relative;
         padding: 0 1ch;
         background: white;
@@ -77,47 +78,47 @@
 }
 /*-----------------------------------*/
 
-.cloud {
-    // display: inline;
-    // list-style-type: none;
-    // width: 50%;
-    text-align: center;
-    // margin-right:0px;
-    a {
-        color: #4B0056;
-    }
-    a:hover {
-        color: #D66FE5;
-    }
-    ul {
-        margin: 50px;
-    }
-}
+// .cloud {
+//     // display: inline;
+//     // list-style-type: none;
+//     // width: 50%;
+//     text-align: center;
+//     // margin-right:0px;
+//     a {
+//         color: #4B0056;
+//     }
+//     a:hover {
+//         color: #D66FE5;
+//     }
+//     ul {
+//         margin: 50px;
+//     }
+// }
 
-.cloud li {
-    list-style: none;
-    display: inline;
-    // a {
-    //     font-size: 1.4rem; 
-    // }
-}
+// .cloud li {
+//     list-style: none;
+//     display: inline;
+//     // a {
+//     //     font-size: 1.4rem; 
+//     // }
+// }
 
-.cloud li:nth-of-type(3n + 1) {
-    font-size: 1.25em;
-}
+// .cloud li:nth-of-type(3n + 1) {
+//     font-size: 1.25em;
+// }
 
-.cloud li:nth-of-type(4n+3) {
-    font-size: 1.5em;
-}
+// .cloud li:nth-of-type(4n+3) {
+//     font-size: 1.5em;
+// }
 
-.cloud li:nth-of-type(5n - 3) {
-    font-size: 1em;
-}
+// .cloud li:nth-of-type(5n - 3) {
+//     font-size: 1em;
+// }
 
-.tag-cloud {
-    padding: 10px;
-    margin: 20px;
-}
+// .tag-cloud {
+//     padding: 10px;
+//     margin: 20px;
+// }
 
 /************* tabs of categories *****************/
 
@@ -162,48 +163,48 @@
 
 /********* buttons **********/
 
-.btn-pdis {
-    font-size: 1.5rem;
-    margin-right: 5px;
-    padding: 1em;
-    text-decoration: none;
-}
+// .btn-pdis {
+//     font-size: 1.5rem;
+//     margin-right: 5px;
+//     // padding: 1em;
+//     // text-decoration: none;
+// }
 
-.btn-youtube {
-    // border-color: #cc181e;
-    // color: #cc181e;
-    // &:hover {
-    //     border-color: #FF0000;
-    //     color: #FF0000;
-    // }
-}
+// .btn-youtube {
+//     border-color: #cc181e;
+//     color: #cc181e;
+//     &:hover {
+//         border-color: #FF0000;
+//         color: #FF0000;
+//     }
+// }
 
-.btn-transcript {
-    // border-color: darkorange;
-    // color: darkorange;
-    // &:hover {
-    //     border-color: orange;
-    //     color: orange;
-    // }
-}
+// .btn-transcript {
+//     border-color: darkorange;
+//     color: darkorange;
+//     &:hover {
+//         border-color: orange;
+//         color: orange;
+//     }
+// }
 
-.btn-soundcloud {
-    // border-color: #fd3c1b;
-    // color: #fd3c1b;
-    // &:hover {
-    //     border-color: #ff5e00;
-    //     color: #ff5e00;
-    // }
-}
+// .btn-soundcloud {
+//     border-color: #fd3c1b;
+//     color: #fd3c1b;
+//     &:hover {
+//         border-color: #ff5e00;
+//         color: #ff5e00;
+//     }
+// }
 
-.btn-slido {
-    // border-color: #38921a;
-    // color: #38921a;
-    // &:hover {
-    //     border-color: #70bd4e;
-    //     color: #70bd4e;
-    // }
-}
+// .btn-slido {
+//     border-color: #38921a;
+//     color: #38921a;
+//     &:hover {
+//         border-color: #70bd4e;
+//         color: #70bd4e;
+//     }
+// }
 
 /******************************/
 

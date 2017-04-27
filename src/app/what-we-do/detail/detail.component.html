@@ -1,4 +1,4 @@
-  <div class="main-container container">
+<div class="main-container">
   <div style="padding-top:50px"></div>
 
   <div *ngFor="let post of posts; let isLast = last">
@@ -8,6 +8,7 @@
       <div class="row">
         <div class="col-md-1 "></div>
         <div class="col-md-10 detail-text" [innerHTML]="post[0]"></div>
+        <div class="col-md-1 "></div>
       </div>
     </div>
 
@@ -17,6 +18,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-5 detail-text" [innerHTML]="post[0]"></div>
         <div class="col-md-5 detail-text" [innerHTML]="post[1]"></div>
+        <div class="col-md-1"></div>
       </div>
     </div>
 

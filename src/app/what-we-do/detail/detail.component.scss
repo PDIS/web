@@ -1,47 +1,59 @@
 @import "../../../styles.scss";
-
 $main-font-size: 22px;
-$line-height-size:35px;
+$line-height-size: 35px;
 
-.detail-text{                              //設定 detailcomponent 文字及圖片樣式 
+//                              設定 detailcomponent 文字及圖片樣式 
+.detail-text {
     font-size: $main-font-size;
     line-height: $line-height-size;
 }
 
-:host /deep/ .detail-text{
-    
-    p{                                      
-        margin: 1em 0;
+:host /deep/ .detail-text {
+    h1, h2 {
+        &::before {
+            content: '\f178';
+            font-family: FontAwesome;
+            font-size: 1.5em;
+            position: absolute;
+            left: -2ch;
+        }
     }
-
-    img, iframe {            
+    p {
+        margin: 1em 0 1.5em 0;
+    }
+    img,
+    iframe {
         border: 0;
-        display: block;           
-        margin: 0 auto;            
+        display: block;
+        margin: 0 auto;
         max-width: 100%;
-        // height: auto;
     }
-    em img, em iframe {                     //img float right
-        float: right;            
+    //                              img float right
+    em img,
+    em iframe {
+        float: right;
         max-width: 50%;
         height: auto;
         margin: 0 0 1em 1em;
     }
-    strong img, strong iframe {             //img float left
-        float: left;            
+    //                              img float left
+    strong img,
+    strong iframe {
+        float: left;
         max-width: 50%;
         height: auto;
         margin: 0 1em 1em 0;
     }
-    dd{                                     //clean img float
+    //                              clean img float
+    dd {
         clear: left;
     }
-
-    blockquote{                      
+    blockquote {
         position: relative;
         border-left: 0px;
     }
-    blockquote::before{                     //blockquote { style
+    //                              blockquote { style
+    blockquote::before {
         content: "\007B";
         font-size: 8em;
         line-height: 100%;
@@ -50,7 +62,8 @@ $line-height-size:35px;
         left: -50px;
         top: 2rem;
     }
-    blockquote::after{                      //blockquote } style
+    //                              blockquote } style
+    blockquote::after {
         content: "\007D";
         font-size: 8em;
         line-height: 100%;
@@ -59,45 +72,53 @@ $line-height-size:35px;
         right: -30px;
         top: 2rem;
     }
+    .meta {
+        display: none;
+    }
 }
 
-@media screen and (max-width: $breakpoint_tablet*1.56) {     //window size <1200px clean blockquote style
-    :host /deep/ .detail-text{
-        blockquote::after, blockquote::before{
+//                                  window size < 1200px clean blockquote style
+@media screen and (max-width: $breakpoint_tablet*1.56) {
+     :host /deep/ .detail-text {
+        blockquote::after,
+        blockquote::before {
             content: "";
         }
     }
 }
-@media screen and (max-width: $breakpoint_tablet*1.29) {      //window size < 991px change to mobile
 
-    :host /deep/ .detail-text{
-
-        p, h2{
+//                                  window size < 991px change to mobile
+@media screen and (max-width: $breakpoint_tablet*1.29) {
+     :host /deep/ .detail-text {
+        p,
+        h2 {
             margin: 1em 0.5em;
             word-break: break-word;
         }
-
-        img, strong img, em img {
+        img,
+        strong img,
+        em img {
             max-width: 90%;
             margin: 0 5%;
         }
-        span img{                           // the head of author       
+        //                          the head of author
+        span img {
             width: 40%;
             height: 40%;
         }
-        iframe{
+        iframe {
             width: 90%;
             height: 50vw;
         }
     }
 }
 
-@media screen and (min-width: 991px) {      //window size > 991px img 100%
-/*    :host /deep/ .detail-container{
-        img {
-            width: 100%;
-            height: 100%;
-            border: 0px;
-        }
-    }*/
-}
+// @media screen and (min-width: 991px) {      //window size > 991px img 100%
+//     :host /deep/ .detail-container{
+//         img {
+//             width: 100%;
+//             height: 100%;
+//             border: 0px;
+//         }
+//     }
+// }
