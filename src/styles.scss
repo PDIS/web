@@ -14,7 +14,7 @@ $nav-height: 100px;
 $nav-height-mobile: 60px;
 
 $main-font-size: 16px;
-$main-font-family: 'Noto Serif', Georgia, 'Microsoft JhengHei','Heiti TC', serif; 
+$main-font-family: 'Noto Serif', Georgia, 'Microsoft JhengHei','Heiti TC', serif;
 $btn_font: 'Open Sans Condensed', Arial, 'Microsoft JhengHei','Heiti TC', sans-serif;
 $slogan_font: 'Slabo 27px', Georgia, 'Microsoft JhengHei','Heiti TC', serif;
 
@@ -27,14 +27,14 @@ body {
     color: $text_color;
     /***************** Hide Google Translate top row */
     > .skiptranslate {
-        display: none; 
+        display: none;
     }
     /***************** Style Google Translate corner */
     > #google_translate_element {
         font-size: 3rem;
         display: flex;
         background: rgba($highlight, 0.8);
-        box-shadow: -1px 2px 3px 0 rgba($text_color, 0.3);
+        // box-shadow: -1px 2px 3px 0 rgba($text_color, 0.3);
         z-index: 99999;
         position: fixed;
         bottom: .5em;
