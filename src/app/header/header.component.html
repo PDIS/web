@@ -12,7 +12,7 @@
       </li>
       <li>
         <!--<a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']">HOW WE WORK</a>-->
-        <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work/tracks']">HOW WE WORK</a>
+        <a [routerLinkActive]="['active']" (click)='toggle($event)'>HOW WE WORK</a>
         <ul>
           <li>
             <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work/tracks']">Tracks</a>

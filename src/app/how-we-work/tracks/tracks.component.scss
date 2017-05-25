@@ -424,9 +424,7 @@ $other: darkolivegreen;
         clear: left;
     }
     ul.timeline li>.timeline-panel {
-        width: calc(100% - 65px);
-        width: -moz-calc(100% - 65px);
-        width: -webkit-calc(100% - 65px);
+        width: calc(100% - 40px);
     }
     ul.timeline li>.timeline-badge {
         left: 0;

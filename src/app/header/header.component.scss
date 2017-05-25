@@ -89,28 +89,37 @@ nav.site-nav {
                 font-family: $btn_font;
                 color: $nav-color;
                 height: $nav-h;
-                @media only screen and (max-width: $breakpoint_tablet){
-                    height: 100%;
-                }
                 padding: 1ch;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 text-align: center;
-                &:hover {
-                    color: $nav-bg-color;
-                    background: $nav-color;
-                    +ul { /* show sub menus */
-                        max-height: $nav-h * $nav-sub-num;
+                @media only screen and (max-width: $breakpoint_tablet){
+                    height: 100%;
+                    /* show sub menus */
+                    &.active {
+                        color: $nav-bg-color;
+                        background: $nav-color;
+                        +ul {
+                            max-height: $nav-h * $nav-sub-num;
+                        }
+                    }
+                }
+                @media only screen and (min-width: $breakpoint_tablet){
+                    /* show sub menus */
+                    &:hover {
+                        color: $nav-bg-color;
+                        background: $nav-color;
+                        +ul {
+                            max-height: $nav-h * $nav-sub-num;
+                        }
                     }
                 }
             }
-            ul { /* hide sub menus */
+            /* hide sub menus */
+            ul {
                 position: absolute;
                 top: $nav-h;
-                @media only screen and (max-width: $breakpoint_tablet){
-                    top: 100%;
-                }
                 left: 0;
                 max-height: 0;
                 width: 100%;
@@ -118,8 +127,14 @@ nav.site-nav {
                 transition: all .3s ease;
                 flex-flow: column;
                 box-shadow: 0 3px 5px 0 rgba($text_color, 0.3);
-                &:hover { /* show sub menus */
-                    max-height: $nav-h * $nav-sub-num;
+                @media only screen and (max-width: $breakpoint_tablet){
+                    top: 100%;
+                }
+                @media only screen and (min-width: $breakpoint_tablet){
+                    /* show sub menus */
+                    &:hover {
+                        max-height: $nav-h * $nav-sub-num;
+                    }
                 }
             }
         }
