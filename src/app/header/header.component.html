@@ -1,4 +1,4 @@
-<a id="top" href="#" role="button" (click)="goAnchor('top')"> <i class="fa fa-chevron-up"></i> </a>
+<a id="top" href="#" role="button" (click)="goAnchor('top')"> <i class="fa fa-arrow-up"></i> </a>
 
 <nav class="site-nav" [ngClass]="(showNav) ? '' : 'hidenav'">
   <div class="logo">
@@ -12,7 +12,7 @@
       </li>
       <li>
         <!--<a [routerLinkActive]="['active']" [routerLink]="['/how-we-work']">HOW WE WORK</a>-->
-        <a [routerLinkActive]="['active']">HOW WE WORK</a>
+        <a [routerLinkActive]="['active']" (click)='toggle($event)'>HOW WE WORK</a>
         <ul>
           <li>
             <a [routerLinkActive]="['active']" [routerLink]="['/how-we-work/tracks']">Tracks</a>
@@ -23,11 +23,8 @@
         </ul>
       </li>
       <li>
-        <a [routerLinkActive]="['active']" [routerLink]="['/who-we-are']">WHO WE ARE</a>
-      </li>
-   <!--   <li>
         <a [routerLinkActive]="['active']" [routerLink]="['/get-involved']">GET INVOLVED</a>
-      </li>-->
+      </li>
     </ul>
   </div>
 </nav>

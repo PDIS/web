@@ -8,7 +8,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WorkComponent } from "app/what-we-do/work/work.component";
 import { WorklistComponent } from "app/what-we-do/worklist/worklist.component";
-import { WhoWeAreComponent } from "./who-we-are/who-we-are.component";
 
 const routes: Routes = [
   { path: '', redirectTo:'what-we-do', pathMatch:'full' },
@@ -18,8 +17,7 @@ const routes: Routes = [
   { path: 'how-we-work/tools', component: ToolsComponent },
   { path: 'how-we-work/tracks', component: TracksComponent },
   { path: 'how-we-work', component: HowWeWorkComponent },
-  { path: 'get-involved', component: GetInvolvedComponent },
-  { path: 'who-we-are', component: WhoWeAreComponent }
+  { path: 'get-involved', component: GetInvolvedComponent }
 ];
 
 @NgModule({

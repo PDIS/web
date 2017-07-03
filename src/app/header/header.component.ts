@@ -42,28 +42,21 @@ export class HeaderComponent {
         }
         if (this.currentDirection == 'down') {
             if (this.isTop) {
-                // this.bigLogo = true;
-                // this.showNav = true;
             }
             else {
                 if (this.moveLength > 2*this.topPos) {
-                    // this.bigLogo = false;
                     this.showNav = false;
                 }
-                // else if (this.moveLength > 1.5*this.topPos) {
-                    // this.showNav = false;
-                // }
             }
         }
-        else { /* this.currentDirection == 'up' */
+        /* this.currentDirection == 'up' */
+        else {
             if (this.isTop) {
-                // this.bigLogo = true;
                 this.showNav = true;
             }
             else {
                 if (this.moveLength > 2*this.topPos) {
                     this.showNav = true;
-                    // this.bigLogo = false;
                 }
             }
         }
@@ -87,9 +80,14 @@ export class HeaderComponent {
         }
         return false
     }
-    
+
     /* add 'hide' class when nav leave top */
     // $('.site-nav').addClass('hidenav')
+
+    toggle (event: any) {
+        // event.target.nextElementSibling.className += 'active'
+        $(event.target).toggleClass('active')
+    }
 
     //@ViewChild('mobileBtn') el:ElementRef;
     //@ViewChild('navbar') navbar:ElementRef;

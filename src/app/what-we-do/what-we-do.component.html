@@ -1,10 +1,8 @@
 <div class="main-container">
-    <!-- Slider main container -->
     <div class="swiper-container">
         <div class="swiper-pagination"></div>
-        <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
-            <!-- Slides -->
+            <!-- Slide -->
             <div class="swiper-slide">
                 <div class="slogan-container">
                     <p class="slogan">
@@ -16,12 +14,18 @@
                     <p class="text-center">
                         <span class="more">
                             <a class="btn-pdis" href="#" role="button" (click)="goAnchor('#start')">MORE ABOUT PDIS</a>
-                            <i class="fa fa-3x fa-angle-down animated fadeOutDown infinite"></i>
+                            <!--<i class="fa fa-3x fa-angle-down animated fadeOutDown infinite"></i>-->
                         </span>
                     </p>
                 </div>
             </div>
-            <!-- Slides -->
+            <!-- Slide -->
+            <div class="swiper-slide">
+                <div class="iframeWrapper">
+                    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshu.w.zhengwei%2Fvideos%2F225723507918927%2F%3Fl%3D598307961771178061&show_text=false&show_captions=true&appId" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                </div>
+            </div>
+            <!-- Slide -->
             <div class="swiper-slide">
                 <div class="iframeWrapper">
                     <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshu.w.zhengwei%2Fvideos%2F161981934293085%2F%3Fl%3D598307961771178061&show_text=false&show_captions=true&appId" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
@@ -29,7 +33,7 @@
             </div>
         </div>
     </div>
-    
+
     <hr id="start" class="section-line">
 
     <div *ngFor="let topic of topics; let i = index; let isOdd = odd ">

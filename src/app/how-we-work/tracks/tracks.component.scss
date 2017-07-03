@@ -118,17 +118,17 @@
 
 /********* buttons **********/
 
-.btn-pdis {
-    position: relative;
-    z-index: 100;
-    background: $link_color;
-    color: white;
-    &:hover {
-        background: none;
-        color: $link_color;
-        border-color: $link_color;
-    }
-}
+// .btn-pdis {
+//     position: relative;
+//     z-index: 100;
+//     background: $link_color;
+//     color: white;
+//     &:hover {
+//         background: none;
+//         color: $link_color;
+//         border-color: $link_color;
+//     }
+// }
 
 /******************************/
 
@@ -424,9 +424,7 @@ $other: darkolivegreen;
         clear: left;
     }
     ul.timeline li>.timeline-panel {
-        width: calc(100% - 65px);
-        width: -moz-calc(100% - 65px);
-        width: -webkit-calc(100% - 65px);
+        width: calc(100% - 40px);
     }
     ul.timeline li>.timeline-badge {
         left: 0;
