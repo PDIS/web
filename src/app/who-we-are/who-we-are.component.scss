@@ -1,0 +1,60 @@
+@import "../../styles.scss";
+
+/*-----------------------------------*/
+.slogan-container {
+    position: relative;
+    text-align: center;
+}
+
+.slogan {
+    position: relative;
+    font-family: $slogan_font;
+    font-size: 5rem;
+    padding: 3em 0;
+    z-index: 100;
+    @media screen and (max-width: $breakpoint_tablet) {
+        font-size: 3rem;
+    }
+}
+
+.slogan-btn {
+    position: relative;
+    padding: 3rem;
+    z-index: 100;
+}
+
+.aboutus {
+    display: inline-block;
+    width: 33%;
+    // margin: 1em 1em 1em 1em;
+    vertical-align: top;
+    //filter: grayscale(100%);
+    //margin-left: 1.5em;
+    //box-shadow: 0 3px 5px 0 rgba($text_color, 0.3);
+    //text-align: center;
+}
+@media screen and (max-width: $breakpoint_tablet) {
+    .aboutus {
+        width: 100%;
+        // margin: 1em 1em 1em 1em;
+        display: block;
+        // vertical-align: top;
+        text-align: center;
+    }
+}
+
+
+.tag {
+     display: inline-block;
+     margin-right: 1em;
+}
+
+.image-content {
+    width: 80%;
+    margin:0 auto;
+}
+
+:host /deep/ .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+    line-height: normal;
+    margin-bottom: 40px !important;
+}

@@ -26,7 +26,8 @@ import { TagCloudModule } from 'angular-tag-cloud-module';
 import { Discourselink } from './../assets/discourselink';
 import { WorkComponent } from "app/what-we-do/work/work.component";
 import { WorklistComponent } from "app/what-we-do/worklist/worklist.component";
-
+import { WhoWeAreComponent } from "./who-we-are/who-we-are.component";
+import { MemberService } from "./shared/member-service/member.service"
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { WorklistComponent } from "app/what-we-do/worklist/worklist.component";
     replacePipe,
     TagCloudComponent,
     WorklistComponent,
-    WorkComponent
+    WorkComponent,
+    WhoWeAreComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ import { WorklistComponent } from "app/what-we-do/worklist/worklist.component";
     DataService,
     DiscourseService,
     ConvertService,
-    Discourselink
+    Discourselink,
+    MemberService
   ],
   bootstrap: [AppComponent]
 })
