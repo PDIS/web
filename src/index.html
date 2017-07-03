@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif|Open+Sans+Condensed:700|Slabo+27px">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 
     <script type='text/javascript' src="assets/js/jquery.min.js"></script>
     <script type='text/javascript' src="assets/js/bootstrap.min.js"></script>
@@ -23,24 +24,24 @@
     <script src="https://use.fontawesome.com/e7b4292f28.js"></script>
     <script type='text/javascript' src="assets/js/wow.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.jquery.min.js"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+    
 </head>
 <body>
     <app-root></app-root>
-    <!-- Google Translate w/ Google Analytics -->
-    <div id="google_translate_element" onclick="void(0)"></div>
+    <!-- Google Translate -->
+    <div id="google_translate_element"></div>
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
-                multilanguagePage: true,
-                gaTrack: true,
-                gaId: 'UA-88589031-1'
+                layout: google.translate.TranslateElement.FloatPosition.BOTTOM_RIGHT
             }, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!-- Auto Translate-->
-    <!--<script>
+    <script>
         function fireEvent(element, event) {
             console.log("in Fire Event");
             if (document.createEventObject) {
@@ -62,9 +63,9 @@
             jObj.val(window.navigator.language);
             fireEvent(db, 'change');
         }
-    </script>-->
+    </script>
     <!-- Google Analytics -->
-    <!--<script>
+    <script>
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function() {
@@ -78,6 +79,7 @@
         })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-88589031-1', 'auto');
         ga('send', 'pageview');
-    </script>-->
+    </script>
+
 </body>
 </html>

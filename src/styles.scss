@@ -109,25 +109,18 @@ canvas {
 // ******************** content section
 
 .btn-pdis {
-    font-family: $btn_font;
     display: inline-block;
     margin: 0 .5ch;
     padding: .5em 1em;
     transition: all 0.3s ease;
-    // background: transparent;
-    // color: $link_color;
-    background: $link_color;
-    color: white;
+    background: transparent;
+    font-family: $btn_font;
+    color: $link_color;
     border: solid 2px $link_color;
     text-transform: uppercase;
-    position: relative;
-    z-index: 100;
     &:hover{
-        // color: $highlight;
-        // border: solid 2px $highlight;
-        background: none;
-        color: $link_color;
-        border-color: $link_color;
+        color: $highlight;
+        border: solid 2px $highlight;
     }
 }
 

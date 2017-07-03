@@ -25,8 +25,10 @@
     "angular-tag-cloud-module": "0.0.2",
     "core-js": "^2.4.1",
     "gh-pages": "^0.12.0",
+    "ng2-order-pipe": "^0.1.5",
     "node-sass": "^4.3.0",
     "rxjs": "5.0.0-beta.12",
+    "semantic-ui": "^2.2.10",
     "ts-helpers": "^1.1.1",
     "yamljs": "^0.2.8",
     "zone.js": "^0.6.23"

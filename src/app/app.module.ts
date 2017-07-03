@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ConvertService } from './shared/convertService/convert.service';
 import { DataService } from './shared/dataService/data-service.service';
 import { DiscourseService } from './shared/discourseService/discourse.service';
+import { MemberService } from './shared/member-service/member.service'
 
 import { AppComponent } from './app.component';
 import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
@@ -26,7 +27,8 @@ import { TagCloudModule } from 'angular-tag-cloud-module';
 import { Discourselink } from './../assets/discourselink';
 import { WorkComponent } from "app/what-we-do/work/work.component";
 import { WorklistComponent } from "app/what-we-do/worklist/worklist.component";
-
+import { WhoWeAreComponent } from './who-we-are/who-we-are.component';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 
 @NgModule({
@@ -45,20 +47,23 @@ import { WorklistComponent } from "app/what-we-do/worklist/worklist.component";
     replacePipe,
     TagCloudComponent,
     WorklistComponent,
-    WorkComponent
+    WorkComponent,
+    WhoWeAreComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    TagCloudModule
+    TagCloudModule,
+    Ng2OrderModule
   ],
   providers: [
     DataService,
     DiscourseService,
     ConvertService,
-    Discourselink
+    Discourselink,
+    MemberService
   ],
   bootstrap: [AppComponent]
 })

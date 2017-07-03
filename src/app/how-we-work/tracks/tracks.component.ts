@@ -167,7 +167,7 @@ export class TracksComponent implements OnInit {
                 var discourseTags: [Object] = data['results'];
                 for (var i in discourseTags) {
                     if (discourseTags[i]['text'] === '尚未回覆') { continue; }
-                    if (/^(.+)-/.test(discourseTags[i]['text'])) { continue; }
+                    if (/^([a-z]+)-/.test(discourseTags[i]['text'])) { continue; }
                     var tag = {};
                     tag['text'] = discourseTags[i]['text'];
                     tag['weight'] = discourseTags[i]['count'];

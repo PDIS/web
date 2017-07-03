@@ -1,0 +1,40 @@
+<div class="main-container">
+<div class="slogan-container">
+    <p class="slogan">
+      <span>
+        Have any questions? 
+        <br>
+        Click avatars to ask us at <span class="highlight">wiselike</span>
+      </span>
+    </p>
+  </div>
+    <hr id="start" class="section-line">
+  <div *ngFor="let member of members | orderBy : order" class="aboutus">
+    <div class="ui large image">
+      <div class="ui dimmer">
+        <div class="content">
+          <a href={{member.wiselikelink}}>
+            <div class="center">
+              <!-- <h2 class="ui inverted header"><i class="taiwan flag"></i>{{member.name}}</h2>
+            <div class="ui inverted header">
+              <div class="content">
+                {{member.name}}
+                <div class="sub header">{{member.description}}</div>
+              </div>
+            </div>
+             <div *ngFor="let tag of member.tags" class="tag">
+              <div class="ui teal button" [innerHTML]="tag"></div>
+            </div>-->
+            <h2 class="ui inverted header">{{member.name}}</h2>
+              <div class="image-content" >
+                <p>{{member.description}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <img class="ui image" src={{member.image}}>
+    </div>
+    <!--<h2 class="ui header" style="font-family: Microsoft JhengHei">{{member.name}}</h2>-->
+  </div>
+</div>
