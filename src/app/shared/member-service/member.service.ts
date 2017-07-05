@@ -47,7 +47,12 @@ export class MemberService {
          new_tags.push(p.replace("wiselike-", ""));
        });
        user['tags'] = new_tags;
-       user['description'] = content;
+       if (content.includes("建立一個完整的")) {
+         user['description'] = "";
+       }
+       else {
+         user['description'] = content;
+       }
        return user;
      });
    }
