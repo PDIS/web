@@ -35,7 +35,7 @@ nav.site-nav {
         top: -100%;
     }
     transition: all .5s ease-in-out;
-    z-index: 1000;
+    z-index: 10000;
     width: 100%;
     background: $nav-bg-color;
     height: $nav-h;
