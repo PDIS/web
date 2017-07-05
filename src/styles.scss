@@ -19,12 +19,32 @@ $btn_font: 'Open Sans Condensed', Arial, 'Microsoft JhengHei','Heiti TC', sans-s
 $slogan_font: 'Slabo 27px', Georgia, 'Microsoft JhengHei','Heiti TC', serif;
 
 // ******************** html tag presets
+html {
+    font-size: 10px;
+}
+
+.h1,h1 {
+    font-size: 36px;
+}
+
+.h2,h2 {
+    font-size: 30px;
+}
+
+.h4,h4 {
+    font-size: 18px;
+}
+
+p {
+    line-height: 1.4285;
+}
 
 body {
     font-family: $main-font-family;
     background-color: $back_color;
     font-size: $main-font-size;
     color: $text_color;
+    line-height: 1.4285;
     /***************** Hide Google Translate top row */
     > .skiptranslate {
         display: none;
