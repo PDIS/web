@@ -38,7 +38,7 @@ export class MemberService {
    }
 
    getInfo(name: any,user: any): Observable<any> {
-     return this.http.get(this.InfoUrl + name + ".json").map ( u => {
+     return this.http.get(this.InfoUrl + name.toString().toLowerCase() + ".json").map ( u => {
        var topic = u.json().topic_list.topics[0];
        var content = topic.excerpt.replace(" :new:", "");
        var new_tags = [];
