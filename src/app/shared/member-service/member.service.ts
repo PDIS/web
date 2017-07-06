@@ -29,7 +29,12 @@ export class MemberService {
        var people = {};
        var tmp2 = u.json().user;
        people['id'] = tmp2.id;
-       people['name'] = tmp2.name;
+       if (tmp2.name == '') {
+         people['name'] = tmp2.username;
+       }
+       else {
+         people['name'] = tmp2.name;
+       }
        people['username'] = tmp2.username;
        people['image'] = Discourselink.Host + tmp2.avatar_template.replace("{size}", "800");
        people['wiselikelink'] = "https://wiselike.tw/#/user/" + tmp2.username;
