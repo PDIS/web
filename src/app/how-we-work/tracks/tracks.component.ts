@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { TagCloudModule } from 'angular-tag-cloud-module';
-import { element } from 'protractor';
+// import { element } from 'protractor';
 import { DataService } from './../../shared/dataService/data-service.service';
 import { Http } from '@angular/http';
 import { ConvertService } from './../../shared/convertService/convert.service';
@@ -70,7 +70,7 @@ export class TracksComponent implements OnInit {
                 query = Discourselink.Host + Discourselink.Category + Discourselink.HOWWEWORKTRACK + Discourselink.Filename
             }
         }
-        
+
         return this.http
             .get(query)
             /* to get more_url */

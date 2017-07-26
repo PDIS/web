@@ -28,19 +28,16 @@
     "ng2-order-pipe": "^0.1.5",
     "node-sass": "^4.3.0",
     "rxjs": "5.0.0-beta.12",
-    "semantic-ui": "^2.2.10",
     "ts-helpers": "^1.1.1",
     "yamljs": "^0.2.8",
     "zone.js": "^0.6.23"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^2.1.0",
-    "@types/jasmine": "^2.2.30",
     "@types/node": "^6.0.42",
     "angular-cli": "1.0.0-beta.20-4",
-    "angular-tag-cloud-module": "0.0.2",
     "codelyzer": "~1.0.0-beta.3",
-    "gh-pages": "^0.12.0",
+    "extract-text-webpack-plugin": "2.0.0-beta.4",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
     "karma": "1.2.0",
@@ -48,12 +45,9 @@
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",
-    "protractor": "4.0.9",
     "ts-node": "1.2.1",
     "tslint": "3.13.0",
     "typescript": "~2.0.3",
-    "webdriver-manager": "10.2.5",
-    "yamljs": "^0.2.8",
-    "extract-text-webpack-plugin": "2.0.0-beta.4"
+    "webdriver-manager": "10.2.5"
   }
 }
