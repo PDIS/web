@@ -30,7 +30,8 @@ Development Environment Setup
 -----------------------------
 
 -   fork this project on github
--   install [nodejs](https://nodejs.org/en/) [npm](https://www.npmjs.com/) [angular-cli](https://cli.angular.io/)
+-   install [nodejs 6.x.x](https://nodejs.org/en/) [npm](https://www.npmjs.com/)
+-   install [angular-cli](https://cli.angular.io/)
 -   ```npm install```
 -   ```npm start```
 -   Navigate to [http://localhost:4200/](http://localhost:4200/). The app will automatically reload if you change any of the source files.
@@ -38,5 +39,5 @@ Development Environment Setup
 Deploy
 ------
 
--   ```npm run deploy``` 
+-   ```npm run deploy```
 -   ```npm run deploy-win```

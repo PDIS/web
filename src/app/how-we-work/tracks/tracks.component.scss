@@ -38,10 +38,42 @@
 
 /*-----------------------------------*/
 
-.tagging{
+.cloud {
+    margin: 0 0 3em 0;
+    text-align: center;
+    line-height: 2.5;
+    .cloud-item {
+        position: relative;
+        white-space: nowrap;
+        display: inline-block;
+        &::after {
+            content: attr(data-weight);
+            position: absolute;
+            right: 1.7ch;
+            top: -.9em;
+            font-size: 80%;
+            color: gray;
+            font-family: $btn_font;
+        }
+        a {
+            margin: 1ch;
+            padding: 0 1ch;
+            color: $text_color;
+            background-color: $back_color;
+            border-radius: .1em;
+            &:hover {
+                background-color: $highlight;
+            }
+        }
+    }
+}
+
+/*-----------------------------------*/
+
+.tagging {
     margin: 1em 0;
     font-size: 120%;
-    .tag{
+    .tag {
         font-family: $btn_font;
         font-size: 120%;
         position: relative;
@@ -49,7 +81,7 @@
         background: white;
         border: 1px solid $back_color;
         box-shadow: 0px 3px 5px -1px $back_color;
-        .dismiss{
+        .dismiss {
             position: absolute;
             right: -1ch;
             top: -0.5em;
@@ -380,7 +412,7 @@ $other: darkolivegreen;
     right: 0;
     bottom: -.2em;
     font-size: 5em;
-    color: $back_color;
+    color: rgba($back_color, .2);
 }
 
 .timeline-body p,

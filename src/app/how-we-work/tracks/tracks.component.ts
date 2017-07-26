@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { TagCloudModule } from 'angular-tag-cloud-module';
+// import { TagCloudModule } from 'angular-tag-cloud-module';
 // import { element } from 'protractor';
 import { DataService } from './../../shared/dataService/data-service.service';
 import { Http } from '@angular/http';
@@ -84,6 +84,7 @@ export class TracksComponent implements OnInit {
             .map(res => {
                 let data = res.json();
                 let post = {};
+                post['id'] = data['id']
                 post['title'] = data['title'];
                 post['date'] = data['created_at'];
                 post['tags'] = data['tags'];
