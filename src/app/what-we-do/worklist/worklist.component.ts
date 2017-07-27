@@ -12,42 +12,24 @@ import { Discourselink } from './../../../assets/discourselink';
 })
 export class WorklistComponent {
 
-  titles = ["empty","one"];
+  topics = []
 
-  constructor(private wldetail: DataService) {
+  constructor(private data: DataService) {
   }
 
-  ngOnInit() {    
-    
-    // this.wldetail.getList("pdis-site/work")
-    //       .subscribe((value) => {
+  ngOnInit() {
 
-    //         /*** get articles from json ***/
-    //         var articles = JSON.parse(value.text()).post_stream.posts;
-    //         // let each article to be split and converted
-    //         articles.forEach(element => {
-    //           /*** split an article by <hr> ***/
-    //           var article = element['cooked'].split("<hr>");
-    //           // convert lazyYT into iframe
-    //           article = this.lazyTY2iframe(article);
-    //           // push back into posts
-    //           this.posts.push(article);
-
-    //         });
-    //       });
-
-    var lists = this.wldetail.getList("pdis-site/work");
-    console.log("= lists =");
-    console.log(lists);
-
-    // push back into titles
-    lists.forEach(element => {
-      this.titles.push(element);
-    });
+    /* get the list of topics in some category */
+    this.data.getList("pdis-site/work")
+      .subscribe(topics => {
+        // console.log(topics)
+        topics.map(topic => {
+          topic.image_url = this.data.base + topic.image_url
+          return topic
+        })
+        this.topics = topics
+      })
   }
-
-
-
 
 }
 

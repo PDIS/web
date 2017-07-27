@@ -3,3 +3,68 @@
 $main-font-size: 22px;
 $line-height-size:35px;
 
+/*-----------------------------------*/
+
+.topic-container {
+    position: relative;
+    display: flex;
+    padding: 0 1em;
+    &.topic-left {
+        flex-flow: row;
+        text-align: left;
+    }
+    &.topic-right {
+        flex-flow: row-reverse;
+        text-align: right;
+    }
+    .text {
+        flex: 3;
+        max-width: $max_width * 0.5;
+        display: inline-block;
+        margin: 0 -1em;
+        z-index: 2;
+        background-color: rgba(255,255,255,0.9);
+        padding: 2.5vw;
+        .header {
+            text-transform: uppercase;
+        }
+    }
+    .image {
+        flex: 2;
+        max-width: $max_width * 0.5;
+        display: inline-block;
+        margin: 2.5vw -1em;
+        z-index: 3;
+        overflow: hidden;
+        height: calc(100% - 5vw);
+        display: inline-flex;
+        align-items: center;
+    }
+    .btn-pdis {
+        margin-top: 15px;
+    }
+}
+
+/*-----------------------------------*/
+
+@media screen and (max-width: $breakpoint_tablet) {
+    .topic-container {
+        width: 100%;
+        // display: flex;
+        &.topic-left,
+        &.topic-right {
+            flex-flow: column;
+        }
+        .text {
+            // width: 100%;
+            margin: 0;
+            // max-width: $max_width;
+        }
+        .image {
+            // width: 100%;
+            // height: 100%;
+            margin: 0;
+            // max-width: $max_width;
+        }
+    }
+}

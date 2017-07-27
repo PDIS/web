@@ -7,11 +7,23 @@
     </div>
     <div class="col-md-1 "></div>
   </div>
-  <div *ngFor="let title of titles">
-      <div class="row">
-        <div class="col-md-1 "></div>
-        <div class="col-md-10 detail-text" [innerHTML]="title"></div>
+
+  <div *ngFor="let topic of topics; let i = index; let isOdd = odd ">
+    <div class="topic-container" [ngClass]="{'topic-right':isOdd,'topic-left':!isOdd}">
+      <div class="text">
+        <h1 class='header'>{{topic.slug}}</h1>
+        <div [innerHTML]="topic['title']"></div>
+        <a class="btn-pdis" [routerLink]="'/what-we-do/'+topic.id" role="button">
+            More about {{topic.slug}}
+        </a>
       </div>
+      <div class="image wow fadeInUp">
+        <img [src]='topic.image_url'>
+      </div>
+    </div>
+
+    <hr *ngIf='i+1 !== topics.length' class="section-dot">
+
   </div>
 
   <hr class="section-end">

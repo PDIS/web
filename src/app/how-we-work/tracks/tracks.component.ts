@@ -27,6 +27,7 @@ export class TracksComponent implements OnInit {
     total = [];
     q:string = '';
     more_url: string = ''
+    autoLoad: boolean = true
 
     constructor(
         private dataService: DataService,
@@ -156,9 +157,40 @@ export class TracksComponent implements OnInit {
         return false
     }
 
+    // /* trigger 'load more' when window scroll to bottom */
+    // hitLoad () {
+    //     let wBottom = window.pageYOffset + window.innerHeight
+    //     /* cross-browser highest document finding */
+    //     let dHeight = Math.max(
+    //         document.body.scrollHeight, document.documentElement.scrollHeight,
+    //         document.body.offsetHeight, document.documentElement.offsetHeight,
+    //         document.body.clientHeight, document.documentElement.clientHeight
+    //     )
+    //     /* check if scroll to bottom */
+    //     if (wBottom === dHeight && true) {
+    //         this.getMorePosts(this.q, this.more_url)
+    //     }
+    // }
+
     ngOnInit() {
         /* WOW for animateCSS */
         // new WOW().init();
+
+        /* bind event 'scroll' to window */
+        window.addEventListener('scroll', () => {
+            /* trigger 'load more' when window scroll to bottom */
+            let wBottom = window.pageYOffset + window.innerHeight
+            /* cross-browser highest document finding */
+            let dHeight = Math.max(
+                document.body.scrollHeight, document.documentElement.scrollHeight,
+                document.body.offsetHeight, document.documentElement.offsetHeight,
+                document.body.clientHeight, document.documentElement.clientHeight
+            )
+            /* check if scroll to bottom */
+            if (wBottom === dHeight && this.autoLoad) {
+                this.getMorePosts(this.q, this.more_url)
+            }
+        })
 
         // Tags Cloud
         this.http.get(Discourselink.Host + "tags/filter/search.json")
