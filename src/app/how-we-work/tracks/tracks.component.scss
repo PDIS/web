@@ -1,26 +1,19 @@
 @import "../../../styles.scss";
 
 // ******************** slogan section
+
 .slogan-container {
     position: relative;
     text-align: center;
-}
-
-.slogan {
-    position: relative;
-    font-family: $slogan_font;
-    font-size: 5rem;
-    padding: 3em 0;
-    z-index: 100;
-    @media screen and (max-width: $breakpoint_tablet) {
-        font-size: 3rem;
+    .slogan {
+        font-size: 4rem;
+        @media screen and (max-width: $breakpoint_tablet) {
+            font-size: 2rem;
+        }
+        font-weight: normal;
+        font-family: $slogan_font;
+        padding: 2em 0;
     }
-}
-
-.slogan-btn {
-    position: relative;
-    padding: 3rem;
-    z-index: 100;
 }
 
 /******************************/
@@ -46,15 +39,6 @@
         position: relative;
         white-space: nowrap;
         display: inline-block;
-        &::after {
-            content: attr(data-weight);
-            position: absolute;
-            right: 1.7ch;
-            top: -.9em;
-            font-size: 80%;
-            color: gray;
-            font-family: $btn_font;
-        }
         a {
             margin: 1ch;
             padding: 0 1ch;
@@ -63,6 +47,15 @@
             border-radius: .1em;
             &:hover {
                 background-color: $highlight;
+            }
+            &::after {
+                content: attr(data-weight);
+                // position: absolute;
+                // right: 1.7ch;
+                // top: -.9em;
+                font-size: 80%;
+                color: gray;
+                font-family: $btn_font;
             }
         }
     }
@@ -95,17 +88,6 @@
     width: 100%;
     position: relative;
 }
-
-.main-container {
-    .tracktitle {
-        color: black;
-        text-align: center;
-        font-size: 3.5rem;
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
-}
-/*-----------------------------------*/
 
 /************* tabs of categories *****************/
 
@@ -146,63 +128,6 @@
     &::after {
         transform: scale(1);
     }
-}
-
-/********* buttons **********/
-
-// .btn-pdis {
-//     position: relative;
-//     z-index: 100;
-//     background: $link_color;
-//     color: white;
-//     &:hover {
-//         background: none;
-//         color: $link_color;
-//         border-color: $link_color;
-//     }
-// }
-
-/******************************/
-
-.movetoright {
-    text-align: right;
-    vertical-align: bottom;
-    margin: 7px 0px 10px 0px;
-}
-
-.button-source {
-    margin: 5px;
-}
-
-.btn-more {
-    text-align: center;
-    color: white;
-    background: darkgray;
-    border-radius: 0;
-}
-
-.movetocenter {
-    vertical-align: bottom;
-    text-align: center;
-}
-
-.timeline-body .glyphicon-tag {
-    margin-top: 5px;
-}
-
-.label-tag {
-    display: inline-block;
-    margin: 5px 5px 10px 0;
-    padding: 3px 5px;
-    background: rgba(222, 123, 92, 0.86);
-    font-size: 12px;
-    color: #FFF;
-    font-weight: 400;
-    border-radius: 0px;
-}
-
-.row {
-    margin-left: 0px;
 }
 
 /*----------------- categories highlight ------------------*/
@@ -387,15 +312,16 @@ $other: darkolivegreen;
     position: relative;
     padding: .5em 1em;
     .title {
-        color: black;
-        font-size: 2rem;
-        font-weight: 500;
-        margin: 0;
+        // color: black;
+        // font-size: 2rem;
+        // font-weight: 500;
+        // margin: 0;
+        display: inline-block;
     }
     .tag {
         display: inline-block;
-        font-size: .8em;
-        color: $text_color;
+        // font-size: .8em;
+        color: black;
         background-color: $back_color;
         text-decoration: none;
         border-radius: .1em;
@@ -410,9 +336,9 @@ $other: darkolivegreen;
 .timeline-footer {
     position: absolute;
     right: 0;
-    bottom: -.2em;
-    font-size: 5em;
-    color: rgba($back_color, .2);
+    bottom: 0;
+    // font-size: 5em;
+    // color: rgba($back_color, .2);
 }
 
 .timeline-body p,

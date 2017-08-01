@@ -22,43 +22,13 @@ footer {
             flex: 1 1 0px;
             padding: 0;
 
-            &.feed {
-                flex: 2 1 0px;
-                .rss {
-                    padding: 0 1em;
-                    // height: 20em;
-                    // @media screen and (max-width: $breakpoint_tablet) {
-                    //     height: auto;
-                    // }
-                    overflow: auto;
-                    a.item{
-                        color: $text_color;
-                        margin: 0 0 1em 0;
-                        display: inline-block;
-                        border-bottom: 1px solid lightgray;
-                        &:last-of-type{
-                            border-bottom: 0;
-                        }
-                        .title{
-                            font-size: 120%;
-                            font-weight: 700;
-                        }
-                        .date{
-                            font-size: 80%;
-                            font-style: oblique;
-                            text-align: right;
-                        }
-                    }
-                }
-            }
-
-            h1 {
+            .header {
                 margin-top: 20px;
                 text-align: center;
                 //background: $sheet_color;
                 //color: $back_color;
-                font-size: 3rem;
-                font-weight: 700;
+                // font-size: 3rem;
+                // font-weight: 700;
                 border-right: 1px solid $back_color;
                 @media screen and (max-width: $breakpoint_tablet) {
                     border-right: 0;
@@ -78,16 +48,43 @@ footer {
                 li {
                     line-height: 2em;
                     position: relative;
-
+                    text-align: center;
+                    padding: 0 1em;
                     a {
                         display: block;
                         //color: $sheet_color;
-                        padding: 0 1em;
-                        text-align: center;
+                    }
+                }
+            }
 
-                        &:hover {
-                            //color: $back_color;
-                            //background: $sheet_color;
+            &.feed {
+                flex: 2 1 0px;
+                .rss {
+                    padding: 0 1em;
+                    // height: 20em;
+                    // @media screen and (max-width: $breakpoint_tablet) {
+                    //     height: auto;
+                    // }
+                    overflow: auto;
+                    .item{
+                        margin: 0 0 1em 0;
+                        display: inline-block;
+                        border-bottom: 1px solid lightgray;
+                        text-align: left;
+                        &:last-of-type{
+                            border-bottom: 0;
+                        }
+                        .title{
+                            font-weight: normal;
+                        }
+                        .content {
+                            color: $text_color;
+                        }
+                        .date{
+                            color: $text_color;
+                            font-family: monospace;
+                            font-size: 80%;
+                            text-align: right;
                         }
                     }
                 }

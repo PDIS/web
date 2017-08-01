@@ -1,14 +1,5 @@
 @import "../../../styles.scss";
 
-h2{
-	text-align: center;
-	font-weight: 700;
-}
-
-h4 {
-    font-weight: 700;
-}
-
 img{
     max-width:100%;
     // max-height:100%;
@@ -21,23 +12,15 @@ img{
 .slogan-container {
     position: relative;
     text-align: center;
-}
-
-.slogan {
-    position: relative;
-    font-family: $slogan_font;
-    font-size: 5rem;
-    padding: 3em 0;
-    z-index: 100;
-    @media screen and (max-width: $breakpoint_tablet) {
-        font-size: 3rem;
+    .slogan {
+        font-size: 4rem;
+        @media screen and (max-width: $breakpoint_tablet) {
+            font-size: 2rem;
+        }
+        font-weight: normal;
+        font-family: $slogan_font;
+        padding: 2em 0;
     }
-}
-
-.slogan-btn {
-    position: relative;
-    padding: 3rem;
-    z-index: 100;
 }
 
 /*-----------------thumb------------------*/
@@ -79,7 +62,7 @@ ul.thumb-container{
 
 .topic-container {
     position: relative;
-
+    margin: 4em 0;
     .text {
         position: relative;
         // width: 40vw;
@@ -99,7 +82,7 @@ ul.thumb-container{
         bottom: 0;
         width: 40vw;
         max-width: $max_width * 0.5;
-        margin: 2.5vw 0;
+        margin: -2.5vw 0;
         z-index: 10;
         overflow: hidden;
         display: inline-flex;

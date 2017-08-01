@@ -204,7 +204,7 @@ export class TracksComponent implements OnInit {
                     var tag = {};
                     tag['text'] = discourseTags[i]['text'];
                     tag['weight'] = discourseTags[i]['count'];
-                    tag['link'] = "/#/how-we-work/tracks?q=" + discourseTags[i]['text'];
+                    tag['link'] = "/how-we-work/tracks?q=" + discourseTags[i]['text'];
                     tags.push(tag);
                 }
                 return tags;

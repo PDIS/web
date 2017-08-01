@@ -87,15 +87,16 @@ export class WhatWeDoComponent implements OnInit {
     // });
 
     new Swiper('.swiper-container', {
-      // Optional parameters
       autoplay: 10000, /* 10 sec to change */
       keyboardControl: true,
       direction: 'horizontal',
-      // loop: true,
       spaceBetween: 50,
       grabCursor: true,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
       pagination: '.swiper-pagination',
-      //paginationType: 'fraction'
+      // paginationType: 'fraction'
+      // loop: true,
     })
   }
 

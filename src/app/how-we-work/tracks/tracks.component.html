@@ -1,19 +1,17 @@
 <div class="main-container">
   <!-- <div class="slogan-container" id="particles"> -->
   <div class="slogan-container">
-    <div class="slogan">
-      <span>
+    <h1 class="slogan">
         We are commited to open our work process
         <br>
-        See and <span class="highlight">track</span> how we work day by day:
-      </span>
-    </div>
+        See and <span class="highlight">track</span> how we work day by day.
+    </h1>
   </div>
 
   <ul class="cloud" id="cloud">
     <!--<app-tag-cloud [width]="1000" [height]="200" [data]="tags" [removeOverflow]="true"></app-tag-cloud>-->
-    <li *ngFor='let tag of tags' class='cloud-item' [attr.data-weight]='tag.weight'>
-      <a [href]='tag.link'> {{tag.text}} </a>
+    <li *ngFor='let tag of tags' class='cloud-item'>
+      <a [href]='tag.link' [attr.data-weight]='tag.weight'> {{tag.text}} </a>
     </li>
   </ul>
 
@@ -39,15 +37,15 @@
       <div *ngFor="let object of total" role="tabpanel" class="tab-pane fade" [ngClass]="{'in active':(object.category ==='All')}" id="{{object.category}}">
 
         <ul class="timeline">
-            <li *ngFor="let post of object.posts; let i = index" class="animated fadeInUp" [ngClass]="{'timeline-inverted':(i%2!==0)}">
+            <li *ngFor="let post of object.posts; let i = index" [id]='post.id' class="animated fadeInUp" [ngClass]="{'timeline-inverted':(i%2!==0)}">
               <div class="timeline-badge" [ngClass]="post.category"></div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
                   <div class='date'> {{post.date | datePipe:"yyyy/MM/dd"}} </div>
-                  <p class="title">
-                    <strong> {{post.title}} </strong>
+                  <div>
+                    <h4 class="title"> {{post.title}} </h4>
                     <a [routerLink]="['/how-we-work/tracks']" [queryParams]="{q: tag}" class="tag" *ngFor="let tag of post.tags">{{tag}}</a>
-                  </p>
+                  </div>
                 </div>
                 <div class="timeline-body">
                   <p>
@@ -55,7 +53,9 @@
                   </p>
                 </div>
                 <div class="timeline-footer">
-                  {{ post.id }}
+                  <!-- <a [routerLink]="['/how-we-work/tracks']" [fragment]="post.id"> -->
+                    #{{ post.id }} &nbsp;
+                  <!-- </a> -->
                 </div>
               </div>
             </li>

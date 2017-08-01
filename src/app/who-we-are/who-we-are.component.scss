@@ -4,23 +4,15 @@
 .slogan-container {
     position: relative;
     text-align: center;
-}
-
-.slogan {
-    position: relative;
-    font-family: $slogan_font;
-    font-size: 5rem;
-    padding: 3em 0;
-    z-index: 100;
-    @media screen and (max-width: $breakpoint_tablet) {
-        font-size: 3rem;
+    .slogan {
+        font-size: 4rem;
+        @media screen and (max-width: $breakpoint_tablet) {
+            font-size: 2rem;
+        }
+        font-weight: normal;
+        font-family: $slogan_font;
+        padding: 2em 0;
     }
-}
-
-.slogan-btn {
-    position: relative;
-    padding: 3rem;
-    z-index: 100;
 }
 
 .aboutus {
@@ -62,6 +54,7 @@
 
 .ui.inverted.header {
     font-size: 30px;
+    font-family: $main-font-family;
 }
 
 p {

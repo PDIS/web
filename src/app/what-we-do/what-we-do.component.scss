@@ -32,16 +32,17 @@
 
     .slogan-container {
         text-align: center;
-        font-size: 5rem;
-        @media screen and (max-width: $breakpoint_tablet) {
-            font-size: 2.5rem;
-        }
         .slogan {
+            font-size: 4rem;
+            @media screen and (max-width: $breakpoint_tablet) {
+                font-size: 2rem;
+            }
+            font-weight: normal;
             font-family: $slogan_font;
             padding: 2em 0;
         }
         .more {
-            font-size: 40%;
+            font-size: 120%;
             font-family: $btn_font;
             display: flex;
             flex-flow: column;
@@ -63,6 +64,9 @@
     &.topic-right {
         flex-flow: row-reverse;
         text-align: right;
+        .text {
+            padding-left: 3vw;
+        }
     }
     .text {
         flex: 3;
@@ -89,7 +93,27 @@
     }
 }
 
-
+@media screen and (max-width: $breakpoint_tablet) {
+    .topic-container {
+        width: 100%;
+        // display: flex;
+        &.topic-left,
+        &.topic-right {
+            flex-flow: column;
+        }
+        .text {
+            // width: 100%;
+            margin: 0;
+            // max-width: $max_width;
+        }
+        .image {
+            // width: 100%;
+            // height: 100%;
+            margin: 0;
+            // max-width: $max_width;
+        }
+    }
+}
 
 /*-----------------------------------*/
 
@@ -115,34 +139,9 @@
 }
 
 @media screen and (max-width: $breakpoint_tablet) {
-    .topic-container {
-        width: 100%;
-        // display: flex;
-        &.topic-left,
-        &.topic-right {
-            flex-flow: column;
-        }
-        .text {
-            // width: 100%;
-            margin: 0;
-            // max-width: $max_width;
-        }
-        .image {
-            // width: 100%;
-            // height: 100%;
-            margin: 0;
-            // max-width: $max_width;
-        }
-    }
-
     .tell-us-container {
-        .tell-us-content {
-            // width: 100%
-            h2 {
-                font-size: 2rem;
-                // margin-bottom: 1em;
-            }
+        h2 {
+            font-size: 2rem;
         }
     }
-
 }

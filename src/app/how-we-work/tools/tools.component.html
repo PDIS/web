@@ -1,27 +1,20 @@
 <div class="main-container">
 
     <div class="slogan-container">
-
-        <div class="slogan">
-
-            <span>
-                See below the <span class="highlight">tools</span> we use everyday:
-            </span>
-
-        </div>
+        <h1 class="slogan">
+                These are the <span class="highlight">tools</span> we use everyday.
+        </h1>
     </div>
-
-    <h2>Tools</h2>
 
     <!-- the blocks of tools -->
     <ul *ngIf="tools_list" class="thumb-container">
-        <li *ngFor="let post of tools_list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked"></li>	
+        <li *ngFor="let post of tools_list['post_stream'].posts" class="thumb" [innerHTML]="post.cooked"></li>
     </ul>
 
     <hr class="section-line" />
 
     <!-- the detail of tools -->
-    <div class="topics"> 
+    <div class="topics">
 
         <template ngFor [ngForOf]="tools_detail_list" let-post let-i="index" let-isLast="last" let-isOdd="odd">
 
@@ -41,7 +34,7 @@
 
             </div>
 
-            <hr class="section-dot" *ngIf="!isLast" /> 
+            <hr class="section-dot" *ngIf="!isLast" />
 
           </template>
 

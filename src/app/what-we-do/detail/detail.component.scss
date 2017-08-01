@@ -2,22 +2,29 @@
 $main-font-size: 22px;
 $line-height-size: 35px;
 
-//                              設定 detailcomponent 文字及圖片樣式 
-.detail-text {
-    font-size: $main-font-size;
-    line-height: $line-height-size;
+//                              設定 detailcomponent 文字及圖片樣式
+
+.title {
+    text-align: center;
 }
 
+// .detail-text {
+//     font-size: $main-font-size;
+//     line-height: $line-height-size;
+// }
+
 :host /deep/ .detail-text {
-    h1, h2 {
-        &::before {
-            content: '\f178';
-            font-family: FontAwesome;
-            font-size: 1.5em;
-            position: absolute;
-            left: -2ch;
-        }
-    }
+    font-size: $main-font-size;
+    line-height: $line-height-size;
+    // h1, h2 {
+    //     &::before {
+    //         content: '\f178';
+    //         font-family: FontAwesome;
+    //         font-size: 1.5em;
+    //         position: absolute;
+    //         left: -2ch;
+    //     }
+    // }
     p {
         margin: 1em 0 1.5em 0;
     }
@@ -48,30 +55,30 @@ $line-height-size: 35px;
     dd {
         clear: left;
     }
-    blockquote {
-        position: relative;
-        border-left: 0px;
-    }
-    //                              blockquote { style
-    blockquote::before {
-        content: "\007B";
-        font-size: 8em;
-        line-height: 100%;
-        color: #DDDDDD;
-        position: absolute;
-        left: -50px;
-        top: 2rem;
-    }
-    //                              blockquote } style
-    blockquote::after {
-        content: "\007D";
-        font-size: 8em;
-        line-height: 100%;
-        color: #DDDDDD;
-        position: absolute;
-        right: -30px;
-        top: 2rem;
-    }
+    // blockquote {
+    //     position: relative;
+    //     border-left: 0px;
+    // }
+    // //                              blockquote { style
+    // blockquote::before {
+    //     content: "\007B";
+    //     font-size: 8em;
+    //     line-height: 100%;
+    //     color: #DDDDDD;
+    //     position: absolute;
+    //     left: -50px;
+    //     top: 2rem;
+    // }
+    // //                              blockquote } style
+    // blockquote::after {
+    //     content: "\007D";
+    //     font-size: 8em;
+    //     line-height: 100%;
+    //     color: #DDDDDD;
+    //     position: absolute;
+    //     right: -30px;
+    //     top: 2rem;
+    // }
     .meta {
         display: none;
     }
