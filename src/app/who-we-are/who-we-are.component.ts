@@ -2,8 +2,8 @@ import { Component, OnInit, Input, AfterViewChecked, ElementRef} from '@angular/
 import { MemberService } from '../shared/member-service/member.service'
 import { Discourselink } from '../../assets/discourselink'
 import { Http } from '@angular/http';
-// import 'rxjs/add/operator/concatMap';
-import 'rxjs/add/operator/finally';
+import 'rxjs/add/operator/concatMap'
+import 'rxjs/add/operator/finally'
 
 declare var WOW: any;
 declare var $: any;
