@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'what-we-do', component: WhatWeDoComponent },
   { path: 'how-we-work/tools', component: ToolsComponent },
   { path: 'how-we-work/tracks', component: TracksComponent },
-  // { path: 'how-we-work', component: HowWeWorkComponent },
+  { path: 'how-we-work', component: HowWeWorkComponent },
   { path: 'get-involved', component: GetInvolvedComponent },
   { path: 'who-we-are', component: WhoWeAreComponent }
 ];
