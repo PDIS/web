@@ -8,10 +8,13 @@
   <div class="menu">
     <ul>
       <li>
-        <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do']">WHAT WE DO</a>
+        <a [routerLinkActive]="['active']" (click)='toggle($event)'>WHAT WE DO</a>
         <ul>
           <li>
-            <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do/worklist']">WHAT WE'VE DONE</a>
+            <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do/beliefs']">Beliefs</a>
+          </li>
+          <li>
+            <a [routerLinkActive]="['active']" [routerLink]="['/what-we-do/worklist']">Works</a>
           </li>
         </ul>
       </li>
