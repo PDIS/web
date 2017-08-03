@@ -16,6 +16,7 @@
   "dependencies": {
     "@angular/common": "^2.1.0",
     "@angular/compiler": "^2.1.0",
+    "@angular/compiler-cli": "^2.1.0",
     "@angular/core": "^2.1.0",
     "@angular/forms": "^2.1.0",
     "@angular/http": "^2.1.0",
@@ -24,20 +25,20 @@
     "@angular/router": "^3.1.0",
     "angular-tag-cloud-module": "0.0.2",
     "core-js": "^2.4.1",
-    "gh-pages": "^0.12.0",
     "ng2-order-pipe": "^0.1.5",
     "node-sass": "^4.3.0",
-    "rxjs": "5.0.0-beta.12",
+    "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
-    "yamljs": "^0.2.8",
-    "zone.js": "^0.6.23"
+    "yamljs": "^0.3.0",
+    "zone.js": "^0.7.2"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "^2.1.0",
+    "@angular/cli": "^1.2.6",
+    "@types/jasmine": "^2.5.53",
     "@types/node": "^6.0.42",
-    "angular-cli": "1.0.0-beta.20-4",
     "codelyzer": "~1.0.0-beta.3",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
+    "gh-pages": "^0.12.0",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
     "karma": "1.2.0",
@@ -45,9 +46,10 @@
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",
+    "protractor": "^5.1.2",
     "ts-node": "1.2.1",
     "tslint": "3.13.0",
-    "typescript": "~2.0.3",
+    "typescript": "^2.4.2",
     "webdriver-manager": "10.2.5"
   }
 }
