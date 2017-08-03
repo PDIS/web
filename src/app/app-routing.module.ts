@@ -12,8 +12,8 @@ import { WhoWeAreComponent } from "./who-we-are/who-we-are.component";
 // import { NotFoundComponent } from "./404/404.component";
 
 const routes: Routes = [
-  { path: 'what-we-do/worklist', component: WorklistComponent },
-  { path: 'what-we-do/beliefs', component: WhatWeDoComponent },
+  { path: 'what-we-do/works', component: WorklistComponent },
+  { path: 'what-we-do/values', component: WhatWeDoComponent },
   { path: 'what-we-do/:id', component: DetailComponent },
   { path: 'what-we-do', component: WhatWeDoComponent },
   { path: 'how-we-work/tools', component: ToolsComponent },
