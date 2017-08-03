@@ -32,7 +32,7 @@
         <div class="content feed">
             <h2 class='header'>News</h2>
             <ul class="rss">
-                <li class="item" *ngFor="let item of rss.items | slice:0:3">
+                <li class="item" *ngFor="let item of rss | slice:0:3">
                     <a [href]="item.link | replacePipe" target="_blank">
                         <h3 class="title" [innerHTML]="item.title"></h3>
                     </a>

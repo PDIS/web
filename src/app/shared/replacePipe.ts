@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class replacePipe implements PipeTransform {
 
-  transform(target: string, args: any[]): any {
+  transform(target: string): string {
     //  console.log(target.replace(/&amp;/g,'&'))
     return target.replace(/&amp;/g,'&')
   }

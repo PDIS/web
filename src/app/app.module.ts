@@ -19,9 +19,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { JSONPipesPipe } from './shared/jsonPipes/jsonpipes.pipe';
 import { DatePipePipe } from './shared/datePipe/date-pipe.pipe';
-import { TagCloudComponent } from './how-we-work/tracks/tag-cloud/tag-cloud.component';
-
-import { TagCloudModule } from 'angular-tag-cloud-module';
 
 import { Discourselink } from './../assets/discourselink';
 import { WorkComponent } from "app/what-we-do/work/work.component";
@@ -44,7 +41,6 @@ import { MemberService } from "./shared/member-service/member.service"
     JSONPipesPipe,
     DatePipePipe,
     replacePipe,
-    TagCloudComponent,
     WorklistComponent,
     WorkComponent,
     WhoWeAreComponent
@@ -53,8 +49,7 @@ import { MemberService } from "./shared/member-service/member.service"
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
-    TagCloudModule
+    AppRoutingModule
   ],
   providers: [
     DataService,

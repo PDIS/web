@@ -13,8 +13,8 @@ declare var WOW: any;
 })
 export class ToolsComponent implements OnInit {
 
-    private tools_list;
-    private tools_detail_list = [];
+    tools_list;
+    tools_detail_list = [];
 
     constructor(private datasvcHww: DataService, private sanitizer: DomSanitizer) {
     }
@@ -48,7 +48,7 @@ export class ToolsComponent implements OnInit {
                 post['text'] = dom.querySelector("p").innerHTML;
 
                 post['link'] = dom.querySelector("aside header a") && (<HTMLElement>dom.querySelector("aside header a")).outerHTML;
-                
+
                 let ytdata;
                 // if lazyYT exist, then return its converted iframe
                 post['yt'] = dom.querySelector(".lazyYT") && (

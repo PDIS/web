@@ -10,7 +10,7 @@ export class FooterComponent implements OnInit {
 
   constructor(private http: Http) { }
 
-  rss = {}
+  rss = []
 
   ngOnInit() {
     /* let each listed external link append with an icon */
@@ -24,12 +24,12 @@ export class FooterComponent implements OnInit {
     }
 
     /* api for rss */
-    /* https://www.google.com.tw/alerts/feeds/11419317490390774846/8364829402486342759 */ 
+    /* https://www.google.com.tw/alerts/feeds/11419317490390774846/8364829402486342759 */
     let query = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.google.com.tw%2Falerts%2Ffeeds%2F11419317490390774846%2F8364829402486342759'
     this.http
         .get(query)
         .map(res => res.json())
-        .subscribe(data => this.rss = data)
+        .subscribe(data => this.rss = data.items)
   }
 
 }

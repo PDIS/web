@@ -16,7 +16,7 @@ export class WhatWeDoComponent implements OnInit {
 
   constructor(private dataService: DataService, private http: Http) { }
 
-  private topics = [];
+  topics = [];
 
   private getIds() {
     return this.http.get(Discourselink.Host+Discourselink.Category+Discourselink.Whatwedo+Discourselink.Filename)
