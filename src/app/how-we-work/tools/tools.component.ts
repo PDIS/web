@@ -41,9 +41,10 @@ export class ToolsComponent implements OnInit {
                 post['title'] = (<HTMLElement>dom.querySelector("h1,h2,h3,h4,h5,h6")).innerText;
 
                 let imgs = dom.querySelectorAll("img");
-                post['img'] = imgs && (
+                console.log(imgs)
+                post['img'] = imgs.length && (
                     imgs[imgs.length - 1].src || imgs[imgs.length - 1].getAttribute("src")
-                ) || "http://lorempixel.com/g/600/400/nature";
+                ) || "http://via.placeholder.com/350x350";
 
                 post['text'] = dom.querySelector("p").innerHTML;
 
