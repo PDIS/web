@@ -27,6 +27,9 @@
     <script src="https://use.fontawesome.com/e7b4292f28.js"></script>
 </head>
 <body>
+    <script type="text/javascript">
+        if (location.href.indexOf("#/") > 0) { location.replace(location.href.replace("#/","")); }
+    </script>
     <app-root></app-root>
     <!-- Google Translate w/ Google Analytics -->
     <div id="google_translate_element" onclick="void(0)"></div>
