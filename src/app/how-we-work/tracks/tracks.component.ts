@@ -28,7 +28,7 @@ export class TracksComponent implements OnInit {
     q:string = '';
     more_url: string = ''
     autoLoad: boolean = true
-
+    
     constructor(
         private dataService: DataService,
         private convertService: ConvertService,
@@ -192,26 +192,43 @@ export class TracksComponent implements OnInit {
             }
         })
 
-        // Tags Cloud
-        this.http.get(Discourselink.Host + "tags/filter/search.json")
+        // tags in pdis-site/how-we-work-track category
+        // fit discourse admin setting [max tags in filter list] value
+        this.http.get(Discourselink.Host + "c/pdis-site/how-we-work-track.json")
             .map(data => {
                 data = data.json();
-                var tags = [];
-                var discourseTags: [Object] = data['results'];
-                for (var i in discourseTags) {
-                    if (discourseTags[i]['text'] === '尚未回覆') { continue; }
-                    if (/^(.+)-/.test(discourseTags[i]['text'])) { continue; }
-                    var tag = {};
-                    tag['text'] = discourseTags[i]['text'];
-                    tag['weight'] = discourseTags[i]['count'];
-                    tag['link'] = "/how-we-work/tracks?q=" + discourseTags[i]['text'];
-                    tags.push(tag);
-                }
+                var tags: [Object] = data['topic_list']['tags'];
                 return tags;
             })
-            // .do(data => { console.log(data); })
             .subscribe(
-            tags => { this.tags = tags; }
+            tags => {
+                var topic_tags = tags;
+
+                // Tags Cloud
+                this.http.get(Discourselink.Host + "tags/filter/search.json")
+                .map(data => {
+                    data = data.json();
+                    var tags = [];
+                    var discourseTags: [Object] = data['results'];
+                    for (var i in discourseTags) {
+                        // remove tags not in pdis-site/how-we-work-track
+                        if (topic_tags.indexOf(discourseTags[i]['text']) == -1) { continue; }
+                        if (discourseTags[i]['text'] === '尚未回覆') { continue; }
+                        if (/^(.+)-/.test(discourseTags[i]['text'])) { continue; }
+                        var tag = {};
+                        tag['text'] = discourseTags[i]['text'];
+                        tag['weight'] = discourseTags[i]['count'];
+                        tag['link'] = "/how-we-work/tracks?q=" + discourseTags[i]['text'];
+                        tags.push(tag);
+                    }
+                    return tags;
+                })
+                // .do(data => { console.log(data); })
+                .subscribe(
+                tags => { this.tags = tags; }
+                );
+            
+            }
             );
 
         /* init categories tab header */
